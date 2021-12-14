@@ -1,0 +1,279 @@
+<div class="modal-body" >
+    <form [formGroup]="detalleForm" >
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label >N° Tramite</label>
+            <input type="text" placeholder="N° Tramite" formControlName="detalleTramite" class="form-control" readonly >
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label >Codigo Estudiante</label>
+            <input type="text" placeholder="Codigo Estudiante" formControlName="detalleCodEstudiante" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label >Estado</label>
+            <input type="text" placeholder="Apellidos" formControlName="detalleEstado" class="form-control" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label >Apellidos</label>
+            <input type="text" placeholder="Apellidos" formControlName="detalleApellidos" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label >Nombres</label>
+            <input type="text" placeholder="Nombres" formControlName="detalleNombres"  class="form-control" readonly>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label >Fecha</label>
+            <input type="text" placeholder="Fecha" formControlName="detalleFecha"  class="form-control" readonly>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="mostrarFormularioAgregar()">
+            Nuevo Estado
+          </button>
+        </div>
+        <div id="formulario-agregar">
+          <form [formGroup]="registrarForm" (ngSubmit)="registraEstado(registrarForm.value)">
+            <div class="form-group">
+              <select class="form-control" formControlName="ESTADO">
+                <option [ngValue]="null" selected>Elige un estado</option>
+                <option>PROCESANDO</option>
+                <option>OBSERVADO</option>
+                <option>FINALIZADO</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Observacion"  formControlName="OBSERVACIONES">
+              <div style="color: red;" *ngIf="registrarForm.get('OBSERVACIONES').hasError('minLength')">
+                Nombre requerido 2
+              </div>
+              <div style="color: red;" *ngIf="registrarForm.get('OBSERVACIONES').hasError('required')">
+                Nombre requerido
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary">
+                Agregar
+              </button>
+              <button type="button" class="btn btn-secondary" (click)="cerrarFormularioAgregar()">
+                Cerrar
+              </button>
+            </div>
+          </form>
+        </div>
+    
+      </div>
+    
+      <div class="col-sm">
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="mostrarFormularioSubir()">
+            Adjuntar Certificado
+          </button>
+        </div>
+        <div id="formulario-subir">
+          <form [formGroup]="uploadForm" (ngSubmit)="upload()">
+            <input type="file" formControlName="subir" accept="application/pdf" (change)="seleccionarArchivo($event)">
+            <br><br>
+            <button class="btn btn-primary"> Subir Certificado </button>
+            <button type="button" class="btn btn-secondary" (click)="cerrarFormularioSubir()">
+              Cerrar
+            </button>
+            <br><br>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">         
+        <tabset class="table">
+          <tab heading="Detalles" id="tab1">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="thead-light">
+                  <tr>
+                    <th>N° Tramite</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Observacion</th>
+                    <th>Editar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let itemDetalle of listaDetalles">
+                    <td>{{itemDetalle.ID_EST_DOC}}</td>
+                    <td>{{itemDetalle.FECHA}}</td>
+                    <td>{{itemDetalle.ESTADO}}</td>
+                    <td>{{itemDetalle.OBSERVACIONES}}</td>
+                     <td (click)="seleccionarDetalle(itemDetalle)">
+                       <i class="fas fa-edit"  ></i>     
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </tab>
+
+          <tab heading="Imagenes" id="tab2">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="thead-light">
+                  <tr>
+                    <th>N° Tramite</th>
+                    <th>Fecha</th>
+                    <th>Visualizar</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="imagen">
+                  <tr *ngFor="let itemImagen of listaImagenes">
+                    <td>{{itemImagen.ID_EST_DOC}}</td>
+                    <td>{{itemImagen.FECHA}}</td>
+                    <td class="text-center"> 
+                    <a href="{{itemImagen.URL}}" target="_blank">
+                       <i class="ni ni-image"></i>
+                    </a> 
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </tab>
+
+
+          <tab heading="Adjuntos" id="tab3" >
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="thead-light">
+                  <tr>
+                    <th>N° Tramite</th>
+                    <th>Fecha</th>
+                    <th>Descargar</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="adjunto">
+                  <tr *ngFor="let itemAdjunto of listaAdjuntos">
+                    <td>{{itemAdjunto.ID_EST_DOC}}</td>
+                    <td>{{itemAdjunto.FECHA}}</td>
+                    <td class="text-center"> <a href="{{itemAdjunto.URL}}" target="_blank">
+                      <i class="ni ni-cloud-download-95"></i>
+                      </a> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </tab>
+
+          <tab heading="Certificado" id="tab4">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="thead-light">
+                  <tr>
+                    <th>N° Tramite</th>
+                    <th>Fecha</th>
+                    <th>Descargar</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="certificado">
+                  <tr *ngFor="let itemCertificado of listaCertificado">
+                    <td>{{itemCertificado.ID_EST_DOC}}</td>
+                    <td>{{itemCertificado.FECHA}}</td>
+                    <td class="text-center"> 
+                      <a href="{{itemCertificado.URL}}" target="_blank">
+                        <i class="ni ni-paper-diploma"></i>
+                      </a> 
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </tab>
+        </tabset>
+    </ul>
+
+    <!-- Modal Modificar-->
+    <div class="modal fade" bsModal #modalMod="bs-modal"  id="formulario-actualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="color :black;">Modificar Detalle Tramite</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalMod.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form  [formGroup]="estadosActualizarForm"
+            (ngSubmit)="modificarEstado(estadosActualizarForm.value)"  >
+            <div style="color: black;" class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">N° Tramite</label>
+                <input type="text" class="form-control" readonly 
+                  formControlName="ID_EST_DOC">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Fecha</label>
+                <input type="text" class="form-control" readonly 
+                  formControlName="FECHA">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Estado</label>
+                <select class="form-control" formControlName="ESTADO">
+  
+                  <option [value]="'PROCESANDO'" >PROCESANDO</option>
+                  <option [value]="'OBSERVADO'">OBSERVADO</option>
+                  <option [value]="'FINALIZADO'">FINALIZADO</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Observación</label>
+                <input type="text" class="form-control" placeholder="Observacion"
+                  formControlName="OBSERVACIONES">
+              </div>
+    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"  (click)="modalMod.hide()">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+          </form>
+    
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Modal Carga -->
+    <div class="modal fade" id="modal_carga" data-backdrop="static" tabindex="-1" role="dialog"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel" style="color: black;"><strong>Cargando Certificado </strong>
+            </h5>
+          </div>
+          <div class="modal-body" style="color: black;">
+            <p>Espere mientras se sube el certificado codigo: {{in_tramite.ID_EST_DOC}}</p>
+            <p>Tramite: {{in_tramite.ESTUDIANTE}} </p>
+            <p>Estudiante : {{in_tramite.APELLIDOS}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
