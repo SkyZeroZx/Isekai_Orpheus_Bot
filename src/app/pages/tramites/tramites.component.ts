@@ -4,6 +4,7 @@ import { Adjunto, Certificado, Detalle, Imagen, Tramite, TramiteDoc } from 'src/
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { BsModalService, BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-tramites',
@@ -22,7 +23,7 @@ export class tramitesComponent implements OnInit {
   tramiteSeleccionado: TramiteDoc;
 
   @ViewChild(ModalDirective, { static: false }) modal: ModalDirective;
-  constructor(private servicios: ServiciosService,private fb: FormBuilder,private modalService: BsModalService) { }
+  constructor(private servicios: ServiciosService,private fb: FormBuilder,private modalService: BsModalService,private spinnerService: SpinnerService) { }
 
   
   ngOnInit() {
@@ -32,7 +33,8 @@ export class tramitesComponent implements OnInit {
       filterApellidos : new FormControl(''),
       filterNombres : new FormControl(''),
       filterEstado : new FormControl(''),
-      filterFecha : new FormControl('')
+      filterFecha : new FormControl(''),
+      filterTipoTramite : new FormControl(''),
     });
     this.listarTramiteDoc();
   }
@@ -53,7 +55,6 @@ export class tramitesComponent implements OnInit {
 
 
   detalleTramite(tramite: TramiteDoc) {
-    
     this.tramiteSeleccionado = tramite;
     console.log(this.tramiteSeleccionado);
     this.modal.show();

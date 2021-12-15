@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ChartType } from 'chart.js';
 import { Label, MultiDataSet } from 'ng2-charts';
 import { ServiciosService } from 'src/app/services/servicios.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-donut',
@@ -42,7 +43,7 @@ export class DonutComponent implements OnInit {
   country1: string = null;
   country2: string = null;
 
-  constructor(private graficosService: ServiciosService) { }
+  constructor(private graficosService: ServiciosService,private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
     this.getCountries();

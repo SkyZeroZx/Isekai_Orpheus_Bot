@@ -7,6 +7,7 @@ import { forkJoin } from "rxjs";
 import { map } from "rxjs/operators";
 import { DatePipe } from "@angular/common";
 import { ServiciosService } from "src/app/services/servicios.service";
+import { SpinnerService } from "src/app/services/spinner.service";
 
 @Component({
   selector: "app-dashboard",
@@ -33,7 +34,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private graficosService: ServiciosService,
     private localeService: BsLocaleService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private spinnerService: SpinnerService
   ) {
     this.getTramites();
     this.getPrueba();

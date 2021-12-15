@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -27,7 +27,9 @@ import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { DetalletramiteComponent } from 'src/app/pages/tramites/detalles/detalletramite/detalletramite.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { InterceptorService } from 'src/app/services/interceptor.service';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 defineLocale('es', esLocale);
 @NgModule({
   imports: [
@@ -42,6 +44,7 @@ defineLocale('es', esLocale);
     ChartsModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [DatePipe],
   declarations: [
@@ -54,7 +57,7 @@ defineLocale('es', esLocale);
     tramitesComponent,
     IconsComponent,
     MapsComponent,
-    FilterPipe
+    FilterPipe,
   ],
   bootstrap: [DashboardComponent]
 })

@@ -15,6 +15,7 @@ export class FilterPipe implements PipeTransform {
             && (usuario.ESTUDIANTE.toLowerCase().indexOf(args1[2].toLowerCase()) > -1)
             && (usuario.ID_EST_DOC.toLowerCase().indexOf(args1[3].toLowerCase()) > -1)
             && (usuario.COD_EST.toLowerCase().indexOf(args1[4].toLowerCase()) > -1)
+            && (usuario.NOMBRE.toLowerCase().indexOf(args1[5].toLowerCase()) > -1)
             )   {
                  if (args1[1] === '') {
                     resultadoBusqueda.push(usuario);

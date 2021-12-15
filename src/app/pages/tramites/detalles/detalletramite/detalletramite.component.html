@@ -42,65 +42,60 @@
       </div>
     </form>
 
-    <div class="row">
-      <div class="col-sm">
+
+
+    <h4>Registrar Nuevo Estado</h4>
+    <form class="row" [formGroup]="registrarForm" (ngSubmit)="registraEstado(registrarForm.value)">
+      <div class="col-sm-4">
         <div class="form-group">
-          <button type="button" class="btn btn-primary" (click)="mostrarFormularioAgregar()">
-            Nuevo Estado
-          </button>
+          <select class="form-control" formControlName="ESTADO">
+            <option value="">Seleccione un estado</option>
+            <option value="PROCESANDO" >PROCESANDO</option>
+            <option value="OBSERVADO" >OBSERVADO</option>
+            <option value="FINALIZADO" >FINALIZADO</option>
+          </select>
+          <div *ngIf="registrarForm.controls.ESTADO.invalid && registrarForm.controls.ESTADO.touched">
+            <div class="text-left" *ngIf="registrarForm.controls.ESTADO.errors?.required"  
+            style="color:red">Se requiere seleccionar estado</div>
         </div>
-        <div id="formulario-agregar">
-          <form [formGroup]="registrarForm" (ngSubmit)="registraEstado(registrarForm.value)">
-            <div class="form-group">
-              <select class="form-control" formControlName="ESTADO">
-                <option [ngValue]="null" selected>Elige un estado</option>
-                <option>PROCESANDO</option>
-                <option>OBSERVADO</option>
-                <option>FINALIZADO</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Observacion"  formControlName="OBSERVACIONES">
-              <div style="color: red;" *ngIf="registrarForm.get('OBSERVACIONES').hasError('minLength')">
-                Nombre requerido 2
-              </div>
-              <div style="color: red;" *ngIf="registrarForm.get('OBSERVACIONES').hasError('required')">
-                Nombre requerido
-              </div>
-            </div>
-    
-            <div class="form-group">
-              <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary">
-                Agregar
-              </button>
-              <button type="button" class="btn btn-secondary" (click)="cerrarFormularioAgregar()">
-                Cerrar
-              </button>
-            </div>
-          </form>
-        </div>
-    
-      </div>
-    
-      <div class="col-sm">
-        <div class="form-group">
-          <button type="button" class="btn btn-primary" (click)="mostrarFormularioSubir()">
-            Adjuntar Certificado
-          </button>
-        </div>
-        <div id="formulario-subir">
-          <form [formGroup]="uploadForm" (ngSubmit)="upload()">
-            <input type="file" formControlName="subir" accept="application/pdf" (change)="seleccionarArchivo($event)">
-            <br><br>
-            <button class="btn btn-primary"> Subir Certificado </button>
-            <button type="button" class="btn btn-secondary" (click)="cerrarFormularioSubir()">
-              Cerrar
-            </button>
-            <br><br>
-          </form>
         </div>
       </div>
-    </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Observacion"  formControlName="OBSERVACIONES">
+          <div *ngIf="registrarForm.controls.OBSERVACIONES.invalid && registrarForm.controls.OBSERVACIONES.touched">
+            <div class="text-left" *ngIf="registrarForm.controls.OBSERVACIONES.errors?.minlength"  
+            style="color:red">La longitud minima es 6 caracteres</div>
+            <div class="text-left" *ngIf="registrarForm.controls.OBSERVACIONES.errors?.maxlength"  
+            style="color:red">La longitud maxima es 105 caracteres</div>
+            <div class="text-left" *ngIf="registrarForm.controls.OBSERVACIONES.errors?.required"  
+            style="color:red">Se requiere ingresar Observacion</div>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary">
+            Registrar
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <h4>Adjuntar Certificado</h4>
+    <form class="row" [formGroup]="uploadForm" (ngSubmit)="upload()">
+      <div class="col-sm-4">
+        <input type="file" formControlName="subir" accept="application/pdf" (change)="seleccionarArchivo($event)">
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-sm-4">
+        <button class="btn btn-primary">Adjuntar Certificado</button>
+      </div>
+    </form>
+    <br><br>
+
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">         
         <tabset class="table">

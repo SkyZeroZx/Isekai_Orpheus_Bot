@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { DetalletramiteComponent } from './pages/tramites/detalles/detalletramite/detalletramite.component';
+import { InterceptorService } from './services/interceptor.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { DetalletramiteComponent } from './pages/tramites/detalles/detalletramit
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
@@ -30,7 +33,7 @@ import { DetalletramiteComponent } from './pages/tramites/detalles/detalletramit
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [],
+  providers: [  {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

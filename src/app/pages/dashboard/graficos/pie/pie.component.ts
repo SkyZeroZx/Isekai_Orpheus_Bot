@@ -3,6 +3,7 @@ import { ChartOptions, ChartType } from "chart.js";
 import { Label, SingleDataSet } from "ng2-charts";
 import { DatosGrafico } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
+import { SpinnerService } from "src/app/services/spinner.service";
 
 @Component({
   selector: "app-pie",
@@ -16,7 +17,7 @@ export class PieComponent implements OnInit {
   countries: string[] = [];
   country: string = null;
 
-  constructor(private graficosService: ServiciosService) {}
+  constructor(private graficosService: ServiciosService,private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
     this. getCountries();

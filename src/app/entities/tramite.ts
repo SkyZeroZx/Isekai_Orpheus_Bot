@@ -47,8 +47,9 @@ export class TramiteDoc {
     APELLIDOS: string;
     ESTUDIANTE: string;
     COD_EST: string;
-    FECHA_DOC: Date;
+    NOMBRE: Date;
     ESTADO: string;
     ID_EST_DOC:string;
+    FECHA_DOC:Date;
 }
  
