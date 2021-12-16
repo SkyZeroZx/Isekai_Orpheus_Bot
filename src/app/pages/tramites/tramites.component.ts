@@ -13,7 +13,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 })
 export class tramitesComponent implements OnInit {
   consultaForm: FormGroup;
-
+  p = 1;
   registrarForm : FormGroup;
   estadosActualizarForm : FormGroup;
   uploadForm: FormGroup;
@@ -61,7 +61,9 @@ export class tramitesComponent implements OnInit {
     this.modalVisible = true;
   }
 
-
+  onChangeForm() {
+    this.p = 1;
+}
 
 
 
