@@ -27,6 +27,11 @@ export class tramitesComponent implements OnInit {
 
   
   ngOnInit() {
+    this.crearFormularioConsulta();
+    this.listarTramiteDoc();
+  }
+
+  crearFormularioConsulta(){
     this.consultaForm = this.fb.group({
       filterTramite: new FormControl(''),
       filterCodEstudiante : new FormControl(''),
@@ -36,18 +41,13 @@ export class tramitesComponent implements OnInit {
       filterFecha : new FormControl(''),
       filterTipoTramite : new FormControl(''),
     });
-    this.listarTramiteDoc();
   }
-
-
 
 
   listarTramiteDoc():void{
     this.servicios.listaTramites().subscribe(
       (res:TramiteDoc[])=>{
         this.listaTramiteDoc=res;
-        console.log('Lista tramites ');
-        console.log(this.listaTramiteDoc);
         this.listaTramiteOk=true;
       }
     )
@@ -56,7 +56,6 @@ export class tramitesComponent implements OnInit {
 
   detalleTramite(tramite: TramiteDoc) {
     this.tramiteSeleccionado = tramite;
-    console.log(this.tramiteSeleccionado);
     this.modal.show();
     this.modalVisible = true;
   }

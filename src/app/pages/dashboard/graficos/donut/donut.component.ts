@@ -12,6 +12,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 export class DonutComponent implements OnInit {
   @Input() Inicio:string;
   @Input() Fin:string;
+  @Input() listaTramites:string[];
   // Doughnut
   public doughnutChartLabels: Label[] = ['Registrados', 'Procesados', 'Observados', 'Finalizados'];
   public doughnutChartData: MultiDataSet = [
@@ -39,25 +40,17 @@ export class DonutComponent implements OnInit {
     }
   ];
 
-  countries: string[] = [];
-  country1: string = null;
-  country2: string = null;
+ 
+  tramite1: string = null;
+  tramite2: string = null;
 
-  constructor(private graficosService: ServiciosService,private spinnerService: SpinnerService) { }
+  constructor(private graficosService: ServiciosService) { }
 
   ngOnInit(): void {
-    this.getCountries();
+ 
   }
 
-// Funcion que obtiene la keys del JSON para rellanar combobox
-getCountries(): void {
-  this.graficosService.getAll().subscribe(
-    data => {
-      this.countries = Object.keys(data);
-    }
-  );
-}
-
+ 
 // Funcion que limpiar la grafica
 clear(): void {
   this.doughnutChartData = [];
@@ -67,10 +60,10 @@ clear(): void {
 
 // Funcion que carga datos al grafico seleccionar datos y/o realizar cambios en ellos
 loadData(event: any): void {
-  if(this.country1 && this.country2 && this.Inicio && this.Fin ){
+  if(this.tramite1 && this.tramite2 && this.Inicio && this.Fin ){
     this.clear();
     //Asignar valores aro interior del grafico
-    this.graficosService.buscarPie(this.country1, this.Inicio, this.Fin).subscribe(
+    this.graficosService.buscarPie(this.tramite1, this.Inicio, this.Fin).subscribe(
       data => {
         const last = data.pop();  
         this.doughnutChartData[0][0] = last.registrado;
@@ -80,7 +73,7 @@ loadData(event: any): void {
       }
     );
   //Asignar valores aro exterior del grafico
-    this.graficosService.buscarPie(this.country2, this.Inicio, this.Fin).subscribe(
+    this.graficosService.buscarPie(this.tramite2, this.Inicio, this.Fin).subscribe(
       data => {
         const last = data.pop();   
         this.doughnutChartData[1][0] = last.registrado;

@@ -7,7 +7,7 @@
         </div>
         <select class="form-control" name="country" [(ngModel)]="tramite" (change)="loadData($event)">
             <option [ngValue]="null" selected>Elige un tramite</option>
-            <option *ngFor="let tramite of tramites" [ngValue]="tramite">{{tramite}}</option>
+            <option *ngFor="let tramite of listaTramites" [ngValue]="tramite">{{tramite}}</option>
           </select>
     </div>
 </div>

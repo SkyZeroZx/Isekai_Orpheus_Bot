@@ -5,12 +5,6 @@
   </div>
 </div>
 
-
-
-
-
-
-
 <div class="container-fluid mt--7">
   <div class="row">
     <div class="col">
@@ -41,7 +35,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <select id="inputEstado" class="form-control" formControlName="filterEstado" >
-                  <option value="">Seleccione...</option>
+                  <option value="">Elija Estado...</option>
                   <option [value]="'REGISTRADO'">REGISTRADO</option>
                   <option [value]="'PROCESANDO'">PROCESANDO</option>
                   <option [value]="'OBSERVADO'">OBSERVADO</option>
@@ -107,15 +101,15 @@
                 <td>
                   {{tramite.FECHA_DOC}}
                 </td>
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
+                  <td class="text-center">   <i  (click)="detalleTramite(tramite)" class="ni ni-bullet-list-67"></i></td>
+               <!--  <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" (click)="detalleTramite(tramite)">Detalles</a>
                     </div>
-                  </div>
+                  </div>-->  
               </tr>
 
             </tbody>

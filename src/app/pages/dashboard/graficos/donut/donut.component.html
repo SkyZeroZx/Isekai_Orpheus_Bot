@@ -9,9 +9,9 @@
                                 <i class="fas fa-globe"></i>
                             </div>
                         </div>
-                        <select class="form-control" name="country1" [(ngModel)]="country1" (change)="loadData($event)">
+                        <select class="form-control" name="tramite1" [(ngModel)]="tramite1" (change)="loadData($event)">
                             <option [ngValue]="null" selected>Tramite 1</option>
-                            <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
+                            <option *ngFor="let tramite1 of listaTramites" [ngValue]="tramite1">{{tramite1}}</option>
                           </select>
                     </div>
                 </div>
@@ -22,9 +22,9 @@
                                 <i class="fas fa-globe"></i>
                             </div>
                         </div>
-                        <select class="form-control" name="country2" [(ngModel)]="country2" (change)="loadData($event)">
+                        <select class="form-control" name="tramite2" [(ngModel)]="tramite2" (change)="loadData($event)">
                             <option [ngValue]="null" selected>Tramite 2</option>
-                            <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
+                            <option *ngFor="let tramite2 of listaTramites" [ngValue]="tramite2">{{tramite2}}</option>
                           </select>
                     </div>
                 </div>

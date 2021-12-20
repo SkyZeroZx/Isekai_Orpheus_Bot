@@ -23,30 +23,26 @@ export class DashboardComponent implements OnInit {
   public lineChartPlugins = [];
 
   pruebas: any[] = [];
-  countries: string[] = [];
-  country: string = null;
+  listaTramites: string[] = [];
+  tramite: string = null;
   dateInit: Date;
   dateEnd: Date;
   minDate: Date;
   maxDate: Date;
-  // faCalendarAlt=faCalendarAlt;
-  //faFile=faFile;
+
   constructor(
     private graficosService: ServiciosService,
     private localeService: BsLocaleService,
-    private datePipe: DatePipe,
-    private spinnerService: SpinnerService
-  ) {
-    this.getTramites();
-    this.getPrueba();
+    private datePipe: DatePipe
+  ) {}
+
+  ngOnInit(): void {
     this.localeService.use(this.locale);
     this.minDate = new Date("2020-1-22");
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 15);
-
-  }
-
-  ngOnInit(): void {
+    this.getTramites();
+    this.getPrueba();
   }
 
   public lineChartData: ChartDataSets[] = [
@@ -80,15 +76,15 @@ export class DashboardComponent implements OnInit {
   ];
 
   getPrueba() {
-    this.graficosService.getAll().subscribe((pruebas) => {
-      this.pruebas = pruebas;
+    this.graficosService.getAll().subscribe((res) => {
+      this.pruebas = res;
     });
   }
 
   getTramites() {
     this.graficosService.getAll().subscribe((data) => {
-      this.countries = Object.keys(data);
-      console.log(this.countries);
+      this.listaTramites = Object.keys(data);
+ 
     });
   }
 
@@ -96,26 +92,26 @@ export class DashboardComponent implements OnInit {
     console.log("Esto ngOnChanges prueba");
   }
 
- // numero: number;
+ 
 
   loadData(event: any): void {
     console.log(this.dateInit);
-    if (this.dateInit && this.dateEnd && this.country) {
+    if (this.dateInit && this.dateEnd && this.tramite) {
       forkJoin([
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.registrado))), //1
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.procesando))), //2
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.observado))), //3
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.finalizado))), //4
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(
             map((data) =>
               data.map((val) => this.datePipe.transform(val.fecha, "dd/MM"))
@@ -133,22 +129,22 @@ export class DashboardComponent implements OnInit {
   }
 
   prueba(): void {
-    if (this.dateInit && this.dateEnd && this.country) {
+    if (this.dateInit && this.dateEnd && this.tramite) {
       forkJoin([
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.registrado))), //1
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.procesando))), //2
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.observado))), //3
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(map((data) => data.map((val) => val.finalizado))), //4
         this.graficosService
-          .twoDates(this.country, this.dateInit, this.dateEnd)
+          .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(
             map((data) =>
               data.map((val) => this.datePipe.transform(val.fecha, "dd/MM"))

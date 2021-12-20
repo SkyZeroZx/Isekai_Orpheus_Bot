@@ -14,30 +14,29 @@ import { SpinnerService } from "src/app/services/spinner.service";
 
 export class DetalletramiteComponent implements OnInit {
   @Input() in_tramite: TramiteDoc;
+
   detalleForm: FormGroup;
-
-
   consultaForm: FormGroup;
   registrarForm: FormGroup;
   estadosActualizarForm: FormGroup;
   uploadForm: FormGroup;
-  listaTramiteDoc: TramiteDoc[];
-  listaTramiteOk = false;
-  modalVisible = false;
 
-  mensajeError: String;
-  estadoActualizar: Detalle[] = [];
-  currentDate: number = Date.now();
-
-  nuevoEstado: any = {};
-  imagen: any;
-  adjunto: any;
-  certificado: any;
   listaImagenes: Imagen[];
   listaDetalles: Detalle[];
   listaProductos: Tramite[];
   listaAdjuntos: Adjunto[] = [];
   listaCertificado: Certificado[] = [];
+  listaTramiteDoc: TramiteDoc[];
+  estadoActualizar: Detalle[] = [];
+  listaTramiteOk = false;
+  modalVisible = false;
+
+  mensajeError: String;
+  currentDate: number = Date.now();
+  nuevoEstado: any = {};
+  imagen: any;
+  adjunto: any;
+  certificado: any;
   archivo = {
     nombreArchivo: null,
     base64textString: null,
@@ -55,10 +54,7 @@ export class DetalletramiteComponent implements OnInit {
 
   // Al inicializar el componente creamos formularios y cargamos nuestras listas
   ngOnInit(): void {
-    console.log('Input Tramite Seleccionado');
-    console.log(this.in_tramite);
     this.crearFormularios();
-    console.log('antes de detalleTramite componente modal');
     this.detalleTramite();
   }
 
@@ -103,6 +99,7 @@ export class DetalletramiteComponent implements OnInit {
       subir: new FormControl(),
     });
   }
+
   // Detecta cambio en la variable Input para cargar nuevo tramite seleccionado
   ngOnChanges() {
     this.crearFormularios();
@@ -123,14 +120,9 @@ export class DetalletramiteComponent implements OnInit {
     this.estadosActualizarForm.controls["OBSERVACIONES"].setValue(
       detalleSeleccionado.OBSERVACIONES
     );
-    console.log("Seleccionado0 detalleSeleccionado");
-    console.log(detalleSeleccionado);
   }
 
   detalleTramite() {
-
-    console.log("Tramite Detalle Seleccionado es Input");
-    console.log(this.in_tramite);
     // Asignaciones detalleForm a tramiteSellecionado
     this.detalleForm.controls["detalleTramite"].setValue(
       this.in_tramite.ID_EST_DOC
@@ -166,7 +158,6 @@ export class DetalletramiteComponent implements OnInit {
     ID_EST_DOC = this.in_tramite["ID_EST_DOC"];
     this.servicios.buscarDetallesD(ID_EST_DOC).subscribe((res: Detalle[]) => {
       this.listaDetalles = res;
-      console.log("PRUEBA RES ESTADO DETALLES" + res["OBSERVACIONES"]);
     });
   }
 
@@ -216,46 +207,18 @@ export class DetalletramiteComponent implements OnInit {
   }
 
   registraEstado(values) {
-    //   values.ID_EST_DOC = this.in_tramite.ID_EST_DOC;
-    console.log(values);
-
-    const v = moment().format("Y-M-D, h:mm:ss");
-    /*  if (values.ESTADO === null) {
-        console.log("esto es null no registrar");
-        //    $("#NuevoEstadoNull").fadeIn();
-        //   $("#NuevoEstadoNull").fadeOut(4500);
-      } else {
-        console.log("no es null");*/
+    const fecha = moment().format("Y-M-D, h:mm:ss");
     this.servicios.insertarTramite(this.in_tramite.ID_EST_DOC, values.ESTADO, values.OBSERVACIONES).subscribe(
       (res) => {
-        console.log('Response INSERTAR TRAMITE')
-        console.log(res);
-        console.log(" fecha es v " + v);
-        this.nuevoEstado = {
-          ID_EST_DOC: this.in_tramite.ID_EST_DOC,
-          FECHA: v,
-          ESTADO: values.ESTADO,
-          OBSERVACIONES: values.OBSERVACIONES,
-        };
-        console.log("ListaDetalles blanco");
-        this.listaDetalles.push(this.nuevoEstado); // Agrega una nueva fila en la vista
-        console.log(
-          "Lista detalles con algo dentro " +
-          this.listaDetalles[0]["ID_EST_DOC"]
-        );
-
+        this.leerDetalles(this.in_tramite.ID_EST_DOC);
         this.registrarForm.reset(); //borra el contenido del formulario
         this.registrarForm.controls['ESTADO'].setValue("", {onlySelf: true});
-
       },
       (error) => {
         console.log('Mensaje Error es ')
         console.log(error)
       }
-
     );
-
-
   }
 
   seleccionarArchivo(event) {
@@ -263,7 +226,6 @@ export class DetalletramiteComponent implements OnInit {
     var file = files[0];
     this.archivo.nombreArchivo = file.name;
     this.archivo.id = this.in_tramite.ID_EST_DOC;
-
     if (files && file) {
       var reader = new FileReader();
       reader.onload = this._handleReaderLoaded.bind(this);
@@ -277,35 +239,21 @@ export class DetalletramiteComponent implements OnInit {
   }
 
   upload() {
-    console.log(this.archivo);
-
     if (this.archivo.base64textString == null) {
       alert("No hay archivo adjunto")
-      //    $("#SubidaNull").fadeIn();
-      //     $("#SubidaNull").fadeOut(4500)
     } else {
-      //   $("#modal_carga").modal('show');
       this.servicios.uploadFile(this.archivo).subscribe((datos) => {
         if (
           datos["mensaje"] == "EXITO" &&
           this.archivo.base64textString !== null
         ) {
-          //  alert("Se subio certificado de manera exitosa");
-          console.log(this.archivo.id + " response" + datos["iden"]);
           this.archivo.base64textString = null;
           this.archivo.nombreArchivo = null;
           this.archivo.id = null;
-          //   $("#SubidaOk").fadeIn();
-          //   $("#SubidaOk").fadeOut(4500)
           this.uploadForm.reset();
-          //   this.notificacion();
           this.leerCertificados(this.in_tramite.ID_EST_DOC);
-          //   $("#modal_carga").modal('hide');
         } else {
           alert("No hay archivo adjunto")
-          //  $("#SubidaError").fadeIn();
-          //    $("#SubidaError").fadeOut(4500)
-          //    $("#modal_carga").modal('hide');
         }
       });
     }
@@ -314,15 +262,10 @@ export class DetalletramiteComponent implements OnInit {
   modificarEstado(values) {
     console.log(values);
     this.servicios.estadoUpdate(
-      values.ID_EST_DOC, values.OBSERVACIONES, values.FECHA, values.ESTADO).subscribe();
+    values.ID_EST_DOC, values.OBSERVACIONES, values.FECHA, values.ESTADO).subscribe();
     alert("Se ha actualizado el tramite : " + this.in_tramite.ID_EST_DOC);
-    // $('#formulario-actualizar').modal('hide');
-    //  $('#ModificaEstado').fadeIn();
-    // $('#ModificaEstado').fadeOut(4500);
-
-
     this.leerDetalles(this.in_tramite.ID_EST_DOC);
-     this.modalMod.hide();
+    this.modalMod.hide();
   }
 
 }

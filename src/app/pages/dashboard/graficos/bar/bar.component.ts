@@ -14,24 +14,19 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 export class BarComponent implements OnInit {
   @Input() Inicio:Date;
   @Input() Fin:Date;
+  @Input() listaTramites:string[];
 
   public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
-  tramites: string[] = [];
   tramite: string = null;
 
-  constructor(private graficosService: ServiciosService,private spinnerService: SpinnerService) { }
+  constructor(private graficosService: ServiciosService) { }
 
   ngOnInit(): void {
-    this.getNameTramite();
-   this.graficosService.twoDates('Egresado',new Date('2020-1-22') , new Date('2020-12-31')).subscribe(
-      data=>{
-        console.log('Grafico Barras');
-        console.log(data);
-      }
-    )
+    console.log('Lista Tramites Input');
+    console.log(this.listaTramites)
   }
 
   // Configuracion Grafico de Barras
@@ -75,8 +70,6 @@ export class BarComponent implements OnInit {
         ]).subscribe(( 
         [data0, data1, data2 ,data3 , data4]
       ) => {
-        console.log("Fecha es "+ this.Inicio +" " + this.Fin)
-        console.log("Bar es " + data0)
         this.barChartData[0].data=data0;
         this.barChartData[1].data=data1;
         this.barChartData[2].data=data2;
@@ -85,14 +78,7 @@ export class BarComponent implements OnInit {
       });
     }
   }
-
-  getNameTramite(): void {
-    this.graficosService.getAll().subscribe(
-      data => {
-        this.tramites = Object.keys(data);
-      }
-    );
-  }
+ 
 
 
   clear(): void {

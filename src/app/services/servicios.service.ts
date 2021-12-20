@@ -16,23 +16,21 @@ export class ServiciosService {
   imagenes: Imagen[];
   adjuntos : Adjunto[];
   certificados : Certificado[];
-
+  dpies: DatosGrafico[];
+  tramiteDoc :TramiteDoc[];
+  
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<any> {
     return this.http.get<any>(this.ruta);
   }
 
-  public fromCountry(country: string): Observable<any> {
+  public fromEstado(country: string): Observable<any> {
     return this.getAll().pipe(map((data) => data[country]));
   }
 
-  public twoDates(
-    estado: string,
-    DateFrom: Date,
-    dateTo: Date
-  ): Observable<any> {
-    return this.fromCountry(estado).pipe(
+  public twoDates(estado: string,DateFrom: Date,dateTo: Date): Observable<any> {
+    return this.fromEstado(estado).pipe(
       map((res) =>
         res.filter(
           (val) =>
@@ -46,23 +44,19 @@ export class ServiciosService {
     return this.http.get<any>(this.rutab);
   }
 
-  public fromCountryM(country: string): Observable<any> {
-    return this.getAllMonth().pipe(map((data) => data[country]));
+  public fromTramiteEstado(tramite: string): Observable<any> {
+    return this.getAllMonth().pipe(map((data) => data[tramite]));
   }
 
-  public twoMonths(
-    estado: string,
-    DateFrom: Date,
-    dateTo: Date
-  ): Observable<any> {
-    return this.fromCountryM(estado).pipe(
+  twoMonths( estado: string,DateFrom: Date,dateTo: Date): Observable<any> {
+    return this.fromTramiteEstado(estado).pipe(
       map((res) =>
         res.filter((val) => val.fecha >= DateFrom && val.fecha <= dateTo)
       )
     );
   }
 
-  dpies: DatosGrafico[];
+
   buscarPie(estado, DateFrom, dateTo): Observable<DatosGrafico[]> {
     const ruta =
       "https://cameronian-treatmen.000webhostapp.com/angular/pie.php";
@@ -78,20 +72,6 @@ export class ServiciosService {
     );
   }
 
-  contador: Contador[];
-  ContadorTramites(): Observable<Contador[]> {
-    const ruta =
-      "https://cameronian-treatmen.000webhostapp.com/angular/contador_tramite.php";
-    return this.http.post<Contador[]>(ruta, null).pipe(
-      map((res) => {
-        this.contador = JSON.parse(JSON.stringify(res));
-        return this.contador;
-      })
-    );
-  }
-
-  tramiteDoc :TramiteDoc[];
-  
   listaTramites(): Observable<TramiteDoc[]>{
     const ruta ="https://cameronian-treatmen.000webhostapp.com/angular/servicio_tramite.php"
      return this.http.post<TramiteDoc[]>(ruta,null).pipe(
@@ -101,7 +81,6 @@ export class ServiciosService {
        })
      )
    }
-
 
    buscarDetallesD(ID_EST_DOC): Observable<Detalle[]>{
     const ruta = "https://cameronian-treatmen.000webhostapp.com/angular/servicio_detalled.php";

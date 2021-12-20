@@ -8,7 +8,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor(private spinnerService: SpinnerService) { }
+  constructor() { }
 
   ngOnInit() {
   }
