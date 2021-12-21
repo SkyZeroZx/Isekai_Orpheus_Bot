@@ -8,15 +8,15 @@
         <a class="nav-link pr-0" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">Sky</span>
+              <span class="mb-0 text-sm  font-weight-bold">{{usuarioLogeado}}</span>
             </div>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
-          <a href="#!" class="dropdown-item">
+          <div   class="dropdown-item" (click)="onLogout()">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
-          </a>
+          </div>
         </div>
       </li>
     </ul>

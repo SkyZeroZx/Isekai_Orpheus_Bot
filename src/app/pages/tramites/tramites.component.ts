@@ -23,7 +23,7 @@ export class tramitesComponent implements OnInit {
   tramiteSeleccionado: TramiteDoc;
 
   @ViewChild(ModalDirective, { static: false }) modal: ModalDirective;
-  constructor(private servicios: ServiciosService,private fb: FormBuilder,private modalService: BsModalService,private spinnerService: SpinnerService) { }
+  constructor(private servicios: ServiciosService,private fb: FormBuilder,private modalService: BsModalService) { }
 
   
   ngOnInit() {

@@ -48,8 +48,7 @@ export class DetalletramiteComponent implements OnInit {
   constructor(
     private servicios: ServiciosService,
     private fb: FormBuilder,
-    private modalService: BsModalService,
-    private spinnerService: SpinnerService
+    private modalService: BsModalService
   ) { }
 
   // Al inicializar el componente creamos formularios y cargamos nuestras listas
