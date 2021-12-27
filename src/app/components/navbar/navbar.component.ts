@@ -40,6 +40,9 @@ export class NavbarComponent implements OnInit {
     console.log('logout');
     this.auth.logout();
     this.router.navigate(['/login']);
+  }
 
+  changePassword(){
+    console.log('change password');
   }
 }

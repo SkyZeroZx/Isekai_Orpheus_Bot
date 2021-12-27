@@ -13,6 +13,10 @@
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+          <div   class="dropdown-item" [routerLink]="['/change-password']">
+            <i class="ni ni-key-25"></i>
+            <span>Cambiar contraseña</span>
+          </div>         
           <div   class="dropdown-item" (click)="onLogout()">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>

@@ -12,7 +12,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { DetalletramiteComponent } from './pages/tramites/detalles/detalletramite/detalletramite.component';
 import { InterceptorService } from './services/interceptor.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
