@@ -5,10 +5,14 @@ import {checkJwt} from "./../middlewares/jwt";
 
 const router = Router();
 
-// Get all tramites
-router.get('/',TramiteController.getAll);
  
+router.get('/',TramiteController.getAll);
+router.get('/:id',TramiteController.getById);
+router.get('/img/:id',TramiteController.getByImg);
+router.get('/adj/:id',TramiteController.getByAdj);
+router.get('/cer/:id',TramiteController.getByCer);
 
+ 
 export default router;
 
 

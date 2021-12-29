@@ -1,9 +1,10 @@
-import {Entity,PrimaryGeneratedColumn,CreateDateColumn,Column, PrimaryColumn, ManyToOne, JoinColumn, OneToMany, Unique } from "typeorm";
+import {Entity,PrimaryColumn, ManyToOne, JoinColumn, OneToMany, Unique } from "typeorm";
 import { IsNotEmpty,MaxLength } from "class-validator";
 import { Documento } from "./Documento";
 import { Adjuntos } from "./Adjuntos";
 import { Estudiante } from "./Estudiante";
 import { Estado } from "./Estado";
+import { Imagenes } from "./Imagenes";
 
 @Entity()
 export class EstadoDocumento {
@@ -14,6 +15,10 @@ export class EstadoDocumento {
   @OneToMany(() => Estado, Estado=> Estado.id_est_doc, {
       nullable: false
    }) 
+   @OneToMany(() => Imagenes, Img=> Img.id_est_doc, {
+    nullable: false
+    }) 
+  @MaxLength(35)
   id_est_doc: Estado;
 
   @ManyToOne(() => Documento, Documento => Documento.cod_doc, {
@@ -27,19 +32,7 @@ export class EstadoDocumento {
     })
   @JoinColumn({ name: "cod_est" })
   cod_est: Estudiante;
-  
-  @Column()
-  @CreateDateColumn() 
-  fechaInicio: Date;
-
-  
-  @Column({
-    nullable: true
-    })
-  fechaFin: Date;
-
-
-  
+    
 }
  
 

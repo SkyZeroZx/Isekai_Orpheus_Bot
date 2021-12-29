@@ -1,15 +1,17 @@
-import {Entity,Column, PrimaryColumn,CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import {Entity,Column, PrimaryColumn,CreateDateColumn, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm";
 import {  IsNotEmpty, MaxLength } from "class-validator";
 import { EstadoDocumento } from "./EstadoDocumento";
 
 @Entity()
 export class Adjuntos {
  
-  @PrimaryColumn("int")
+  @PrimaryGeneratedColumn()
   cod_adj: number;
 
 
-  @ManyToOne(() => EstadoDocumento, Est => Est.id_est_doc)
+  @ManyToOne(() => EstadoDocumento, Est => Est.id_est_doc, {
+    nullable: false
+    })
   @JoinColumn(
     { name: 'id_est_doc', referencedColumnName: 'id_est_doc' }
   )

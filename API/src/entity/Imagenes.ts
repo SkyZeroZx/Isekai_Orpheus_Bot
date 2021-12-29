@@ -1,11 +1,11 @@
-import {Entity,Column, PrimaryColumn,CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import {Entity,Column, CreateDateColumn, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm";
 import {  IsNotEmpty, MaxLength } from "class-validator";
 import { EstadoDocumento } from "./EstadoDocumento";
 @Entity()
  
 export class Imagenes {
  
-  @PrimaryColumn("int")
+  @PrimaryGeneratedColumn()
   cod_img: number;
 
 
