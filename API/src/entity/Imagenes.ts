@@ -23,7 +23,7 @@ export class Imagenes {
 
 
   @Column()
-  @CreateDateColumn()
+  @CreateDateColumn() 
   fecha: Date;
 
 

@@ -67,12 +67,13 @@ export class TramiteController {
     const { id } = req.params;
     try {
         imagen = await getManager()
-        .createQueryBuilder(Imagenes,"i")
+        .createQueryBuilder(Imagenes,"i")  
         .select("i.id_est_doc", "ID_EST_DOC")
         .addSelect("i.fecha","FECHA")
         .addSelect("i.url","URL")
         .where("i.ID_EST_DOC = :id", { id: id })
         .getRawMany();
+   
     } catch (e) {
       res.status(404).json({ message: "Something goes wrong! imagen" });
     }

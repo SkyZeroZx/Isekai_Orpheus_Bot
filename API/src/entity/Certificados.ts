@@ -20,6 +20,7 @@ export class Certificados {
   url: string;
 
 
+
   @Column()
   @CreateDateColumn()
   fecha: Date;
