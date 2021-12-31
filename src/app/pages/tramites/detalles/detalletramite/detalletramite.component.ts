@@ -169,7 +169,7 @@ export class DetalletramiteComponent implements OnInit {
       } else {
         this.listaImagenes = res;
         console.log(res);
-        console.log("esto es imagen" + res[0]["URL"]);
+        //console.log("esto es imagen" + res[0]["URL"]);
         this.imagen = true;
       }
     });
@@ -220,7 +220,7 @@ export class DetalletramiteComponent implements OnInit {
     );
   }
 
-  seleccionarArchivo(event) {
+ /* seleccionarArchivo(event) {
     var files = event.target.files;
     var file = files[0];
     this.archivo.nombreArchivo = file.name;
@@ -230,14 +230,20 @@ export class DetalletramiteComponent implements OnInit {
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
     }
+  }*/
+
+  seleccionarArchivo(event) {
+    this.uploadedFiles = event.target.files;
+
   }
+
 
   _handleReaderLoaded(readerEvent) {
     var binaryString = readerEvent.target.result;
-    this.archivo.base64textString = btoa(binaryString);
+    this.archivo.base64textString = binaryString.toString('base64')(binaryString);
   }
 
-  upload() {
+  /*upload() {
     if (this.archivo.base64textString == null) {
       alert("No hay archivo adjunto")
     } else {
@@ -256,7 +262,19 @@ export class DetalletramiteComponent implements OnInit {
         }
       });
     }
-  }
+  }*/
+  uploadedFiles: Array < File > ;
+  upload() {
+    let formData = new FormData();
+    for (var i = 0; i < this.uploadedFiles.length; i++) {
+      formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
+    }
+    this.servicios.uploadFile(formData).subscribe((res)=> {
+      console.log('response received is ', res);
+    });
+    }
+   
+
 
   modificarEstado(values) {
     console.log(values);

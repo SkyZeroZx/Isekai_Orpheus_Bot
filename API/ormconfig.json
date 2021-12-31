@@ -4,6 +4,7 @@
    "port": 3306,
    "username": "root",
    "password": "",
+   "timezone":"+0",
    "database": "login_node",
    "synchronize": true,
    "logging": false,

@@ -83,7 +83,7 @@
     </form>
 
     <h4>Adjuntar Certificado</h4>
-    <form class="row" [formGroup]="uploadForm" (ngSubmit)="upload()">
+    <form class="row" [formGroup]="uploadForm" (ngSubmit)="upload()" enctype="multipart/form-data">
       <div class="col-sm-4">
         <input type="file" formControlName="subir" accept="application/pdf" (change)="seleccionarArchivo($event)">
       </div>

@@ -48,6 +48,9 @@ export class tramitesComponent implements OnInit {
     this.servicios.listaTramites().subscribe(
       (res:TramiteDoc[])=>{
         this.listaTramiteDoc=res;
+        console.log('La lista tramite es ')
+        console.log(this.listaTramiteDoc)
+        console.log(res)
         this.listaTramiteOk=true;
       }
     )
