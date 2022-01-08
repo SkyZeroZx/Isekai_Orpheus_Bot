@@ -81,25 +81,25 @@
               paginate:{itemsPerPage: 5, currentPage:p}
               ">
                 <td>
-                {{tramite.ID_EST_DOC}}
+                {{tramite.id_est_doc}}
                 </td>
                 <td>
-                  {{tramite.NOMBRE}}
+                  {{tramite.nombre}}
                   </td>
                 <td>
-                  {{tramite.COD_EST}}
+                  {{tramite.cod_est}}
                 </td>
                 <td>
-                  {{tramite.APELLIDOS}}
+                  {{tramite.apellidos}}
                 </td>
                 <td>
-                  {{tramite.ESTUDIANTE}}
+                  {{tramite.estudiante}}
                 </td>
                 <td>
-                  {{tramite.ESTADO}}
+                  {{tramite.estado}}
                 </td>
                 <td>
-                  {{tramite.FECHA_DOC}}
+                  {{tramite.fecha_doc}}
                 </td>
                   <td class="text-center">   <i  (click)="detalleTramite(tramite)" class="ni ni-bullet-list-67"></i></td>
                <!--  <div ngbDropdown placement="bottom-right">
@@ -129,7 +129,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #modal="bs-modal" [config]="{backdrop: 'static'}"
+<div class="modal fade" bsModal #modal="bs-modal" [config]="{backdrop: 'static'}" (onHidden)="updateTramites()"
      tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -139,7 +139,9 @@
           <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
       </div>
-      <app-detalletramite [in_tramite]="tramiteSeleccionado" *ngIf="modalVisible" ></app-detalletramite>
+      <app-detalletramite 
+    
+      [in_tramite]="tramiteSeleccionado" *ngIf="modalVisible" ></app-detalletramite>
     </div>
  </div>
 </div>

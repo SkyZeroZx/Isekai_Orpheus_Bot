@@ -6,10 +6,10 @@ export class Tramite {
 }
 
 export class Detalle {
-  ID_EST_DOC: string;
-  FECHA: string;
-  ESTADO: string;
-  OBSERVACIONES: string;
+  id_est_doc: string;
+  fecha: Date;
+  estado: string;
+  observaciones: string;
 }
 
 export class Imagen {
@@ -25,9 +25,9 @@ export class Adjunto {
 }
 
 export class Certificado {
-  URL: string;
-  FECHA: string;
-  ID_EST_DOC: string;
+  url: string;
+  fecha: string;
+  id_est_doc: string;
 }
 export class DatosGrafico {
   registrado: number;
@@ -44,12 +44,12 @@ export class Contador {
 }
 
 export class TramiteDoc {
-    APELLIDOS: string;
-    ESTUDIANTE: string;
-    COD_EST: string;
-    NOMBRE: Date;
-    ESTADO: string;
-    ID_EST_DOC:string;
-    FECHA_DOC:Date;
+    apellidos: string;
+    estudiante: string;
+    cod_est: string;
+    nombre: Date;
+    estado: string;
+    id_est_doc:string;
+    fecha_doc:Date;
 }
  

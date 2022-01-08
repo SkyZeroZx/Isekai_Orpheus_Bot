@@ -4,6 +4,7 @@ import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { Adjunto, Certificado, Contador, DatosGrafico, Detalle, Imagen, Tramite, TramiteDoc } from "../entities/tramite";
 import { environment } from "src/environments/environment";
+
 @Injectable({
   providedIn: "root",
 })
@@ -169,7 +170,7 @@ export class ServiciosService {
       })
     )
    }*/
-
+/*
    insertarTramite(ID_EST_DOC,ESTADO,OBSERVACIONES){
     const ruta = "https://cameronian-treatmen.000webhostapp.com/angular/registrar_estado.php"
     const formData: FormData = new FormData();
@@ -178,7 +179,31 @@ export class ServiciosService {
     formData.append("OBSERVACIONES",OBSERVACIONES);
     return this.http.post(ruta,formData)
   }
+*/
+  insertarTramite(detalle : Detalle) {
+   return this.http.post<any>(`${environment.API_URL}/tramite/`, detalle)
+   .pipe(catchError(this.handlerError));;
+  }
 
+  deleteTramite(detalle : Detalle ): Observable<{}> {
+    return this.http.delete<Detalle>(`${environment.API_URL}/tramite/`, {
+      body:detalle
+    })
+    .pipe(catchError(this.handlerError));;
+  }
+
+  deleteCertificado(certificado : Certificado ): Observable<{}> {
+    return this.http.delete<Certificado>(`${environment.API_URL}/tramite/cer/`, {
+      body:certificado
+    })
+    .pipe(catchError(this.handlerError));;
+  }
+
+  update(detalle: Detalle) {
+    return this.http
+      .patch(`${environment.API_URL}/tramite`, detalle)
+      .pipe(catchError(this.handlerError));
+  }
  /* uploadFile(archivo) {
     const ruta="https://cameronian-treatmen.000webhostapp.com/angular/subir_archivo.php"
     return this.http.post(
@@ -186,12 +211,13 @@ export class ServiciosService {
       JSON.stringify(archivo));
   }
   */
-  uploadFile(archivo) {
+  uploadFile(archivo,id_est_doc:string) {
     console.log('Ruta API upload file')
+    console.log(archivo)
     console.log(`${environment.API_URL}/tramite/certificado/`);
-    return this.http.post(`${environment.API_URL}/tramite/certificado/`, archivo);
+    return this.http.post(`${environment.API_URL}/tramite/certificado/${id_est_doc}`, archivo);
   }
-
+/*
   estadoUpdate(ID_EST_DOC,OBSERVACIONES,FECHA,ESTADO){
     const ruta = "https://cameronian-treatmen.000webhostapp.com/angular/actualizar_detalle.php";
     const formData: FormData = new FormData();
@@ -201,7 +227,15 @@ export class ServiciosService {
     formData.append("ESTADO",ESTADO);
     return this.http.post(ruta,formData)
   }
-
+*/
+/*
+estadoUpdate(tramite:Detalle): Observable<Detalle>{
+  console.log('Service recibe');
+  console.log(tramite);
+  return this.http
+  .patch<Detalle>('http://localhost:3000/tramite/', tramite)
+  .pipe(catchError(this.handlerError));
+}*/
 
 
 }

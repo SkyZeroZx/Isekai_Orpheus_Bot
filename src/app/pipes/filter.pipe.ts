@@ -10,12 +10,12 @@ export class FilterPipe implements PipeTransform {
  
         const resultadoBusqueda = [];
         for (const usuario of value) {
-            if ( (usuario.APELLIDOS.toLowerCase().indexOf(args1[0].toLowerCase()) > -1)
-            && (usuario.ESTADO.toLowerCase().indexOf(args1[1].toLowerCase()) > -1)
-            && (usuario.ESTUDIANTE.toLowerCase().indexOf(args1[2].toLowerCase()) > -1)
-            && (usuario.ID_EST_DOC.toLowerCase().indexOf(args1[3].toLowerCase()) > -1)
-            && (usuario.COD_EST.toLowerCase().indexOf(args1[4].toLowerCase()) > -1)
-            && (usuario.NOMBRE.toLowerCase().indexOf(args1[5].toLowerCase()) > -1)
+            if ( (usuario.apellidos.toLowerCase().indexOf(args1[0].toLowerCase()) > -1)
+            && (usuario.estado.toLowerCase().indexOf(args1[1].toLowerCase()) > -1)
+            && (usuario.estudiante.toLowerCase().indexOf(args1[2].toLowerCase()) > -1)
+            && (usuario.id_est_doc.toLowerCase().indexOf(args1[3].toLowerCase()) > -1)
+            && (usuario.cod_est.toLowerCase().indexOf(args1[4].toLowerCase()) > -1)
+            && (usuario.nombre.toLowerCase().indexOf(args1[5].toLowerCase()) > -1)
             )   {
                  if (args1[1] === '') {
                     resultadoBusqueda.push(usuario);

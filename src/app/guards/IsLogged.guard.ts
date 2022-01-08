@@ -13,6 +13,8 @@ export class IsLogged implements CanActivate {
   constructor(private router: Router, private authService: AuthService){}
 
   canActivate(): Observable<boolean> {
+    console.log("Auth Guard IsLogin")
+
     return this.authService.user$.pipe(
       take(1),
       map((user: UserResponse) => (user ? true : false))

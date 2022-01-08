@@ -31,7 +31,8 @@
             "styles": [
               "src/styles.scss",
               "src/assets/scss/argon.scss",
-              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "node_modules/ngx-toastr/toastr.css" 
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",

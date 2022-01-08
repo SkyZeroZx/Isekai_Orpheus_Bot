@@ -8,9 +8,10 @@ import { Estudiante } from "../entity/Estudiante";
 import { Imagenes } from "../entity/Imagenes";
 import { Adjuntos } from "../entity/Adjuntos";
 import { Certificados } from "../entity/Certificados";
- 
-export class TramiteController {
+import { transporter } from "./../config/mailer";
+const fs = require("fs");
 
+export class TramiteController {
   static getAll = async (req: Request, res: Response) => {
     const tramiteRepository = getRepository(EstadoDocumento);
     let tramite;
@@ -18,13 +19,13 @@ export class TramiteController {
     try {
       tramite = await getManager()
         .createQueryBuilder(EstadoDocumento, "est")
-        .select("est.id_est_doc", "ID_EST_DOC")
-        .addSelect("e.estado", "ESTADO")
-        .addSelect("e.fecha", "FECHA_DOC")
-        .addSelect("d.nombre", "NOMBRE")
-        .addSelect("ed.cod_est", "COD_EST")
-        .addSelect("ed.nombre", "ESTUDIANTE")
-        .addSelect("ed.apellido", "APELLIDOS")
+        .select("est.id_est_doc", "id_est_doc")
+        .addSelect("e.estado", "estado")
+        .addSelect("e.fecha", "fecha_doc")
+        .addSelect("d.nombre", "nombre")
+        .addSelect("ed.cod_est", "cod_est")
+        .addSelect("ed.nombre", "estudiante")
+        .addSelect("ed.apellido", "apellidos")
         .innerJoin(Estado, "e", "est.id_est_doc = e.id_est_doc")
         .innerJoin(Documento, "d", "d.cod_doc = est.cod_doc")
         .innerJoin(Estudiante, "ed", "ed.cod_est = est.cod_est")
@@ -39,18 +40,18 @@ export class TramiteController {
       res.status(404).json({ message: "Something goes wrong! tramite" });
     }
     res.send(tramite);
-  }
- 
+  };
+
   static getById = async (req: Request, res: Response) => {
     let detalle;
     const { id } = req.params;
     try {
       detalle = await getManager()
         .createQueryBuilder(EstadoDocumento, "est")
-        .select("est.id_est_doc", "ID_EST_DOC")
-        .addSelect("e.fecha", "FECHA")
-        .addSelect("e.estado", "ESTADO")
-        .addSelect("e.observaciones", "OBSERVACIONES")
+        .select("est.id_est_doc", "id_est_doc")
+        .addSelect("e.fecha", "fecha")
+        .addSelect("e.estado", "estado")
+        .addSelect("e.observaciones", "observaciones")
         .innerJoin(Estado, "e", "est.id_est_doc = e.id_est_doc")
         .where("est.ID_EST_DOC = :id", { id: id })
         .orderBy("E.FECHA", "DESC")
@@ -59,172 +60,281 @@ export class TramiteController {
       res.status(404).json({ message: "Something goes wrong! detalle" });
     }
     res.send(detalle);
-  }
+  };
 
   static getByImg = async (req: Request, res: Response) => {
- 
     let imagen;
     const { id } = req.params;
     try {
-        imagen = await getManager()
-        .createQueryBuilder(Imagenes,"i")  
+      imagen = await getManager()
+        .createQueryBuilder(Imagenes, "i")
         .select("i.id_est_doc", "ID_EST_DOC")
-        .addSelect("i.fecha","FECHA")
-        .addSelect("i.url","URL")
+        .addSelect("i.fecha", "FECHA")
+        .addSelect("i.url", "URL")
         .where("i.ID_EST_DOC = :id", { id: id })
         .getRawMany();
-   
     } catch (e) {
       res.status(404).json({ message: "Something goes wrong! imagen" });
     }
     res.send(imagen);
-  }
+  };
 
   static getByAdj = async (req: Request, res: Response) => {
     let adjunto;
     const { id } = req.params;
     try {
-        adjunto = await getManager()
-        .createQueryBuilder(Adjuntos,"a")
+      adjunto = await getManager()
+        .createQueryBuilder(Adjuntos, "a")
         .select("a.id_est_doc", "ID_EST_DOC")
-        .addSelect("a.fecha","FECHA")
-        .addSelect("a.url","URL")
+        .addSelect("a.fecha", "FECHA")
+        .addSelect("a.url", "URL")
         .where("a.ID_EST_DOC = :id", { id: id })
         .getRawMany();
     } catch (e) {
       res.status(404).json({ message: "Something goes wrong! adjunto" });
     }
     res.send(adjunto);
-  }
+  };
 
   static getByCer = async (req: Request, res: Response) => {
     let adjunto;
     const { id } = req.params;
     try {
-        adjunto = await getManager()
-        .createQueryBuilder(Certificados,"c")
-        .select("c.id_est_doc", "ID_EST_DOC")
-        .addSelect("c.fecha","FECHA")
-        .addSelect("c.url","URL")
+      adjunto = await getManager()
+        .createQueryBuilder(Certificados, "c")
+        .select("c.id_est_doc", "id_est_doc")
+        .addSelect("c.fecha", "fecha")
+        .addSelect("c.url", "url")
         .where("c.ID_EST_DOC = :id", { id: id })
         .getRawMany();
     } catch (e) {
       res.status(404).json({ message: "Something goes wrong! Certificados" });
     }
     res.send(adjunto);
-  }
+  };
 
-  static insertTramite = async (req: Request, res: Response) =>{
-    const {id_est_doc,observaciones,estado} = req.body;
+  static insertTramite = async (req: Request, res: Response) => {
+    const { id_est_doc, observaciones, estado } = req.body;
     const estadoDetalle = new Estado();
     estadoDetalle.id_est_doc = id_est_doc;
-    estadoDetalle.observaciones =observaciones;
+    estadoDetalle.observaciones = observaciones;
     estadoDetalle.estado = estado;
     // Validate
-    const validationOpt = {validationError:{target:false,value:false}}
-    const errors = await validate(estadoDetalle,validationOpt);
-    if(errors.length>0){
-        return res.status(400).json(errors);
+    const validationOpt = { validationError: { target: false, value: false } };
+    const errors = await validate(estadoDetalle, validationOpt);
+    if (errors.length > 0) {
+      return res.status(400).json(errors);
     }
     const estadoRepository = getRepository(Estado);
-    try{
-        await estadoRepository.save(estadoDetalle);
-    }catch(e){
-        return res.status(409).json({message:'Error al registrar estado'});
+    let estudiante;
+    try {
+      await estadoRepository.save(estadoDetalle);
+      estudiante = await getManager()
+        .createQueryBuilder(Estudiante, "e")
+        .select("e.email", "email")
+        .innerJoin(EstadoDocumento, "est", "est.cod_est = e.cod_est")
+        .where("est.id_est_doc = :id", { id: id_est_doc })
+        .getRawOne();
+      await transporter.sendMail({
+        from: "Universidad <institucional@gmail.com>",
+        to: estudiante.email,
+        subject: "Actualizacion Estado Tramite N°" + id_est_doc,
+        html:
+          "<img src='https://fiis.unac.edu.pe/images/logo-fiis.png'></img>" +
+          "<p>Por medio del presente cumplimos con informar que su tramite con N° " +
+          id_est_doc +
+          " se actualizado con estado: <b>" +
+          estado.toLowerCase() +
+          "</b>" +
+          " para mas detalles puede verificar su tramite en " +
+          " URL" +
+          "</p>",
+      });
+    } catch (e) {
+      return res
+        .status(409)
+        .json({ message: "Ocurrio un error al registrar estado" });
     }
-    // All Ok
-    res.send('Nuevo estado agregado');
-  }
 
-  static editTramite = async (req: Request, res: Response) =>{
+    // All Ok
+    res.status(201).json({ message: "Nuevo Estado Tramite Ingresado" });
+  };
+
+  static editTramite = async (req: Request, res: Response) => {
     let tramite;
-    const {id_est_doc,observaciones,estado,fecha} = req.body;
+    const { id_est_doc, observaciones, estado, fecha } = req.body;
     const estadoRepository = getRepository(Estado);
     // try get user
-    try{
-      tramite = await estadoRepository.findOneOrFail( { id_est_doc: id_est_doc, fecha: fecha} );
-      tramite.observaciones = observaciones
+    try {
+      tramite = await estadoRepository.findOneOrFail({
+        id_est_doc: id_est_doc,
+        fecha: fecha,
+      });
+      tramite.observaciones = observaciones;
       tramite.estado = estado;
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
-        return res.status(404).json({message:'Tramite not found'})
+      return res.status(404).json({ message: "Tramite not found" });
     }
-    const validationOpt = {validationError:{target:false,value:false}}
-    const errors = await validate(tramite,validationOpt);
-    if(errors.length>0){
-        return res.status(400).json(errors);
+    const validationOpt = { validationError: { target: false, value: false } };
+    const errors = await validate(tramite, validationOpt);
+    if (errors.length > 0) {
+      return res.status(400).json(errors);
     }
 
     // Try to save user
-    try{
-        await estadoRepository.save(tramite);
-    }catch(e){
-        return res.status(404).json({message:'Error al editar tramite'})
+    try {
+      await estadoRepository.save(tramite);
+    } catch (e) {
+      return res.status(404).json({ message: "Error al editar tramite" });
     }
-    res.status(201).json({message:'Tramite update'})
-  }
+    res.status(201).json({ message: "Tramite update" });
+  };
 
-  static deleteTramite = async (req: Request, res: Response) =>{
-    let tramite:Estado;
-    const {id_est_doc,fecha} = req.body;
+  static deleteTramite = async (req: Request, res: Response) => {
+    const { id_est_doc, fecha } = req.body;
+    let tramite: Estado;
     const estadoRepository = getRepository(Estado);
     try {
-      tramite = await estadoRepository.findOneOrFail( { id_est_doc: id_est_doc, fecha: fecha} );
-    }catch(e){
-      return res.status(404).json({message:'Tramite not found'})
+      tramite = await estadoRepository.findOneOrFail({
+        id_est_doc: id_est_doc,
+        fecha: fecha,
+      });
+    } catch (e) {
+      return res.status(404).json({ message: "Tramite not found" });
     }
 
-    // Remove user
-    estadoRepository.delete({ id_est_doc: id_est_doc, fecha: fecha});
-    res.status(201).json({message:'Tramite deleted'});
-  }
+    try {
+      await estadoRepository.delete({ id_est_doc: id_est_doc, fecha: fecha });
+    } catch (e) {
+      return res
+        .status(400)
+        .json({ message: "Hubo un error al eliminar el tramite" });
+    }
 
-  static insertCer = async (req: Request, res: Response) =>{
-    const {id_est_doc,url} = req.body;
+    res.status(201).json({ message: "Tramite deleted" });
+  };
+
+  static insertCer = async (req: Request, res: Response) => {
+    const { id_est_doc, url } = req.body;
     const certificado = new Certificados();
     certificado.url = url;
-    certificado.id_est_doc =id_est_doc;
+    certificado.id_est_doc = id_est_doc;
     // Validate
-    const validationOpt = {validationError:{target:false,value:false}}
-    const errors = await validate(certificado,validationOpt);
-    if(errors.length>0){
-        return res.status(400).json(errors);
+    const validationOpt = { validationError: { target: false, value: false } };
+    const errors = await validate(certificado, validationOpt);
+    if (errors.length > 0) {
+      return res.status(400).json(errors);
     }
     const certificadoRepository = getRepository(Certificados);
-    try{
-        await certificadoRepository.save(certificado);
-    }catch(e){
-        return res.status(409).json({message:'Error al registrar certificado'});
+    let estudiante;
+    try {
+      await certificadoRepository.save(certificado);
+      estudiante = await getManager()
+        .createQueryBuilder(Estudiante, "e")
+        .select("e.email", "email")
+        .innerJoin(EstadoDocumento, "est", "est.cod_est = e.cod_est")
+        .where("est.id_est_doc = :id", { id: id_est_doc })
+        .getRawOne();
+      await transporter.sendMail({
+        from: "Universidad <institucional@gmail.com>",
+        to: estudiante.email,
+        subject: "Actualizacion Estado Tramite N°" + id_est_doc,
+        html:
+          "<img src='https://fiis.unac.edu.pe/images/logo-fiis.png'></img>" +
+          "<p>Por medio del presente cumplimos con informar que su tramite con N° " +
+          id_est_doc +
+          " se actualizado con estado: <b>finalizado</b></p><br>" +
+          "<p>Puede descargar su certificado en el apartado certificado en la busqueda de tramite  URL</p>",
+      });
+    } catch (e) {
+      return res
+        .status(409)
+        .json({ message: "Error al registrar certificado" });
     }
     // All Ok
-    res.send('Nuevo certificado agregado');
-  }
+    res
+      .status(200)
+      .json({ message: "Se registro existosamente el certificado" });
+  };
 
-  static deleteCer = async (req: Request, res: Response) =>{
-    let certificado:Certificados;
-    const {id_est_doc,fecha} = req.body;
+  static deleteCer = async (req: Request, res: Response) => {
+    let certificado: Certificados;
+    const { id_est_doc, fecha } = req.body;
     const certificadoRepository = getRepository(Certificados);
     try {
-      certificado = await certificadoRepository.findOneOrFail( { id_est_doc: id_est_doc, fecha: fecha} );
-    }catch(e){
-      return res.status(404).json({message:'Certicado not found'})
+      certificado = await certificadoRepository.findOneOrFail({
+        id_est_doc: id_est_doc,
+        fecha: fecha,
+      });
+    } catch (e) {
+      return res.status(404).json({ message: "Certicado not found" });
     }
     // Remove certificado
-    certificadoRepository.delete({ id_est_doc: id_est_doc, fecha: fecha});
-    res.status(201).json({message:'Certicado deleted'});
-  }
- 
- 
+    try {
+      await certificadoRepository.delete({
+        id_est_doc: id_est_doc,
+        fecha: fecha,
+      });
+    } catch (e) {
+      return res
+        .status(400)
+        .json({ message: "Sucedio un error al eliminar certificado" });
+    }
+    res.status(201).json({ message: "Certicado deleted" });
+  };
 
-  static updateCer = async (req: Request, res: Response) =>{
-    res.json({
-      'message': 'File uploaded succesfully.'
+  static updateCer = async (req: Request, res: Response) => {
+    const { id }: any = req.params;
+
+    let archivo = req["files"]["uploads"];
+    console.log(archivo);
+    console.log(archivo[0].path)
+    fs.rename(archivo[0].path, `upload/${id}.pdf`, () => {
+      console.log("\nFile Renamed!\n");
     });
- 
-  }
+    const certificado = new Certificados();
+    certificado.url = `C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/API/upload/${id}.pdf`;
+    certificado.id_est_doc = id;
+    // Validate
+    const validationOpt = { validationError: { target: false, value: false } };
+    const errors = await validate(certificado, validationOpt);
+    if (errors.length > 0) {
+      return res.status(400).json(errors);
+    }
+    const certificadoRepository = getRepository(Certificados);
+    let estudiante;
+    //Send Email
+    try {
+      //Insert a Certificate
+      await certificadoRepository.save(certificado);
+      //Get a email
+      estudiante = await getManager()
+        .createQueryBuilder(Estudiante, "e")
+        .select("e.email", "email")
+        .innerJoin(EstadoDocumento, "est", "est.cod_est = e.cod_est")
+        .where("est.id_est_doc = :id", { id: id })
+        .getRawOne();
+      //Send email
+    /*  await transporter.sendMail({
+        from: "Universidad <institucional@gmail.com>",
+        to: estudiante.email,
+        subject: "Actualizacion Estado Tramite N°" + id,
+        html:
+          "<img src='https://fiis.unac.edu.pe/images/logo-fiis.png'></img>" +
+          "<p>Por medio del presente cumplimos con informar que su tramite con N° " +
+          id +
+          " se actualizado con estado: <b>finalizado</b></p><br>" +
+          "<p>Puede descargar su certificado en el apartado certificado en la busqueda de tramite  URL</p>",
+      });*/
+    } catch (e) {
+      return res
+        .status(409)
+        .json({ message: "Error al registrar certificado" });
+    }
 
-
+    res.status(201).json({ message: "Certicado subido exitosamente" });
+  };
 }
 
 export default TramiteController;

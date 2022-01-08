@@ -48,28 +48,28 @@
     <form class="row" [formGroup]="registrarForm" (ngSubmit)="registraEstado(registrarForm.value)">
       <div class="col-sm-4">
         <div class="form-group">
-          <select class="form-control" formControlName="ESTADO">
+          <select class="form-control" formControlName="estado">
             <option value="">Seleccione un estado</option>
             <option value="PROCESANDO" >PROCESANDO</option>
             <option value="OBSERVADO" >OBSERVADO</option>
             <option value="FINALIZADO" >FINALIZADO</option>
           </select>
-          <div *ngIf="registrarForm.controls.ESTADO.invalid && registrarForm.controls.ESTADO.touched">
-            <div class="text-left" *ngIf="registrarForm.controls.ESTADO.errors?.required"  
+          <div *ngIf="registrarForm.controls.estado.invalid && registrarForm.controls.estado.touched">
+            <div class="text-left" *ngIf="registrarForm.controls.estado.errors?.required"  
             style="color:red">Se requiere seleccionar estado</div>
         </div>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Observacion"  formControlName="OBSERVACIONES">
-          <div *ngIf="registrarForm.controls.OBSERVACIONES.invalid && registrarForm.controls.OBSERVACIONES.touched">
-            <div class="text-left" *ngIf="registrarForm.controls.OBSERVACIONES.errors?.minlength"  
-            style="color:red">La longitud minima es 6 caracteres</div>
-            <div class="text-left" *ngIf="registrarForm.controls.OBSERVACIONES.errors?.maxlength"  
-            style="color:red">La longitud maxima es 105 caracteres</div>
-            <div class="text-left" *ngIf="registrarForm.controls.OBSERVACIONES.errors?.required"  
-            style="color:red">Se requiere ingresar Observacion</div>
+          <textarea type="text" class="form-control" rows="3" placeholder="Observacion"  formControlName="observaciones"></textarea>
+          <div *ngIf="registrarForm.controls.observaciones.invalid && registrarForm.controls.observaciones.touched">
+            <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.minlength"  
+            style="color:red">La longitud minima es 6 caracteres</small>
+            <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.maxlength"  
+            style="color:red">La longitud maxima es 105 caracteres</small>
+            <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.required"  
+            style="color:red">Se requiere ingresar observacion</small>
         </div>
         </div>
       </div>
@@ -109,16 +109,20 @@
                     <th>Estado</th>
                     <th>Observacion</th>
                     <th>Editar</th>
+                    <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let itemDetalle of listaDetalles">
-                    <td>{{itemDetalle.ID_EST_DOC}}</td>
-                    <td>{{itemDetalle.FECHA}}</td>
-                    <td>{{itemDetalle.ESTADO}}</td>
-                    <td>{{itemDetalle.OBSERVACIONES}}</td>
-                     <td (click)="seleccionarDetalle(itemDetalle)">
+                    <td>{{itemDetalle.id_est_doc}}</td>
+                    <td>{{itemDetalle.fecha}}</td>
+                    <td>{{itemDetalle.estado}}</td>
+                    <td>{{itemDetalle.observaciones}}</td>
+                    <td class="text-center" (click)="seleccionarDetalle(itemDetalle)">
                        <i class="fas fa-edit"  ></i>     
+                    </td>
+                    <td class="text-center" (click)="eliminarDetalle(itemDetalle)">
+                      <i class="ni ni-fat-remove"></i>
                     </td>
                   </tr>
                 </tbody>
@@ -136,7 +140,7 @@
                     <th>Visualizar</th>
                   </tr>
                 </thead>
-                <tbody *ngIf="imagen">
+                <tbody *ngIf="imagenOk">
                   <tr *ngFor="let itemImagen of listaImagenes">
                     <td>{{itemImagen.ID_EST_DOC}}</td>
                     <td>{{itemImagen.FECHA}}</td>
@@ -162,7 +166,7 @@
                     <th>Descargar</th>
                   </tr>
                 </thead>
-                <tbody *ngIf="adjunto">
+                <tbody *ngIf="adjuntoOk">
                   <tr *ngFor="let itemAdjunto of listaAdjuntos">
                     <td>{{itemAdjunto.ID_EST_DOC}}</td>
                     <td>{{itemAdjunto.FECHA}}</td>
@@ -183,17 +187,21 @@
                     <th>N° Tramite</th>
                     <th>Fecha</th>
                     <th>Descargar</th>
+                    <th>Eliminar</th>
                   </tr>
                 </thead>
-                <tbody *ngIf="certificado">
+                <tbody *ngIf="certificadoOk">
                   <tr *ngFor="let itemCertificado of listaCertificado">
-                    <td>{{itemCertificado.ID_EST_DOC}}</td>
-                    <td>{{itemCertificado.FECHA}}</td>
+                    <td>{{itemCertificado.id_est_doc}}</td>
+                    <td>{{itemCertificado.fecha}}</td>
                     <td class="text-center"> 
-                      <a href="{{itemCertificado.URL}}" target="_blank">
+                      <a href="{{itemCertificado.url}}" target="_blank">
                         <i class="ni ni-paper-diploma"></i>
                       </a> 
                     </td>
+                    <td class="text-center" (click)="eliminarCertificado(itemCertificado)">
+                      <i class="ni ni-fat-remove"></i>
+                    </td>      
                   </tr>
                 </tbody>
               </table>
@@ -219,16 +227,16 @@
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">N° Tramite</label>
                 <input type="text" class="form-control" readonly 
-                  formControlName="ID_EST_DOC">
+                  formControlName="id_est_doc">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Fecha</label>
                 <input type="text" class="form-control" readonly 
-                  formControlName="FECHA">
+                  formControlName="fecha">
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Estado</label>
-                <select class="form-control" formControlName="ESTADO">
+                <select class="form-control" formControlName="estado">
                   <option [value]="'PROCESANDO'" >PROCESANDO</option>
                   <option [value]="'OBSERVADO'">OBSERVADO</option>
                   <option [value]="'FINALIZADO'">FINALIZADO</option>
@@ -236,8 +244,8 @@
               </div>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Observación</label>
-                <input type="text" class="form-control" placeholder="Observacion"
-                  formControlName="OBSERVACIONES">
+                <textarea class="form-control form-control-alternative" rows="5"  type="text"   placeholder="Observacion"
+                  formControlName="observaciones"></textarea>
               </div>
     
             </div>
@@ -262,12 +270,32 @@
             </h5>
           </div>
           <div class="modal-body" style="color: black;">
-            <p>Espere mientras se sube el certificado codigo: {{in_tramite.ID_EST_DOC}}</p>
-            <p>Tramite: {{in_tramite.ESTUDIANTE}} </p>
-            <p>Estudiante : {{in_tramite.APELLIDOS}} </p>
+            <p>Espere mientras se sube el certificado codigo: {{in_tramite.id_est_doc}}</p>
+            <p>Tramite: {{in_tramite.estudiante}} </p>
+            <p>Estudiante : {{in_tramite.apellidos}} </p>
           </div>
         </div>
       </div>
     </div>
+
+
+  <div class="modal fade" bsModal #modalDelete="bs-modal"  id="formulario-actualizar" tabindex="-1" 
+    role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true"  (onHidden)="onHideDelete()">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p>¿Esta seguro que desea eliminar este registro?</p>
+                <button type="button" class="btn btn-danger" (click)="decline()" >Cerrar</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-success" (click)="confirm()" >Confirmar</button>
+            </div>
+        </div>  
+    </div>
+    </div>
+
+
+
+
+
 
   </div>

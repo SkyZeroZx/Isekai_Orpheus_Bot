@@ -34,7 +34,7 @@
     "ngx-clipboard": "14.0.1",
     "ngx-pagination": "^5.1.1",
     "ngx-spinner": "^12.0.0",
-    "ngx-toastr": "14.0.0",
+    "ngx-toastr": "^14.0.0",
     "nouislider": "14.6.2",
     "rxjs": "7.2.0",
     "zone.js": "0.11.4"
