@@ -290,6 +290,7 @@ export class TramiteController {
     let archivo = req["files"]["uploads"];
     console.log(archivo);
     console.log(archivo[0].path)
+
     fs.rename(archivo[0].path, `upload/${id}.pdf`, () => {
       console.log("\nFile Renamed!\n");
     });
@@ -335,6 +336,14 @@ export class TramiteController {
 
     res.status(201).json({ message: "Certicado subido exitosamente" });
   };
+
+
+  static getDocument = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    console.log('El ID params es '+  id);
+    console.log(__dirname);
+  //  res.sendFile("/upload/hV5dr7MLA3QgnycvxzDvwn-M.pdf");
+  }
 }
 
 export default TramiteController;

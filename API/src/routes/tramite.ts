@@ -19,7 +19,7 @@ router.delete('/',TramiteController.deleteTramite);
 router.post('/cer/',TramiteController.insertCer);
 router.delete('/cer/',TramiteController.deleteCer);
 router.post('/certificado/:id',multipartMiddleware,TramiteController.updateCer);
-
+router.get('/document/:id',TramiteController.getDocument);
 
 export default router;
 
