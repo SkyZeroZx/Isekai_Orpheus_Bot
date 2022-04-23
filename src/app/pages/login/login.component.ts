@@ -9,16 +9,12 @@ import { ServiciosService } from 'src/app/services/servicios.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(private authService: AuthService,private fb: FormBuilder,private router: Router) {}
 
   ngOnInit() {
     this.crearFormularioLogin();
-  }
-
-  ngOnDestroy() {
-    console.log('Se utilizo OnDestroy')
   }
 
 
@@ -34,7 +30,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log(formValue);
     this.authService.login(formValue).subscribe(
       (res)=>{
-       if(res){
+        if (res['message']==='Username or password incorrect!'){
+          console.log('No se te logeas');
+          console.log(res);
+        }
+       console.log('Intermediario ' + res)
+       if(res['message']==='OK'){
         console.log('Login Exitoso');
         console.log(res);
         localStorage.setItem('usuarioLogueado',formValue.username);

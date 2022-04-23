@@ -35,8 +35,7 @@ export class AuthService {
           this.saveLocalStorage(user);
           this.user.next(user);
           return user;
-        }),
-        catchError((err) => this.handlerError(err))
+        })
       );
   }
 

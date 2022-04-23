@@ -9,7 +9,10 @@ import { Imagenes } from "../entity/Imagenes";
 import { Adjuntos } from "../entity/Adjuntos";
 import { Certificados } from "../entity/Certificados";
 import { transporter } from "./../config/mailer";
+
 const fs = require("fs");
+const https = require("https");
+const axios = require("axios");
 
 export class TramiteController {
   static getAll = async (req: Request, res: Response) => {
@@ -286,16 +289,8 @@ export class TramiteController {
 
   static updateCer = async (req: Request, res: Response) => {
     const { id }: any = req.params;
-
-    let archivo = req["files"]["uploads"];
-    console.log(archivo);
-    console.log(archivo[0].path)
-
-    fs.rename(archivo[0].path, `upload/${id}.pdf`, () => {
-      console.log("\nFile Renamed!\n");
-    });
     const certificado = new Certificados();
-    certificado.url = `C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/API/upload/${id}.pdf`;
+    certificado.url = "ruta";
     certificado.id_est_doc = id;
     // Validate
     const validationOpt = { validationError: { target: false, value: false } };
@@ -317,7 +312,7 @@ export class TramiteController {
         .where("est.id_est_doc = :id", { id: id })
         .getRawOne();
       //Send email
-    /*  await transporter.sendMail({
+      /*  await transporter.sendMail({
         from: "Universidad <institucional@gmail.com>",
         to: estudiante.email,
         subject: "Actualizacion Estado Tramite N°" + id,
@@ -337,13 +332,80 @@ export class TramiteController {
     res.status(201).json({ message: "Certicado subido exitosamente" });
   };
 
+  static updateFile = async (req: Request, res: Response) => {
+    const { id, base64 }: any = req.body;
+    const data = JSON.stringify({
+      base64textString: base64,
+      id: id,
+    });
+    //Realizamos la peticion al servicio subirArchivo en php para guardar el tramite en el hosting
+    axios({
+      method: "post",
+      url: "https://www.kikesport.com.pe/bot/subir_archivo.php",
+      data: data,
+    })
+      .then(async function (ws) {
+        console.log(ws.data);
+        if (ws.data.resultado == "OK") {
+          const certificado = new Certificados();
+          certificado.url = 'https://www.kikesport.com.pe/bot/' + ws.data.ruta;
+          certificado.id_est_doc = id;
+          // Validate
+          const validationOpt = {
+            validationError: { target: false, value: false },
+          };
+          const errors = await validate(certificado, validationOpt);
+          if (errors.length > 0) {
+            return res.status(400).json(errors);
+          }
+          const certificadoRepository = getRepository(Certificados);
+          let estudiante;
+          //Send Email
+          try {
+            //Insert a Certificate
+            await certificadoRepository.save(certificado);
+            //Get a email
+            estudiante = await getManager()
+              .createQueryBuilder(Estudiante, "e")
+              .select("e.email", "email")
+              .innerJoin(EstadoDocumento, "est", "est.cod_est = e.cod_est")
+              .where("est.id_est_doc = :id", { id: id })
+              .getRawOne();
+            //Send email
+            /*  await transporter.sendMail({
+              from: "Universidad <institucional@gmail.com>",
+              to: estudiante.email,
+              subject: "Actualizacion Estado Tramite N°" + id,
+              html:
+                "<img src='https://fiis.unac.edu.pe/images/logo-fiis.png'></img>" +
+                "<p>Por medio del presente cumplimos con informar que su tramite con N° " +
+                id +
+                " se actualizado con estado: <b>finalizado</b></p><br>" +
+                "<p>Puede descargar su certificado en el apartado certificado en la busqueda de tramite  URL</p>",
+            });*/
+          } catch (e) {
+            return res
+              .status(409)
+              .json({ message: "Error al registrar certificado" });
+          }
+          res
+            .status(201)
+            .json({ message: "Certificado registrado existosamente" });
+        }
+      })
+      .catch(function (e) {
+        console.log(e);
+        res.status(201).json({ message: "Error al subir certificado",
+      error : e });
+      });
+  };
 
   static getDocument = async (req: Request, res: Response) => {
-    const {id} = req.params;
-    console.log('El ID params es '+  id);
+    const { id } = req.params;
+    console.log("El ID params es " + id);
     console.log(__dirname);
-  //  res.sendFile("/upload/hV5dr7MLA3QgnycvxzDvwn-M.pdf");
-  }
+    //  res.sendFile("/upload/hV5dr7MLA3QgnycvxzDvwn-M.pdf");
+  };
 }
 
 export default TramiteController;

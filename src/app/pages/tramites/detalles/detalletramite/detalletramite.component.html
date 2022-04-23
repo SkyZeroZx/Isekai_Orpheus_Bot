@@ -258,44 +258,6 @@
         </div>
       </div>
     </div>
-    
-    
-    <!-- Modal Carga -->
-    <div class="modal fade" id="modal_carga" data-backdrop="static" tabindex="-1" role="dialog"
-      aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel" style="color: black;"><strong>Cargando Certificado </strong>
-            </h5>
-          </div>
-          <div class="modal-body" style="color: black;">
-            <p>Espere mientras se sube el certificado codigo: {{in_tramite.id_est_doc}}</p>
-            <p>Tramite: {{in_tramite.estudiante}} </p>
-            <p>Estudiante : {{in_tramite.apellidos}} </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  <div class="modal fade" bsModal #modalDelete="bs-modal"  id="formulario-actualizar" tabindex="-1" 
-    role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true"  (onHidden)="onHideDelete()">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <p>¿Esta seguro que desea eliminar este registro?</p>
-                <button type="button" class="btn btn-danger" (click)="decline()" >Cerrar</button>&nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-success" (click)="confirm()" >Confirmar</button>
-            </div>
-        </div>  
-    </div>
-    </div>
-
-
-
-
 
 
   </div>

@@ -27,6 +27,9 @@ import { DetalletramiteComponent } from "src/app/pages/tramites/detalles/detalle
 import { NgxPaginationModule } from "ngx-pagination";
 import { ToastrModule, ToastrService } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
+
 defineLocale("es", esLocale);
 @NgModule({
   imports: [
@@ -43,6 +46,7 @@ defineLocale("es", esLocale);
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     NgxPaginationModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [DatePipe, { provide: ToastrService, useClass: ToastrService }],
   declarations: [

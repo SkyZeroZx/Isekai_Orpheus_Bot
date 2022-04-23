@@ -9,7 +9,7 @@ class AuthController {
         
         const {username,password}= req.body;
         if(!(username && password)){
-            res.status(400).json({message: "Usename & Password are requiered!"});
+            res.status(200).json({message: "Usename & Password are requiered!"});
         }
         const userRepository = getRepository(User);
         let user:User;
@@ -17,12 +17,12 @@ class AuthController {
             user = await userRepository.findOneOrFail({where: {username}});
         }
         catch (e){
-            return res.status(400).json({message:'Username or password incorrect!'});
+            return res.status(200).json({message:'Username or password incorrect!'});
         }
 
         //check password
         if(!user.checkPassword(password)){
-            return res.status(400).json({message: "Username or password incorrect!"});
+            return res.status(200).json({message: "Username or password incorrect!"});
         }
         const token = jwt.sign({userId:user.id,username:user.username}, config.jwtSecret,{expiresIn:'1h'});
    
@@ -33,7 +33,7 @@ class AuthController {
         const {userId}= res.locals.jwtPayload;
         const {oldPassword,newPassword} =req.body;
         if(!(oldPassword && newPassword) ){
-            res.status(400).json({message:'old password & new password are required'});
+            res.status(200).json({message:'old password & new password are required'});
         }
 
         const userRepository = getRepository(User);
@@ -42,12 +42,12 @@ class AuthController {
             user = await userRepository.findOneOrFail(userId);
 
         } catch (e) {
-            res.status(400).json({message:'Something goes wrong!'});
+            res.status(200).json({message:'Something goes wrong!'});
 
         }
 
         if(!user.checkPassword(oldPassword)){
-            return res.status(401).json({message:'Check your old password'});
+            return res.status(200).json({message:'Check your old password'});
         }
 
         user.password = newPassword;

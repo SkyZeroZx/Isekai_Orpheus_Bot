@@ -211,11 +211,10 @@ export class ServiciosService {
       JSON.stringify(archivo));
   }
   */
-  uploadFile(archivo,id_est_doc:string) {
-    console.log('Ruta API upload file')
+  uploadFile(archivo) {
+    console.log('SERVICIO API upload file')
     console.log(archivo)
-    console.log(`${environment.API_URL}/tramite/certificado/`);
-    return this.http.post(`${environment.API_URL}/tramite/certificado/${id_est_doc}`, archivo);
+    return this.http.post(`${environment.API_URL}/tramite/updatecertificado`, archivo);
   }
 /*
   estadoUpdate(ID_EST_DOC,OBSERVACIONES,FECHA,ESTADO){

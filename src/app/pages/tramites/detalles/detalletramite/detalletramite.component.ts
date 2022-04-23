@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -26,8 +19,9 @@ import {
   BsModalRef,
   ModalDirective,
 } from "ngx-bootstrap/modal";
-import { ThisReceiver } from "@angular/compiler";
 import { ToastContainerDirective, ToastrService } from "ngx-toastr";
+import Swal from "sweetalert2";
+import { Observable, ReplaySubject } from "rxjs";
 
 @Component({
   selector: "app-detalletramite",
@@ -44,7 +38,6 @@ export class DetalletramiteComponent implements OnInit {
   registrarForm: FormGroup;
   estadosActualizarForm: FormGroup;
   uploadForm: FormGroup;
-
   uploadedFiles: Array<File>;
   listaImagenes: Imagen[];
   listaDetalles: Detalle[];
@@ -153,51 +146,20 @@ export class DetalletramiteComponent implements OnInit {
   }
 
   eliminarDetalle(values) {
-    this.modalDelete.show();
+    //this.modalDelete.show();
     this.detalleEliminar = values;
     this.optionDelete = 1;
+    this.alertEliminar();
   }
   eliminarCertificado(values: Certificado) {
-    this.modalDelete.show();
     this.certificadoEliminar = values;
+    console.log("Objeto Eliminar Values", this.certificadoEliminar);
     this.optionDelete = 2;
+    this.alertEliminar();
+    // this.modalDelete.show();
+    // this.optionDelete = 2;
   }
-  onHideDelete() {
-    if (this.aceptar) {
-      this.aceptar = false;
-      if (this.optionDelete == 1) {
-        this.servicios.deleteTramite(this.detalleEliminar).subscribe((res) => {
-          console.log("Respuesta eliminar tramite");
-          console.log(res);
-          this.toastrService.success(
-            "Se elimino correctamente el detalle",
-            "Exito",
-            {
-              timeOut: 2000,
-            }
-          );
-          // TODO Validacion
-          this.leerDetalles();
-        });
-      } else if (this.optionDelete == 2) {
-        this.servicios
-          .deleteCertificado(this.certificadoEliminar)
-          .subscribe((res) => {
-            //TODO Validacion
-            console.log("Resultado Eliminar certificado es ");
-            console.log(res);
-            this.toastrService.success(
-              "Se elimino correctamente el certificado",
-              "Exito",
-              {
-                timeOut: 2000,
-              }
-            );
-            this.leerCertificados();
-          });
-      }
-    }
-  }
+
   detalleTramite() {
     // Asignaciones detalleForm a tramiteSellecionado
     this.detalleForm.controls["detalleTramite"].setValue(
@@ -304,24 +266,31 @@ export class DetalletramiteComponent implements OnInit {
     );
   }
   //dgqaihqacwkynpyx
-
+  base64Output: string;
   seleccionarArchivo(event) {
-    this.uploadedFiles = event.target.files;
+    //   this.uploadedFiles = event.target.files;
+    this.convertFile(event.target.files[0]).subscribe((base64) => {
+      this.base64Output = base64;
+    });
   }
-
+  convertFile(file: File): Observable<string> {
+    const result = new ReplaySubject<string>(1);
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = (event) =>
+      result.next(btoa(event.target.result.toString()));
+    return result;
+  }
   upload() {
-    let formData = new FormData();
-    for (var i = 0; i < this.uploadedFiles.length; i++) {
-      formData.append(
-        "uploads[]",
-        this.uploadedFiles[i],
-        this.uploadedFiles[i].name
-      );
-    }
-    console.log(formData);
-    //TODO Validacion sin subir archivo
-    //TODO Se asignar nombre
-    this.servicios.uploadFile(formData,this.in_tramite.id_est_doc).subscribe((res) => {
+    console.log("La base 64 string del PDF es ");
+    console.log(this.base64Output);
+    const body = {
+      id: this.in_tramite.id_est_doc,
+      base64: this.base64Output
+     };
+     console.log('body send' , body);
+    this.servicios.uploadFile(body).subscribe((res) => {
+      console.log('body sended' , body);
       console.log("response received is ", res);
       // TODO Validacion
       this.toastrService.success(
@@ -332,26 +301,104 @@ export class DetalletramiteComponent implements OnInit {
           timeOut: 2000,
         }
       );
+      this.leerCertificados();
     });
-  }
 
-  modificarEstado(values) {
-    console.log(values);
-    this.servicios.update(values).subscribe((res) => {
-   
+    /*  let formData = new FormData();
+    for (var i = 0; i < this.uploadedFiles.length; i++) {
+      formData.append(
+        "uploads[]",
+        this.uploadedFiles[i],
+        this.uploadedFiles[i].name
+      );
+    }
+    console.log("upload()",formData);
+    //TODO Validacion sin subir archivo
+    //TODO Se asignar nombre
+    this.servicios
+      .uploadFile(formData, this.in_tramite.id_est_doc)
+      .subscribe((res) => {
+        console.log("response received is ", res);
+        // TODO Validacion
         this.toastrService.success(
-          "Se actualizo correctamente el estado para " +
+          "Se subio correctamente certificado para el tramite" +
             this.in_tramite.id_est_doc,
           "Exito",
           {
             timeOut: 2000,
           }
         );
-        this.leerDetalles();
-        console.log("Res Modificado");
-        console.log(res);
-        this.modalMod.hide();
-    
+      });*/
+  }
+
+  modificarEstado(values) {
+    console.log(values);
+    this.servicios.update(values).subscribe((res) => {
+      this.toastrService.success(
+        "Se actualizo correctamente el estado para " +
+          this.in_tramite.id_est_doc,
+        "Exito",
+        {
+          timeOut: 2000,
+        }
+      );
+      this.leerDetalles();
+      console.log("Res Modificado");
+      console.log(res);
+      this.modalMod.hide();
+    });
+  }
+
+  alertEliminar() {
+    Swal.fire({
+      title: "¿Estas seguro de eliminar este registro?",
+      text: "Esta acción no puede revertirse",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        switch (this.optionDelete) {
+          case 1:
+            this.servicios
+              .deleteTramite(this.detalleEliminar)
+              .subscribe((res) => {
+                console.log("Respuesta eliminar tramite");
+                console.log(res);
+                this.toastrService.success(
+                  "Se elimino correctamente el detalle",
+                  "Exito",
+                  {
+                    timeOut: 2000,
+                  }
+                );
+                // TODO Validacion
+                this.leerDetalles();
+              });
+            break;
+          case 2:
+            this.servicios
+              .deleteCertificado(this.certificadoEliminar)
+              .subscribe((res) => {
+                //TODO Validacion
+                console.log("Resultado Eliminar certificado es ");
+                console.log(res);
+                this.toastrService.success(
+                  "Se elimino correctamente el certificado",
+                  "Exito",
+                  {
+                    timeOut: 2000,
+                  }
+                );
+                this.leerCertificados();
+              });
+            break;
+        }
+        Swal.fire("Elimado!", "El registro fue eliminado con exito", "success");
+      }
     });
   }
 }
