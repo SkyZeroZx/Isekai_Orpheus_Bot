@@ -4,7 +4,6 @@ import { Label, Color } from 'ng2-charts';
 import { forkJoin } from 'rxjs';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { map } from 'rxjs/operators';
-import { SpinnerService } from 'src/app/services/spinner.service';
 @Component({
   selector: 'app-bar',
   templateUrl: './bar.component.html',

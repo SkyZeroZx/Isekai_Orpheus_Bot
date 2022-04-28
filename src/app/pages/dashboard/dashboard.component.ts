@@ -114,7 +114,7 @@ export class DashboardComponent implements OnInit {
           .twoDates(this.tramite, this.dateInit, this.dateEnd)
           .pipe(
             map((data) =>
-              data.map((val) => this.datePipe.transform(val.fecha, "dd/MM"))
+              data.map((val) => this.datePipe.transform(val.fecha, "dd/MM/YYYY"))
             )
           ), //5
       ]).subscribe(([data0, data1, data2, data3, data4]) => {

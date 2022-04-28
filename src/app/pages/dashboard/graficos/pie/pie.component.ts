@@ -52,8 +52,13 @@ export class PieComponent implements OnInit {
   loadData(event: any): void {
     if (this.tramite && this.Inicio && this.Fin) {
       this.clear();
+      let values = {
+        "fechaInicio":this.Inicio,
+        "fechaFin":this.Fin,
+        "tramite":this.tramite
+      }
       this.graficosService
-        .buscarPie(this.tramite, this.Inicio, this.Fin)
+        .buscarPie(values)
         .subscribe((data) => {
           const last = data.pop();
           this.pieChartData[0] = last.registrado;

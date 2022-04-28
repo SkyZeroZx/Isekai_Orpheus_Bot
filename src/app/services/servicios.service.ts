@@ -9,9 +9,9 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ServiciosService {
-  ruta = "https://cameronian-treatmen.000webhostapp.com/angular/prueba.php";
+  ruta = "http://localhost:3000/grafico";
   u="https://cameronian-treatmen.000webhostapp.com/angular/"
-  rutab = "https://cameronian-treatmen.000webhostapp.com/angular/barras.php";
+  rutab = "http://localhost:3000/grafico/barras";
 
   tramites: Tramite[];
   detalles: Detalle[];
@@ -24,7 +24,8 @@ export class ServiciosService {
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<any> {
-    return this.http.get<any>(this.ruta);
+    return this.http.post<any>(`${environment.API_URL}/grafico`,null)
+    .pipe(catchError(this.handlerError));;
   }
 
   public fromEstado(country: string): Observable<any> {
@@ -43,7 +44,7 @@ export class ServiciosService {
   }
 
   public getAllMonth(): Observable<any> {
-    return this.http.get<any>(this.rutab);
+    return this.http.post<any>(`${environment.API_URL}/grafico/barras`,null)
   }
 
   public fromTramiteEstado(tramite: string): Observable<any> {
@@ -59,30 +60,17 @@ export class ServiciosService {
   }
 
 
-  buscarPie(estado, DateFrom, dateTo): Observable<DatosGrafico[]> {
-    const ruta =
-      "https://cameronian-treatmen.000webhostapp.com/angular/pie.php";
-    const formData: FormData = new FormData();
-    formData.append("ESTADO", estado);
-    formData.append("INICIO", DateFrom);
-    formData.append("FIN", dateTo);
-    return this.http.post<DatosGrafico[]>(ruta, formData).pipe(
+  buscarPie(values): Observable<DatosGrafico[]> {
+    return this.http.post<DatosGrafico[]>(`${environment.API_URL}/grafico/pie`, values).pipe(
       map((res) => {
+        console.log('BuscarPIE', res);
+        
         this.dpies = JSON.parse(JSON.stringify(res));
+        console.log('dPIE es ', this.dpies);
         return this.dpies;
       })
     );
   }
-
- /* listaTramites(): Observable<TramiteDoc[]>{
- const ruta ="https://cameronian-treatmen.000webhostapp.com/angular/servicio_tramite.php" post
-    return this.http.post<TramiteDoc[]>(ruta,null).pipe(
-       map((res) => {
-         this.tramiteDoc = JSON.parse(JSON.stringify(res));
-         return this.tramiteDoc;
-       })
-     )
-   }*/
 
   listaTramites(): Observable<TramiteDoc[]> {
     return this.http
@@ -106,46 +94,11 @@ export class ServiciosService {
       .pipe(catchError(this.handlerError));
   }
 
- /*  buscarDetallesD(ID_EST_DOC): Observable<Detalle[]>{
-    const ruta = "https://cameronian-treatmen.000webhostapp.com/angular/servicio_detalled.php";
-    const formData: FormData = new FormData();
-    formData.append("caty",ID_EST_DOC);
-    return this.http.post<Detalle[]>(ruta,formData).pipe(
-      map((res) => {
-        this.detalles = JSON.parse(JSON.stringify(res));
-        return this.detalles;
-      })
-    )
-  }*/
   buscarImagenes(id_est_doc: string): Observable<Imagen[]>{
     return this.http
       .get<Imagen[]>(`${environment.API_URL}/tramite/img/${id_est_doc}`)
       .pipe(catchError(this.handlerError));
    }
-
- /* buscarImagenes(ID_EST_DOC): Observable<Imagen[]>{
-    const ruta =this.u+"busca_imagen.php"
-    const formData: FormData = new FormData();
-    formData.append("ID_EST_DOC",ID_EST_DOC);
-    return this.http.post<Imagen[]>(ruta,formData).pipe(
-      map((res) => {
-        this.imagenes = JSON.parse(JSON.stringify(res));
-        return this.imagenes;
-      })
-    )
-   }*/
-
-  /* buscarAdjuntos(ID_EST_DOC): Observable<Adjunto[]>{
-    const ruta =this.u+"busca_adjunto.php"
-    const formData: FormData = new FormData();
-    formData.append("ID_EST_DOC",ID_EST_DOC);
-      return this.http.post<Adjunto[]>(ruta,formData).pipe(
-        map((res) => {
-          this.adjuntos = JSON.parse(JSON.stringify(res));
-          return this.adjuntos;
-        })
-      )
-  }*/
 
   buscarAdjuntos(id_est_doc: string): Observable<Adjunto[]>{
     return this.http
@@ -159,27 +112,6 @@ export class ServiciosService {
       .pipe(catchError(this.handlerError));
    }
 
- /* buscarCertificado(ID_EST_DOC): Observable<Certificado[]>{
-    const ruta =this.u+"buscar_certificado.php"
-    const formData: FormData = new FormData();
-    formData.append("ID_EST_DOC",ID_EST_DOC);
-    return this.http.post<Certificado[]>(ruta,formData).pipe(
-      map((res) => {
-        this.certificados = JSON.parse(JSON.stringify(res));
-        return this.certificados;
-      })
-    )
-   }*/
-/*
-   insertarTramite(ID_EST_DOC,ESTADO,OBSERVACIONES){
-    const ruta = "https://cameronian-treatmen.000webhostapp.com/angular/registrar_estado.php"
-    const formData: FormData = new FormData();
-    formData.append("ID_EST_DOC",ID_EST_DOC);
-    formData.append("ESTADO",ESTADO);
-    formData.append("OBSERVACIONES",OBSERVACIONES);
-    return this.http.post(ruta,formData)
-  }
-*/
   insertarTramite(detalle : Detalle) {
    return this.http.post<any>(`${environment.API_URL}/tramite/`, detalle)
    .pipe(catchError(this.handlerError));;

@@ -62,8 +62,18 @@ clear(): void {
 loadData(event: any): void {
   if(this.tramite1 && this.tramite2 && this.Inicio && this.Fin ){
     this.clear();
+    let values1 = {
+      "fechaInicio":this.Inicio,
+      "fechaFin":this.Fin,
+      "tramite":this.tramite1
+    }
+    let values2 = {
+      "fechaInicio":this.Inicio,
+      "fechaFin":this.Fin,
+      "tramite":this.tramite2
+    }
     //Asignar valores aro interior del grafico
-    this.graficosService.buscarPie(this.tramite1, this.Inicio, this.Fin).subscribe(
+    this.graficosService.buscarPie(values1).subscribe(
       data => {
         const last = data.pop();  
         this.doughnutChartData[0][0] = last.registrado;
@@ -73,7 +83,7 @@ loadData(event: any): void {
       }
     );
   //Asignar valores aro exterior del grafico
-    this.graficosService.buscarPie(this.tramite2, this.Inicio, this.Fin).subscribe(
+    this.graficosService.buscarPie(values2).subscribe(
       data => {
         const last = data.pop();   
         this.doughnutChartData[1][0] = last.registrado;
