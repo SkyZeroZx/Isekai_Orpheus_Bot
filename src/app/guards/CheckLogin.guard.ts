@@ -11,14 +11,14 @@ export class CheckLogin implements CanActivate {
   constructor(private router: Router, private authService: AuthService) {}
 
   canActivate(): Observable<boolean> {
- console.log("Auth Guard Check Login")
- console.log('Feliz Año Nuevo !!!')
-    if( localStorage.getItem('usuarioLogueado') === null){
-      console.log("No hago nada")
-    } else if(this.router.url === '/' ){
-      console.log("Usuario logeado es diferente de null")
-      this.router.navigate(['/dashboard'])
+    console.log("Auth Guard Check Login");
+
+    if (localStorage.getItem("usuarioLogueado") === null) {
+    } else if (this.router.url === "/") {
+      console.log("Usuario logeado es diferente de null");
+      this.router.navigate(["/dashboard"]);
     }
+    
     return this.authService.user$.pipe(
       take(1),
 

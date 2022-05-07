@@ -9,9 +9,6 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ServiciosService {
-  ruta = "http://localhost:3000/grafico";
-  u="https://cameronian-treatmen.000webhostapp.com/angular/"
-  rutab = "http://localhost:3000/grafico/barras";
 
   tramites: Tramite[];
   detalles: Detalle[];
@@ -25,7 +22,7 @@ export class ServiciosService {
 
   public getAll(): Observable<any> {
     return this.http.post<any>(`${environment.API_URL}/grafico`,null)
-    .pipe(catchError(this.handlerError));;
+    .pipe(catchError(this.handlerError));
   }
 
   public fromEstado(country: string): Observable<any> {
@@ -136,37 +133,13 @@ export class ServiciosService {
       .patch(`${environment.API_URL}/tramite`, detalle)
       .pipe(catchError(this.handlerError));
   }
- /* uploadFile(archivo) {
-    const ruta="https://cameronian-treatmen.000webhostapp.com/angular/subir_archivo.php"
-    return this.http.post(
-      ruta, 
-      JSON.stringify(archivo));
-  }
-  */
+ 
   uploadFile(archivo) {
     console.log('SERVICIO API upload file')
     console.log(archivo)
     return this.http.post(`${environment.API_URL}/tramite/updatecertificado`, archivo);
   }
-/*
-  estadoUpdate(ID_EST_DOC,OBSERVACIONES,FECHA,ESTADO){
-    const ruta = "https://cameronian-treatmen.000webhostapp.com/angular/actualizar_detalle.php";
-    const formData: FormData = new FormData();
-    formData.append("ID_EST_DOC",ID_EST_DOC);
-    formData.append("OBSERVACIONES",OBSERVACIONES);
-    formData.append("FECHA",FECHA);
-    formData.append("ESTADO",ESTADO);
-    return this.http.post(ruta,formData)
-  }
-*/
-/*
-estadoUpdate(tramite:Detalle): Observable<Detalle>{
-  console.log('Service recibe');
-  console.log(tramite);
-  return this.http
-  .patch<Detalle>('http://localhost:3000/tramite/', tramite)
-  .pipe(catchError(this.handlerError));
-}*/
+ 
 
 
 }

@@ -108,7 +108,9 @@ export class DetalletramiteComponent implements OnInit {
       detalleFecha: new FormControl(""),
     });
     this.uploadForm = new FormGroup({
-      subir: new FormControl(),
+      subir: new FormControl(null,[
+        Validators.required
+      ]),
     });
   }
 
@@ -267,10 +269,14 @@ export class DetalletramiteComponent implements OnInit {
   }
   //dgqaihqacwkynpyx
   base64Output: string;
+  fileName  : string ='Seleccione un archivo (PDF)';
   seleccionarArchivo(event) {
     //   this.uploadedFiles = event.target.files;
+    this.fileName = event.target.files[0].name;
+    console.log('FileName es ' , this.fileName);
     this.convertFile(event.target.files[0]).subscribe((base64) => {
-      this.base64Output = base64;
+      this.uploadForm.controls.subir.setValue( base64);
+
     });
   }
   convertFile(file: File): Observable<string> {
@@ -282,17 +288,20 @@ export class DetalletramiteComponent implements OnInit {
     return result;
   }
   upload() {
+ 
     console.log("La base 64 string del PDF es ");
-    console.log(this.base64Output);
+    console.log(this.uploadForm.getRawValue().subir);
     const body = {
       id: this.in_tramite.id_est_doc,
-      base64: this.base64Output
+      base64: this.uploadForm.getRawValue().subir
      };
      console.log('body send' , body);
     this.servicios.uploadFile(body).subscribe((res) => {
       console.log('body sended' , body);
       console.log("response received is ", res);
       // TODO Validacion
+      this.uploadForm.reset();
+      this.fileName='Seleccione un archivo (PDF)'
       this.toastrService.success(
         "Se subio correctamente certificado para el tramite" +
           this.in_tramite.id_est_doc,
@@ -300,6 +309,7 @@ export class DetalletramiteComponent implements OnInit {
         {
           timeOut: 2000,
         }
+
       );
       this.leerCertificados();
     });

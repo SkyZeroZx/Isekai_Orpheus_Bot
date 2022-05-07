@@ -19,7 +19,7 @@ export class FilterPipe implements PipeTransform {
             )   {
                  if (args1[1] === '') {
                     resultadoBusqueda.push(usuario);
-                 } else if (usuario.ESTADO === args1[1]) {
+                 } else if (usuario.estado === args1[1]) {
                     resultadoBusqueda.push(usuario);
                  }
 
