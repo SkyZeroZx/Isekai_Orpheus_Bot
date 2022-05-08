@@ -25,8 +25,6 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { DetalletramiteComponent } from "src/app/pages/tramites/detalles/detalletramite/detalletramite.component";
 import { NgxPaginationModule } from "ngx-pagination";
-import { ToastrModule, ToastrService } from "ngx-toastr";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
@@ -36,7 +34,6 @@ defineLocale("es", esLocale);
     CommonModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
-    ToastrModule.forRoot(),
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     HttpClientModule,
@@ -48,7 +45,7 @@ defineLocale("es", esLocale);
     NgxPaginationModule,
     SweetAlert2Module.forRoot()
   ],
-  providers: [DatePipe, { provide: ToastrService, useClass: ToastrService }],
+  providers: [DatePipe],
   declarations: [
     DashboardComponent,
     DetalletramiteComponent,

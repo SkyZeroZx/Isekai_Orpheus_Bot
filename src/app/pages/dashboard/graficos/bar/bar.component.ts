@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { forkJoin } from 'rxjs';
@@ -56,7 +56,7 @@ export class BarComponent implements OnInit {
   };
 
 
-  loadData(event: any): void {
+  loadData(): void {
     if (this.Inicio && this.Fin && this.tramite ) {
       this.clear();
       forkJoin([
@@ -78,7 +78,9 @@ export class BarComponent implements OnInit {
     }
   }
  
-
+  ngOnChanges(changes: SimpleChanges): void {
+    this.loadData();
+  }
 
   clear(): void {
     this.barChartData[0].data = [];

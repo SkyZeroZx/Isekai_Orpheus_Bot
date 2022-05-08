@@ -25,12 +25,12 @@ export class ServiciosService {
     .pipe(catchError(this.handlerError));
   }
 
-  public fromEstado(country: string): Observable<any> {
-    return this.getAll().pipe(map((data) => data[country]));
+  public fromEstado(tramite: string): Observable<any> {
+    return this.getAll().pipe(map((data) => data[tramite]));
   }
 
-  public twoDates(estado: string,DateFrom: Date,dateTo: Date): Observable<any> {
-    return this.fromEstado(estado).pipe(
+  public twoDates(tramite: string,DateFrom: Date,dateTo: Date): Observable<any> {
+    return this.fromEstado(tramite).pipe(
       map((res) =>
         res.filter(
           (val) =>
@@ -57,14 +57,14 @@ export class ServiciosService {
   }
 
 
-  buscarPie(values): Observable<DatosGrafico[]> {
-    return this.http.post<DatosGrafico[]>(`${environment.API_URL}/grafico/pie`, values).pipe(
+  buscarPie(values): Observable<DatosGrafico> {
+    return this.http.post<DatosGrafico>(`${environment.API_URL}/grafico/pie`, values).pipe(
       map((res) => {
         console.log('BuscarPIE', res);
         
-        this.dpies = JSON.parse(JSON.stringify(res));
-        console.log('dPIE es ', this.dpies);
-        return this.dpies;
+    //    this.dpies = JSON.parse(JSON.stringify(res));
+    //    console.log('dPIE es ', this.dpies);
+        return res;
       })
     );
   }

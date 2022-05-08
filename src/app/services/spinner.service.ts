@@ -13,7 +13,7 @@ export class SpinnerService {
   }
 
   public detenerSpinner() {
-    this.spinnerService.hide();
+   this.spinnerService.hide();
   }
 
 }

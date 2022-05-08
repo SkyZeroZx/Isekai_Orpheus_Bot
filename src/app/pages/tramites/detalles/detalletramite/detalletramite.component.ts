@@ -272,16 +272,18 @@ export class DetalletramiteComponent implements OnInit {
   fileName  : string ='Seleccione un archivo (PDF)';
   seleccionarArchivo(event) {
     //   this.uploadedFiles = event.target.files;
-    this.fileName = event.target.files[0].name;
-    console.log('FileName es ' , this.fileName);
-    this.convertFile(event.target.files[0]).subscribe((base64) => {
-      this.uploadForm.controls.subir.setValue( base64);
-
-    });
+    if (typeof event.target.files[0] !=='undefined'){
+      this.convertFile(event.target.files[0]).subscribe((base64) => {
+        this.fileName = event.target.files[0].name;
+        this.uploadForm.controls.subir.setValue( base64);
+      });
+    }
+ 
   }
   convertFile(file: File): Observable<string> {
     const result = new ReplaySubject<string>(1);
     const reader = new FileReader();
+ 
     reader.readAsBinaryString(file);
     reader.onload = (event) =>
       result.next(btoa(event.target.result.toString()));

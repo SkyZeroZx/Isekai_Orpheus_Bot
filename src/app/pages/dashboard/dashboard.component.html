@@ -1,11 +1,11 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+<div class="header bg-primary pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="header-body">
     </div>
   </div>
 </div>
 
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--7" [formGroup]="dashboardForm">
   <div class="row">
     <div class="col-xl-12 mb-5 mb-xl-0">
       <div class="card shadow">
@@ -19,10 +19,10 @@
                   </div>
                 </div>
                 <input type="text" name="dateInt" placeholder="Fecha Inicio" class="form-control" readonly="readonly"
-                bsDatepicker
-                  [bsConfig]="{ isAnimated: true }" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" [minDate]="minDate"
-                  [maxDate]="dateEnd ? dateEnd :maxDate" [(ngModel)]="dateInit" (bsValueChange)="loadData($event)"
-                  autocomplete="off">
+                  bsDatepicker [bsConfig]="{ isAnimated: true }" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                  [minDate]="minDate"
+                  [maxDate]="this.dashboardForm.getRawValue().dateEnd ? this.dashboardForm.getRawValue().dateEnd :maxDate"
+                  formControlName="dateInit" (onHidden)="loadData()" autocomplete="off" />
               </div>
             </div>
             <!-- FECHA HASTA -->
@@ -33,23 +33,24 @@
                     <i class="ni ni-calendar-grid-58"></i>
                   </div>
                 </div>
-                <input type="text" name="dateEnd" placeholder="Fecha Fin" class="form-control" bsDatepicker readonly="readonly"
-                  [bsConfig]="{ isAnimated: true }" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
-                  [minDate]="dateInit ? dateInit : minDate" [maxDate]="maxDate" [(ngModel)]="dateEnd"
-                  (bsValueChange)="loadData($event)" autocomplete="off">
+                <input type="text" name="dateEnd" placeholder="Fecha Fin" class="form-control" bsDatepicker
+                  readonly="readonly" [bsConfig]="{ isAnimated: true }" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                  formControlName="dateEnd"
+                  [minDate]="this.dashboardForm.getRawValue().dateInit ? this.dashboardForm.getRawValue().dateInit : minDate"
+                  [maxDate]="maxDate" (onHidden)="loadData()" autocomplete="off" />
               </div>
             </div>
             <!-- TRAMITES -->
             <div class="col-md-4">
-                <select class="form-control" name="tramite" [(ngModel)]="tramite" (change)="loadData($event)">
-                  <option [ngValue]="null" selected>Elige un tramite</option>
-                  <option *ngFor="let tramite of listaTramites" [ngValue]="tramite">{{tramite}} </option>
-                </select>
+              <select class="form-control" formControlName="tramite" (change)="loadData()">
+                <option Value="" selected>Elige un tramite</option>
+                <option *ngFor="let tramite of listaTramites" [value]="tramite">{{tramite}} </option>
+              </select>
             </div>
           </div>
         </div>
         <div class="card-body">
-          <canvas  baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+          <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
             [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
             [plugins]="lineChartPlugins">
           </canvas>
@@ -62,23 +63,28 @@
 
     <div class="col-xl-6">
       <div class="card shadow">
-        <app-pie [Inicio]="dateInit | date: 'yyyy/MM/dd'" [Fin]="dateEnd | date: 'yyyy/MM/dd'"  [listaTramites]="listaTramites"></app-pie>
-         <br>
+        <app-pie [Inicio]="this.dashboardForm.getRawValue().dateInit | date: 'yyyy/MM/dd'"
+          [Fin]="this.dashboardForm.getRawValue().dateEnd | date: 'yyyy/MM/dd'" [listaTramites]="listaTramites">
+        </app-pie>
+        <br>
       </div>
     </div>
-   
+
     <div class="col-xl-6">
       <div class="card shadow">
-        <app-donut [Inicio]="dateInit | date: 'yyyy/MM/dd'" [Fin]="dateEnd | date: 'yyyy/MM/dd'" [listaTramites]="listaTramites"></app-donut>
+        <app-donut [Inicio]="this.dashboardForm.getRawValue().dateInit | date: 'yyyy/MM/dd'"
+          [Fin]="this.dashboardForm.getRawValue().dateEnd | date: 'yyyy/MM/dd'" [listaTramites]="listaTramites">
+        </app-donut>
       </div>
     </div>
-    
+
   </div>
 
   <div class="row mt-5">
     <div class="col-xl-12">
       <div class="card shadow">
-        <app-bar  [Inicio]="dateInit | date: 'yyyy/MM'"  [Fin]="dateEnd | date: 'yyyy/MM'"  [listaTramites]="listaTramites" ></app-bar>
+        <app-bar [Inicio]="this.dashboardForm.getRawValue().dateInit | date: 'yyyy/MM'"
+          [Fin]="this.dashboardForm.getRawValue().dateEnd | date: 'yyyy/MM'" [listaTramites]="listaTramites"></app-bar>
       </div>
     </div>
   </div>

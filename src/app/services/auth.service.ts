@@ -27,7 +27,7 @@ export class AuthService {
     return this.user.getValue();
   }
 
-  login(authData: User): Observable<UserResponse | void> {
+  login(authData: User): Observable<UserResponse> {
     return this.http
       .post<UserResponse>(`${environment.API_URL}/auth/login`, authData)
       .pipe(

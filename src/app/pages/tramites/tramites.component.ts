@@ -1,47 +1,41 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup
-} from "@angular/forms";
-import {
-  TramiteDoc,
-} from "src/app/entities/tramite";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { TramiteDoc } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
-import {
-  BsModalService,
-  ModalDirective,
-} from "ngx-bootstrap/modal";
+import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-tramites",
   templateUrl: "./tramites.component.html",
   styleUrls: ["./tables.component.scss"],
 })
-
 export class tramitesComponent implements OnInit {
   consultaForm: FormGroup;
-  p = 1;
   registrarForm: FormGroup;
   estadosActualizarForm: FormGroup;
   uploadForm: FormGroup;
   listaTramiteDoc: TramiteDoc[];
+  tramiteSeleccionado: TramiteDoc;
   listaTramiteOk = false;
   modalVisible = false;
-  tramiteSeleccionado: TramiteDoc;
+  p = 1;
 
   @ViewChild(ModalDirective, { static: false }) modal: ModalDirective;
   constructor(
     private servicios: ServiciosService,
     private fb: FormBuilder,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {
+    // Al renderizar componente creamos nuestro reactiveForm y cargamos la lista de tramites
     this.crearFormularioConsulta();
     this.listarTramiteDoc();
   }
 
+  // Metodo para creacion de reactiveForm
   crearFormularioConsulta() {
     this.consultaForm = this.fb.group({
       filterTramite: new FormControl(""),
@@ -54,20 +48,25 @@ export class tramitesComponent implements OnInit {
     });
   }
 
+  // Llamada al servicio listarTramites
   listarTramiteDoc(): void {
-    this.servicios.listaTramites().subscribe((res: TramiteDoc[]) => {
-      this.listaTramiteDoc = res;
-      console.log("La lista tramite es ");
-      console.log(this.listaTramiteDoc);
-      console.log(res);
-      this.listaTramiteOk = true;
+    this.servicios.listaTramites().subscribe({
+      next: (res: TramiteDoc[]) => {
+        //Recibido nuestra respuesta del servicio
+        this.listaTramiteDoc = res;
+        this.listaTramiteOk = true;
+      },
+      error: (err) => {
+        // En caso de Error
+        console.log("Error en listarTramiteDoc ", err);
+        this.toastrService.error("Error en el servicio", "Error", {
+          timeOut: 3000,
+        });
+      },
     });
   }
-  updateTramites() {
-    console.log("Change Detalle Tramite");
-    this.listarTramiteDoc();
-  }
 
+  // Asignacion de tramite seleccionado para el componente hijo detalletramite y llamada al modal donde se encuentra
   detalleTramite(tramite: TramiteDoc) {
     this.tramiteSeleccionado = tramite;
     this.modal.show();

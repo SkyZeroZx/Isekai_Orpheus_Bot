@@ -7,7 +7,7 @@ import { forkJoin } from "rxjs";
 import { map } from "rxjs/operators";
 import { DatePipe } from "@angular/common";
 import { ServiciosService } from "src/app/services/servicios.service";
-import { SpinnerService } from "src/app/services/spinner.service";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-dashboard",
@@ -15,34 +15,41 @@ import { SpinnerService } from "src/app/services/spinner.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
-  locale = "es";
-  locales = listLocales();
-  public lineChartLabels: Label[] = [];
+ 
+  // Propiedades del grafico
   public lineChartLegend = true;
   public lineChartType = "line";
   public lineChartPlugins = [];
+  public lineChartLabels: Label[] = [];
 
-  pruebas: any[] = [];
   listaTramites: string[] = [];
-  tramite: string = null;
-  dateInit: Date;
-  dateEnd: Date;
   minDate: Date;
   maxDate: Date;
-
+  dashboardForm: FormGroup;
   constructor(
     private graficosService: ServiciosService,
     private localeService: BsLocaleService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.localeService.use(this.locale);
+    // Inicializamos el tipo de fecha y la restricciones de fecha para el datePicker
+    this.localeService.use('es');
     this.minDate = new Date("2020-1-22");
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 15);
     this.getTramites();
-    this.getPrueba();
+    this.crearFormularioDashboard();
+  }
+
+  crearFormularioDashboard() {
+    //Creamos validaciones respectiva para nuestro ReactiveForm
+    this.dashboardForm = this.fb.group({
+      dateInit: new FormControl(""),
+      dateEnd: new FormControl(""),
+      tramite: new FormControl(""),
+    });
   }
 
   public lineChartData: ChartDataSets[] = [
@@ -74,17 +81,10 @@ export class DashboardComponent implements OnInit {
       backgroundColor: "rgba(28, 200, 138, 0.3)",
     },
   ];
-
-  getPrueba() {
-    this.graficosService.getAll().subscribe((res) => {
-      this.pruebas = res;
-    });
-  }
-
+ 
   getTramites() {
     this.graficosService.getAll().subscribe((data) => {
       this.listaTramites = Object.keys(data);
- 
     });
   }
 
@@ -92,33 +92,57 @@ export class DashboardComponent implements OnInit {
     console.log("Esto ngOnChanges prueba");
   }
 
+  loadData(): void {
  
-
-  loadData(event: any): void {
-    console.log(this.dateInit);
-    if (this.dateInit && this.dateEnd && this.tramite) {
+    if (this.dashboardForm.getRawValue().dateInit && this.dashboardForm.getRawValue().dateEnd && this.dashboardForm.getRawValue().tramite) {
       forkJoin([
         this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
+          .twoDates(
+            this.dashboardForm.getRawValue().tramite,
+            this.dashboardForm.getRawValue().dateInit,
+            this.dashboardForm.getRawValue().dateEnd
+          )
           .pipe(map((data) => data.map((val) => val.registrado))), //1
         this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
+          .twoDates(
+            this.dashboardForm.getRawValue().tramite,
+            this.dashboardForm.getRawValue().dateInit,
+            this.dashboardForm.getRawValue().dateEnd
+          )
           .pipe(map((data) => data.map((val) => val.procesando))), //2
         this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
+          .twoDates(
+            this.dashboardForm.getRawValue().tramite,
+            this.dashboardForm.getRawValue().dateInit,
+            this.dashboardForm.getRawValue().dateEnd
+          )
           .pipe(map((data) => data.map((val) => val.observado))), //3
         this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
+          .twoDates(
+            this.dashboardForm.getRawValue().tramite,
+            this.dashboardForm.getRawValue().dateInit,
+            this.dashboardForm.getRawValue().dateEnd
+          )
           .pipe(map((data) => data.map((val) => val.finalizado))), //4
         this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
+          .twoDates(
+            this.dashboardForm.getRawValue().tramite,
+            this.dashboardForm.getRawValue().dateInit,
+            this.dashboardForm.getRawValue().dateEnd
+          )
           .pipe(
             map((data) =>
-              data.map((val) => this.datePipe.transform(val.fecha, "dd/MM/YYYY"))
+              data.map((val) =>
+                this.datePipe.transform(val.fecha, "dd/MM/YYYY")
+              )
             )
           ), //5
       ]).subscribe(([data0, data1, data2, data3, data4]) => {
-        console.log("Esto el graficio linea barra: es " + data0);
+        console.log("Esto el graficio linea barra: es 1" + data0);
+        console.log("Esto el graficio linea barra: es 2" + data1);
+        console.log("Esto el graficio linea barra: es 3" + data2);
+        console.log("Esto el graficio linea barra: es 4" + data3);
+        console.log("Esto el graficio linea barra: es 5" , data4);
         this.lineChartData[0].data = data0;
         this.lineChartData[1].data = data1;
         this.lineChartData[2].data = data2;
@@ -128,35 +152,4 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  prueba(): void {
-    if (this.dateInit && this.dateEnd && this.tramite) {
-      forkJoin([
-        this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
-          .pipe(map((data) => data.map((val) => val.registrado))), //1
-        this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
-          .pipe(map((data) => data.map((val) => val.procesando))), //2
-        this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
-          .pipe(map((data) => data.map((val) => val.observado))), //3
-        this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
-          .pipe(map((data) => data.map((val) => val.finalizado))), //4
-        this.graficosService
-          .twoDates(this.tramite, this.dateInit, this.dateEnd)
-          .pipe(
-            map((data) =>
-              data.map((val) => this.datePipe.transform(val.fecha, "dd/MM"))
-            )
-          ), //5
-      ]).subscribe(([data0, data1, data2, data3, data4]) => {
-        this.lineChartData[0].data = data0;
-        this.lineChartData[1].data = data1;
-        this.lineChartData[2].data = data2;
-        this.lineChartData[3].data = data3;
-        this.lineChartLabels = data4;
-      });
-    }
-  }
 }

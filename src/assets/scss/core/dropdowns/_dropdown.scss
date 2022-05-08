@@ -50,13 +50,6 @@
         p {
             color: $gray-600;
         }
-
-        &:hover {
-            .heading,
-            p {
-                color: theme-color("default") !important;
-            }
-        }
     }
 }
 

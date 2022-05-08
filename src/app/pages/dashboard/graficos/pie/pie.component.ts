@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
 import { ChartOptions, ChartType } from "chart.js";
 import { Label, SingleDataSet } from "ng2-charts";
 import { DatosGrafico } from "src/app/entities/tramite";
@@ -14,7 +14,7 @@ export class PieComponent implements OnInit {
   @Input() Inicio: string;
   @Input() Fin: string;
   @Input() listaTramites:string[];
-  listaDatos: DatosGrafico[];
+  listaDatos: DatosGrafico;
 
   tramite: string = null;
 
@@ -47,9 +47,11 @@ export class PieComponent implements OnInit {
       ],
     },
   ];
+  ngOnChanges(changes: SimpleChanges): void {
+    this.loadData();
+  }
 
-
-  loadData(event: any): void {
+  loadData(): void {
     if (this.tramite && this.Inicio && this.Fin) {
       this.clear();
       let values = {
@@ -57,14 +59,15 @@ export class PieComponent implements OnInit {
         "fechaFin":this.Fin,
         "tramite":this.tramite
       }
+      console.log('values PIE ' , values);
       this.graficosService
         .buscarPie(values)
-        .subscribe((data) => {
-          const last = data.pop();
-          this.pieChartData[0] = last.registrado;
-          this.pieChartData[1] = last.procesando;
-          this.pieChartData[2] = last.observado;
-          this.pieChartData[3] = last.finalizado;
+        .subscribe((data) => { 
+         // console.log('recibi en PIE' , data);
+          this.pieChartData[0] = data[0].registrado;
+          this.pieChartData[1] = data[0].procesando;
+          this.pieChartData[2] = data[0].observado;
+          this.pieChartData[3] = data[0].finalizado;
         });
     }
   }

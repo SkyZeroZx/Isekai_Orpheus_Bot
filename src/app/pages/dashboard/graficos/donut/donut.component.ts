@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ChartType } from 'chart.js';
 import { Label, MultiDataSet } from 'ng2-charts';
 import { ServiciosService } from 'src/app/services/servicios.service';
@@ -49,7 +49,9 @@ export class DonutComponent implements OnInit {
   ngOnInit(): void {
  
   }
-
+  ngOnChanges(changes: SimpleChanges): void {
+    this.loadData();
+  }
  
 // Funcion que limpiar la grafica
 clear(): void {
@@ -59,7 +61,7 @@ clear(): void {
 }
 
 // Funcion que carga datos al grafico seleccionar datos y/o realizar cambios en ellos
-loadData(event: any): void {
+loadData(): void {
   if(this.tramite1 && this.tramite2 && this.Inicio && this.Fin ){
     this.clear();
     let values1 = {
@@ -75,21 +77,20 @@ loadData(event: any): void {
     //Asignar valores aro interior del grafico
     this.graficosService.buscarPie(values1).subscribe(
       data => {
-        const last = data.pop();  
-        this.doughnutChartData[0][0] = last.registrado;
-        this.doughnutChartData[0][1] = last.procesando;
-        this.doughnutChartData[0][2] = last.observado;
-        this.doughnutChartData[0][3]= last.finalizado;
+        this.doughnutChartData[0][0] = data[0].registrado;
+        this.doughnutChartData[0][1] = data[0].procesando;
+        this.doughnutChartData[0][2] = data[0].observado;
+        this.doughnutChartData[0][3]= data[0].finalizado;
       }
     );
   //Asignar valores aro exterior del grafico
     this.graficosService.buscarPie(values2).subscribe(
       data => {
-        const last = data.pop();   
-        this.doughnutChartData[1][0] = last.registrado;
-        this.doughnutChartData[1][1] = last.procesando;
-        this.doughnutChartData[1][2] = last.observado;
-        this.doughnutChartData[1][3]= last.finalizado;
+        
+        this.doughnutChartData[1][0] = data[0].registrado;
+        this.doughnutChartData[1][1] = data[0].procesando;
+        this.doughnutChartData[1][2] = data[0].observado;
+        this.doughnutChartData[1][3]= data[0].finalizado;
       }
     );
   }

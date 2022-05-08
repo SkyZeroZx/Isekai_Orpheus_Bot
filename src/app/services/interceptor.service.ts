@@ -21,7 +21,7 @@ export class InterceptorService implements HttpInterceptor {
       return next.handle(authReq);
     }
     return next.handle(req).pipe(
-      finalize(() => this.spinnerService.detenerSpinner())
+     finalize(() => this.spinnerService.detenerSpinner())
     );
     return next.handle(req);
   }

@@ -85,22 +85,17 @@
   </form>
 
   <h4>Adjuntar Certificado</h4>
- 
-  <form class="input-group mb-3" [formGroup]="uploadForm" (ngSubmit)="upload()" >
+
+  <form class="input-group mb-3" [formGroup]="uploadForm" (ngSubmit)="upload()">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <button class="btn btn-primary" [disabled]="uploadForm.invalid"  type="submit"
+        <button class="btn btn-primary" [disabled]="uploadForm.invalid" type="submit"
           id="inputGroupFileAddon03">Subir</button>
       </div>
       <div class="custom-file">
-       <!--  <input type="file" #file  class="custom-file-input"  id="inputGroupFile03"
+        <input type="file" #file class="custom-file-input" id="inputGroupFile03"
           aria-describedby="inputGroupFileAddon03" accept="application/pdf" (change)="seleccionarArchivo($event)">
-          <label class="custom-file-label" for="inputGroupFile03"></label>--> 
-          <input class="form-control" accept="application/pdf"  type="file" id="formFile">
-          <label for="formFile" class="form-label"></label>
-        
-          
-       <!-- <label class="custom-file-label" for="inputGroupFile03">{{fileName}}</label>--> 
+        <label class="custom-file-label" for="inputGroupFile03">{{fileName}}</label>
       </div>
     </div>
     <div *ngIf="uploadForm.controls.subir.invalid && uploadForm.controls.subir.touched">
