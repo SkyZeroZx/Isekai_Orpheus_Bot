@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, SimpleChanges } from "@angular/core";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
 import { listLocales } from "ngx-bootstrap/chronos";
 import { ChartDataSets, ChartOptions } from "chart.js";
@@ -36,10 +36,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     // Inicializamos el tipo de fecha y la restricciones de fecha para el datePicker
     this.localeService.use('es');
+    // Restricciones para fecha maxima y minima de seleccion en el DatePicker
     this.minDate = new Date("2020-1-22");
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 15);
+    //Obtenemos los tramites para el selector de tramites
     this.getTramites();
+    //Creamos nuestro formulario al renderizar el componente
     this.crearFormularioDashboard();
   }
 
@@ -51,7 +54,7 @@ export class DashboardComponent implements OnInit {
       tramite: new FormControl(""),
     });
   }
-
+  //  Configuraciones de ngCharts
   public lineChartData: ChartDataSets[] = [
     { data: [], label: "Registrados" },
     { data: [], label: "Procesados" },
@@ -83,18 +86,17 @@ export class DashboardComponent implements OnInit {
   ];
  
   getTramites() {
+    // Apartir del servicio obtenemos las key de los arreglos
     this.graficosService.getAll().subscribe((data) => {
       this.listaTramites = Object.keys(data);
     });
   }
 
-  ngOnChanges() {
-    console.log("Esto ngOnChanges prueba");
-  }
 
+  // Metodo que carga la data correspondiente para el grafico de lineas
   loadData(): void {
- 
     if (this.dashboardForm.getRawValue().dateInit && this.dashboardForm.getRawValue().dateEnd && this.dashboardForm.getRawValue().tramite) {
+      // Lllamada al servicio de grafico y asigamos los arreglos correspondientes segun el los estados 
       forkJoin([
         this.graficosService
           .twoDates(
@@ -138,11 +140,7 @@ export class DashboardComponent implements OnInit {
             )
           ), //5
       ]).subscribe(([data0, data1, data2, data3, data4]) => {
-        console.log("Esto el graficio linea barra: es 1" + data0);
-        console.log("Esto el graficio linea barra: es 2" + data1);
-        console.log("Esto el graficio linea barra: es 3" + data2);
-        console.log("Esto el graficio linea barra: es 4" + data3);
-        console.log("Esto el graficio linea barra: es 5" , data4);
+        // Asigamos los valores al grafico de lineas
         this.lineChartData[0].data = data0;
         this.lineChartData[1].data = data1;
         this.lineChartData[2].data = data2;

@@ -10,7 +10,6 @@ import {
   Certificado,
   Detalle,
   Imagen,
-  Tramite,
   TramiteDoc,
 } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
@@ -22,42 +21,53 @@ import {
 import { ToastContainerDirective, ToastrService } from "ngx-toastr";
 import Swal from "sweetalert2";
 import { Observable, ReplaySubject } from "rxjs";
-
+import { Buffer } from "buffer";
 @Component({
   selector: "app-detalletramite",
   templateUrl: "./detalletramite.component.html",
   styleUrls: ["./detalletramite.component.scss"],
 })
 export class DetalletramiteComponent implements OnInit {
+  // Parametro de entrada que viene apartir del componente padre tramitesComponent
   @Input() in_tramite: TramiteDoc;
+  // Declaramos nuestro de edit de tramite
   @ViewChild("modalMod") public modalMod: ModalDirective;
-  @ViewChild("modalDelete") public modalDelete: ModalDirective;
 
+  // Declaramos nuestros FormGroup
   detalleForm: FormGroup;
   consultaForm: FormGroup;
   registrarForm: FormGroup;
   estadosActualizarForm: FormGroup;
   uploadForm: FormGroup;
+  // Declaramos nuestro arreglo de archivos para la subida de certificados
   uploadedFiles: Array<File>;
+  // Declaramos arreglos de tramites
   listaImagenes: Imagen[];
   listaDetalles: Detalle[];
-  listaProductos: Tramite[];
   listaAdjuntos: Adjunto[] = [];
   listaCertificado: Certificado[] = [];
   listaTramiteDoc: TramiteDoc[];
   estadoActualizar: Detalle[] = [];
+  // Declaramos nuestras entidades
   detalleEliminar: Detalle;
   certificadoEliminar: Certificado;
+  // Validaciones booleanas para mostrar la tabla segun se requiera
   listaTramiteOk: boolean = false;
   modalVisible: boolean = false;
   aceptar: boolean = false;
-  imagenOk: boolean;
-  adjuntoOk: boolean;
-  certificadoOk: boolean;
+  imagenOk: boolean = false;
+  adjuntoOk: boolean = false;
+  certificadoOk: boolean = false;
+  // Variable que determina que registro se elimina ( Un detalle Tramite o un Certificado)
   optionDelete: number;
-
+  // Variable que obtiene la base64
+  base64Output: string;
+  // Nombre inicializado del label de seleccion de archivos para subir certificado
+  fileName: string = "Seleccione un archivo (PDF)";
+  // Instanciamos nuestro Toast
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
+
   constructor(
     private servicios: ServiciosService,
     private fb: FormBuilder,
@@ -72,6 +82,7 @@ export class DetalletramiteComponent implements OnInit {
     this.toastrService.overlayContainer = this.toastContainer;
   }
 
+  // Creacion de nuestros reactiveForms con sus respectivas validaciones
   crearFormularios() {
     this.detalleForm = this.fb.group({
       detalleTramite: new FormControl(""),
@@ -108,9 +119,7 @@ export class DetalletramiteComponent implements OnInit {
       detalleFecha: new FormControl(""),
     });
     this.uploadForm = new FormGroup({
-      subir: new FormControl(null,[
-        Validators.required
-      ]),
+      subir: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -120,9 +129,9 @@ export class DetalletramiteComponent implements OnInit {
     this.detalleTramite();
   }
 
+
+  // Metodo que toma el detalle seleccionado y muestra el modar de modificacion para editar
   seleccionarDetalle(detalleSeleccionado) {
-    console.log("Seleccionado");
-    console.log(detalleSeleccionado.id_est_doc);
     this.modalMod.show();
     this.estadosActualizarForm.controls.id_est_doc.setValue(
       detalleSeleccionado.id_est_doc
@@ -138,28 +147,19 @@ export class DetalletramiteComponent implements OnInit {
     );
   }
 
-  decline(): void {
-    this.modalDelete.hide();
-    this.aceptar = false;
-  }
-  confirm(): void {
-    this.modalDelete.hide();
-    this.aceptar = true;
-  }
-
+  // Metodo para eliminar detalle
   eliminarDetalle(values) {
-    //this.modalDelete.show();
     this.detalleEliminar = values;
     this.optionDelete = 1;
     this.alertEliminar();
   }
+
+  // Metodo para eliminar certificado
   eliminarCertificado(values: Certificado) {
     this.certificadoEliminar = values;
     console.log("Objeto Eliminar Values", this.certificadoEliminar);
     this.optionDelete = 2;
     this.alertEliminar();
-    // this.modalDelete.show();
-    // this.optionDelete = 2;
   }
 
   detalleTramite() {
@@ -184,183 +184,270 @@ export class DetalletramiteComponent implements OnInit {
   }
 
   llenarListas() {
-    console.log("this.in_tramite es");
-    console.log(this.in_tramite);
-    console.log(this.in_tramite.id_est_doc);
     this.leerDetalles();
     this.leerImagenes();
     this.leerAdjuntos();
     this.leerCertificados();
   }
 
+  // Metodo que llama el detalle del tramite seleccionado
   leerDetalles() {
-    this.servicios
-      .buscarDetallesD(this.in_tramite.id_est_doc)
-      .subscribe((res: Detalle[]) => {
+    this.servicios.buscarDetallesD(this.in_tramite.id_est_doc).subscribe({
+      next: (res: Detalle[]) => {
         this.listaDetalles = res;
-        console.log(res);
-      });
+      },
+      error: (err) => {
+        console.log("leerDetalles error ", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
+    });
   }
 
+  // Metodo que llama las imagenes tramite seleccionado
   leerImagenes(): void {
-    this.servicios
-      .buscarImagenes(this.in_tramite.id_est_doc)
-      .subscribe((res: Imagen[]) => {
-        // TODO Validacion
+    this.servicios.buscarImagenes(this.in_tramite.id_est_doc).subscribe({
+      next: (res: Imagen[]) => {
         this.listaImagenes = res;
-        console.log(res);
-        //console.log("esto es imagen" + res[0]["URL"]);
         this.imagenOk = true;
-      });
+      },
+      error: (err) => {
+        console.log("leerImagenes error ", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
+    });
   }
 
+  // Metodo que llama los adjuntos tramite seleccionado
   leerAdjuntos(): void {
-    this.servicios
-      .buscarAdjuntos(this.in_tramite.id_est_doc)
-      .subscribe((res: Adjunto[]) => {
-        // TODO Validacion
+    this.servicios.buscarAdjuntos(this.in_tramite.id_est_doc).subscribe({
+      next: (res: Adjunto[]) => {
         this.listaAdjuntos = res;
-        console.log(res);
         this.adjuntoOk = true;
-      });
+      },
+      error: (err) => {
+        console.log("leerAdjuntos Error ", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 3000,
+        });
+      },
+    });
   }
 
+  // Metodo que llama los certificados tramite seleccionado
   leerCertificados(): void {
-    this.servicios
-      .buscarCertificado(this.in_tramite.id_est_doc)
-      .subscribe((res: Certificado[]) => {
-        // TODO Validacion
+    this.servicios.buscarCertificado(this.in_tramite.id_est_doc).subscribe({
+      next: (res: Certificado[]) => {
         this.listaCertificado = res;
-        console.log(res);
         this.certificadoOk = true;
-      });
+      },
+      error: (err) => {
+        console.log("leerCertificados Error ", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
+    });
   }
 
+  // Metodo para registrar nuestro detalle del tramite seleccionado
   registraEstado(values) {
     values.id_est_doc = this.in_tramite.id_est_doc;
-    console.log(values);
-    this.servicios.insertarTramite(values).subscribe(
-      (res) => {
-        console.log("Mensaje es");
-        console.log(res);
-        if (res.message == "Nuevo Estado Tramite Ingresado") {
-          this.toastrService.success(
-            "Se registro exitosamente un nuevo estado para " +
-              this.in_tramite.id_est_doc,
-            "Exito",
-            {
-              timeOut: 2000,
-            }
-          );
-          this.leerDetalles();
-          this.registrarForm.reset(); //borra el contenido del formulario
-          this.registrarForm.controls["estado"].setValue("", {
-            onlySelf: true,
-          });
-        } else {
-          console.log("Es diferente de exito el registro fallo!!!");
+    this.servicios.insertarTramite(values).subscribe({
+      next: (res) => {
+        switch (res.message) {
+          case "Nuevo Estado Tramite Ingresado":
+            this.toastrService.success(
+              "Se registro exitosamente un nuevo estado para " +
+                this.in_tramite.id_est_doc,
+              "Exito",
+              {
+                timeOut: 2000,
+              }
+            );
+            this.leerDetalles();
+            this.registrarForm.reset();
+            this.registrarForm.controls["estado"].setValue("", {
+              onlySelf: true,
+            });
+            break;
+          default:
+            this.toastrService.error(res.message, "Error", {
+              timeOut: 3000,
+            });
+            break;
         }
       },
-      (error) => {
-        console.log("Mensaje Error es ");
-        console.log(error);
-      }
-    );
+      error: (err) => {
+        console.log("regisraEstado error", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
+    });
   }
   //dgqaihqacwkynpyx
-  base64Output: string;
-  fileName  : string ='Seleccione un archivo (PDF)';
+  // Metodo para seleccionar archivo a subir como certificado
   seleccionarArchivo(event) {
-    //   this.uploadedFiles = event.target.files;
-    if (typeof event.target.files[0] !=='undefined'){
+    // Validamos que sea diferente de undefined
+    if (typeof event.target.files[0] !== "undefined") {
       this.convertFile(event.target.files[0]).subscribe((base64) => {
         this.fileName = event.target.files[0].name;
-        this.uploadForm.controls.subir.setValue( base64);
+        this.uploadForm.controls.subir.setValue(base64);
       });
     }
- 
   }
+
+  // Metodo para convertir a base64 el archivo seleccionado
   convertFile(file: File): Observable<string> {
     const result = new ReplaySubject<string>(1);
     const reader = new FileReader();
- 
     reader.readAsBinaryString(file);
-    reader.onload = (event) =>
-      result.next(btoa(event.target.result.toString()));
+    reader.onload = (event) => {
+     result.next(
+        Buffer.from(event.target.result.toString(), "binary").toString("base64")
+      );
+    };
     return result;
   }
+
+  // Metodo para enviar la base64 e ID del tramite al servicio y subirlo
   upload() {
- 
-    console.log("La base 64 string del PDF es ");
-    console.log(this.uploadForm.getRawValue().subir);
-    const body = {
+    const values = {
       id: this.in_tramite.id_est_doc,
-      base64: this.uploadForm.getRawValue().subir
-     };
-     console.log('body send' , body);
-    this.servicios.uploadFile(body).subscribe((res) => {
-      console.log('body sended' , body);
-      console.log("response received is ", res);
-      // TODO Validacion
-      this.uploadForm.reset();
-      this.fileName='Seleccione un archivo (PDF)'
-      this.toastrService.success(
-        "Se subio correctamente certificado para el tramite" +
-          this.in_tramite.id_est_doc,
-        "Exito",
-        {
-          timeOut: 2000,
+      base64: this.uploadForm.getRawValue().subir,
+    };
+    this.servicios.uploadFile(values).subscribe({
+      next: (res) => {
+        switch (res.message) {
+          case "Certificado registrado existosamente":
+            this.uploadForm.reset();
+            this.fileName = "Seleccione un archivo (PDF)";
+            this.toastrService.success(
+              "Se subio correctamente certificado para el tramite" +
+                this.in_tramite.id_est_doc,
+              "Exito",
+              {
+                timeOut: 3000,
+              }
+            );
+            this.leerCertificados();
+            break;
+          default:
+            this.toastrService.error(res.message, "Error", {
+              timeOut: 3000,
+            });
+            break;
         }
-
-      );
-      this.leerCertificados();
+      },
+      error: (err) => {
+        console.log("upload error ", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
     });
-
-    /*  let formData = new FormData();
-    for (var i = 0; i < this.uploadedFiles.length; i++) {
-      formData.append(
-        "uploads[]",
-        this.uploadedFiles[i],
-        this.uploadedFiles[i].name
-      );
-    }
-    console.log("upload()",formData);
-    //TODO Validacion sin subir archivo
-    //TODO Se asignar nombre
-    this.servicios
-      .uploadFile(formData, this.in_tramite.id_est_doc)
-      .subscribe((res) => {
-        console.log("response received is ", res);
-        // TODO Validacion
-        this.toastrService.success(
-          "Se subio correctamente certificado para el tramite" +
-            this.in_tramite.id_est_doc,
-          "Exito",
-          {
-            timeOut: 2000,
-          }
-        );
-      });*/
   }
 
+  // Metodo utilizado al editar el estado y/o observaciones de un estado del tramite seleccionado
   modificarEstado(values) {
-    console.log(values);
-    this.servicios.update(values).subscribe((res) => {
-      this.toastrService.success(
-        "Se actualizo correctamente el estado para " +
-          this.in_tramite.id_est_doc,
-        "Exito",
-        {
-          timeOut: 2000,
+    this.servicios.update(values).subscribe({
+      next: (res) => {
+        switch (res.message) {
+          case "Tramite actualizado":
+            this.toastrService.success(
+              "Se actualizo correctamente el estado para " +
+                this.in_tramite.id_est_doc,
+              "Exito",
+              {
+                timeOut: 3000,
+              }
+            );
+            this.leerDetalles();
+            this.modalMod.hide();
+            break;
+          default:
+            this.toastrService.error(res.message, "Error", {
+              timeOut: 3000,
+            });
+            break;
         }
-      );
-      this.leerDetalles();
-      console.log("Res Modificado");
-      console.log(res);
-      this.modalMod.hide();
+      },
+      error: (err) => {
+        console.log("modificarEstado Error ", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
     });
   }
 
+  // Llamada al servicio para eliminar detalleTramite
+  callServicedeleteDetalleTramite(): void {
+    this.servicios.deleteTramite(this.detalleEliminar).subscribe({
+      next: (res) => {
+        switch (res.message) {
+          case "Tramite eliminado":
+            this.toastrService.success(
+              "Se elimino correctamente el detalle",
+              "Exito",
+              {
+                timeOut: 3000,
+              }
+            );
+            this.leerDetalles();
+            break;
+          default:
+            this.toastrService.error(res.message, "Error", {
+              timeOut: 3000,
+            });
+            break;
+        }
+      },
+      error: (err) => {
+        console.log("delete tramite ", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
+    });
+  }
+
+  // Llamada al servicio apra eliminar el certificado de un tramite
+  callServiceDeleteCertificado(): void {
+    this.servicios.deleteCertificado(this.certificadoEliminar).subscribe({
+      next: (res) => {
+        switch (res.message) {
+          case "Certicado eliminado":
+            this.toastrService.success(
+              "Se elimino correctamente el certificado",
+              "Exito",
+              {
+                timeOut: 3000,
+              }
+            );
+            this.leerCertificados();
+            break;
+          default:
+            this.toastrService.error(res.message, "Error", {
+              timeOut: 3000,
+            });
+            break;
+        }
+      },
+      error: (err) => {
+        console.log("deleteCertificado error", err);
+        this.toastrService.error(err, "Error", {
+          timeOut: 5000,
+        });
+      },
+    });
+  }
+
+  // Alerta de advertencia al eliminar un registro (DetalleTramite o Certificado)
   alertEliminar() {
     Swal.fire({
       title: "¿Estas seguro de eliminar este registro?",
@@ -373,40 +460,23 @@ export class DetalletramiteComponent implements OnInit {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
+        // Segun la opcion elegida (1=detalleTramite o 2=Certificado) se elimina el registro correspondiente
+        // Caso default en caso se tenga un valor desconocido
         switch (this.optionDelete) {
           case 1:
-            this.servicios
-              .deleteTramite(this.detalleEliminar)
-              .subscribe((res) => {
-                console.log("Respuesta eliminar tramite");
-                console.log(res);
-                this.toastrService.success(
-                  "Se elimino correctamente el detalle",
-                  "Exito",
-                  {
-                    timeOut: 2000,
-                  }
-                );
-                // TODO Validacion
-                this.leerDetalles();
-              });
+            this.callServicedeleteDetalleTramite();
             break;
           case 2:
-            this.servicios
-              .deleteCertificado(this.certificadoEliminar)
-              .subscribe((res) => {
-                //TODO Validacion
-                console.log("Resultado Eliminar certificado es ");
-                console.log(res);
-                this.toastrService.success(
-                  "Se elimino correctamente el certificado",
-                  "Exito",
-                  {
-                    timeOut: 2000,
-                  }
-                );
-                this.leerCertificados();
-              });
+            this.callServiceDeleteCertificado();
+            break;
+          default:
+            this.toastrService.error(
+              "Sucedio un error eliminar registro",
+              "Error",
+              {
+                timeOut: 5000,
+              }
+            );
             break;
         }
         Swal.fire("Elimado!", "El registro fue eliminado con exito", "success");

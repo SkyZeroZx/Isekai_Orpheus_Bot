@@ -14,11 +14,15 @@
       <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
-            <span class="mb-0 text-sm  font-weight-bold">Sky</span>
+            <span class="mb-0 text-sm  font-weight-bold">{{usuarioLogeado}}</span>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
-          <div  class="dropdown-item"  >
+          <div   class="dropdown-item" [routerLink]="['/change-password']">
+            <i class="ni ni-key-25"></i>
+            <span>Cambiar contraseña</span>
+          </div>         
+          <div   class="dropdown-item" (click)="onLogout()">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </div>

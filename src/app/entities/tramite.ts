@@ -36,12 +36,6 @@ export class DatosGrafico {
   finalizado: number;
 }
 
-export class Contador {
-  pendientes: number;
-  procesando: number;
-  observado: number;
-  finalizado: number;
-}
 
 export class TramiteDoc {
     apellidos: string;

@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 })
 
 export class BarComponent implements OnInit {
+  // Obtenemos los valores de las fechas de inicio y fin apartir del componente padre dashboard asi como la listaTramites
   @Input() Inicio:Date;
   @Input() Fin:Date;
   @Input() listaTramites:string[];
@@ -24,8 +25,6 @@ export class BarComponent implements OnInit {
   constructor(private graficosService: ServiciosService) { }
 
   ngOnInit(): void {
-    console.log('Lista Tramites Input');
-    console.log(this.listaTramites)
   }
 
   // Configuracion Grafico de Barras
@@ -56,6 +55,7 @@ export class BarComponent implements OnInit {
   };
 
 
+  // Llamada a servicio y asignacion de arreglos para la renderizacion de nuestro grafico de barra
   loadData(): void {
     if (this.Inicio && this.Fin && this.tramite ) {
       this.clear();
@@ -77,11 +77,13 @@ export class BarComponent implements OnInit {
       });
     }
   }
- 
+
+  // Si se detectan cambios se recarga el grafico
   ngOnChanges(changes: SimpleChanges): void {
     this.loadData();
   }
-
+  
+  // Metodo para limpiar el grafico
   clear(): void {
     this.barChartData[0].data = [];
     this.barChartData[1].data = [];

@@ -8,7 +8,7 @@ import { SpinnerService } from './spinner.service';
 })
 export class InterceptorService implements HttpInterceptor {
   constructor(private spinnerService: SpinnerService , private auth : AuthService) { }
-
+  // Servicio para interceptar llamas HTTP para llamar al spinner de carga asi como envio de token en las cabeceras
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.spinnerService.llamarSpinner();
     if (req.url.includes('change-password')) {
@@ -18,6 +18,7 @@ export class InterceptorService implements HttpInterceptor {
           auth: userValue.token,
         },
       });
+      this.spinnerService.detenerSpinner();
       return next.handle(authReq);
     }
     return next.handle(req).pipe(

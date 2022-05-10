@@ -2,14 +2,14 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
-import { Adjunto, Certificado, Contador, DatosGrafico, Detalle, Imagen, Tramite, TramiteDoc } from "../entities/tramite";
+import { Adjunto, Certificado, DatosGrafico, Detalle, Imagen, Tramite, TramiteDoc } from "../entities/tramite";
 import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class ServiciosService {
-
+  // Servicios para consulta de tramites
   tramites: Tramite[];
   detalles: Detalle[];
   imagenes: Imagen[];
@@ -60,10 +60,6 @@ export class ServiciosService {
   buscarPie(values): Observable<DatosGrafico> {
     return this.http.post<DatosGrafico>(`${environment.API_URL}/grafico/pie`, values).pipe(
       map((res) => {
-        console.log('BuscarPIE', res);
-        
-    //    this.dpies = JSON.parse(JSON.stringify(res));
-    //    console.log('dPIE es ', this.dpies);
         return res;
       })
     );
@@ -84,6 +80,12 @@ export class ServiciosService {
     return throwError(errorMessage);
   }
 
+
+  buscarTramiteDetalleDniAndId(values: any): Observable<Detalle[]> {
+    return this.http
+      .post<Detalle[]>(`${environment.API_URL}/tramite/tracking`,values)
+      .pipe(catchError(this.handlerError));
+  }
 
   buscarDetallesD(id_est_doc: string): Observable<Detalle[]> {
     return this.http
@@ -114,27 +116,27 @@ export class ServiciosService {
    .pipe(catchError(this.handlerError));;
   }
 
-  deleteTramite(detalle : Detalle ): Observable<{}> {
+  deleteTramite(detalle : Detalle ): Observable<any>{
     return this.http.delete<Detalle>(`${environment.API_URL}/tramite/`, {
       body:detalle
     })
     .pipe(catchError(this.handlerError));;
   }
 
-  deleteCertificado(certificado : Certificado ): Observable<{}> {
+  deleteCertificado(certificado : Certificado ): Observable<any> {
     return this.http.delete<Certificado>(`${environment.API_URL}/tramite/cer/`, {
       body:certificado
     })
     .pipe(catchError(this.handlerError));;
   }
 
-  update(detalle: Detalle) {
+  update(detalle: Detalle): Observable<any>  {
     return this.http
       .patch(`${environment.API_URL}/tramite`, detalle)
       .pipe(catchError(this.handlerError));
   }
  
-  uploadFile(archivo) {
+  uploadFile(archivo): Observable<any>  {
     console.log('SERVICIO API upload file')
     console.log(archivo)
     return this.http.post(`${environment.API_URL}/tramite/updatecertificado`, archivo);

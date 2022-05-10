@@ -11,18 +11,17 @@ import { SpinnerService } from "src/app/services/spinner.service";
   styleUrls: ["./pie.component.scss"],
 })
 export class PieComponent implements OnInit {
+  // Obtenemos los valores de las fechas de inicio y fin apartir del componente padre dashboard asi como la listaTramites
   @Input() Inicio: string;
   @Input() Fin: string;
-  @Input() listaTramites:string[];
+  @Input() listaTramites: string[];
   listaDatos: DatosGrafico;
 
   tramite: string = null;
 
   constructor(private graficosService: ServiciosService) {}
-  ngOnInit(): void {
- 
-  }
-
+  ngOnInit(): void {}
+  //Opciones de ngChart
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -47,32 +46,31 @@ export class PieComponent implements OnInit {
       ],
     },
   ];
+  // Si se detecta cambios se recarga el grafico uso de ngOnChanges
   ngOnChanges(changes: SimpleChanges): void {
     this.loadData();
   }
 
+  // Metodo para enviar los valores necesario a nuestro servicio y asignar los valores para nuestros grafico pie
   loadData(): void {
     if (this.tramite && this.Inicio && this.Fin) {
       this.clear();
-      let values = {
-        "fechaInicio":this.Inicio,
-        "fechaFin":this.Fin,
-        "tramite":this.tramite
-      }
-      console.log('values PIE ' , values);
-      this.graficosService
-        .buscarPie(values)
-        .subscribe((data) => { 
-         // console.log('recibi en PIE' , data);
-          this.pieChartData[0] = data[0].registrado;
-          this.pieChartData[1] = data[0].procesando;
-          this.pieChartData[2] = data[0].observado;
-          this.pieChartData[3] = data[0].finalizado;
-        });
+      const values = {
+        fechaInicio: this.Inicio,
+        fechaFin: this.Fin,
+        tramite: this.tramite,
+      };
+      this.graficosService.buscarPie(values).subscribe((data) => {
+        // console.log('recibi en PIE' , data);
+        this.pieChartData[0] = data[0].registrado;
+        this.pieChartData[1] = data[0].procesando;
+        this.pieChartData[2] = data[0].observado;
+        this.pieChartData[3] = data[0].finalizado;
+      });
     }
   }
 
-
+  // Metodo para limpiar nuestra grafica
   clear(): void {
     this.pieChartData = [];
   }

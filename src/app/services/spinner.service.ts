@@ -5,7 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   providedIn: 'root'
 })
 export class SpinnerService {
-
+  // Servicio para llamar spinner y detener el spinner
   constructor(private spinnerService: NgxSpinnerService) { }
 
   public llamarSpinner() {

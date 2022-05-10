@@ -12,21 +12,22 @@
         <div class="card-header border-0">
           <h3 class="mb-0">Gestion Tramites</h3>
         </div>
-        <form class="border p-3 form" [formGroup]="consultaForm"  (change)="onChangeForm()">
+        <form class="border p-3 form" [formGroup]="consultaForm" (change)="onChangeForm()">
           <div class="row">
             <div class="col-sm-4">
               <div class="form-group">
-                <input type="text" placeholder="N° Tramite" formControlName="filterTramite" class="form-control" >
+                <input type="text" placeholder="N° Tramite" formControlName="filterTramite" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
-                <input type="text" placeholder="Codigo Estudiante" formControlName="filterCodEstudiante" class="form-control" >
+                <input type="text" placeholder="Codigo Estudiante" formControlName="filterCodEstudiante"
+                  class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <input type="text" placeholder="Apellidos" formControlName="filterApellidos" class="form-control" >
+                <input type="text" placeholder="Apellidos" formControlName="filterApellidos" class="form-control">
               </div>
             </div>
           </div>
@@ -34,23 +35,23 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <select id="inputEstado" class="form-control" formControlName="filterEstado" >
+                <select id="inputEstado" class="form-control" formControlName="filterEstado">
                   <option value="">Elija Estado...</option>
                   <option [value]="'REGISTRADO'">REGISTRADO</option>
                   <option [value]="'PROCESANDO'">PROCESANDO</option>
                   <option [value]="'OBSERVADO'">OBSERVADO</option>
                   <option [value]="'FINALIZADO'">FINALIZADO</option>
-              </select>
+                </select>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <input type="text" placeholder="Nombres" formControlName="filterNombres"  class="form-control" >
+                <input type="text" placeholder="Nombres" formControlName="filterNombres" class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <input type="text" placeholder="Tipo Tramite" formControlName="filterTipoTramite"  class="form-control" >
+                <input type="text" placeholder="Tipo Tramite" formControlName="filterTipoTramite" class="form-control">
               </div>
             </div>
           </div>
@@ -69,8 +70,8 @@
                 <th scope="col"></th>
               </tr>
             </thead>
-            <tbody  *ngIf="listaTramiteOk">
-              <tr  *ngFor="let tramite of listaTramiteDoc | 
+            <tbody *ngIf="listaTramiteOk">
+              <tr *ngFor="let tramite of listaTramiteDoc | 
               filter:[
               consultaForm.getRawValue().filterApellidos,
               consultaForm.getRawValue().filterEstado,
@@ -81,11 +82,11 @@
               paginate:{itemsPerPage: 5, currentPage:p}
               ">
                 <td>
-                {{tramite.id_est_doc}}
+                  {{tramite.id_est_doc}}
                 </td>
                 <td>
                   {{tramite.nombre}}
-                  </td>
+                </td>
                 <td>
                   {{tramite.cod_est}}
                 </td>
@@ -101,36 +102,23 @@
                 <td>
                   {{tramite.fecha_doc}}
                 </td>
-                  <td class="text-center">   <i  (click)="detalleTramite(tramite)" class="ni ni-bullet-list-67"></i></td>
-               <!--  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" (click)="detalleTramite(tramite)">Detalles</a>
-                    </div>
-                  </div>-->  
+                <td class="text-center"> <i (click)="detalleTramite(tramite)" class="ni ni-bullet-list-67"></i></td>
               </tr>
-
             </tbody>
           </table>
         </div>
-
         <div class="container d-flex justify-content-center">
-          <pagination-controls (pageChange)="p=$event"
-          previousLabel="Anterior"
-          nextLabel="Siguiente"
-          responsive="true"
-          *ngIf="listaTramiteOk">
+          <pagination-controls (pageChange)="p=$event" previousLabel="Anterior" nextLabel="Siguiente" responsive="true"
+            *ngIf="listaTramiteOk">
           </pagination-controls>
-      </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal fade" bsModal #modal="bs-modal" [config]="{backdrop: 'static'}" (onHidden)="listarTramiteDoc()"
-     tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -139,9 +127,7 @@
           <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
       </div>
-      <app-detalletramite 
-    
-      [in_tramite]="tramiteSeleccionado" *ngIf="modalVisible" ></app-detalletramite>
+      <app-detalletramite [in_tramite]="tramiteSeleccionado" *ngIf="modalVisible"></app-detalletramite>
     </div>
- </div>
+  </div>
 </div>

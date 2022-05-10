@@ -12,6 +12,7 @@ const helper = new JwtHelperService();
   providedIn: 'root'
 })
 export class AuthService {
+  // Servicio de autenticacion 
   private loggedIn = new BehaviorSubject<boolean>(false);
   private user = new BehaviorSubject<UserResponse>(null);
 
@@ -39,7 +40,7 @@ export class AuthService {
       );
   }
 
-  changePassword(authPassword:ChangePassword): Observable<ChangePasswordRes | void> {
+  changePassword(authPassword:ChangePassword): Observable<ChangePasswordRes>   {
     return this.http.post<ChangePasswordRes>(`${environment.API_URL}/auth/change-password`,authPassword).pipe(
       map((res:UserResponse)=>{
         console.log('Res->',res);

@@ -53,8 +53,8 @@ export class tramitesComponent implements OnInit {
     this.servicios.listaTramites().subscribe({
       next: (res: TramiteDoc[]) => {
         //Recibido nuestra respuesta del servicio
-        this.listaTramiteDoc = res;
-        this.listaTramiteOk = true;
+          this.listaTramiteDoc = res;
+          this.listaTramiteOk = true;
       },
       error: (err) => {
         // En caso de Error

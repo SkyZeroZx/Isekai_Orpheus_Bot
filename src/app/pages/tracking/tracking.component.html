@@ -1,0 +1,134 @@
+<div class="header bg-primary pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h2 class="mb-0 text-center">Seguimiento Tramites</h2>
+        </div>
+        <form class="border p-3 form" (ngSubmit)="buscarTramiteTracking()" [formGroup]="trackingForm">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-4 d-flex justify-content-center">
+              <input type="text" placeholder="N° Tramite" formControlName="idDocTramite" class="form-control">
+            </div>
+
+            <div class="col-lg-4 d-flex justify-content-center">
+              <input type="text" placeholder="DNI Estudiante" formControlName="dni" class="form-control" maxlength="8"
+                minlength="8">
+            </div>
+
+            <div class="col-lg-4 d-flex justify-content-center">
+              <button type="submit" [disabled]="trackingForm.invalid" class="btn btn-primary"><i
+                  class="fas fa-search"></i> &nbsp;Buscar</button>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-4 d-flex justify-content-center">
+              <div *ngIf="trackingForm.controls.idDocTramite.invalid && trackingForm.controls.idDocTramite.touched">
+                <small class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.minlength">
+                  La longitud minima es 8 caracteres</small>
+                <small class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.required">
+                  Se requiere ingresar N° Tramite para seguimiento</small>
+              </div>
+            </div>
+
+            <div class="col-lg-4 d-flex justify-content-center">
+              <div *ngIf="trackingForm.controls.dni.invalid && trackingForm.controls.dni.touched">
+                <small class="text-left" *ngIf="trackingForm.controls.dni.errors?.minlength">
+                  La longitud minima es 8 caracteres</small>
+                <small class="text-left" *ngIf="trackingForm.controls.dni.errors?.required">
+                  Se requiere ingresar dni para seguimiento</small>
+              </div>
+            </div>
+
+            <div class="col-lg-4 d-flex justify-content-center">
+            </div>
+          </div>
+        </form>
+        <br>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <tabset class="table">
+            <tab heading="Detalles" id="tab1">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>N° Tramite</th>
+                      <th>Fecha</th>
+                      <th>Estado</th>
+                      <th>Observacion</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="detalleOk">
+                    <tr *ngFor="let itemDetalle of listaDetalles">
+                      <td>{{itemDetalle.id_est_doc}}</td>
+                      <td>{{itemDetalle.fecha}}</td>
+                      <td>{{itemDetalle.estado}}</td>
+                      <td>{{itemDetalle.observaciones}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </tab>
+
+
+
+            <tab heading="Adjuntos" id="tab3">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>N° Tramite</th>
+                      <th>Fecha</th>
+                      <th>Descargar</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="adjuntoOk">
+                    <tr *ngFor="let itemAdjunto of listaAdjuntos">
+                      <td>{{itemAdjunto.ID_EST_DOC}}</td>
+                      <td>{{itemAdjunto.FECHA}}</td>
+                      <td class="text-center"> <a href="{{itemAdjunto.URL}}" target="_blank">
+                          <i class="ni ni-cloud-download-95"></i>
+                        </a> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </tab>
+
+            <tab heading="Certificado" id="tab4">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>N° Tramite</th>
+                      <th>Fecha</th>
+                      <th>Descargar</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="certificadoOk">
+                    <tr *ngFor="let itemCertificado of listaCertificado">
+                      <td>{{itemCertificado.id_est_doc}}</td>
+                      <td>{{itemCertificado.fecha}}</td>
+                      <td class="text-center">
+                        <a href="{{itemCertificado.url}}" target="_blank">
+                          <i class="ni ni-paper-diploma"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </tab>
+          </tabset>
+        </ul>
+      </div>
+    </div>
+  </div>
