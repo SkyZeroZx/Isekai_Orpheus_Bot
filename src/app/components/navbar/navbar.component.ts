@@ -1,48 +1,70 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { Component, OnInit, ElementRef } from "@angular/core";
+import {
+  ROUTES_ADMINISTRADOR,
+  ROUTES_TRAMITADOR,
+} from "../sidebar/sidebar.component";
+import {
+  Location,
+  LocationStrategy,
+  PathLocationStrategy,
+} from "@angular/common";
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
-  usuarioLogeado:string;
-  constructor(location: Location,  private element: ElementRef, private router: Router ,private auth: AuthService) {
+  usuarioLogeado: string;
+  constructor(
+    location: Location,
+    private element: ElementRef,
+    private router: Router,
+    private auth: AuthService
+  ) {
     this.location = location;
   }
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
-    this.usuarioLogeado= localStorage.getItem('usuarioLogueado');
-  }
-  getTitle(){
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    if(titlee.charAt(0) === '#'){
-        titlee = titlee.slice( 1 );
+    switch (JSON.parse(localStorage.getItem("user")).role) {
+      case "admin":
+        this.listTitles = ROUTES_ADMINISTRADOR.filter((listTitle) => listTitle);
+        break;
+      case "tramitador":
+        this.listTitles = ROUTES_TRAMITADOR.filter((listTitle) => listTitle);
+        break;
+      default:
+        break;
     }
 
-    for(var item = 0; item < this.listTitles.length; item++){
-        if(this.listTitles[item].path === titlee){
-            return this.listTitles[item].title;
-        }
+    this.usuarioLogeado = localStorage.getItem("usuarioLogueado");
+  }
+  getTitle() {
+    var titlee = this.location.prepareExternalUrl(this.location.path());
+    if (titlee.charAt(0) === "#") {
+      titlee = titlee.slice(1);
     }
-    return 'Dashboard';
+
+    for (var item = 0; item < this.listTitles.length; item++) {
+      if (this.listTitles[item].path === titlee) {
+        return this.listTitles[item].title;
+      }
+    }
+    return "Dashboard";
   }
 
   onLogout() {
-    console.log('logout');
+    console.log("logout");
     this.auth.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
 
-  changePassword(){
-    console.log('change password');
+  changePassword() {
+    console.log("change password");
   }
 }

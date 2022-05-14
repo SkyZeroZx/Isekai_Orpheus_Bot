@@ -1,0 +1,99 @@
+<div class="header bg-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Gestion Documentos</h3>
+                </div>
+                <form class="border p-3 form" [formGroup]="documentosForm" (change)="onChangeForm()">
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input type="text" placeholder="Codigo Documento" formControlName="filterCodDoc"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input type="text" placeholder="Nombre Documento" formControlName="filterNomDoc"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                </form>
+
+                <div class="card-header">
+                    <div class="row">
+                        <div class="row col-md-6" style="text-align: left;">
+                            <div class="col-md-11">
+                                <button type="button" class="btn btn-outline-primary" (click)="crearDocumento()">
+                                    <a><i class="fa fa-file" aria-hidden="true"></i>
+                                        Nuevo</a>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row col-md-6" style="text-align: right;">
+                            <div class="col-md-8">
+                                <button type="button" class="btn btn-outline-success" (click)="exportarExcel()">
+                                    <a> <i class="fa fa-file-excel" aria-hidden="true"> Excel</i></a>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-outline-danger" (click)="exportarPDF()">
+                                    <a> <i class="fa fa-file-pdf" aria-hidden="true"></i> PDF</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Cod Tramite</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Requisitos</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    013
+                                </td>
+                                <td>
+                                    EGRESADO
+                                </td>
+                                <td>
+                                    URL REQUISITOS
+                                </td>
+                                <td style="padding-left: 35px;">
+                                    <i (click)="detalleDocumento()" class="ni ni-bullet-list-67"></i>
+                                </td>
+                                <td style="padding-left: 45px;" (click)="eliminarDocumento()">
+                                    <i class="ni ni-fat-remove"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container d-flex justify-content-center">
+                    <pagination-controls (pageChange)="p=$event" previousLabel="Anterior" nextLabel="Siguiente"
+                        responsive="true">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

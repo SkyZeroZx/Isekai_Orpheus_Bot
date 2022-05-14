@@ -23,6 +23,8 @@ import { TabsModule } from "ngx-bootstrap/tabs";
 import { DetalletramiteComponent } from "src/app/pages/tramites/detalles/detalletramite/detalletramite.component";
 import { NgxPaginationModule } from "ngx-pagination";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DocumentosComponent } from "src/app/pages/documentos/documentos.component";
+import { UsersComponent } from "src/app/pages/users/users.component";
 
 
 defineLocale("es", esLocale);
@@ -51,6 +53,8 @@ defineLocale("es", esLocale);
     BarComponent,
     tramitesComponent,
     FilterPipe,
+    DocumentosComponent,
+    UsersComponent
   ],
   bootstrap: [DashboardComponent],
 })

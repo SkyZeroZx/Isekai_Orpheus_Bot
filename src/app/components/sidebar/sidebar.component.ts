@@ -8,7 +8,7 @@ declare interface RouteInfo {
   icon: string;
   class: string;
 }
-export const ROUTES: RouteInfo[] = [
+export const ROUTES_TRAMITADOR: RouteInfo[] = [
   {
     path: "/dashboard",
     title: "Dashboard",
@@ -20,7 +20,28 @@ export const ROUTES: RouteInfo[] = [
     title: "Tramites",
     icon: "ni-bullet-list-67 text-red",
     class: "",
-  }
+  },
+];
+
+export const ROUTES_ADMINISTRADOR: RouteInfo[] = [
+  {
+    path: "/dashboard",
+    title: "Dashboard",
+    icon: "ni-tv-2 text-primary",
+    class: "",
+  },
+  {
+    path: "/users",
+    title: "Usuarios",
+    icon: "fa fa-users",
+    class: "",
+  },
+  {
+    path: "/documentos",
+    title: "Documentos",
+    icon: "ni-bullet-list-67 text-red",
+    class: "",
+  },
 ];
 
 @Component({
@@ -35,13 +56,23 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter((menuItem) => menuItem);
+    switch (JSON.parse(localStorage.getItem("user")).role) {
+      case "admin":
+        this.menuItems = ROUTES_ADMINISTRADOR.filter((menuItem) => menuItem);
+        break;
+      case "tramitador":
+        this.menuItems = ROUTES_TRAMITADOR.filter((menuItem) => menuItem);
+        break;
+      default:
+        break;
+    }
+
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
     });
     this.usuarioLogeado = localStorage.getItem("usuarioLogueado");
   }
-  
+
   onLogout() {
     this.auth.logout();
     this.router.navigate(["/login"]);
