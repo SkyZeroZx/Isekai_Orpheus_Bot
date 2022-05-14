@@ -7,9 +7,6 @@ import { ClipboardModule } from "ngx-clipboard";
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
-import { IconsComponent } from "../../pages/icons/icons.component";
-import { MapsComponent } from "../../pages/maps/maps.component";
-import { UserProfileComponent } from "../../pages/user-profile/user-profile.component";
 import { tramitesComponent } from "../../pages/tramites/tramites.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ChartsModule } from "ng2-charts";
@@ -52,10 +49,7 @@ defineLocale("es", esLocale);
     PieComponent,
     DonutComponent,
     BarComponent,
-    UserProfileComponent,
     tramitesComponent,
-    IconsComponent,
-    MapsComponent,
     FilterPipe,
   ],
   bootstrap: [DashboardComponent],

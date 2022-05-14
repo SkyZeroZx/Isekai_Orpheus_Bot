@@ -37,7 +37,7 @@ export class TrackingComponent implements OnInit {
     this.trackingForm = this.fb.group({
       idDocTramite: new FormControl("", [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(14),
       ]),
       dni: new FormControl("", [
         Validators.required,
@@ -122,6 +122,6 @@ export class TrackingComponent implements OnInit {
             timeOut: 5000,
           });
         },
-      });
+      }); 
   }
 }

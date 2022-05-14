@@ -5,7 +5,7 @@
                 <i class="fas fa-globe"></i>
             </div>
         </div>
-        <select class="form-control" name="country" [(ngModel)]="tramite" (change)="loadData()">
+        <select class="form-control" name="tramiteBarra" [(ngModel)]="tramite" (change)="loadData()">
             <option [ngValue]="null" selected>Elige un tramite</option>
             <option *ngFor="let tramite of listaTramites" [ngValue]="tramite">{{tramite}}</option>
           </select>

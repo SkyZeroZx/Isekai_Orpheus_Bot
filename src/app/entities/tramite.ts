@@ -1,49 +1,47 @@
-export class Tramite {
+export interface Tramite {
   FECHA: string;
   ESTADO: string;
   OBSERVACIONES: string;
   URL: string;
 }
 
-export class Detalle {
+export interface Detalle {
   id_est_doc: string;
   fecha: Date;
   estado: string;
   observaciones: string;
 }
 
-export class Imagen {
+export interface Imagen {
   URL: string;
   FECHA: string;
   ID_EST_DOC: string;
 }
 
-export class Adjunto {
+export interface Adjunto {
   URL: string;
   FECHA: string;
   ID_EST_DOC: string;
 }
 
-export class Certificado {
+export interface Certificado {
   url: string;
   fecha: string;
   id_est_doc: string;
 }
-export class DatosGrafico {
+export interface DatosGrafico {
   registrado: number;
   procesando: number;
   observado: number;
   finalizado: number;
 }
 
-
-export class TramiteDoc {
-    apellidos: string;
-    estudiante: string;
-    cod_est: string;
-    nombre: Date;
-    estado: string;
-    id_est_doc:string;
-    fecha_doc:Date;
+export interface TramiteDoc {
+  apellidos: string;
+  estudiante: string;
+  cod_est: string;
+  nombre: Date;
+  estado: string;
+  id_est_doc: string;
+  fecha_doc: Date;
 }
- 

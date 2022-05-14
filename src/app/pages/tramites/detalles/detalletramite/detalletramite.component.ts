@@ -269,6 +269,7 @@ export class DetalletramiteComponent implements OnInit {
               }
             );
             this.leerDetalles();
+            this.detalleForm.controls["detalleEstado"].setValue(values.estado);
             this.registrarForm.reset();
             this.registrarForm.controls["estado"].setValue("", {
               onlySelf: true,

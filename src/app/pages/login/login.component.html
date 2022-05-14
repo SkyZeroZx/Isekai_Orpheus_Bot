@@ -18,7 +18,7 @@
 
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
-            <small>Ingrese sus credenciales</small>
+            <p>Ingrese sus credenciales</p>
           </div>
           <form role="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <div class="form-group mb-3">
@@ -26,12 +26,12 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" formControlName='username' placeholder="Email" type="email">
+                <input class="form-control" formControlName='username' maxlength="50" placeholder="Email" type="email">
               </div>
               <div *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched">
-                <small class="text-left" *ngIf="loginForm.controls.username.errors?.email">
+                <small id="validEmail" class="text-left" *ngIf="loginForm.controls.username.errors?.email">
                   Debe ingresar un Email valido</small>
-                <small class="text-left" *ngIf="loginForm.controls.username.errors?.required">
+                <small id="requiredEmail" class="text-left" *ngIf="loginForm.controls.username.errors?.required">
                   Se requiere ingresar Email</small>
              </div>
             </div>
@@ -43,9 +43,9 @@
                 <input class="form-control" formControlName='password' placeholder="Password" type="password">
               </div>
               <div *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
-                <small class="text-left" *ngIf="loginForm.controls.password.errors?.minlength">
+                <small id="minLenghtPass" class="text-left" *ngIf="loginForm.controls.password.errors?.minlength">
                   La longitud minima es 6 caracteres</small>
-                <small class="text-left" *ngIf="loginForm.controls.password.errors?.required">
+                <small id="requiredPass" class="text-left" *ngIf="loginForm.controls.password.errors?.required">
                   Se requiere ingresar password</small>
              </div>
             </div>

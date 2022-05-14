@@ -1,3 +1,104 @@
 .text-left {
-    color:red;
+  color: red;
+}
+
+@media (max-width: 576px) {
+  .multi-steps-wrap {
+    margin: 0;
+  }
+}
+.multi-steps-wrap .multi-steps {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.multi-steps-wrap .multi-steps > li {
+  counter-increment: stepNum;
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  color: #3cba9f;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.negative {
+  border-color: rgb(75, 116, 248);
+}
+
+.observado {
+  border-color: #df332d;
+}
+
+.finalizado{
+  border-color: #15b33c;
+}
+.multi-steps-wrap .multi-steps > li:before {
+  content: "✓";
+  display: block;
+  margin: 0 auto 4px;
+  background-color: #fff;
+  width: 46px;
+  height: 46px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 25px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #3cba9f;
+  border-radius: 50%;
+  font-weight: bold !important;
+}
+
+.multi-steps-wrap .multi-steps > li:after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: #3cba9f;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: -1;
+}
+.multi-steps-wrap .multi-steps > li:last-child:after {
+  display: none;
+}
+.multi-steps-wrap .multi-steps > li:last-child.is-active:before {
+  content: "✓";
+}
+.multi-steps-wrap .multi-steps > li:first-child.is-active:before {
+  content: "✓";
+}
+.multi-steps-wrap .multi-steps > li.is-active:before {
+  background-color: #fff;
+  border-color: #3cba9f;
+}
+.multi-steps-wrap .multi-steps > li.negative:before {
+  background-color: rgb(75, 116, 248);
+  border-color: rgb(75, 116, 248);
+  color: white;
+}
+
+.multi-steps-wrap .multi-steps > li.observado:before {
+  background-color: #df332d;
+  border-color: #df332d;
+  color: white;
+}
+
+.multi-steps-wrap .multi-steps > li.finalizado:before {
+  background-color: #15b33c;
+  border-color: #15b33c;
+  color: white;
+}
+
+
+
+
+
+.multi-steps-wrap .multi-steps > li.is-active ~ li {
+  color: #808080;
+}
+.multi-steps-wrap .multi-steps > li.is-active ~ li:before {
+  background-color: #eee;
+  border-color: #fff;
 }

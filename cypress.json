@@ -1,0 +1,28 @@
+{
+  "env": {
+    "url": {
+      "service": "https://whatsapp-bot-isekai.herokuapp.com",
+      "visit": "http://localhost:4200/#/",
+      "tracking": "http://localhost:4200/#/tracking"
+    },
+    "tracking": {
+      "numeroTramite": "13161522543671642522",
+      "dni": "71642522"
+    },
+    "userExito": {
+      "username": "test@mail.com",
+      "password": "Admin1"
+    },
+    "tramiteFiltrado": {
+      "usuario": "jburgos",
+      "nombre": "jburgos",
+      "apellido": "jburgos",
+      "estado": "REGISTRADO"
+    }
+  },
+  "defaultCommandTimeout": 10000,
+  "projectId": "",
+  "numTestsKeptInMemory": 50,
+  "requestTimeout": 10000,
+  "responseTimeout": 10000
+}

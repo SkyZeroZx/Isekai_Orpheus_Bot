@@ -15,7 +15,8 @@
         <form class="border p-3 form" (ngSubmit)="buscarTramiteTracking()" [formGroup]="trackingForm">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-4 d-flex justify-content-center">
-              <input type="text" placeholder="N° Tramite" formControlName="idDocTramite" class="form-control">
+              <input type="text" placeholder="N° Tramite" formControlName="idDocTramite" class="form-control"
+                maxlength="30">
             </div>
 
             <div class="col-lg-4 d-flex justify-content-center">
@@ -31,18 +32,18 @@
           <div class="row d-flex justify-content-center">
             <div class="col-lg-4 d-flex justify-content-center">
               <div *ngIf="trackingForm.controls.idDocTramite.invalid && trackingForm.controls.idDocTramite.touched">
-                <small class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.minlength">
-                  La longitud minima es 8 caracteres</small>
-                <small class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.required">
+                <small id="minlengthTramite" class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.minlength">
+                  La longitud minima es 14 caracteres</small>
+                <small id="reqlengthTramite" class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.required">
                   Se requiere ingresar N° Tramite para seguimiento</small>
               </div>
             </div>
 
             <div class="col-lg-4 d-flex justify-content-center">
               <div *ngIf="trackingForm.controls.dni.invalid && trackingForm.controls.dni.touched">
-                <small class="text-left" *ngIf="trackingForm.controls.dni.errors?.minlength">
+                <small id="minLenghtDNI" class="text-left" *ngIf="trackingForm.controls.dni.errors?.minlength">
                   La longitud minima es 8 caracteres</small>
-                <small class="text-left" *ngIf="trackingForm.controls.dni.errors?.required">
+                <small id="reqDNI" class="text-left" *ngIf="trackingForm.controls.dni.errors?.required">
                   Se requiere ingresar dni para seguimiento</small>
               </div>
             </div>
@@ -52,8 +53,31 @@
           </div>
         </form>
         <br>
-
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <div *ngIf="this.detalleOk">
+          <br>
+          <!-- Segun el ultimo estado se da un color respectivo a nuestro estado -->
+          <div class="row multi-steps-wrap">
+            <ul class="list-unstyled multi-steps">
+              <li class="job-status job-created"
+                [ngClass]="{'job-inprogress is-active negative': this.listaDetalles[0].estado =='REGISTRADO'}">
+                REGISTRADO
+              </li>
+              <li class="job-status"
+                [ngClass]="{'job-inprogress is-active negative':    this.listaDetalles[0].estado== 'PROCESANDO'}">
+                PROCESANDO</li>
+              <li class="job-status job-completed " *ngIf="this.listaDetalles[0].estado == 'OBSERVADO'"
+                [ngClass]="{'job-inprogress is-active observado': this.listaDetalles[0].estado == 'OBSERVADO'}">
+                OBSERVADO
+              </li>
+              <li class="job-status job-closed"
+                [ngClass]="{'job-inprogress is-active finalizado': this.listaDetalles[0].estado == 'FINALIZADO'}">
+                FINALIZADO
+              </li>
+            </ul>
+          </div>
+          <br>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist" *ngIf="detalleOk">
           <tabset class="table">
             <tab heading="Detalles" id="tab1">
               <div class="table-responsive">
@@ -66,7 +90,7 @@
                       <th>Observacion</th>
                     </tr>
                   </thead>
-                  <tbody *ngIf="detalleOk">
+                  <tbody>
                     <tr *ngFor="let itemDetalle of listaDetalles">
                       <td>{{itemDetalle.id_est_doc}}</td>
                       <td>{{itemDetalle.fecha}}</td>

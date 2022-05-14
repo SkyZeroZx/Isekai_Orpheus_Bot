@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API_URL:'https://api-orpheus-isekai-bot.herokuapp.com',
+  API_URL:'https://whatsapp-bot-isekai.herokuapp.com',
 
 };
