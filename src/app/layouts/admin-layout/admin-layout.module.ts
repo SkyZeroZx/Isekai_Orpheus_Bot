@@ -25,6 +25,9 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { DocumentosComponent } from "src/app/pages/documentos/documentos.component";
 import { UsersComponent } from "src/app/pages/users/users.component";
+import { CrearUserComponent } from "src/app/pages/users/crear-user/crear-user.component";
+import { EditUserComponent } from "src/app/pages/users/edit-user/edit-user.component";
+import { FilterPipeUser } from "src/app/pipes/filterUsers.pipe";
 
 
 defineLocale("es", esLocale);
@@ -53,8 +56,11 @@ defineLocale("es", esLocale);
     BarComponent,
     tramitesComponent,
     FilterPipe,
+    FilterPipeUser,
     DocumentosComponent,
-    UsersComponent
+    UsersComponent,
+    CrearUserComponent,
+    EditUserComponent
   ],
   bootstrap: [DashboardComponent],
 })

@@ -7,7 +7,6 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import { ChangePassword } from "src/app/entities/user";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -60,14 +59,18 @@ export class ChangePasswordComponent implements OnInit {
       this.diferent = true;
       return;
     }
- 
+
     this.authService.changePassword(this.changePasswordForm.value).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "Password change!":
+          case "OK":
             this.router.navigate(["/dashboard"]);
-            this.toastrService.success(res.message, "Exito", {
-              timeOut: 2000,
+            // Actualizamos el localstorage por si es un primer login
+            let newStorage = JSON.parse(localStorage.getItem("user"));
+            newStorage.firstLogin = false;
+            localStorage.setItem("user", JSON.stringify(newStorage));
+            this.toastrService.success("Se cambio con exitosa la contraseña", "Exito", {
+              timeOut: 3000,
             });
             break;
           default:
@@ -84,5 +87,9 @@ export class ChangePasswordComponent implements OnInit {
         });
       },
     });
+  }
+
+   retrocederFirstLogin() {
+    this.router.navigate(["/login"]);
   }
 }

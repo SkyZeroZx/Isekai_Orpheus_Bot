@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL:'https://whatsapp-bot-isekai.herokuapp.com'
+  API_URL:'http://localhost:3000'
 };
 
 /*

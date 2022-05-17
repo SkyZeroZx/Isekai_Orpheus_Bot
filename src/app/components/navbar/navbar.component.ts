@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
         break;
     }
 
-    this.usuarioLogeado = localStorage.getItem("usuarioLogueado");
+    this.usuarioLogeado =JSON.parse(localStorage.getItem("user")).username
   }
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -62,6 +62,7 @@ export class NavbarComponent implements OnInit {
     console.log("logout");
     this.auth.logout();
     this.router.navigate(["/login"]);
+    localStorage.clear();
   }
 
   changePassword() {

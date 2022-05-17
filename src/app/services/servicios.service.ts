@@ -12,12 +12,12 @@ import {
   TramiteDoc,
 } from "../entities/tramite";
 import { environment } from "src/environments/environment";
+import { UserUpdate, UserResponse } from "../entities/user";
 
 @Injectable({
   providedIn: "root",
 })
 export class ServiciosService {
-  // Servicios para consulta de tramites
   tramites: Tramite[];
   detalles: Detalle[];
   imagenes: Imagen[];
@@ -28,21 +28,48 @@ export class ServiciosService {
 
   constructor(private http: HttpClient) {}
 
-  public getAll(): Observable<any> {
+  /* **************************** SERVICIOS GESTION USUARIOS **************************************** */
+  resetPassword(username): Observable<any> {
+    return this.http
+      .post<any>(`${environment.API_URL}/auth/reset-password`, username)
+      .pipe(catchError(this.handlerError));
+  }
+
+  updateUser(user: UserUpdate): Observable<any> {
+    return this.http
+      .patch(`${environment.API_URL}/users`, user)
+      .pipe(catchError(this.handlerError));
+  }
+
+  deleteUser(id): Observable<any> {
+    return this.http
+      .delete<Detalle>(`${environment.API_URL}/users/${id}`)
+      .pipe(catchError(this.handlerError));
+  }
+
+  createUser(user:UserUpdate): Observable<any>{
+    return this.http
+    .post<any>(`${environment.API_URL}/users`, user)
+    .pipe(catchError(this.handlerError));
+  }
+
+  getAllUsers(): Observable<UserResponse[]> {
+    return this.http
+      .get<UserResponse[]>(`${environment.API_URL}/users`)
+      .pipe(catchError(this.handlerError));
+  }
+  /* **************************** SERVICIOS DASHBOARD GRAFICOS **************************************** */
+  getAll(): Observable<any> {
     return this.http
       .post<any>(`${environment.API_URL}/grafico`, null)
       .pipe(catchError(this.handlerError));
   }
 
-  public fromEstado(tramite: string): Observable<any> {
+  fromEstado(tramite: string): Observable<any> {
     return this.getAll().pipe(map((data) => data[tramite]));
   }
 
-  public twoDates(
-    tramite: string,
-    DateFrom: Date,
-    dateTo: Date
-  ): Observable<any> {
+  twoDates(tramite: string, DateFrom: Date, dateTo: Date): Observable<any> {
     return this.fromEstado(tramite).pipe(
       map((res) =>
         res.filter(
@@ -53,11 +80,11 @@ export class ServiciosService {
     );
   }
 
-  public getAllMonth(): Observable<any> {
+  getAllMonth(): Observable<any> {
     return this.http.post<any>(`${environment.API_URL}/grafico/barras`, null);
   }
 
-  public fromTramiteEstado(tramite: string): Observable<any> {
+  fromTramiteEstado(tramite: string): Observable<any> {
     return this.getAllMonth().pipe(map((data) => data[tramite]));
   }
 
@@ -79,19 +106,11 @@ export class ServiciosService {
       );
   }
 
+  /* **************************** SERVICIOS TRAMITES **************************************** */
   listaTramites(): Observable<TramiteDoc[]> {
     return this.http
       .get<TramiteDoc[]>(`${environment.API_URL}/tramite`)
       .pipe(catchError(this.handlerError));
-  }
-
-  handlerError(error): Observable<never> {
-    let errorMessage = "Error unknown";
-    if (error) {
-      errorMessage = `Error ${error.message}`;
-    }
-    window.alert(errorMessage);
-    return throwError(errorMessage);
   }
 
   buscarTramiteDetalleDniAndId(values: any): Observable<Detalle[]> {
@@ -159,5 +178,15 @@ export class ServiciosService {
       `${environment.API_URL}/tramite/updatecertificado`,
       archivo
     );
+  }
+
+  /* *********************UTILITARIOS*********************** */
+  handlerError(error): Observable<never> {
+    let errorMessage = "Error unknown";
+    if (error) {
+      errorMessage = `Error ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 }

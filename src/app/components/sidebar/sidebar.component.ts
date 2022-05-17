@@ -70,12 +70,13 @@ export class SidebarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
     });
-    this.usuarioLogeado = localStorage.getItem("usuarioLogueado");
+    this.usuarioLogeado = JSON.parse(localStorage.getItem("user")).username;
   }
 
   onLogout() {
     this.auth.logout();
     this.router.navigate(["/login"]);
+    localStorage.clear();
   }
 
   changePassword() {

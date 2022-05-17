@@ -14,26 +14,55 @@
                 </div>
                 <form class="border p-3 form" [formGroup]="usuarioForm" (change)="onChangeForm()">
                     <div class="row">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input type="text" placeholder="Nombres" formControlName="filterNombreUser"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input type="text" placeholder="Apellido Paterno" formControlName="filterPaternoUser"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input type="text" placeholder="Apellido Materno" formControlName="filterMaternoUser"
+                                    class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <input type="text" placeholder="Codigo Usuario" formControlName="filterCodUser"
                                     class="form-control">
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <input type="text" placeholder="Email Usuario" formControlName="filterEmailUser"
                                     class="form-control">
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <input type="text" placeholder="Rol Usuario" formControlName="filterRolUser"
                                     class="form-control">
                             </div>
                         </div>
-                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <select id="inputEstado" class="form-control" formControlName="filterEstado">
+                                    <option value="">Elija Estado...</option>
+                                    <option [value]="'CREADO'">CREADO</option>
+                                    <option [value]="'HABILITADO'">HABILITADO</option>
+                                    <option [value]="'RESETEADO'">RESETEADO</option>
+                                    <option [value]="'BLOQUEADO'">BLOQUEADO</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
@@ -62,13 +91,17 @@
                     </div>
                 </div>
 
-                <div class="table-responsive">
+                <div class="table-responsive" *ngIf="listaUsuariosOk">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Codigo</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Nombres</th>
+                                <th scope="col">Appelido Paterno</th>
+                                <th scope="col">Apellido Materno</th>
                                 <th scope="col">Rol</th>
+                                <th scope="col">Estado</th>
                                 <th scope="col">Fecha Creacion</th>
                                 <th scope="col">Fecha Modificado</th>
                                 <th scope="col">Reseteo</th>
@@ -76,30 +109,55 @@
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let usuario of listaUsuarios| 
+                        filterUsers:[
+                        usuarioForm.getRawValue().filterCodUser,
+                        usuarioForm.getRawValue().filterEstado,
+                        usuarioForm.getRawValue().filterEmailUser,
+                        usuarioForm.getRawValue().filterRolUser,
+                        usuarioForm.getRawValue().filterNombreUser,
+                        usuarioForm.getRawValue().filterPaternoUser, 
+                        usuarioForm.getRawValue().filterMaternoUser
+                        ] |
+                        paginate:{itemsPerPage: 5, currentPage:p}">
                             <tr>
                                 <td>
-                                    015
+                                    {{usuario.id}}
                                 </td>
                                 <td>
-                                    orpheus_isekai@mail.com
+                                    {{usuario.username}}
                                 </td>
                                 <td>
-                                    Administrador
+                                    {{usuario.nombre}}
                                 </td>
                                 <td>
-                                    06/06/2006
-                                </td>  
+                                    {{usuario.apellidoPaterno}}
+                                </td>
                                 <td>
-                                    15/02/2022
-                                </td>  
+                                    {{usuario.apellidoMaterno}}
+                                </td>
+                                <td>
+                                    {{usuario.role}}
+                                </td>
+                                <td>
+                                    {{usuario.estado}}
+                                </td>
+                                <td>
+                                    {{usuario.createdAt}}
+                                </td>
+                                <td>
+                                    {{usuario.updateAt}}
+                                </td>
+                                <td style="padding-left: 35px;" (click)="alertResetUser(usuario.username)">
+                                    <span class="fa-passwd-reset fa-stack">
+                                        <i class="fa fa-undo fa-stack-2x"></i>
+                                        <i class="fa fa-lock fa-stack-1x"></i>
+                                    </span>
+                                </td>
                                 <td style="padding-left: 35px;">
-                                    <i (click)="resetearUsuario()" class="fa fa-refresh"></i>
-                                </td>                                                               
-                                <td style="padding-left: 35px;">
-                                    <i (click)="detalleUsuario()" class="ni ni-bullet-list-67"></i>
+                                    <i (click)="editarUsuario(usuario)" class="ni ni-bullet-list-67"></i>
                                 </td>
-                                <td style="padding-left: 45px;" (click)="eliminarUsuario()">
+                                <td style="padding-left: 45px;" (click)="alertDeleteUser(usuario)">
                                     <i class="ni ni-fat-remove"></i>
                                 </td>
                             </tr>
@@ -112,6 +170,42 @@
                     </pagination-controls>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Nuevo Usuario -->
+<div bsModal class="modal fade" #modalNewUser="bs-modal" [config]="{backdrop: 'static'}" (onHidden)="listarUsuarios()"
+    tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-static-name" class="modal-title pull-left">Nuevo Usuario</h4>
+                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                    (click)="modalNewUser.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <app-crear-user *ngIf="crearUsuarioOK"></app-crear-user>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Editar Usuario -->
+<div bsModal class="modal fade" #modalEditUser="bs-modal" [config]="{backdrop: 'static'}" (onHidden)="listarUsuarios()"
+    tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-static-name" class="modal-title pull-left">Editar Usuario</h4>
+                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                    (click)="modalEditUser.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <app-edit-user [in_user]="userSeleccionado" *ngIf="editUsuarioOK"></app-edit-user>
         </div>
     </div>
 </div>

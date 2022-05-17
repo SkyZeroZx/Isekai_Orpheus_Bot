@@ -257,7 +257,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="modalMod.hide()">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="estadosActualizarForm.invalid">Actualizar</button>
           </div>
         </form>
 

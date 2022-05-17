@@ -12,9 +12,14 @@ export class CheckLogin implements CanActivate {
 
   canActivate(): Observable<boolean> {
     console.log("Auth Guard Check Login");
-    if (localStorage.getItem("usuarioLogueado") === null) {
-    } else if (this.router.url === "/") {
-      console.log("Usuario logeado es diferente de null");
+    if (localStorage.getItem("user") !== null) {
+      if (JSON.parse(localStorage.getItem("user")).firstLogin) {
+        localStorage.clear();
+        return this.authService.user$.pipe(
+          take(1),
+          map((user: UserResponse) => (!user ? false : true))
+        );
+      }
       this.router.navigate(["/dashboard"]);
     }
 

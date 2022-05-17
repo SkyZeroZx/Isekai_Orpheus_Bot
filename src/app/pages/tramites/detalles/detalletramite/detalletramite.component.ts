@@ -107,7 +107,7 @@ export class DetalletramiteComponent implements OnInit {
       estado: new FormControl(),
       observaciones: new FormControl("", [
         Validators.required,
-        Validators.minLength(2),
+        Validators.minLength(10),
       ]),
     });
     this.detalleForm = this.fb.group({
@@ -259,7 +259,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.insertarTramite(values).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "Nuevo Estado Tramite Ingresado":
+          case "OK":
             this.toastrService.success(
               "Se registro exitosamente un nuevo estado para " +
                 this.in_tramite.id_est_doc,
@@ -276,6 +276,7 @@ export class DetalletramiteComponent implements OnInit {
             });
             break;
           default:
+            this.leerDetalles();
             this.toastrService.error(res.message, "Error", {
               timeOut: 3000,
             });
@@ -284,6 +285,7 @@ export class DetalletramiteComponent implements OnInit {
       },
       error: (err) => {
         console.log("regisraEstado error", err);
+        this.leerDetalles();
         this.toastrService.error(err, "Error", {
           timeOut: 5000,
         });
@@ -324,7 +326,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.uploadFile(values).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "Certificado registrado existosamente":
+          case "OK":
             this.uploadForm.reset();
             this.fileName = "Seleccione un archivo (PDF)";
             this.toastrService.success(
@@ -358,7 +360,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.update(values).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "Tramite actualizado":
+          case "OK":
             this.toastrService.success(
               "Se actualizo correctamente el estado para " +
                 this.in_tramite.id_est_doc,
@@ -391,7 +393,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.deleteTramite(this.detalleEliminar).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "Tramite eliminado":
+          case "OK":
             this.toastrService.success(
               "Se elimino correctamente el detalle",
               "Exito",

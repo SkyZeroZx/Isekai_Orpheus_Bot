@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
-import { ChangePassword, ChangePasswordRes, User, UserResponse } from '../entities/user';
+import { ChangePassword, ChangePasswordRes, UserLogin, UserResponse } from '../entities/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 const helper = new JwtHelperService();
@@ -28,7 +28,7 @@ export class AuthService {
     return this.user.getValue();
   }
 
-  login(authData: User): Observable<UserResponse> {
+  login(authData: UserLogin): Observable<UserResponse> {
     return this.http
       .post<UserResponse>(`${environment.API_URL}/auth/login`, authData)
       .pipe(
@@ -52,7 +52,7 @@ export class AuthService {
 
   logout():void {
     localStorage.removeItem('user');
-    localStorage.removeItem('usuarioLogueado');
+    localStorage.clear();
     this.user.next(null);
     this.loggedIn.next(false);
   }

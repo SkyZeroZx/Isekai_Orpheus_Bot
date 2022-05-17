@@ -34,7 +34,7 @@ context("Login Pruebas Funcionalidad", () => {
     cy.url().should("include", "/dashboard");
     //Verificamos en el localstorage que el item usuarioLogueado sea nuestro username
     cy.url().should(() => {
-      expect(localStorage.getItem("usuarioLogueado")).to.eq(user.username);
+      expect(JSON.parse(localStorage.getItem("user")).username).to.eq(user.username);
     });
   });
 

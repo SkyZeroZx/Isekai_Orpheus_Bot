@@ -1,0 +1,110 @@
+<form [formGroup]="editarUserForm" (ngSubmit)="actualizarUsuario()">
+  <div style="color: black;" class="modal-body">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">UserID</label>
+          <input type="text" class="form-control" readonly formControlName="id">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Email</label>
+          <input type="text" class="form-control" readonly formControlName="username">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Fecha Creacion</label>
+          <input type="text" class="form-control" readonly formControlName="fechaCreacion">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Fecha Modificacion</label>
+          <input type="text" class="form-control" readonly formControlName="fechaModificacion">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Nombres</label>
+          <input type="text" class="form-control" formControlName="nombre" maxlength="80">
+          <div *ngIf="editarUserForm.controls.nombre.invalid && editarUserForm.controls.nombre.touched">
+            <small id="requiredNombres" class="text-left" *ngIf="editarUserForm.controls.nombre.errors?.required">
+              Se requiere ingresar nombres</small>
+            <small id="patternNombres" class="text-left" *ngIf="editarUserForm.controls.nombre.errors?.pattern">
+              El nombre ingresado tiene formato invalido</small>
+            <small id="minlengthNombres" class="text-left" *ngIf="editarUserForm.controls.nombre.errors?.minlength">
+              La longitud minima del nombre es de 4 caracteres</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Apellido Paterno</label>
+          <input type="text" class="form-control" formControlName="apellidoPaterno" maxlength="120">
+          <div
+            *ngIf="editarUserForm.controls.apellidoPaterno.invalid && editarUserForm.controls.apellidoPaterno.touched">
+            <small id="requiredPaterno" class="text-left"
+              *ngIf="editarUserForm.controls.apellidoPaterno.errors?.required">
+              Se requiere ingresar apellido paterno</small>
+            <small id="patternPaterno" class="text-left"
+              *ngIf="editarUserForm.controls.apellidoPaterno.errors?.pattern">
+              El apellido paterno ingresado tiene formato invalido</small>
+            <small id="minlengthPaterno" class="text-left"
+              *ngIf="editarUserForm.controls.apellidoPaterno.errors?.minlength">
+              La longitud minima del apellido paterno es de 6 caracteres</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Apellido Materno</label>
+          <input type="text" class="form-control" formControlName="apellidoMaterno" maxlength="120">
+          <div
+            *ngIf="editarUserForm.controls.apellidoMaterno.invalid && editarUserForm.controls.apellidoMaterno.touched">
+            <small id="requiredPaterno" class="text-left"
+              *ngIf="editarUserForm.controls.apellidoMaterno.errors?.required">
+              Se requiere ingresar apellido materno</small>
+            <small id="patternPaterno" class="text-left"
+              *ngIf="editarUserForm.controls.apellidoMaterno.errors?.pattern">
+              El apellido materno ingresado tiene formato invalido</small>
+            <small id="minlengthPaterno" class="text-left"
+              *ngIf="editarUserForm.controls.apellidoMaterno.errors?.minlength">
+              La longitud minima del apellido materno es de 6 caracteres</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Estado</label>
+          <select id="inputEstado" class="form-control" formControlName="estado">
+            <option [value]="'CREADO'">CREADO</option>
+            <option [value]="'HABILITADO'">HABILITADO</option>
+            <option [value]="'RESETEADO'">RESETEADO</option>
+            <option [value]="'BLOQUEADO'">BLOQUEADO</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Rol</label>
+          <select id="inputEstado" class="form-control" formControlName="role">
+            <option [value]="'admin'">admin</option>
+            <option [value]="'tramitador'">tramitador</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" [disabled]="editarUserForm.invalid">Actualizar</button>
+  </div>
+</form>
