@@ -7,6 +7,7 @@ import {
   Certificado,
   DatosGrafico,
   Detalle,
+  Documento,
   Imagen,
   Tramite,
   TramiteDoc,
@@ -28,6 +29,34 @@ export class ServiciosService {
 
   constructor(private http: HttpClient) {}
 
+  /* **************************** SERVICIOS GESTION DOCUMENTOS **************************************** */
+  getAllDocuments(): Observable<Documento[]> {
+    return this.http
+      .get<Documento[]>(`${environment.API_URL}/documento`)
+      .pipe(catchError(this.handlerError));
+  }
+
+  deleteDocument(cod_doc): Observable<any> {
+    return this.http
+      .delete<any>(`${environment.API_URL}/documento`, {
+        body: cod_doc,
+      })
+      .pipe(catchError(this.handlerError));
+  }
+
+  createDocument(documento: Documento): Observable<any> {
+    return this.http
+      .post<any>(`${environment.API_URL}/documento`, documento)
+      .pipe(catchError(this.handlerError));
+  }
+
+  updateDocument(documento: Documento): Observable<any> {
+    return this.http
+      .patch(`${environment.API_URL}/documento`, documento)
+      .pipe(catchError(this.handlerError));
+
+  }
+
   /* **************************** SERVICIOS GESTION USUARIOS **************************************** */
   resetPassword(username): Observable<any> {
     return this.http
@@ -47,10 +76,10 @@ export class ServiciosService {
       .pipe(catchError(this.handlerError));
   }
 
-  createUser(user:UserUpdate): Observable<any>{
+  createUser(user: UserUpdate): Observable<any> {
     return this.http
-    .post<any>(`${environment.API_URL}/users`, user)
-    .pipe(catchError(this.handlerError));
+      .post<any>(`${environment.API_URL}/users`, user)
+      .pipe(catchError(this.handlerError));
   }
 
   getAllUsers(): Observable<UserResponse[]> {

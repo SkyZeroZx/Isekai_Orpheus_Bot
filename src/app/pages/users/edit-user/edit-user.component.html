@@ -31,7 +31,7 @@
       <div class="col-sm-4">
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">Nombres</label>
-          <input type="text" class="form-control" formControlName="nombre" maxlength="80">
+          <input type="text" class="form-control" formControlName="nombre"  oninput="alpha(this)" maxlength="80">
           <div *ngIf="editarUserForm.controls.nombre.invalid && editarUserForm.controls.nombre.touched">
             <small id="requiredNombres" class="text-left" *ngIf="editarUserForm.controls.nombre.errors?.required">
               Se requiere ingresar nombres</small>
@@ -45,7 +45,7 @@
       <div class="col-sm-4">
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">Apellido Paterno</label>
-          <input type="text" class="form-control" formControlName="apellidoPaterno" maxlength="120">
+          <input type="text" class="form-control" formControlName="apellidoPaterno" oninput="alpha(this)" maxlength="120">
           <div
             *ngIf="editarUserForm.controls.apellidoPaterno.invalid && editarUserForm.controls.apellidoPaterno.touched">
             <small id="requiredPaterno" class="text-left"
@@ -56,14 +56,14 @@
               El apellido paterno ingresado tiene formato invalido</small>
             <small id="minlengthPaterno" class="text-left"
               *ngIf="editarUserForm.controls.apellidoPaterno.errors?.minlength">
-              La longitud minima del apellido paterno es de 6 caracteres</small>
+              La longitud minima del apellido paterno es de 2 caracteres</small>
           </div>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">Apellido Materno</label>
-          <input type="text" class="form-control" formControlName="apellidoMaterno" maxlength="120">
+          <input type="text" class="form-control" formControlName="apellidoMaterno" oninput="alpha(this)" maxlength="120">
           <div
             *ngIf="editarUserForm.controls.apellidoMaterno.invalid && editarUserForm.controls.apellidoMaterno.touched">
             <small id="requiredPaterno" class="text-left"
@@ -74,7 +74,7 @@
               El apellido materno ingresado tiene formato invalido</small>
             <small id="minlengthPaterno" class="text-left"
               *ngIf="editarUserForm.controls.apellidoMaterno.errors?.minlength">
-              La longitud minima del apellido materno es de 6 caracteres</small>
+              La longitud minima del apellido materno es de 2 caracteres</small>
           </div>
         </div>
       </div>

@@ -7,8 +7,9 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { Constant } from "src/app/Constants/Constant";
 import { AuthService } from "src/app/services/auth.service";
-
+ 
 @Component({
   selector: "app-change-password",
   templateUrl: "./change-password.component.html",
@@ -18,7 +19,9 @@ export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
   //Variable booleana para validacion de password el cambio de contraseña (OldPassword & NewPassword)
   diferent: boolean = false;
-
+  // Arreglo de variables booleanas para mostrar el password segun se requiera
+  show_button: Boolean[] = [false, false, false];
+  show_eye: Boolean[] = [false, false, false];
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
@@ -49,6 +52,23 @@ export class ChangePasswordComponent implements OnInit {
       ]),
     });
   }
+  // Se muestra password segun requierimiento de la posicion old , new y confirm password
+  showPassword(i) {
+    switch (i) {
+      case 0:
+        this.show_button[0] = !this.show_button[0];
+        this.show_eye[0] = !this.show_eye[0];
+        break;
+      case 1:
+        this.show_button[1] = !this.show_button[1];
+        this.show_eye[1] = !this.show_eye[1];
+        break;
+      case 2:
+        this.show_button[2] = !this.show_button[2];
+        this.show_eye[2] = !this.show_eye[2];
+        break;
+    }
+  }
 
   onChangePassword() {
     this.diferent = false;
@@ -63,15 +83,19 @@ export class ChangePasswordComponent implements OnInit {
     this.authService.changePassword(this.changePasswordForm.value).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.router.navigate(["/dashboard"]);
             // Actualizamos el localstorage por si es un primer login
             let newStorage = JSON.parse(localStorage.getItem("user"));
             newStorage.firstLogin = false;
             localStorage.setItem("user", JSON.stringify(newStorage));
-            this.toastrService.success("Se cambio con exitosa la contraseña", "Exito", {
-              timeOut: 3000,
-            });
+            this.toastrService.success(
+              "Se cambio con exitosa la contraseña",
+              "Exito",
+              {
+                timeOut: 3000,
+              }
+            );
             break;
           default:
             this.toastrService.error(res.message, "Error", {
@@ -89,7 +113,7 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
-   retrocederFirstLogin() {
+  retrocederFirstLogin() {
     this.router.navigate(["/login"]);
   }
 }

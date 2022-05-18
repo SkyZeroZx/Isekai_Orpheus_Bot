@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormGroup, FormBuilder, FormControl } from "@angular/forms";
 import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
+import { Constant } from "src/app/Constants/Constant";
 import { UserResponse } from "src/app/entities/user";
 import { ServiciosService } from "src/app/services/servicios.service";
 import Swal from "sweetalert2";
@@ -15,6 +16,7 @@ export class UsersComponent implements OnInit {
   usuarioForm: FormGroup;
   listaUsuarios: UserResponse[];
   userSeleccionado : UserResponse;
+  // Variable booleas que controlar el mostrar la lista y componente hijos
   listaUsuariosOk: boolean = false;
   crearUsuarioOK: boolean = false;
   editUsuarioOK: boolean = false;
@@ -49,6 +51,7 @@ export class UsersComponent implements OnInit {
   exportarExcel() {}
   exportarPDF() {}
 
+  // Metodo que llama al modal componente hijo edituser 
   editarUsuario(user) {
     this.userSeleccionado = user;
     this.modalEditUser.show();
@@ -60,14 +63,13 @@ export class UsersComponent implements OnInit {
   }
 
 
-
+  // Metodo que llama al servicio getAllUsers
   listarUsuarios() {
     this.servicios.getAllUsers().subscribe({
       next: (res) => {
         console.log("Lista Usuarios ", res);
         this.listaUsuariosOk = true;
         this.listaUsuarios = res;
-        this.p = 1;
       },
       error: (err) => {
         console.log("Error listarUsuarios ", err);
@@ -84,7 +86,8 @@ export class UsersComponent implements OnInit {
       next: (res) => {
         console.log('Resetea password ' , res)
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
+            this.listarUsuarios();
             this.toastrService.success(
               "Se reseteo exitosamente la contraseña",
               "Exito",
@@ -117,12 +120,14 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  // Metodo que llama al servicio eliminar usuario
   eliminarUsuario(id) {
     this.servicios.deleteUser(id).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.listarUsuarios();
+            this.p = 1;
             this.toastrService.success(
               "Se elimino exitosamente el usuario",
               "Exito",
@@ -155,6 +160,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  // Metodo que llama al componente modal hijo crear user 
   crearUsuario() {
     this.modalNewUser.show();
     this.crearUsuarioOK = true;

@@ -7,9 +7,8 @@ import {
 } from "@angular/forms";
 import { BsModalService } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
-import { UserResponse } from "src/app/entities/user";
+import { Constant } from "src/app/Constants/Constant";
 import { ServiciosService } from "src/app/services/servicios.service";
-import { UsersComponent } from "../users.component";
 
 @Component({
   selector: "app-edit-user",
@@ -77,11 +76,10 @@ export class EditUserComponent implements OnInit {
   // Llamada al servicio updateUser para actualizar nuestro usuario
   actualizarUsuario() {
     this.trimEditarUserForm();
-    console.log(this.editarUserForm.value)
     this.servicios.updateUser(this.editarUserForm.value).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.toastrService.success(
               "Se actualizo exitosamente el usuario",
               "Exito",
@@ -121,25 +119,25 @@ export class EditUserComponent implements OnInit {
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(80),
-          Validators.pattern("[A-Za-z0-9 ]+"),
+          Validators.pattern("[A-Za-z ]+"),
         ])
       ),
       apellidoPaterno: new FormControl(
         "",
         Validators.compose([
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
           Validators.maxLength(120),
-          Validators.pattern("[A-Za-z0-9 ]+"),
+          Validators.pattern("[A-Za-z ]+"),
         ])
       ),
       apellidoMaterno: new FormControl(
         "",
         Validators.compose([
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
           Validators.maxLength(120),
-          Validators.pattern("[A-Za-z0-9 ]+"),
+          Validators.pattern("[A-Za-z ]+"),
         ])
       ),
       role: new FormControl(""),

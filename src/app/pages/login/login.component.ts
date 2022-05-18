@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { Constant } from "src/app/Constants/Constant";
 import { AuthService } from "src/app/services/auth.service";
 import Swal from "sweetalert2";
 
@@ -17,6 +18,9 @@ import Swal from "sweetalert2";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+ 
+ show_button: Boolean = false;
+ show_eye: Boolean = false;
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
@@ -30,6 +34,12 @@ export class LoginComponent implements OnInit {
     this.crearFormularioLogin();
   }
 
+  //Funcion que muestra password al usuario
+  showPassword() {
+    this.show_button = !this.show_button;
+    this.show_eye = !this.show_eye;
+  }
+  
   //Creamos nuestro reactiveForm para Login
   crearFormularioLogin() {
     //Creamos validaciones respectiva para nuestro ReactiveForm
@@ -56,12 +66,7 @@ export class LoginComponent implements OnInit {
         // Segun response realizamos una accion
         console.log(res);
         switch (res.message) {
-          case "Username or password incorrect!":
-            this.toastrService.error(res.message, "Error", {
-              timeOut: 3000,
-            });
-            break;
-          case "OK":
+          case Constant.MENSAJE_OK:
             if (res.firstLogin) {
               // Es tu primer login modal debes cambiar tu contraseña aceptar o rechazar
               this.alertFirstLogin();

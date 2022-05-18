@@ -45,3 +45,9 @@ export interface TramiteDoc {
   id_est_doc: string;
   fecha_doc: Date;
 }
+
+export interface Documento{
+  cod_doc : string;
+  nombre : string;
+  requisitos:string;
+}

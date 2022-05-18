@@ -16,19 +16,19 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <input type="text" placeholder="Nombres" formControlName="filterNombreUser"
+                                <input type="text" (keyup)="onChangeForm()" placeholder="Nombres" formControlName="filterNombreUser"
                                     class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <input type="text" placeholder="Apellido Paterno" formControlName="filterPaternoUser"
+                                <input type="text" (keyup)="onChangeForm()" placeholder="Apellido Paterno" formControlName="filterPaternoUser"
                                     class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <input type="text" placeholder="Apellido Materno" formControlName="filterMaternoUser"
+                                <input type="text" (keyup)="onChangeForm()" placeholder="Apellido Materno" formControlName="filterMaternoUser"
                                     class="form-control">
                             </div>
                         </div>
@@ -36,19 +36,19 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" placeholder="Codigo Usuario" formControlName="filterCodUser"
+                                <input type="text"(keyup)="onChangeForm()" placeholder="Codigo Usuario" formControlName="filterCodUser"
                                     class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" placeholder="Email Usuario" formControlName="filterEmailUser"
+                                <input type="text" (keyup)="onChangeForm()" placeholder="Email Usuario" formControlName="filterEmailUser"
                                     class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" placeholder="Rol Usuario" formControlName="filterRolUser"
+                                <input type="text" (keyup)="onChangeForm()" placeholder="Rol Usuario" formControlName="filterRolUser"
                                     class="form-control">
                             </div>
                         </div>

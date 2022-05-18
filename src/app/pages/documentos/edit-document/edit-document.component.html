@@ -1,0 +1,40 @@
+<form [formGroup]="editarDocForm" (ngSubmit)="actualizarDocumento()">
+    <div style="color: black;" class="modal-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Codigo Documento</label>
+                    <input type="text" class="form-control" readonly formControlName="cod_doc">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Nombre</label>
+                    <input type="text" class="form-control" formControlName="nombre"  placeholder="Nombre"  oninput="nombres(this)">
+                    <div *ngIf="editarDocForm.controls.nombre.invalid && editarDocForm.controls.nombre.touched">
+                        <small id="requiredEditDoc" class="text-left"
+                            *ngIf="editarDocForm.controls.nombre.errors?.required">
+                            Se requiere nombre para el documento</small>
+                        <small id="minlengthEditNombres" class="text-left"
+                            *ngIf="editarDocForm.controls.nombre.errors?.minlength">
+                            La longitud minima del nombre del documento es de 6 caracteres</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Requisitos</label>
+                    <input type="text" class="form-control" formControlName="requisitos"  placeholder="Requisitos" >
+                    <div *ngIf="editarDocForm.controls.requisitos.invalid && editarDocForm.controls.requisitos.touched">
+                        <small id="requiredEditRequisitos" class="text-left"
+                            *ngIf="editarDocForm.controls.requisitos.errors?.required">
+                            Se requiere requisitos para el documento</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="editarDocForm.invalid">Actualizar</button>
+    </div>
+</form>

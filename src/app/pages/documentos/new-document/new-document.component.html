@@ -1,0 +1,39 @@
+<form [formGroup]="crearDocForm" (ngSubmit)="crearDocumento()">
+    <div style="color: black;" class="modal-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" oninput="nombres(this)"
+                        formControlName="nombre" maxlength="150">
+                    <div *ngIf="crearDocForm.controls.nombre.invalid && crearDocForm.controls.nombre.touched">
+                        <small id="requiredNewDoc" class="text-left"
+                            *ngIf="crearDocForm.controls.nombre.errors?.required">
+                            Se requiere nombre para el documento</small>
+                        <small id="minlengthNewNombresDoc" class="text-left"
+                            *ngIf="crearUserForm.controls.nombre.errors?.minlength">
+                            La longitud minima del nombre del documento es de 6 caracteres</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Requisitos</label>
+                    <input type="text" class="form-control" formControlName="requisitos" placeholder="Requisitos" />
+                    <div *ngIf="crearDocForm.controls.requisitos.invalid && crearDocForm.controls.requisitos.touched">
+                        <small id="requiredNewRequisitosDoc" class="text-left"
+                            *ngIf="crearDocForm.controls.requisitos.errors?.required">
+                            Se requiere requisitos para el documento</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="crearDocForm.invalid">Crear Documento</button>
+    </div>
+</form>

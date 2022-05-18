@@ -16,23 +16,25 @@ import { ServiciosService } from "src/app/services/servicios.service";
 })
 export class TrackingComponent implements OnInit {
   trackingForm: FormGroup;
-  adjuntoOk: boolean = false;
-  certificadoOk: boolean = false;
-  detalleOk: boolean = false;
   listaAdjuntos: Adjunto[] = [];
   listaDetalles: Detalle[];
   listaCertificado: Certificado[] = [];
+  adjuntoOk: boolean = false;
+  certificadoOk: boolean = false;
+  detalleOk: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private servicios: ServiciosService,
     private toastrService: ToastrService
   ) {}
-
+  
+  // Al renderizar el componente creamos nuestro reactiveForm
   ngOnInit(): void {
     this.crearFormularioTracking();
   }
 
+  // Metodo de creacion de reactiveForm para el component tracking
   crearFormularioTracking(): void {
     this.trackingForm = this.fb.group({
       idDocTramite: new FormControl("", [
@@ -47,14 +49,15 @@ export class TrackingComponent implements OnInit {
     });
   }
 
+  // Metodo que limpia nuestra tabla al realizar una nueva consulta
   limpiarTabla(): void {
     this.adjuntoOk = false;
     this.certificadoOk = false;
     this.detalleOk = false;
   }
 
+  // Metodo que llama al servicio buscarTramiteDetalle por DNI y N°
   buscarTramiteTracking() {
-    console.log(this.trackingForm.value);
     this.limpiarTabla();
     this.servicios
       .buscarTramiteDetalleDniAndId(this.trackingForm.value)
@@ -122,6 +125,6 @@ export class TrackingComponent implements OnInit {
             timeOut: 5000,
           });
         },
-      }); 
+      });
   }
 }

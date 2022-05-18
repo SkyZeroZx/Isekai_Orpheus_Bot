@@ -34,6 +34,73 @@
   <link href="./assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
   <link href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+    function isNombre(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if ((evt.charCode > 64 && evt.charCode < 91) || (evt.charCode > 96 && evt.charCode < 123) || evt.charCode !== 32)
+            return false;
+        return true;
+    }
+</script>
+<script>
+    function tipodocumento(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^0-9]/g, "");
+        input.value = numbers;
+
+    }
+    function process(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^0-9]/g, "");
+        input.value = numbers;
+    }
+    function alpha(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z ]/gi, "");
+        input.value = numbers;
+    }
+    function alphanum(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z0-9]/gi, "");
+        input.value = numbers;
+    }
+    function usuario(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z0-9]/gi, "");
+        input.value = numbers;
+    }
+    function usuario1(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z0-9]/gi, "");
+        input.value = numbers;
+    }
+    function alpha2(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z0-9\@\-\_\:\/\.]/gi, "");
+        input.value = numbers;
+    }
+    function nombres(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z0-9 ]/gi, "");
+        input.value = numbers;
+    }
+    function mail(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z0-9\@\-\_\.]/gi, "");
+        input.value = numbers;
+    }
+    function pass(input) {
+        let value = input.value;
+        let numbers = value.replace(/[^a-z0-9\@\-\_\:\/\.\(\)]/gi, "");
+        input.value = numbers;
+    }
+</script>
 </head>
 <body>
   <app-root></app-root>

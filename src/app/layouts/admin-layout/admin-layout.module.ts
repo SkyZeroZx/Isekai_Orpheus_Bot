@@ -28,6 +28,9 @@ import { UsersComponent } from "src/app/pages/users/users.component";
 import { CrearUserComponent } from "src/app/pages/users/crear-user/crear-user.component";
 import { EditUserComponent } from "src/app/pages/users/edit-user/edit-user.component";
 import { FilterPipeUser } from "src/app/pipes/filterUsers.pipe";
+import { FilterDocument } from "src/app/pipes/filterDocument.pipe";
+import { NewDocumentComponent } from "src/app/pages/documentos/new-document/new-document.component";
+import { EditDocumentComponent } from "src/app/pages/documentos/edit-document/edit-document.component";
 
 
 defineLocale("es", esLocale);
@@ -57,10 +60,13 @@ defineLocale("es", esLocale);
     tramitesComponent,
     FilterPipe,
     FilterPipeUser,
+    FilterDocument,
     DocumentosComponent,
     UsersComponent,
     CrearUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    NewDocumentComponent,
+    EditDocumentComponent
   ],
   bootstrap: [DashboardComponent],
 })

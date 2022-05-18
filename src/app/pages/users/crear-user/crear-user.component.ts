@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { BsModalService } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
+import { Constant } from "src/app/Constants/Constant";
 import { ServiciosService } from "src/app/services/servicios.service";
 
 @Component({
@@ -26,7 +27,7 @@ export class CrearUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.crearFormularioEditarUser();
+    this.crearFormularioCreateUser();
   }
 
   // Limpiamos y seteamos los valores de nuestros formulario (evitamos espacios en blanco)
@@ -52,7 +53,7 @@ export class CrearUserComponent implements OnInit {
     this.servicios.createUser(this.crearUserForm.value).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.toastrService.success(
               "Se creo exitosamente el usuario",
               "Exito",
@@ -87,7 +88,7 @@ export class CrearUserComponent implements OnInit {
   }
 
   // Metodo para creacion de reactiveForm
-  crearFormularioEditarUser() {
+  crearFormularioCreateUser() {
     this.crearUserForm = this.fb.group({
       id: new FormControl(""),
       username: new FormControl(
@@ -105,25 +106,25 @@ export class CrearUserComponent implements OnInit {
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(80),
-          Validators.pattern("[A-Za-z0-9 ]+"),
+          Validators.pattern("[A-Za-z ]+"),
         ])
       ),
       apellidoPaterno: new FormControl(
         "",
         Validators.compose([
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
           Validators.maxLength(120),
-          Validators.pattern("[A-Za-z0-9 ]+"),
+          Validators.pattern("[A-Za-z ]+"),
         ])
       ),
       apellidoMaterno: new FormControl(
         "",
         Validators.compose([
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
           Validators.maxLength(120),
-          Validators.pattern("[A-Za-z0-9 ]+"),
+          Validators.pattern("[A-Za-z ]+"),
         ])
       ),
       role: new FormControl("admin"),

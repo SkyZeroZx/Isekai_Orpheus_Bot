@@ -22,6 +22,7 @@ import { ToastContainerDirective, ToastrService } from "ngx-toastr";
 import Swal from "sweetalert2";
 import { Observable, ReplaySubject } from "rxjs";
 import { Buffer } from "buffer";
+import { Constant } from "src/app/Constants/Constant";
 @Component({
   selector: "app-detalletramite",
   templateUrl: "./detalletramite.component.html",
@@ -259,7 +260,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.insertarTramite(values).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.toastrService.success(
               "Se registro exitosamente un nuevo estado para " +
                 this.in_tramite.id_est_doc,
@@ -326,7 +327,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.uploadFile(values).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.uploadForm.reset();
             this.fileName = "Seleccione un archivo (PDF)";
             this.toastrService.success(
@@ -360,7 +361,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.update(values).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.toastrService.success(
               "Se actualizo correctamente el estado para " +
                 this.in_tramite.id_est_doc,
@@ -393,7 +394,7 @@ export class DetalletramiteComponent implements OnInit {
     this.servicios.deleteTramite(this.detalleEliminar).subscribe({
       next: (res) => {
         switch (res.message) {
-          case "OK":
+          case Constant.MENSAJE_OK:
             this.toastrService.success(
               "Se elimino correctamente el detalle",
               "Exito",

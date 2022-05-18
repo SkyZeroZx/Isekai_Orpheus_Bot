@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Constant } from '../nucleo/constante/Constant';
+import { Constant } from '../Constants/Constant';
 
 @Pipe({
     name: 'filter'
@@ -25,7 +25,6 @@ export class FilterPipe implements PipeTransform {
 
             }
         }
-        Constant.LISTA_USUARIOS_FILTRADO = resultadoBusqueda;
         return resultadoBusqueda;
     }
 
