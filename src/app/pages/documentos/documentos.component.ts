@@ -4,6 +4,7 @@ import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
 import { Constant } from "src/app/Constants/Constant";
 import { Documento } from "src/app/entities/tramite";
+import { ReporteService } from "src/app/services/report.service";
 import { ServiciosService } from "src/app/services/servicios.service";
 import Swal from "sweetalert2";
 
@@ -16,18 +17,21 @@ export class DocumentosComponent implements OnInit {
   documentosForm: FormGroup;
   listaDocumentos: Documento[];
   listaDocumentosOk: boolean = false;
-  crearDocumentoOk :boolean = false;
-  editarDocumentOK:boolean = false;
-  documentoSeleccionado :Documento;
+  crearDocumentoOk: boolean = false;
+  editarDocumentOK: boolean = false;
+  documentoSeleccionado: Documento;
   // Variable que indica pagina actual del paginator
-  p:number = 1;
-  @ViewChild("modalNewDocument", { static: false }) public modalNewDocument: ModalDirective;
-  @ViewChild("modalEditDocument", { static: false }) public modalEditDocument: ModalDirective;
+  p: number = 1;
+  @ViewChild("modalNewDocument", { static: false })
+  public modalNewDocument: ModalDirective;
+  @ViewChild("modalEditDocument", { static: false })
+  public modalEditDocument: ModalDirective;
   constructor(
     private servicios: ServiciosService,
     private fb: FormBuilder,
     private modalService: BsModalService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private reporteService: ReporteService
   ) {}
 
   ngOnInit(): void {
@@ -44,16 +48,20 @@ export class DocumentosComponent implements OnInit {
     });
   }
 
-
   // En caso de suceder un cambio como eliminar para evitar errores en el paginator volvemos a la pagina 1
   ngOnChanges() {
     this.p = 1;
   }
-  
-  exportarExcel() {}
-  exportarPDF() {}
 
-  // Metodo que llama al componente modal hijo new document 
+  exportarExcel() {
+    this.reporteService.exportAsExcelFile("REPORTE DOCUMENTOS");
+  }
+  exportarPDF() {
+    const encabezado = ["CODIGO", "NOMBRE", "REQUISITOS"];
+    this.reporteService.exportAsPDF("REPORTE DOCUMENTOS",encabezado);
+  }
+
+  // Metodo que llama al componente modal hijo new document
   crearDocumento() {
     this.crearDocumentoOk = true;
     this.modalNewDocument.show();
@@ -61,8 +69,8 @@ export class DocumentosComponent implements OnInit {
 
   // Metodo que llama al componente modal hijo edit document
   editarDocumento(document) {
-    console.log('documento seleccionado' , document);
-    this.documentoSeleccionado= document;
+    console.log("documento seleccionado", document);
+    this.documentoSeleccionado = document;
     this.editarDocumentOK = true;
     this.modalEditDocument.show();
   }
@@ -127,26 +135,17 @@ export class DocumentosComponent implements OnInit {
             );
             break;
           default:
-            this.toastrService.error(
-             res.message,
-              "Error",
-              {
-                timeOut: 3000,
-              }
-            );
+            this.toastrService.error(res.message, "Error", {
+              timeOut: 3000,
+            });
             break;
         }
       },
       error: (err) => {
-        console.log('eliminarDocumento error: ' + err);
-        this.toastrService.error(
-          "Hubo un error : " + err,
-          "Error",
-          {
-            timeOut: 3000,
-          }
-        );
-
+        console.log("eliminarDocumento error: " + err);
+        this.toastrService.error("Hubo un error : " + err, "Error", {
+          timeOut: 3000,
+        });
       },
     });
   }

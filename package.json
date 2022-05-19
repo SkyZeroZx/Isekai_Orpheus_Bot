@@ -32,6 +32,10 @@
     "clipboard": "2.0.6",
     "concurrently": "^6.5.1",
     "core-js": "3.15.2",
+    "file-saver": "^2.0.5",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.23",
+    "karma-coverage": "^2.2.0",
     "ng2-charts": "2.4.3",
     "ngx-bootstrap": "^8.0.0",
     "ngx-clipboard": "14.0.1",
@@ -41,6 +45,7 @@
     "nouislider": "14.6.2",
     "rxjs": "7.4.0",
     "sweetalert2": "^11.3.4",
+    "xlsx": "^0.18.5",
     "zone.js": "0.11.4"
   },
   "devDependencies": {

@@ -10,12 +10,12 @@ export interface ChangePassword {
 
 export type Roles = "admin" | "tramitador";
 export interface UserResponse {
-  username: string;
-  message: string;
-  token: string;
-  userId: number;
-  role: Roles;
-  firstLogin: boolean;
+  username?: string;
+  message?: string;
+  token?: string;
+  userId?: number;
+  role?: Roles;
+  firstLogin?: boolean;
 }
 
 export interface UserUpdate {
@@ -30,4 +30,16 @@ export interface UserUpdate {
 
 export interface ChangePasswordRes {
   message: string;
+}
+
+export interface UserReport{
+  id: number;
+  username: string;
+  role: Roles;
+  createdAt: string;
+  updateAt: string;
+  nombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  estado: string;
 }

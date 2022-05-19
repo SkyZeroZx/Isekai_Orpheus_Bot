@@ -4,6 +4,8 @@ import { TramiteDoc } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
 import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
+import { ReporteService } from "src/app/services/report.service";
+import { Constant } from "src/app/Constants/Constant";
 
 @Component({
   selector: "app-tramites",
@@ -26,7 +28,8 @@ export class tramitesComponent implements OnInit {
     private servicios: ServiciosService,
     private fb: FormBuilder,
     private modalService: BsModalService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private reporteService: ReporteService
   ) {}
 
   ngOnInit() {
@@ -53,8 +56,8 @@ export class tramitesComponent implements OnInit {
     this.servicios.listaTramites().subscribe({
       next: (res: TramiteDoc[]) => {
         //Recibido nuestra respuesta del servicio
-          this.listaTramiteDoc = res;
-          this.listaTramiteOk = true;
+        this.listaTramiteDoc = res;
+        this.listaTramiteOk = true;
       },
       error: (err) => {
         // En caso de Error
@@ -75,5 +78,13 @@ export class tramitesComponent implements OnInit {
 
   onChangeForm() {
     this.p = 1;
+  }
+  exportarExcel() {
+    this.reporteService.exportAsExcelFile("REPORTE TRAMITES");
+  }
+
+  exportarPDF() {
+    const encabezado =['N° TRAMITE','FECHA','ESTADO ACTUAL','TRAMITE','CODIGO ESTUDIANTE','NOMBRES','APELLIDOS']
+    this.reporteService.exportAsPDF("REPORTE TRAMITES", encabezado);
   }
 }

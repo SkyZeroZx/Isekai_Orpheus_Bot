@@ -18,6 +18,7 @@ export class FilterDocument implements PipeTransform {
         resultadoBusqueda.push(document);
       }
     }
+    Constant.REPORT = resultadoBusqueda;
     return resultadoBusqueda;
   }
 }

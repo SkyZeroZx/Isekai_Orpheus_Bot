@@ -11,14 +11,14 @@
                             *ngIf="crearDocForm.controls.nombre.errors?.required">
                             Se requiere nombre para el documento</small>
                         <small id="minlengthNewNombresDoc" class="text-left"
-                            *ngIf="crearUserForm.controls.nombre.errors?.minlength">
+                            *ngIf="crearDocForm.controls.nombre.errors?.minlength">
                             La longitud minima del nombre del documento es de 6 caracteres</small>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Requisitos</label>
+                    <label for="recipient-name" class="col-form-label">Requisitos URL</label>
                     <input type="text" class="form-control" formControlName="requisitos" placeholder="Requisitos" />
                     <div *ngIf="crearDocForm.controls.requisitos.invalid && crearDocForm.controls.requisitos.touched">
                         <small id="requiredNewRequisitosDoc" class="text-left"

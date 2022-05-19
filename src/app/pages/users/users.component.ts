@@ -4,8 +4,11 @@ import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
 import { Constant } from "src/app/Constants/Constant";
 import { UserResponse } from "src/app/entities/user";
+import { ReporteService } from "src/app/services/report.service";
 import { ServiciosService } from "src/app/services/servicios.service";
 import Swal from "sweetalert2";
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 
 @Component({
   selector: "app-users",
@@ -15,20 +18,23 @@ import Swal from "sweetalert2";
 export class UsersComponent implements OnInit {
   usuarioForm: FormGroup;
   listaUsuarios: UserResponse[];
-  userSeleccionado : UserResponse;
+  userSeleccionado: UserResponse;
   // Variable booleas que controlar el mostrar la lista y componente hijos
   listaUsuariosOk: boolean = false;
   crearUsuarioOK: boolean = false;
   editUsuarioOK: boolean = false;
   p = 1;
 
-  @ViewChild("modalEditUser", { static: false }) public modalEditUser: ModalDirective;
-  @ViewChild("modalNewUser", { static: false }) public modalNewUser: ModalDirective;
+  @ViewChild("modalEditUser", { static: false })
+  public modalEditUser: ModalDirective;
+  @ViewChild("modalNewUser", { static: false })
+  public modalNewUser: ModalDirective;
   constructor(
     private servicios: ServiciosService,
     private fb: FormBuilder,
     private modalService: BsModalService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private reporteService: ReporteService
   ) {}
 
   ngOnInit(): void {
@@ -42,16 +48,40 @@ export class UsersComponent implements OnInit {
       filterCodUser: new FormControl(""),
       filterEmailUser: new FormControl(""),
       filterRolUser: new FormControl(""),
-      filterNombreUser : new FormControl(""),
-      filterPaternoUser : new FormControl(""),
-      filterMaternoUser : new FormControl(""),
-      filterEstado : new FormControl(""),
+      filterNombreUser: new FormControl(""),
+      filterPaternoUser: new FormControl(""),
+      filterMaternoUser: new FormControl(""),
+      filterEstado: new FormControl(""),
     });
   }
-  exportarExcel() {}
-  exportarPDF() {}
+  exportarExcel() {
+    // Eliminamos los elementos que no deseamos mostrar en el reporte
+    Constant.REPORT.forEach(
+      (res) => (delete res.password, delete res.firstLogin)
+    );
+    this.reporteService.exportAsExcelFile("REPORTE USUARIOS");
+  }
 
-  // Metodo que llama al modal componente hijo edituser 
+  exportarPDF() {
+    // Eliminamos los elementos que no deseamos mostrar en el reporte
+    Constant.REPORT.forEach(
+      (res) => (delete res.password, delete res.firstLogin)
+    );
+    const encabezado = [
+      "CODIGO",
+      "EMAIL",
+      "ROL",
+      "CREACION",
+      "MODIFICACION",
+      "NOMBRES",
+      "APELLIDO PATERNO",
+      "APELLIDO MATERNO",
+      "ESTADO",
+    ];
+    this.reporteService.exportAsPDF("REPORTE USUARIOS", encabezado);
+  }
+
+  // Metodo que llama al modal componente hijo edituser
   editarUsuario(user) {
     this.userSeleccionado = user;
     this.modalEditUser.show();
@@ -61,7 +91,6 @@ export class UsersComponent implements OnInit {
   onChangeForm() {
     this.p = 1;
   }
-
 
   // Metodo que llama al servicio getAllUsers
   listarUsuarios() {
@@ -84,7 +113,7 @@ export class UsersComponent implements OnInit {
   resetearUsuario(user) {
     this.servicios.resetPassword(user).subscribe({
       next: (res) => {
-        console.log('Resetea password ' , res)
+        console.log("Resetea password ", res);
         switch (res.message) {
           case Constant.MENSAJE_OK:
             this.listarUsuarios();
@@ -160,7 +189,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  // Metodo que llama al componente modal hijo crear user 
+  // Metodo que llama al componente modal hijo crear user
   crearUsuario() {
     this.modalNewUser.show();
     this.crearUsuarioOK = true;

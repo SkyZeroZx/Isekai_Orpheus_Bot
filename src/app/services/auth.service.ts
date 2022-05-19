@@ -42,7 +42,7 @@ export class AuthService {
 
   changePassword(authPassword:ChangePassword): Observable<ChangePasswordRes>   {
     return this.http.post<ChangePasswordRes>(`${environment.API_URL}/auth/change-password`,authPassword).pipe(
-      map((res:UserResponse)=>{
+      map((res )=>{
         console.log('Res->',res);
         return res;
       }),

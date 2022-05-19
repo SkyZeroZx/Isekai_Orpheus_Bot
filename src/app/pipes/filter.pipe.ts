@@ -25,6 +25,7 @@ export class FilterPipe implements PipeTransform {
 
             }
         }
+        Constant.REPORT = resultadoBusqueda;
         return resultadoBusqueda;
     }
 

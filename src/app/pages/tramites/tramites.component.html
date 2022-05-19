@@ -56,6 +56,29 @@
             </div>
           </div>
         </form>
+
+        <div class="card-header">
+          <div class="row">
+              <div class="row col-md-8" style="text-align: left;">
+                  <div class="col-md-11">
+                  </div>
+              </div>
+              <div class="row col-md-4" style="text-align: right;">
+                  <div class="col-md-8">
+                      <button type="button" class="btn btn-outline-success" (click)="exportarExcel()">
+                          <a> <i class="fa fa-file-excel" aria-hidden="true"> Excel</i></a>
+                      </button>
+                  </div>
+                  <div class="col-md-4">
+                      <button type="button" class="btn btn-outline-danger" (click)="exportarPDF()">
+                          <a> <i class="fa fa-file-pdf" aria-hidden="true"></i> PDF</a>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
