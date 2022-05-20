@@ -2,7 +2,6 @@ import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
 import { ChartType } from "chart.js";
 import { Label, MultiDataSet } from "ng2-charts";
 import { ServiciosService } from "src/app/services/servicios.service";
-import { SpinnerService } from "src/app/services/spinner.service";
 
 @Component({
   selector: "app-donut",
@@ -42,7 +41,7 @@ export class DonutComponent implements OnInit {
       ],
     },
   ];
-  // Tramite seleccionados por el usuario para comparar 
+  // Tramite seleccionados por el usuario para comparar
   tramite1: string = null;
   tramite2: string = null;
 
@@ -75,8 +74,10 @@ export class DonutComponent implements OnInit {
         fechaFin: this.Fin,
         tramite: this.tramite2,
       };
+      //  console.log('Value DONUT', values1);
       //Asignar valores aro interior del grafico
       this.graficosService.buscarPie(values1).subscribe((data) => {
+        //  console.log(data);
         this.doughnutChartData[0][0] = data[0].registrado;
         this.doughnutChartData[0][1] = data[0].procesando;
         this.doughnutChartData[0][2] = data[0].observado;

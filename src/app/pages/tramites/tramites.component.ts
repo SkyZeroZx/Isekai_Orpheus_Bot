@@ -27,7 +27,7 @@ export class tramitesComponent implements OnInit {
   constructor(
     private servicios: ServiciosService,
     private fb: FormBuilder,
-    private modalService: BsModalService,
+    //private modalService: BsModalService,
     private toastrService: ToastrService,
     private reporteService: ReporteService
   ) {}
@@ -61,8 +61,7 @@ export class tramitesComponent implements OnInit {
       },
       error: (err) => {
         // En caso de Error
-        console.log("Error en listarTramiteDoc ", err);
-        this.toastrService.error("Error en el servicio", "Error", {
+        this.toastrService.error("Error en el servicio " +err, "Error", {
           timeOut: 3000,
         });
       },

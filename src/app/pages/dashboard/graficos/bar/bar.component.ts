@@ -87,6 +87,8 @@ export class BarComponent implements OnInit {
   clear(): void {
     this.barChartData[0].data = [];
     this.barChartData[1].data = [];
+    this.barChartData[2].data = [];
+    this.barChartData[3].data = [];
     this.barChartLabels = [];
   }
 

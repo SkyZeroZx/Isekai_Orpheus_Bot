@@ -69,7 +69,7 @@ export class DocumentosComponent implements OnInit {
 
   // Metodo que llama al componente modal hijo edit document
   editarDocumento(document) {
-    console.log("documento seleccionado", document);
+   // console.log("documento seleccionado", document);
     this.documentoSeleccionado = document;
     this.editarDocumentOK = true;
     this.modalEditDocument.show();
@@ -81,9 +81,10 @@ export class DocumentosComponent implements OnInit {
       next: (res) => {
         this.listaDocumentosOk = true;
         this.listaDocumentos = res;
+        console.log('GetAllDocuments', res);
       },
       error: (err) => {
-        console.log("Error listar Documentos ", err);
+      //  console.log("Error listar Documentos ", err);
         this.toastrService.error("Error al listar documentos", "Error", {
           timeOut: 3000,
         });
@@ -94,7 +95,7 @@ export class DocumentosComponent implements OnInit {
   // Alerta de eliminacion de usuario
   alertDeleteDoc(documento) {
     Swal.fire({
-      title: "Eliminar Usuario",
+      title: "Eliminar Documento",
       text:
         "Se va eliminar el documento " + documento.nombre + " ¿Esta seguro?",
       icon: "warning",
@@ -142,7 +143,7 @@ export class DocumentosComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log("eliminarDocumento error: " + err);
+    //    console.log("eliminarDocumento error: " + err);
         this.toastrService.error("Hubo un error : " + err, "Error", {
           timeOut: 3000,
         });

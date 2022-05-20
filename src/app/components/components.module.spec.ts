@@ -1,13 +1,13 @@
 import { ComponentsModule } from './components.module';
 
-describe('ComponentsModule', () => {
+fdescribe('ComponentsModule', () => {
   let componentsModule: ComponentsModule;
 
   beforeEach(() => {
     componentsModule = new ComponentsModule();
   });
 
-  it('should create an instance', () => {
+  it('ComponentsModule creado correctamente', () => {
     expect(componentsModule).toBeTruthy();
   });
 });

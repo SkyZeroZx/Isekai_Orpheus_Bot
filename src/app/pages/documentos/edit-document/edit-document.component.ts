@@ -28,16 +28,17 @@ export class EditDocumentComponent implements OnInit {
   // Al renderizar componente creamos reactiveForm y seteamos valores de la variable de entrada desde el componente padre documentos
   ngOnInit(): void {
     this.crearFormularioEditarDoc();
-    this.detalleUsuario();
+    this.detalleDocumento();
   }
+
   // Detecta cambio en la variable Input para cargar nuevo tramite seleccionado
   ngOnChanges(changes: SimpleChanges) {
     this.crearFormularioEditarDoc();
-    this.detalleUsuario();
+    this.detalleDocumento();
   }
 
   // Asignamos los valores de nuestra variable de entrada in_user a nuestro formulario , in_user viene del componente padre usersComponent
-  detalleUsuario() {
+  detalleDocumento() {
     this.editarDocForm.controls.cod_doc.setValue(this.in_doc.cod_doc);
     this.editarDocForm.controls.nombre.setValue(this.in_doc.nombre);
     this.editarDocForm.controls.requisitos.setValue(this.in_doc.requisitos);
@@ -68,8 +69,8 @@ export class EditDocumentComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log("Error actualizarDocumento ", err);
-        this.toastrService.error("Hubo un error", "Error", {
+     //   console.log("Error actualizarDocumento ", err);
+        this.toastrService.error("Hubo un error " + err, "Error", {
           timeOut: 3000,
         });
       },

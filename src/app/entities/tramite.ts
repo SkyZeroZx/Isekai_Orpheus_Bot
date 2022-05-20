@@ -40,7 +40,7 @@ export interface TramiteDoc {
   apellidos: string;
   estudiante: string;
   cod_est: string;
-  nombre: Date;
+  nombre: string;
   estado: string;
   id_est_doc: string;
   fecha_doc: Date;

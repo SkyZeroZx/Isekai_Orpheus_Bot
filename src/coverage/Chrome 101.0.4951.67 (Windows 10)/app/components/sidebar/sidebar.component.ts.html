@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/22</span>
+                <span class='fraction'>19/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">93.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/18</span>
+                <span class='fraction'>15/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -201,36 +201,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit } from "@angular/core";
@@ -286,36 +286,36 @@ export const ROUTES_ADMINISTRADOR: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   public menuItems: any[];
-  public <span class="cstat-no" title="statement not covered" >isCollapsed = true;</span>
+  public isCollapsed = true;
   usuarioLogeado: string;
-<span class="fstat-no" title="function not covered" >  constructor(private <span class="cstat-no" title="statement not covered" >r</span>outer: R</span>outer, private <span class="cstat-no" title="statement not covered" >auth: A</span>uthService) {}
+  constructor(private router: Router, private auth: AuthService) {}
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ngOnInit(</span>) {
-<span class="cstat-no" title="statement not covered" >    switch (JSON.parse(localStorage.getItem("user")).role) {</span>
+  ngOnInit() {
+    switch (JSON.parse(localStorage.getItem("user")).role) {
       case "admin":
-<span class="cstat-no" title="statement not covered" >        this.menuItems = ROUTES_ADMINISTRADOR.filter(<span class="fstat-no" title="function not covered" >(m</span>enuItem) =&gt; <span class="cstat-no" title="statement not covered" >menuItem)</span>;</span>
-<span class="cstat-no" title="statement not covered" >        break;</span>
+        this.menuItems = ROUTES_ADMINISTRADOR.filter((menuItem) =&gt; menuItem);
+        break;
       case "tramitador":
-<span class="cstat-no" title="statement not covered" >        this.menuItems = ROUTES_TRAMITADOR.filter(<span class="fstat-no" title="function not covered" >(m</span>enuItem) =&gt; <span class="cstat-no" title="statement not covered" >menuItem)</span>;</span>
-<span class="cstat-no" title="statement not covered" >        break;</span>
-      default:
+        this.menuItems = ROUTES_TRAMITADOR.filter((menuItem) =&gt; menuItem);
+        break;
+<span class="branch-2 cbranch-no" title="branch not covered" >      default:</span>
 <span class="cstat-no" title="statement not covered" >        break;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    this.router.events.subscribe(<span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      this.isCollapsed = true;</span>
-    });
-<span class="cstat-no" title="statement not covered" >    this.usuarioLogeado = JSON.parse(localStorage.getItem("user")).username;</span>
+  /*  this.router.events.subscribe((event) =&gt; {
+      this.isCollapsed = true;
+    });*/
+    this.usuarioLogeado = JSON.parse(localStorage.getItem("user")).username;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  onLogout(</span>) {
-<span class="cstat-no" title="statement not covered" >    this.auth.logout();</span>
-<span class="cstat-no" title="statement not covered" >    this.router.navigate(["/login"]);</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.clear();</span>
+  onLogout() {
+    this.auth.logout();
+    this.router.navigate(["/login"]);
+    localStorage.clear();
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  changePassword(</span>) {
-<span class="cstat-no" title="statement not covered" >    console.log("change password");</span>
+  changePassword() {
+    this.router.navigate(["/change-password"]);
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -325,7 +325,7 @@ export class SidebarComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed May 18 2022 20:54:40 GMT-0500 (hora estándar de Perú)
+                at Fri May 20 2022 16:51:41 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

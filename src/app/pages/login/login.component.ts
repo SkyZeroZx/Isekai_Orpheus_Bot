@@ -60,11 +60,9 @@ export class LoginComponent implements OnInit {
   // Llamada al servicio Login
   onLogin() {
     const formValue = this.loginForm.value;
-    console.log(formValue);
     this.authService.login(formValue).subscribe({
       next: (res) => {
         // Segun response realizamos una accion
-        console.log(res);
         switch (res.message) {
           case Constant.MENSAJE_OK:
             if (res.firstLogin) {
@@ -83,8 +81,8 @@ export class LoginComponent implements OnInit {
       },
       error: (err) => {
         //En caso de error
-        console.log("Error en onLogin ", err);
-        this.toastrService.error("Error al logearse Z", "Error", {
+     //   console.log("Error en onLogin ", err);
+        this.toastrService.error("Error al logearse" + err, "Error", {
           timeOut: 3000,
         });
       },

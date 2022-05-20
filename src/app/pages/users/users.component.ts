@@ -17,8 +17,8 @@ import "jspdf-autotable";
 })
 export class UsersComponent implements OnInit {
   usuarioForm: FormGroup;
-  listaUsuarios: UserResponse[];
-  userSeleccionado: UserResponse;
+  listaUsuarios: any[];
+  userSeleccionado: any;
   // Variable booleas que controlar el mostrar la lista y componente hijos
   listaUsuariosOk: boolean = false;
   crearUsuarioOK: boolean = false;
@@ -54,6 +54,7 @@ export class UsersComponent implements OnInit {
       filterEstado: new FormControl(""),
     });
   }
+
   exportarExcel() {
     // Eliminamos los elementos que no deseamos mostrar en el reporte
     Constant.REPORT.forEach(
@@ -96,13 +97,11 @@ export class UsersComponent implements OnInit {
   listarUsuarios() {
     this.servicios.getAllUsers().subscribe({
       next: (res) => {
-        console.log("Lista Usuarios ", res);
         this.listaUsuariosOk = true;
         this.listaUsuarios = res;
       },
       error: (err) => {
-        console.log("Error listarUsuarios ", err);
-        this.toastrService.error("Error al listar usuarios", "Error", {
+        this.toastrService.error("Error al listar usuarios"+err, "Error", {
           timeOut: 3000,
         });
       },
@@ -113,7 +112,6 @@ export class UsersComponent implements OnInit {
   resetearUsuario(user) {
     this.servicios.resetPassword(user).subscribe({
       next: (res) => {
-        console.log("Resetea password ", res);
         switch (res.message) {
           case Constant.MENSAJE_OK:
             this.listarUsuarios();
@@ -137,9 +135,8 @@ export class UsersComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log("Error resetearUsuario ", err);
         this.toastrService.error(
-          "Sucedio un error al resetear el usuario",
+          "Sucedio un error al resetear el usuario "+err,
           "Error",
           {
             timeOut: 3000,
@@ -177,9 +174,8 @@ export class UsersComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log("Error eliminarUsuario ", err);
         this.toastrService.error(
-          "Sucedio un error al eliminar el usuario",
+          "Sucedio un error al eliminar el usuario " +err,
           "Error",
           {
             timeOut: 3000,

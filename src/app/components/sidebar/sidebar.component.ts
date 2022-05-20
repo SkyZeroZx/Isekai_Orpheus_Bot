@@ -67,9 +67,9 @@ export class SidebarComponent implements OnInit {
         break;
     }
 
-    this.router.events.subscribe((event) => {
+  /*  this.router.events.subscribe((event) => {
       this.isCollapsed = true;
-    });
+    });*/
     this.usuarioLogeado = JSON.parse(localStorage.getItem("user")).username;
   }
 
@@ -80,6 +80,6 @@ export class SidebarComponent implements OnInit {
   }
 
   changePassword() {
-    console.log("change password");
+    this.router.navigate(["/change-password"]);
   }
 }

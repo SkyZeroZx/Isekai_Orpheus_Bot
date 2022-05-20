@@ -44,6 +44,8 @@ export class NavbarComponent implements OnInit {
 
     this.usuarioLogeado =JSON.parse(localStorage.getItem("user")).username
   }
+
+
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if (titlee.charAt(0) === "#") {
@@ -55,7 +57,7 @@ export class NavbarComponent implements OnInit {
         return this.listTitles[item].title;
       }
     }
-    return "Dashboard";
+     
   }
 
   onLogout() {
@@ -66,6 +68,6 @@ export class NavbarComponent implements OnInit {
   }
 
   changePassword() {
-    console.log("change password");
+    this.router.navigate(["/change-password"]);
   }
 }

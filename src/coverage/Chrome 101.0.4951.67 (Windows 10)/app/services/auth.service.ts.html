@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/35</span>
+                <span class='fraction'>15/35</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">41.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/12</span>
+                <span class='fraction'>5/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">42.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/33</span>
+                <span class='fraction'>14/33</span>
             </div>
         
             
@@ -169,11 +169,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,7 +197,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -207,16 +207,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -287,8 +287,8 @@ export class AuthService {
       );
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  changePassword(</span>authPassword:ChangePassword): Observable&lt;ChangePasswordRes&gt;   {
-<span class="cstat-no" title="statement not covered" >    return this.http.post&lt;ChangePasswordRes&gt;(`${environment.API_URL}/auth/change-password`,authPassword).pipe(</span>
+  changePassword(authPassword:ChangePassword): Observable&lt;ChangePasswordRes&gt;   {
+    return this.http.post&lt;ChangePasswordRes&gt;(`${environment.API_URL}/auth/change-password`,authPassword).pipe(
       map(<span class="fstat-no" title="function not covered" >(r</span>es )=&gt;{
 <span class="cstat-no" title="statement not covered" >        console.log('Res-&gt;',res);</span>
 <span class="cstat-no" title="statement not covered" >        return res;</span>
@@ -297,11 +297,11 @@ export class AuthService {
     );
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  logout(</span>):void {
-<span class="cstat-no" title="statement not covered" >    localStorage.removeItem('user');</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.clear();</span>
-<span class="cstat-no" title="statement not covered" >    this.user.next(null);</span>
-<span class="cstat-no" title="statement not covered" >    this.loggedIn.next(false);</span>
+  logout():void {
+    localStorage.removeItem('user');
+    localStorage.clear();
+    this.user.next(null);
+    this.loggedIn.next(false);
   }
 &nbsp;
   private checkToken(): void {
@@ -343,7 +343,7 @@ export class AuthService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed May 18 2022 20:54:40 GMT-0500 (hora estándar de Perú)
+                at Fri May 20 2022 16:51:41 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../prettify.js"></script>
         <script>

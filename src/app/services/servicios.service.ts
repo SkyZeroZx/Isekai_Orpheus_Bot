@@ -54,7 +54,6 @@ export class ServiciosService {
     return this.http
       .patch(`${environment.API_URL}/documento`, documento)
       .pipe(catchError(this.handlerError));
-
   }
 
   /* **************************** SERVICIOS GESTION USUARIOS **************************************** */
@@ -101,10 +100,9 @@ export class ServiciosService {
   twoDates(tramite: string, DateFrom: Date, dateTo: Date): Observable<any> {
     return this.fromEstado(tramite).pipe(
       map((res) =>
-        res.filter(
-          (val) =>
-            new Date(val.fecha) >= DateFrom && new Date(val.fecha) <= dateTo
-        )
+        res.filter((val) => {
+          new Date(val.fecha) >= DateFrom && new Date(val.fecha) <= dateTo;
+        })
       )
     );
   }

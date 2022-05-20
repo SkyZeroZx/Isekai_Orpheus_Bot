@@ -13,6 +13,7 @@ const EXCEL_EXTENSION = ".xlsx";
 export class ReporteService {
   constructor() {}
   public exportAsExcelFile(excelFileName: string): void {
+    console.log('Excel Reporte Doc' , Constant.REPORT);
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(Constant.REPORT);
     const workbook: XLSX.WorkBook = {
       Sheets: { homologacion: worksheet },
@@ -35,6 +36,7 @@ export class ReporteService {
 
   public exportAsPDF(nombre,encabezado) {
     // TODO Add Filters in report
+    console.log(' Constant.REPORT ',  Constant.REPORT)
     let header = new Array<any>();
     header[0] = encabezado;
     //Object.keys(Constant.REPORT[0]);
@@ -53,7 +55,7 @@ export class ReporteService {
       theme: "grid",
       didDrawCell: (data) => {},
     });
-    pdf.output("dataurlnewwindow");
+ //   pdf.output("dataurlnewwindow");
     pdf.save(nombre + ".pdf");
   }
 }

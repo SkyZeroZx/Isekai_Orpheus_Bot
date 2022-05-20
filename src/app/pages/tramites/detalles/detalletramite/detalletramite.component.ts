@@ -32,8 +32,9 @@ export class DetalletramiteComponent implements OnInit {
   // Parametro de entrada que viene apartir del componente padre tramitesComponent
   @Input() in_tramite: TramiteDoc;
   // Declaramos nuestro de edit de tramite
-  @ViewChild("modalMod") public modalMod: ModalDirective;
 
+  @ViewChild("modalMod", { static: false })
+  public modalMod: ModalDirective;
   // Declaramos nuestros FormGroup
   detalleForm: FormGroup;
   consultaForm: FormGroup;
@@ -129,7 +130,6 @@ export class DetalletramiteComponent implements OnInit {
     this.crearFormularios();
     this.detalleTramite();
   }
-
 
   // Metodo que toma el detalle seleccionado y muestra el modar de modificacion para editar
   seleccionarDetalle(detalleSeleccionado) {
@@ -311,7 +311,7 @@ export class DetalletramiteComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsBinaryString(file);
     reader.onload = (event) => {
-     result.next(
+      result.next(
         Buffer.from(event.target.result.toString(), "binary").toString("base64")
       );
     };

@@ -105,8 +105,8 @@ export class ChangePasswordComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log("Error ChangePassword ", err);
-        this.toastrService.error("Error al cambiar contraseña", "Error", {
+     //   console.log("Error ChangePassword ", err);
+        this.toastrService.error("Error al cambiar contraseña" +err, "Error", {
           timeOut: 5000,
         });
       },
