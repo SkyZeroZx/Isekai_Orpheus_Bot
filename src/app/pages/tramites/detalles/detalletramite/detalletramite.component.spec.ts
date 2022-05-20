@@ -278,4 +278,8 @@ fdescribe("DetalletramiteComponent", () => {
     expect(spyToastError).toHaveBeenCalled();
     expect(spyleerCertificadosError).toHaveBeenCalled();
   });
+
+
+
+  
 });
