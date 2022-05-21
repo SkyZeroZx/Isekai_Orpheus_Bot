@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule} from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";

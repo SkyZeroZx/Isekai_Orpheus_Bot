@@ -100,6 +100,20 @@ fdescribe("DashboardComponent", () => {
     expect(component.listaTramites).toEqual(Object.keys(responseMockGraficos));
   });
 
+  it("Verificamos formattedDates", () => {
+    // Inicializamos nuestro formulario
+    component.crearFormularioDashboard();
+    //Asigamos valores date a nuestros input dateInit y dateEnd
+    component.dashboardForm.controls.dateInit.setValue(new Date("2020/02/01"));
+    component.dashboardForm.controls.dateEnd.setValue(new Date("2023/02/01"));
+    // Llamamos nuestra funcion que formatea las fechas las fechas
+    component.formattedDates();
+    expect(component.dashboardForm.getRawValue().dateInit).toEqual(
+      "2020/02/01"
+    );
+    expect(component.dashboardForm.getRawValue().dateEnd).toEqual("2023/02/01");
+  });
+
   it("Verificamos loadData():void", () => {
     // Creamos nuestro retorno para el servicio twoDates que sera usado por el componente
     const Response = [

@@ -3,7 +3,6 @@ import { ChartOptions, ChartType } from "chart.js";
 import { Label, SingleDataSet } from "ng2-charts";
 import { DatosGrafico } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
-import { SpinnerService } from "src/app/services/spinner.service";
 
 @Component({
   selector: "app-pie",
@@ -20,7 +19,9 @@ export class PieComponent implements OnInit {
   tramite: string = null;
 
   constructor(private graficosService: ServiciosService) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // This is intentional
+  }
   //Opciones de ngChart
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -47,7 +48,7 @@ export class PieComponent implements OnInit {
     },
   ];
   // Si se detecta cambios se recarga el grafico uso de ngOnChanges
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(_changes: SimpleChanges): void {
     this.loadData();
   }
 
@@ -61,7 +62,6 @@ export class PieComponent implements OnInit {
         tramite: this.tramite,
       };
       this.graficosService.buscarPie(values).subscribe((data) => {
-        // console.log('recibi en PIE' , data);
         this.pieChartData[0] = data[0].registrado;
         this.pieChartData[1] = data[0].procesando;
         this.pieChartData[2] = data[0].observado;

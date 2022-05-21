@@ -47,9 +47,11 @@ export class DonutComponent implements OnInit {
 
   constructor(private graficosService: ServiciosService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // This is intentional
+  }
   // Si se detectan cambios se recarga el grafico
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(_changes: SimpleChanges): void {
     this.loadData();
   }
 
@@ -74,10 +76,8 @@ export class DonutComponent implements OnInit {
         fechaFin: this.Fin,
         tramite: this.tramite2,
       };
-      //  console.log('Value DONUT', values1);
       //Asignar valores aro interior del grafico
       this.graficosService.buscarPie(values1).subscribe((data) => {
-        //  console.log(data);
         this.doughnutChartData[0][0] = data[0].registrado;
         this.doughnutChartData[0][1] = data[0].procesando;
         this.doughnutChartData[0][2] = data[0].observado;

@@ -112,7 +112,7 @@ fdescribe("DocumentosComponent", () => {
     const spyModalNew = spyOn(
       component.modalNewDocument,
       "show"
-    ).and.callThrough();
+    );
     component.crearDocumento();
     expect(spyModalNew).toHaveBeenCalled();
     expect(component.crearDocumentoOk).toBeTruthy();

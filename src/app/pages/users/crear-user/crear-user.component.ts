@@ -52,30 +52,24 @@ export class CrearUserComponent implements OnInit {
     console.log(this.crearUserForm.value);
     this.servicios.createUser(this.crearUserForm.value).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.toastrService.success(
-              "Se creo exitosamente el usuario",
-              "Exito",
-              {
-                timeOut: 2000,
-              }
-            );
-            this.crearUserForm.reset();
-         /*   this.crearUserForm.controls["estado"].setValue("CREADO", {
-              onlySelf: true,
-            });*/
-            this.crearUserForm.controls.role.setValue("admin");
-            break;
-          default:
-            this.toastrService.error(
-              "Sucedio un error al crear : " + res.message,
-              "Error",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          this.toastrService.success(
+            "Se creo exitosamente el usuario",
+            "Exito",
+            {
+              timeOut: 2000,
+            }
+          );
+          this.crearUserForm.reset();
+          this.crearUserForm.controls.role.setValue("admin");
+        } else {
+          this.toastrService.error(
+            "Sucedio un error al crear : " + res.message,
+            "Error",
+            {
+              timeOut: 3000,
+            }
+          );
         }
       },
       error: (err) => {

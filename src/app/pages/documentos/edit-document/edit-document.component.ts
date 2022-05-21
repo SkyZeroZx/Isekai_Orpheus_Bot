@@ -32,7 +32,7 @@ export class EditDocumentComponent implements OnInit {
   }
 
   // Detecta cambio en la variable Input para cargar nuevo tramite seleccionado
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(_changes: SimpleChanges) {
     this.crearFormularioEditarDoc();
     this.detalleDocumento();
   }
@@ -47,29 +47,25 @@ export class EditDocumentComponent implements OnInit {
   actualizarDocumento() {
     this.servicios.updateDocument(this.editarDocForm.value).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.toastrService.success(
-              "Se actualizo exitosamente el documento",
-              "Exito",
-              {
-                timeOut: 2000,
-              }
-            );
-            break;
-          default:
-            this.toastrService.error(
-              "Sucedio un error al editar : " + res.message,
-              "Error",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          this.toastrService.success(
+            "Se actualizo exitosamente el documento",
+            "Exito",
+            {
+              timeOut: 2000,
+            }
+          );
+        } else {
+          this.toastrService.error(
+            "Sucedio un error al editar : " + res.message,
+            "Error",
+            {
+              timeOut: 3000,
+            }
+          );
         }
       },
       error: (err) => {
-     //   console.log("Error actualizarDocumento ", err);
         this.toastrService.error("Hubo un error " + err, "Error", {
           timeOut: 3000,
         });

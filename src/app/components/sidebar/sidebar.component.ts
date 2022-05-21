@@ -66,10 +66,6 @@ export class SidebarComponent implements OnInit {
       default:
         break;
     }
-
-  /*  this.router.events.subscribe((event) => {
-      this.isCollapsed = true;
-    });*/
     this.usuarioLogeado = JSON.parse(localStorage.getItem("user")).username;
   }
 

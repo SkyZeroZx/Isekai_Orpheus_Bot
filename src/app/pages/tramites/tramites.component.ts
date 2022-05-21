@@ -2,17 +2,16 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { TramiteDoc } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
-import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
+import { ModalDirective } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
 import { ReporteService } from "src/app/services/report.service";
-import { Constant } from "src/app/Constants/Constant";
 
 @Component({
   selector: "app-tramites",
   templateUrl: "./tramites.component.html",
   styleUrls: ["./tables.component.scss"],
 })
-export class tramitesComponent implements OnInit {
+export class TramitesComponent implements OnInit {
   consultaForm: FormGroup;
   registrarForm: FormGroup;
   estadosActualizarForm: FormGroup;

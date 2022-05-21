@@ -3,11 +3,7 @@ import {
   ROUTES_ADMINISTRADOR,
   ROUTES_TRAMITADOR,
 } from "../sidebar/sidebar.component";
-import {
-  Location,
-  LocationStrategy,
-  PathLocationStrategy,
-} from "@angular/common";
+import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 
@@ -42,22 +38,19 @@ export class NavbarComponent implements OnInit {
         break;
     }
 
-    this.usuarioLogeado =JSON.parse(localStorage.getItem("user")).username
+    this.usuarioLogeado = JSON.parse(localStorage.getItem("user")).username;
   }
-
 
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if (titlee.charAt(0) === "#") {
       titlee = titlee.slice(1);
     }
-
-    for (var item = 0; item < this.listTitles.length; item++) {
-      if (this.listTitles[item].path === titlee) {
-        return this.listTitles[item].title;
+    for (let value of this.listTitles) {
+      if (value.path === titlee) {
+        return value.title;
       }
     }
-     
   }
 
   onLogout() {

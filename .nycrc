@@ -1,0 +1,6 @@
+
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "all": true,
+  "exclude": ["./coverage/**", "cypress/**", "./dist/**", "**/*.spec.ts","src/assets/**","src/app/entities/**","./coverage-e2e/**"]
+}

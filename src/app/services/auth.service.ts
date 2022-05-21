@@ -83,7 +83,8 @@ export class AuthService {
       errorMessage = `Error: code ${err.message}`;
     }
     window.alert(errorMessage);
-    return throwError(errorMessage);
+    this.logout();
+    return throwError(() => errorMessage)
   }
 
 

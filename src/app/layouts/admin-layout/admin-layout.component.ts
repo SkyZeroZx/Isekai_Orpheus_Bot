@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -8,9 +7,12 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+     // This is intentional
+   }
 
   ngOnInit() {
+     // This is intentional
   }
 
 }

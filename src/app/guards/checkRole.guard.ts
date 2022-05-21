@@ -5,7 +5,7 @@ import { AuthService } from "../services/auth.service";
 @Injectable({
   providedIn: "root",
 })
-export class checkRole implements CanActivate {
+export class CheckRole implements CanActivate {
   constructor(private router: Router, private authService: AuthService) {}
 
   canActivate() {
@@ -22,7 +22,6 @@ export class checkRole implements CanActivate {
         } else {
           return true;
         }
-        break;
       case "tramitador":
         if (
           window.location.href.includes("documentos") ||
@@ -33,10 +32,8 @@ export class checkRole implements CanActivate {
         } else {
           return true;
         }
-        break;
       default:
         return false;
-        break;
     }
   }
 }

@@ -80,9 +80,8 @@ export class TrackingComponent implements OnInit {
           }
         },
         error: (err) => {
-        //  console.log("buscarTramiteTracking error", err);
           this.toastrService.error(
-            "Sucedio un error al buscar el tramite",
+            "Sucedio un error al buscar el tramite " + err,
             "Error",
             {
               timeOut: 5000,
@@ -102,7 +101,6 @@ export class TrackingComponent implements OnInit {
           this.adjuntoOk = true;
         },
         error: (err) => {
-      //    console.log("leerAdjuntos Error ", err);
           this.toastrService.error(err, "Error", {
             timeOut: 3000,
           });
@@ -120,7 +118,6 @@ export class TrackingComponent implements OnInit {
           this.certificadoOk = true;
         },
         error: (err) => {
-      //    console.log("leerCertificados Error ", err);
           this.toastrService.error(err, "Error", {
             timeOut: 5000,
           });

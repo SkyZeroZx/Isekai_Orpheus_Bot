@@ -37,7 +37,7 @@ export class NewDocumentComponent implements OnInit {
         Validators.compose([
           Validators.required,
           Validators.minLength(6),
-          Validators.maxLength(150)
+          Validators.maxLength(150),
         ])
       ),
       requisitos: new FormControl(
@@ -52,22 +52,18 @@ export class NewDocumentComponent implements OnInit {
     // Le pasamos los valores de nuestro formulario
     this.servicios.createDocument(this.crearDocForm.value).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.toastrService.success(
-              "Se creo exitosamente el documento",
-              "Exito",
-              {
-                timeOut: 2000,
-              }
-            );
-            this.crearDocForm.reset();
-            break;
-          default:
-            this.toastrService.error(res.message, "Error", {
-              timeOut: 3000,
-            });
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          this.toastrService.success(
+            "Se creo exitosamente el documento",
+            "Exito",
+            {
+              timeOut: 2000,
+            }
+          );
+        } else {
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {
@@ -77,5 +73,4 @@ export class NewDocumentComponent implements OnInit {
       },
     });
   }
-
 }

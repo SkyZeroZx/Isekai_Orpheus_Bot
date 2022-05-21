@@ -11,9 +11,11 @@ const EXCEL_EXTENSION = ".xlsx";
   providedIn: "root",
 })
 export class ReporteService {
-  constructor() {}
+  constructor() {
+    // This is intentional
+  }
   public exportAsExcelFile(excelFileName: string): void {
-    console.log('Excel Reporte Doc' , Constant.REPORT);
+    console.log("Excel Reporte Doc", Constant.REPORT);
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(Constant.REPORT);
     const workbook: XLSX.WorkBook = {
       Sheets: { homologacion: worksheet },
@@ -34,12 +36,11 @@ export class ReporteService {
     );
   }
 
-  public exportAsPDF(nombre,encabezado) {
-    // TODO Add Filters in report
-    console.log(' Constant.REPORT ',  Constant.REPORT)
+  public exportAsPDF(nombre, encabezado) {
+    // Pendiente agregar Add Filters in report
     let header = new Array<any>();
     header[0] = encabezado;
-    //Object.keys(Constant.REPORT[0]);
+    // Obtenemos los encabezados Object.keys(Constant.REPORT[0]);
     let arrReport = Constant.REPORT.map((obj) => Object.values(obj));
     var pdf = new jsPDF({
       orientation: "landscape",
@@ -53,9 +54,11 @@ export class ReporteService {
       head: header,
       body: arrReport,
       theme: "grid",
-      didDrawCell: (data) => {},
+      didDrawCell: (_data) => {
+        // This is intentional
+      },
     });
- //   pdf.output("dataurlnewwindow");
+    //  Metodo para abrir en otra pestaña pdf.output("dataurlnewwindow");
     pdf.save(nombre + ".pdf");
   }
 }

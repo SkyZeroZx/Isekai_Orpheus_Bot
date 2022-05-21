@@ -10,11 +10,11 @@ import { TabsModule } from "ngx-bootstrap/tabs";
 import { ToastrModule, ToastrService } from "ngx-toastr";
 import { of, throwError } from "rxjs";
 import { ServiciosService } from "src/app/services/servicios.service";
-import { DetalletramiteComponent } from "./detalletramite.component";
+import { DetalleTramiteComponent } from "./detalletramite.component";
 
-fdescribe("DetalletramiteComponent", () => {
-  let component: DetalletramiteComponent;
-  let fixture: ComponentFixture<DetalletramiteComponent>;
+fdescribe("DetalleTramiteComponent", () => {
+  let component: DetalleTramiteComponent;
+  let fixture: ComponentFixture<DetalleTramiteComponent>;
   let servicio: ServiciosService;
   let toastrService: ToastrService;
 
@@ -29,7 +29,7 @@ fdescribe("DetalletramiteComponent", () => {
   };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DetalletramiteComponent],
+      declarations: [DetalleTramiteComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
@@ -53,7 +53,7 @@ fdescribe("DetalletramiteComponent", () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetalletramiteComponent);
+    fixture = TestBed.createComponent(DetalleTramiteComponent);
     servicio = TestBed.inject(ServiciosService);
     toastrService = TestBed.inject(ToastrService);
     component = fixture.componentInstance;
@@ -62,7 +62,7 @@ fdescribe("DetalletramiteComponent", () => {
     component.in_tramite = mockTramiteIn;
   });
 
-  it("DetalletramiteComponent creado correctamente", () => {
+  it("DetalleTramiteComponent creado correctamente", () => {
     expect(component).toBeTruthy();
   });
 

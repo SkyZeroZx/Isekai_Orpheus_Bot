@@ -12,11 +12,11 @@ import { of, throwError } from "rxjs";
 import { Constant } from "src/app/Constants/Constant";
 import { ReporteService } from "src/app/services/report.service";
 import { ServiciosService } from "src/app/services/servicios.service";
-import { tramitesComponent } from "./tramites.component";
+import { TramitesComponent } from "./tramites.component";
 
 fdescribe("TramiteComponent", () => {
-  let component: tramitesComponent;
-  let fixture: ComponentFixture<tramitesComponent>;
+  let component: TramitesComponent;
+  let fixture: ComponentFixture<TramitesComponent>;
   let servicio: ServiciosService;
   let reporteService: ReporteService;
   let toastrService: ToastrService;
@@ -52,7 +52,7 @@ fdescribe("TramiteComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [tramitesComponent],
+      declarations: [TramitesComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
@@ -78,7 +78,7 @@ fdescribe("TramiteComponent", () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(tramitesComponent);
+    fixture = TestBed.createComponent(TramitesComponent);
     reporteService = TestBed.inject(ReporteService);
     servicio = TestBed.inject(ServiciosService);
     toastrService = TestBed.inject(ToastrService);

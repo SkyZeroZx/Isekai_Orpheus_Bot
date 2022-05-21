@@ -79,12 +79,13 @@ fdescribe("NewDocumentComponent", () => {
       "createDocument"
     ).and.returnValue(of(mockResOK));
     const spyToastSucess = spyOn(toastrService, "success").and.callThrough();
+    component.crearFormularioCreateUser();
     component.crearDocumento();
 
     expect(spycreateDocumentOK).toHaveBeenCalled();
     expect(spyToastSucess).toHaveBeenCalled();
-    expect(component.crearDocForm.getRawValue().nombre).toBeNull();
-    expect(component.crearDocForm.getRawValue().requisitos).toBeNull();
+    expect(component.crearDocForm.getRawValue().nombre).toEqual('')
+    expect(component.crearDocForm.getRawValue().requisitos).toEqual('')
     // Validamos para el caso que el servicio nos retorne un mensaje diferente de MENSAJE_OK
     const mockResDif: any = {
       message: "DIFERENTE",

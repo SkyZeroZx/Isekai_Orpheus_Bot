@@ -34,7 +34,7 @@ export class EditUserComponent implements OnInit {
   }
 
   // Detecta cambio en la variable Input para cargar nuevo tramite seleccionado
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(_changes: SimpleChanges) {
     this.crearFormularioEditarUser();
     this.detalleUsuario();
   }
@@ -78,25 +78,22 @@ export class EditUserComponent implements OnInit {
     this.trimEditarUserForm();
     this.servicios.updateUser(this.editarUserForm.value).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.toastrService.success(
-              "Se actualizo exitosamente el usuario",
-              "Exito",
-              {
-                timeOut: 2000,
-              }
-            );
-            break;
-          default:
-            this.toastrService.error(
-              "Sucedio un error al editar : " + res.message,
-              "Error",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          this.toastrService.success(
+            "Se actualizo exitosamente el usuario",
+            "Exito",
+            {
+              timeOut: 2000,
+            }
+          );
+        } else {
+          this.toastrService.error(
+            "Sucedio un error al editar : " + res.message,
+            "Error",
+            {
+              timeOut: 3000,
+            }
+          );
         }
       },
       error: (err) => {

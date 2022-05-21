@@ -3,11 +3,9 @@ import { FormGroup, FormBuilder, FormControl } from "@angular/forms";
 import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
 import { Constant } from "src/app/Constants/Constant";
-import { UserResponse } from "src/app/entities/user";
 import { ReporteService } from "src/app/services/report.service";
 import { ServiciosService } from "src/app/services/servicios.service";
 import Swal from "sweetalert2";
-import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
 @Component({
@@ -57,17 +55,13 @@ export class UsersComponent implements OnInit {
 
   exportarExcel() {
     // Eliminamos los elementos que no deseamos mostrar en el reporte
-    Constant.REPORT.forEach(
-      (res) => (delete res.password, delete res.firstLogin)
-    );
+    Constant.REPORT.forEach((res) => (delete res.password &&  res.firstLogin));
     this.reporteService.exportAsExcelFile("REPORTE USUARIOS");
   }
 
   exportarPDF() {
     // Eliminamos los elementos que no deseamos mostrar en el reporte
-    Constant.REPORT.forEach(
-      (res) => (delete res.password, delete res.firstLogin)
-    );
+    Constant.REPORT.forEach((res) => (delete res.password && res.firstLogin));
     const encabezado = [
       "CODIGO",
       "EMAIL",
@@ -101,7 +95,7 @@ export class UsersComponent implements OnInit {
         this.listaUsuarios = res;
       },
       error: (err) => {
-        this.toastrService.error("Error al listar usuarios"+err, "Error", {
+        this.toastrService.error("Error al listar usuarios" + err, "Error", {
           timeOut: 3000,
         });
       },
@@ -112,31 +106,28 @@ export class UsersComponent implements OnInit {
   resetearUsuario(user) {
     this.servicios.resetPassword(user).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.listarUsuarios();
-            this.toastrService.success(
-              "Se reseteo exitosamente la contraseña",
-              "Exito",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
-          default:
-            this.toastrService.error(
-              "Sucedio un error al resetear la contraseña " + res.message,
-              "Error",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          this.listarUsuarios();
+          this.toastrService.success(
+            "Se reseteo exitosamente la contraseña",
+            "Exito",
+            {
+              timeOut: 3000,
+            }
+          );
+        } else {
+          this.toastrService.error(
+            "Sucedio un error al resetear la contraseña " + res.message,
+            "Error",
+            {
+              timeOut: 3000,
+            }
+          );
         }
       },
       error: (err) => {
         this.toastrService.error(
-          "Sucedio un error al resetear el usuario "+err,
+          "Sucedio un error al resetear el usuario " + err,
           "Error",
           {
             timeOut: 3000,
@@ -150,32 +141,29 @@ export class UsersComponent implements OnInit {
   eliminarUsuario(id) {
     this.servicios.deleteUser(id).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.listarUsuarios();
-            this.p = 1;
-            this.toastrService.success(
-              "Se elimino exitosamente el usuario",
-              "Exito",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
-          default:
-            this.toastrService.error(
-              "Sucedio un error al eliminar al usuario e: " + res.message,
-              "Error",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          this.listarUsuarios();
+          this.p = 1;
+          this.toastrService.success(
+            "Se elimino exitosamente el usuario",
+            "Exito",
+            {
+              timeOut: 3000,
+            }
+          );
+        } else {
+          this.toastrService.error(
+            "Sucedio un error al eliminar al usuario e: " + res.message,
+            "Error",
+            {
+              timeOut: 3000,
+            }
+          );
         }
       },
       error: (err) => {
         this.toastrService.error(
-          "Sucedio un error al eliminar el usuario " +err,
+          "Sucedio un error al eliminar el usuario " + err,
           "Error",
           {
             timeOut: 3000,

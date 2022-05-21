@@ -25,6 +25,7 @@ export class BarComponent implements OnInit {
   constructor(private graficosService: ServiciosService) { }
 
   ngOnInit(): void {
+    // This is intentional
   }
 
   // Configuracion Grafico de Barras
@@ -79,7 +80,7 @@ export class BarComponent implements OnInit {
   }
 
   // Si se detectan cambios se recarga el grafico
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(_changes: SimpleChanges): void {
     this.loadData();
   }
   

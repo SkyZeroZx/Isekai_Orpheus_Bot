@@ -14,6 +14,7 @@ import {
 } from "../entities/tramite";
 import { environment } from "src/environments/environment";
 import { UserUpdate, UserResponse } from "../entities/user";
+import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -27,7 +28,7 @@ export class ServiciosService {
   dpies: DatosGrafico[];
   tramiteDoc: TramiteDoc[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private auth: AuthService) {}
 
   /* **************************** SERVICIOS GESTION DOCUMENTOS **************************************** */
   getAllDocuments(): Observable<Documento[]> {
@@ -100,9 +101,7 @@ export class ServiciosService {
   twoDates(tramite: string, DateFrom: Date, dateTo: Date): Observable<any> {
     return this.fromEstado(tramite).pipe(
       map((res) =>
-        res.filter((val) => {
-          new Date(val.fecha) >= DateFrom && new Date(val.fecha) <= dateTo;
-        })
+        res.filter((val) => val.fecha >= DateFrom && val.fecha <= dateTo)
       )
     );
   }
@@ -214,6 +213,7 @@ export class ServiciosService {
       errorMessage = `Error ${error.message}`;
     }
     window.alert(errorMessage);
-    return throwError(errorMessage);
+    this.auth.logout();
+    return throwError(() => errorMessage)
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
@@ -58,7 +58,7 @@ export class DocumentosComponent implements OnInit {
   }
   exportarPDF() {
     const encabezado = ["CODIGO", "NOMBRE", "REQUISITOS"];
-    this.reporteService.exportAsPDF("REPORTE DOCUMENTOS",encabezado);
+    this.reporteService.exportAsPDF("REPORTE DOCUMENTOS", encabezado);
   }
 
   // Metodo que llama al componente modal hijo new document
@@ -69,7 +69,6 @@ export class DocumentosComponent implements OnInit {
 
   // Metodo que llama al componente modal hijo edit document
   editarDocumento(document) {
-   // console.log("documento seleccionado", document);
     this.documentoSeleccionado = document;
     this.editarDocumentOK = true;
     this.modalEditDocument.show();
@@ -81,11 +80,10 @@ export class DocumentosComponent implements OnInit {
       next: (res) => {
         this.listaDocumentosOk = true;
         this.listaDocumentos = res;
-        console.log('GetAllDocuments', res);
+        console.log("GetAllDocuments", res);
       },
       error: (err) => {
-      //  console.log("Error listar Documentos ", err);
-        this.toastrService.error("Error al listar documentos", "Error", {
+        this.toastrService.error("Error al listar documentos " + err, "Error", {
           timeOut: 3000,
         });
       },
@@ -122,28 +120,23 @@ export class DocumentosComponent implements OnInit {
     // Llamamos al servicio
     this.servicios.deleteDocument(deleteData).subscribe({
       next: (res) => {
-        switch (res.message) {
-          //Realizamos nuestras acciones segun la respuesta
-          case Constant.MENSAJE_OK:
-            this.listarDocumentos();
-            this.p = 1;
-            this.toastrService.success(
-              "Se elimino exitosamente el documento",
-              "Exito",
-              {
-                timeOut: 3000,
-              }
-            );
-            break;
-          default:
-            this.toastrService.error(res.message, "Error", {
+        if (res.message == Constant.MENSAJE_OK) {
+          this.listarDocumentos();
+          this.p = 1;
+          this.toastrService.success(
+            "Se elimino exitosamente el documento",
+            "Exito",
+            {
               timeOut: 3000,
-            });
-            break;
+            }
+          );
+        } else {
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {
-    //    console.log("eliminarDocumento error: " + err);
         this.toastrService.error("Hubo un error : " + err, "Error", {
           timeOut: 3000,
         });

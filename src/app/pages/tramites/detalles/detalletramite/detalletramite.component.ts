@@ -13,11 +13,7 @@ import {
   TramiteDoc,
 } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
-import {
-  BsModalService,
-  BsModalRef,
-  ModalDirective,
-} from "ngx-bootstrap/modal";
+import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastContainerDirective, ToastrService } from "ngx-toastr";
 import Swal from "sweetalert2";
 import { Observable, ReplaySubject } from "rxjs";
@@ -28,7 +24,7 @@ import { Constant } from "src/app/Constants/Constant";
   templateUrl: "./detalletramite.component.html",
   styleUrls: ["./detalletramite.component.scss"],
 })
-export class DetalletramiteComponent implements OnInit {
+export class DetalleTramiteComponent implements OnInit {
   // Parametro de entrada que viene apartir del componente padre tramitesComponent
   @Input() in_tramite: TramiteDoc;
   // Declaramos nuestro de edit de tramite
@@ -259,29 +255,26 @@ export class DetalletramiteComponent implements OnInit {
     values.id_est_doc = this.in_tramite.id_est_doc;
     this.servicios.insertarTramite(values).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.toastrService.success(
-              "Se registro exitosamente un nuevo estado para " +
-                this.in_tramite.id_est_doc,
-              "Exito",
-              {
-                timeOut: 2000,
-              }
-            );
-            this.leerDetalles();
-            this.detalleForm.controls["detalleEstado"].setValue(values.estado);
-            this.registrarForm.reset();
-            this.registrarForm.controls["estado"].setValue("", {
-              onlySelf: true,
-            });
-            break;
-          default:
-            this.leerDetalles();
-            this.toastrService.error(res.message, "Error", {
-              timeOut: 3000,
-            });
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          this.toastrService.success(
+            "Se registro exitosamente un nuevo estado para " +
+              this.in_tramite.id_est_doc,
+            "Exito",
+            {
+              timeOut: 2000,
+            }
+          );
+          this.leerDetalles();
+          this.detalleForm.controls["detalleEstado"].setValue(values.estado);
+          this.registrarForm.reset();
+          this.registrarForm.controls["estado"].setValue("", {
+            onlySelf: true,
+          });
+        } else {
+          this.leerDetalles();
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {
@@ -326,25 +319,22 @@ export class DetalletramiteComponent implements OnInit {
     };
     this.servicios.uploadFile(values).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.uploadForm.reset();
-            this.fileName = "Seleccione un archivo (PDF)";
-            this.toastrService.success(
-              "Se subio correctamente certificado para el tramite" +
-                this.in_tramite.id_est_doc,
-              "Exito",
-              {
-                timeOut: 3000,
-              }
-            );
-            this.leerCertificados();
-            break;
-          default:
-            this.toastrService.error(res.message, "Error", {
+        if (res.message == Constant.MENSAJE_OK) {
+          this.uploadForm.reset();
+          this.fileName = "Seleccione un archivo (PDF)";
+          this.toastrService.success(
+            "Se subio correctamente certificado para el tramite" +
+              this.in_tramite.id_est_doc,
+            "Exito",
+            {
               timeOut: 3000,
-            });
-            break;
+            }
+          );
+          this.leerCertificados();
+        } else {
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {
@@ -360,24 +350,21 @@ export class DetalletramiteComponent implements OnInit {
   modificarEstado(values) {
     this.servicios.update(values).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.toastrService.success(
-              "Se actualizo correctamente el estado para " +
-                this.in_tramite.id_est_doc,
-              "Exito",
-              {
-                timeOut: 3000,
-              }
-            );
-            this.leerDetalles();
-            this.modalMod.hide();
-            break;
-          default:
-            this.toastrService.error(res.message, "Error", {
+        if (res.message == Constant.MENSAJE_OK) {
+          this.toastrService.success(
+            "Se actualizo correctamente el estado para " +
+              this.in_tramite.id_est_doc,
+            "Exito",
+            {
               timeOut: 3000,
-            });
-            break;
+            }
+          );
+          this.leerDetalles();
+          this.modalMod.hide();
+        } else {
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {
@@ -393,22 +380,19 @@ export class DetalletramiteComponent implements OnInit {
   callServicedeleteDetalleTramite(): void {
     this.servicios.deleteTramite(this.detalleEliminar).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            this.toastrService.success(
-              "Se elimino correctamente el detalle",
-              "Exito",
-              {
-                timeOut: 3000,
-              }
-            );
-            this.leerDetalles();
-            break;
-          default:
-            this.toastrService.error(res.message, "Error", {
+        if (res.message == Constant.MENSAJE_OK) {
+          this.toastrService.success(
+            "Se elimino correctamente el detalle",
+            "Exito",
+            {
               timeOut: 3000,
-            });
-            break;
+            }
+          );
+          this.leerDetalles();
+        } else {
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {
@@ -424,22 +408,19 @@ export class DetalletramiteComponent implements OnInit {
   callServiceDeleteCertificado(): void {
     this.servicios.deleteCertificado(this.certificadoEliminar).subscribe({
       next: (res) => {
-        switch (res.message) {
-          case "Certicado eliminado":
-            this.toastrService.success(
-              "Se elimino correctamente el certificado",
-              "Exito",
-              {
-                timeOut: 3000,
-              }
-            );
-            this.leerCertificados();
-            break;
-          default:
-            this.toastrService.error(res.message, "Error", {
+        if (res.message == "Certicado eliminado") {
+          this.toastrService.success(
+            "Se elimino correctamente el certificado",
+            "Exito",
+            {
               timeOut: 3000,
-            });
-            break;
+            }
+          );
+          this.leerCertificados();
+        } else {
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {

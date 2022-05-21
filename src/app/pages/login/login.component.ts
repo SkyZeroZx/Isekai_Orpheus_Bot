@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -18,9 +18,9 @@ import Swal from "sweetalert2";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
- 
- show_button: Boolean = false;
- show_eye: Boolean = false;
+
+  show_button: boolean = false;
+  show_eye: boolean = false;
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.show_button = !this.show_button;
     this.show_eye = !this.show_eye;
   }
-  
+
   //Creamos nuestro reactiveForm para Login
   crearFormularioLogin() {
     //Creamos validaciones respectiva para nuestro ReactiveForm
@@ -63,25 +63,22 @@ export class LoginComponent implements OnInit {
     this.authService.login(formValue).subscribe({
       next: (res) => {
         // Segun response realizamos una accion
-        switch (res.message) {
-          case Constant.MENSAJE_OK:
-            if (res.firstLogin) {
-              // Es tu primer login modal debes cambiar tu contraseña aceptar o rechazar
-              this.alertFirstLogin();
-            } else {
-              this.router.navigate(["/dashboard"]);
-            }
-            break;
-          default:
-            this.toastrService.error(res.message, "Error", {
-              timeOut: 3000,
-            });
-            break;
+        if (res.message == Constant.MENSAJE_OK) {
+          if (res.firstLogin) {
+            // Es tu primer login modal debes cambiar tu contraseña aceptar o rechazar
+            this.alertFirstLogin();
+          } else {
+            this.router.navigate(["/dashboard"]);
+          }
+        } else {
+          this.toastrService.error(res.message, "Error", {
+            timeOut: 3000,
+          });
         }
       },
       error: (err) => {
         //En caso de error
-     //   console.log("Error en onLogin ", err);
+        //   console.log("Error en onLogin ", err);
         this.toastrService.error("Error al logearse" + err, "Error", {
           timeOut: 3000,
         });
