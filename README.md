@@ -1,6 +1,6 @@
-# Título del Proyecto
+# Isekai Orpheus Bot
 
-_Acá va un párrafo que describa lo que es el proyecto_
+_Es el modulo web del sistema de gestion de tramites registrados via ChatBot y seguimiento de tramites_
 
 ## Comenzando 🚀
 
@@ -11,29 +11,40 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+_Software requerido_
 
 ```
-Da un ejemplo
+NodeJS >= 14.X
+NPM >= 8.X
+AngularCli >= 13.X
 ```
-
+ 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+_Para ejecutar un entorno de desarrollo_
 
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
+_Previamente ejecutar el comando en la terminal para descargar "node_modules" para el funcionamiento del proyecto_
 
 ```
-hasta finalizar
+npm install
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Para ejecutar un servidor de pruebas local usar el comando donde "PUERTO" sera el puerto donde deseamos ejecutar el proyecto , por default ng serve ejecuta el puerto 4200_
+
+```
+ng serve --port [PUERTO]
+```
+
+_Dirigirse a la ruta http:localhost:PUERTO se tendra la pantalla de Login del sistema existiendo 2 roles_
+_Rol Administrador_
+
+
+
+_Rol Tramitador_
+
+
+
+_Adicionalmente existe el apartado Tracking para el seguimiento de los estudiantes del tramite_
 
 ## Ejecutando las pruebas ⚙️
 
