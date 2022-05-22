@@ -36,18 +36,49 @@ _Para ejecutar un servidor de pruebas local usar el comando donde "PUERTO" sera 
 ng serve --port [PUERTO]
 ```
 
-_Dirigirse a la ruta http:localhost:PUERTO se tendra la pantalla de Login del sistema existiendo 2 roles_
+_Dirigirse a la ruta http://localhost:4200/#/login/ se tendra la pantalla de Login del sistema existiendo 2 roles_
+
+_**Login** :  Apartado de inicio de sesion para ambos tipos de roles_
+
+![Login](/docs/login.PNG)
+
+_**Change Password** : Apartado para el cambio de contraseña_
+
+![Change Password](/docs/change_password.PNG)
+
+_**DashBoard** : Apartado con graficos sobre las cantidad de estados con filtros de fechas_
+
+![DashBoard 1](/docs/dashboard_1.PNG)
+
+![DashBoard 2](/docs/dashboard_2.PNG)
+
+![DashBoard 3](/docs/dashboard_3.PNG)
+
+_**Rol Administrador** : Rol que gestiona Usuarios y Documentos , comparte el dashboard con el rol tramitador_ 
+
+_*Usuarios*_
+
+![Admin Users](/docs/admin_users.PNG)
+
+_*Documentos*_
+
+![Admin Docs](/docs/admin_docs.PNG)
+
+_**Rol Tramitador** : Rol que gestiona los tramites de los estudiantes , comparte el dashboard con el rol administrador_
+
+_*Tramites*_
+
+![Tramitador Tramites](/docs/tramitador_1.PNG)
+
+![Tramitador Tramites](/docs/tramitador_2.PNG)
+
+![Tramitador Tramites](/docs/tramitador_3.PNG)
 
 
-_Rol Administrador_
+_**Tracking** : Apartado para el seguimiento del tramite por parte de los estudiantes_
 
+![Tracking](/docs/tracking.PNG)
 
-
-_Rol Tramitador_
-
-
-
-_Adicionalmente existe el apartado Tracking para el seguimiento de los estudiantes del tramite_
 
 ## Ejecutando las pruebas ⚙️
 
