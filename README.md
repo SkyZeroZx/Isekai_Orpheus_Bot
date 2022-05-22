@@ -36,6 +36,8 @@ ng serve --port [PUERTO]
 ```
 
 _Dirigirse a la ruta http:localhost:PUERTO se tendra la pantalla de Login del sistema existiendo 2 roles_
+
+
 _Rol Administrador_
 
 
