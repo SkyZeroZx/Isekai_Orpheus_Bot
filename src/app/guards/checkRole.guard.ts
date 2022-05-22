@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { AuthService } from "../services/auth.service";
-
+const helper = new JwtHelperService();
 @Injectable({
   providedIn: "root",
 })
@@ -14,7 +15,7 @@ export class CheckRole implements CanActivate {
     if (JSON.parse(localStorage.getItem("user")) == null) {
       return false;
     }
-    switch (JSON.parse(localStorage.getItem("user")).role) {
+    switch (this.authService.getItemToken("role")) {
       case "admin":
         if (window.location.href.includes("tramites")) {
           this.router.navigate(["/dashboard"]);

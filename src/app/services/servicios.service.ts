@@ -151,12 +151,6 @@ export class ServiciosService {
       .pipe(catchError(this.handlerError));
   }
 
-  buscarImagenes(id_est_doc: string): Observable<Imagen[]> {
-    return this.http
-      .get<Imagen[]>(`${environment.API_URL}/tramite/img/${id_est_doc}`)
-      .pipe(catchError(this.handlerError));
-  }
-
   buscarAdjuntos(id_est_doc: string): Observable<Adjunto[]> {
     return this.http
       .get<Adjunto[]>(`${environment.API_URL}/tramite/adj/${id_est_doc}`)

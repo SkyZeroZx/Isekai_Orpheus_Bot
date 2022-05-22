@@ -56,7 +56,7 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
-    switch (JSON.parse(localStorage.getItem("user")).role) {
+    switch (this.auth.getItemToken("role")) {
       case "admin":
         this.menuItems = ROUTES_ADMINISTRADOR.filter((menuItem) => menuItem);
         break;

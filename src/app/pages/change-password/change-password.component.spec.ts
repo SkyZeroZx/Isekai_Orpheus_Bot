@@ -130,6 +130,16 @@ fdescribe("ChangePasswordComponent", () => {
     // Validamos que firstLogin sea false
     expect(JSON.parse(localStorage.getItem("user")).firstLogin).toBe(false);
     localStorage.clear();
+
+    // Validamos para el caso que sea el primer login
+    const spyGetItemTokenTrueFirstLogin = spyOn(
+      auth,
+      "getItemToken"
+    ).and.returnValue(true);
+    component.onChangePassword();
+    expect(spyGetItemTokenTrueFirstLogin).toHaveBeenCalled();
+    expect(mockRouter.navigate).toHaveBeenCalledWith(["/login"]);
+
     // Espiamos nuestro servicio y hace devuelva un DIFERENTE de  MENSAJE_OK
     // Creamos el mock de nuestro objeto
     const mockDiferent = {
@@ -153,12 +163,28 @@ fdescribe("ChangePasswordComponent", () => {
     // Validamos que sea llamado nuestro espia
     expect(spyToastError).toHaveBeenCalled();
     expect(spyError).toHaveBeenCalled();
-
   });
 
   it("Verificamos retrocederFirstLogin()", () => {
-    // Validamos que navegamos a /login
+    // validamos para el caso que es primer login
+    const spyGetItemTokenTrue = spyOn(auth, "getItemToken").and.returnValue(
+      true
+    );
+    const spyauthService = spyOn(auth, "logout").and.callThrough();
+    // Llamamos nuestra funcion a evaluar
     component.retrocederFirstLogin();
+    // validamos las condiciones
     expect(mockRouter.navigate).toHaveBeenCalledWith(["/login"]);
+    expect(spyGetItemTokenTrue).toHaveBeenCalled();
+    expect(spyauthService).toHaveBeenCalled();
+    // Validamos en caso contrario
+    const spyGetItemTokenFalse = spyOn(auth, "getItemToken").and.returnValue(
+      false
+    );
+    // Llamamos nuestra funcion a evaluar
+    component.retrocederFirstLogin();
+    // validamos las condiciones
+    expect(mockRouter.navigate).toHaveBeenCalledWith(["/dashboard"]);
+    expect(spyGetItemTokenFalse).toHaveBeenCalled();
   });
 });

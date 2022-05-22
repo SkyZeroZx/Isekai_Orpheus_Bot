@@ -30,6 +30,7 @@
     "@angular/platform-browser": "13.3.6",
     "@angular/platform-browser-dynamic": "13.3.6",
     "@angular/router": "13.3.6",
+    "@angular/service-worker": "13.3.6",
     "@auth0/angular-jwt": "^5.0.2",
     "@ng-bootstrap/ng-bootstrap": "12.1.1",
     "@sweetalert2/ngx-sweetalert2": "^10.0.0",

@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    switch (JSON.parse(localStorage.getItem("user")).role) {
+    switch (this.auth.getItemToken("role")) {
       case "admin":
         this.listTitles = ROUTES_ADMINISTRADOR.filter((listTitle) => listTitle);
         break;

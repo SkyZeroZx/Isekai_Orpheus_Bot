@@ -1,0 +1,211 @@
+<div class="modal-body">
+  <form [formGroup]="detalleForm">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>N° Tramite</label>
+          <input type="text" formControlName="detalleTramite" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Codigo Estudiante</label>
+          <input type="text" formControlName="detalleCodEstudiante" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Estado Actual</label>
+          <input type="text" placeholder="Estado" formControlName="detalleEstado" class="form-control" readonly>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Apellidos</label>
+          <input type="text" formControlName="detalleApellidos" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Nombres</label>
+          <input type="text" formControlName="detalleNombres" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Fecha</label>
+          <input type="text" formControlName="detalleFecha" class="form-control" readonly>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+
+  <h4>Registrar Nuevo Estado</h4>
+  <form class="row" [formGroup]="registrarForm" (ngSubmit)="registraEstado(registrarForm.value)">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <select class="form-control" formControlName="estado">
+          <option value="">Seleccione un estado</option>
+          <option value="PROCESANDO">PROCESANDO</option>
+          <option value="OBSERVADO">OBSERVADO</option>
+          <option value="FINALIZADO">FINALIZADO</option>
+        </select>
+        <div *ngIf="registrarForm.controls.estado.invalid && registrarForm.controls.estado.touched">
+          <div class="text-left" *ngIf="registrarForm.controls.estado.errors?.required" style="color:red">Se requiere
+            seleccionar estado</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <textarea type="text" class="form-control" rows="3" placeholder="Observacion"
+          formControlName="observaciones"></textarea>
+        <div *ngIf="registrarForm.controls.observaciones.invalid && registrarForm.controls.observaciones.touched">
+          <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.minlength" style="color:red">La
+            longitud minima es 6 caracteres</small>
+          <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.maxlength" style="color:red">La
+            longitud maxima es 105 caracteres</small>
+          <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.required" style="color:red">Se
+            requiere ingresar observacion</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary">
+          Registrar
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <h4>Adjuntar Certificado</h4>
+
+  <form class="input-group mb-3" [formGroup]="uploadForm" (ngSubmit)="upload()">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <button class="btn btn-primary" [disabled]="uploadForm.invalid" type="submit"
+          id="inputGroupFileAddon03">Subir</button>
+      </div>
+      <div class="custom-file">
+        <input type="file" #file class="custom-file-input" id="inputGroupFile03"
+          aria-describedby="inputGroupFileAddon03" accept="application/pdf" (change)="seleccionarArchivo($event)">
+        <label class="custom-file-label" for="inputGroupFile03">{{fileName}}</label>
+      </div>
+    </div>
+    <div *ngIf="uploadForm.controls.subir.invalid && uploadForm.controls.subir.touched">
+      <small class="text-left" *ngIf="uploadForm.controls.subir.errors?.required" style="color:red">Se requiere adjuntar
+        documento</small>
+    </div>
+  </form>
+  <br><br>
+
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <tabset class="table">
+      <tab heading="Detalles" id="tab1">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>N° Tramite</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Observacion</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let itemDetalle of listaDetalles">
+                <td>{{itemDetalle.id_est_doc}}</td>
+                <td>{{itemDetalle.fecha}}</td>
+                <td>{{itemDetalle.estado}}</td>
+                <td>{{itemDetalle.observaciones}}</td>
+                <td class="text-center" (click)="seleccionarDetalle(itemDetalle)">
+                  <i class="fas fa-edit"></i>
+                </td>
+                <td class="text-center" (click)="eliminarDetalle(itemDetalle)">
+                  <i class="ni ni-fat-remove"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </tab>
+
+      <tab heading="Adjuntos" id="tab3">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>N° Tramite</th>
+                <th>Fecha</th>
+                <th>Descargar</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="adjuntoOk">
+              <tr *ngFor="let itemAdjunto of listaAdjuntos">
+                <td>{{itemAdjunto.ID_EST_DOC}}</td>
+                <td>{{itemAdjunto.FECHA}}</td>
+                <td class="text-center"> <a href="{{itemAdjunto.URL}}" target="_blank">
+                    <i class="ni ni-cloud-download-95"></i>
+                  </a> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </tab>
+
+      <tab heading="Certificado" id="tab4">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>N° Tramite</th>
+                <th>Fecha</th>
+                <th>Descargar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="certificadoOk">
+              <tr *ngFor="let itemCertificado of listaCertificado">
+                <td>{{itemCertificado.id_est_doc}}</td>
+                <td>{{itemCertificado.fecha}}</td>
+                <td class="text-center">
+                  <a href="{{itemCertificado.url}}" target="_blank">
+                    <i class="ni ni-paper-diploma"></i>
+                  </a>
+                </td>
+                <td class="text-center" (click)="eliminarCertificado(itemCertificado)">
+                  <i class="ni ni-fat-remove"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </tab>
+    </tabset>
+  </ul>
+
+  <!-- Modal Modificar-->
+  <div class="modal fade" bsModal #modalMod="bs-modal" id="formulario-actualizar" tabindex="-1" role="dialog"  (onHidden)="leerDetalles()"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color :black;">Modificar Detalle Tramite</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalMod.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <app-edit-tramite [in_updateDetalle]="updateDetalle" ></app-edit-tramite>
+      </div>
+    </div>
+  </div>
+
+</div>

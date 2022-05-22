@@ -4,14 +4,12 @@ import { RouterModule } from "@angular/router";
 import { CommonModule, DatePipe } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ClipboardModule } from "ngx-clipboard";
-
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { TramitesComponent } from "../../pages/tramites/tramites.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ChartsModule } from "ng2-charts";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
-
 import { defineLocale } from "ngx-bootstrap/chronos";
 import { esLocale } from "ngx-bootstrap/locale";
 import { PieComponent } from "src/app/pages/dashboard/graficos/pie/pie.component";
@@ -20,9 +18,8 @@ import { BarComponent } from "src/app/pages/dashboard/graficos/bar/bar.component
 import { FilterPipe } from "src/app/pipes/filter.pipe";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { TabsModule } from "ngx-bootstrap/tabs";
-import { DetalleTramiteComponent} from "src/app/pages/tramites/detalles/detalletramite/detalletramite.component";
 import { NgxPaginationModule } from "ngx-pagination";
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import { DocumentosComponent } from "src/app/pages/documentos/documentos.component";
 import { UsersComponent } from "src/app/pages/users/users.component";
 import { CrearUserComponent } from "src/app/pages/users/crear-user/crear-user.component";
@@ -31,7 +28,8 @@ import { FilterPipeUser } from "src/app/pipes/filterUsers.pipe";
 import { FilterDocument } from "src/app/pipes/filterDocument.pipe";
 import { NewDocumentComponent } from "src/app/pages/documentos/new-document/new-document.component";
 import { EditDocumentComponent } from "src/app/pages/documentos/edit-document/edit-document.component";
-
+import { DetalleTramiteComponent } from "src/app/pages/tramites/components/detalle-tramite/detalle-tramite.component";
+import { EditTramiteComponent } from "src/app/pages/tramites/components/edit-tramite/edit-tramite.component";
 
 defineLocale("es", esLocale);
 @NgModule({
@@ -48,25 +46,26 @@ defineLocale("es", esLocale);
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     NgxPaginationModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
   ],
   providers: [DatePipe],
   declarations: [
     DashboardComponent,
-    DetalleTramiteComponent,
     PieComponent,
     DonutComponent,
     BarComponent,
     TramitesComponent,
+    DetalleTramiteComponent,
+    EditTramiteComponent,
     FilterPipe,
     FilterPipeUser,
     FilterDocument,
-    DocumentosComponent,
     UsersComponent,
     CrearUserComponent,
     EditUserComponent,
+    DocumentosComponent,
     NewDocumentComponent,
-    EditDocumentComponent
+    EditDocumentComponent,
   ],
   bootstrap: [DashboardComponent],
 })

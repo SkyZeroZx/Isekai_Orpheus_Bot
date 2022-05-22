@@ -9,7 +9,7 @@ import { ReporteService } from "src/app/services/report.service";
 @Component({
   selector: "app-tramites",
   templateUrl: "./tramites.component.html",
-  styleUrls: ["./tables.component.scss"],
+  styleUrls: ["./tramites.component.scss"],
 })
 export class TramitesComponent implements OnInit {
   consultaForm: FormGroup;

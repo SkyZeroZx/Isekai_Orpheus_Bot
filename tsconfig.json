@@ -1,9 +1,11 @@
 {
   "compileOnSave": false,
+  "include": ["src/**/*"],
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "types": ["node", "jasmine"],
+
     "sourceMap": true,
     "declaration": false,
     "module": "es2020",

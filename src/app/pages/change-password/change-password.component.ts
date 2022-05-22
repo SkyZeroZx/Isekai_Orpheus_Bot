@@ -6,10 +6,11 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { ToastrService } from "ngx-toastr";
 import { Constant } from "src/app/Constants/Constant";
 import { AuthService } from "src/app/services/auth.service";
-
+const helper = new JwtHelperService();
 @Component({
   selector: "app-change-password",
   templateUrl: "./change-password.component.html",
@@ -83,18 +84,19 @@ export class ChangePasswordComponent implements OnInit {
     this.authService.changePassword(this.changePasswordForm.value).subscribe({
       next: (res) => {
         if (res.message == Constant.MENSAJE_OK) {
-          this.router.navigate(["/dashboard"]);
-          // Actualizamos el localstorage por si es un primer login
-          let newStorage = JSON.parse(localStorage.getItem("user"));
-          newStorage.firstLogin = false;
-          localStorage.setItem("user", JSON.stringify(newStorage));
-          this.toastrService.success(
-            "Se cambio con exitosa la contraseña",
-            "Exito",
-            {
-              timeOut: 3000,
-            }
-          );
+          if (this.authService.getItemToken("firstLogin")) {
+            this.authService.logout();
+            this.router.navigate(["/login"]);
+          } else {
+            this.router.navigate(["/dashboard"]);
+            this.toastrService.success(
+              "Se cambio con exitosa la contraseña",
+              "Exito",
+              {
+                timeOut: 3000,
+              }
+            );
+          }
         } else {
           this.toastrService.error(res.message, "Error", {
             timeOut: 3000,
@@ -110,6 +112,11 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   retrocederFirstLogin() {
-    this.router.navigate(["/login"]);
+    if (this.authService.getItemToken("firstLogin")) {
+      this.authService.logout();
+      this.router.navigate(["/login"]);
+    } else {
+      this.router.navigate(["/dashboard"]);
+    }
   }
 }

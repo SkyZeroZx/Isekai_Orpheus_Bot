@@ -51,6 +51,8 @@ fdescribe("SidebarComponent", () => {
     fixture = TestBed.createComponent(SidebarComponent);
     service = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
+    //Por default vamos evaluar cuando retornar admin
+    spyOn(service, "getItemToken").and.returnValue("admin");
     localStorage.setItem("user", JSON.stringify(mockUserAdmin));
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -102,6 +104,8 @@ fdescribe("SidebarComponent", () => {
     expect(component.usuarioLogeado).toEqual(mockUserAdmin.username);
     localStorage.clear();
 
+    // Hace el servicio retorne el valor tramitador para validar las condiciones
+    spyOn(service, "getItemToken").and.returnValue("tramitador");
     localStorage.setItem("user", JSON.stringify(mockUserTramitador));
     component.ngOnInit();
     expect(component.menuItems).toEqual(verifyMenuItemTramitador);

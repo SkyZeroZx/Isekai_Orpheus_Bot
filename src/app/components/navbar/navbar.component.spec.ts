@@ -44,10 +44,12 @@ fdescribe("NavbarComponent", () => {
     localStorage.clear();
     fixture = TestBed.createComponent(NavbarComponent);
     service = TestBed.inject(AuthService);
-
+    spyOn(service, "getItemToken").and.returnValue("admin");
     localStorage.setItem("user", JSON.stringify(mockUserAdmin));
     component = fixture.componentInstance;
     fixture.detectChanges();
+    // Habilitamos en jasmine el re espiar las funciones , caso contrario tendriamos un error
+    jasmine.getEnv().allowRespy(true);
   });
 
   let verifyMenuItemAdmin: any = [
@@ -87,26 +89,26 @@ fdescribe("NavbarComponent", () => {
   it("NavbarComponent creado correctamente", () => {
     expect(component).toBeTruthy();
     localStorage.clear();
+    //  expect(spyGetItemToken).toHaveBeenCalled();
   });
-
 
   it("Verificamos changePassword()", () => {
     component.changePassword();
     expect(mockRouter.navigate).toHaveBeenCalledWith(["/change-password"]);
   });
 
-
   it("Verificamos ngOnInit", () => {
     component.ngOnInit();
+
     expect(component.listTitles).toEqual(verifyMenuItemAdmin);
     expect(component.usuarioLogeado).toEqual(mockUserAdmin.username);
     localStorage.clear();
-
+    //Forzamos a retornar en este caso el valor de tramitador para validar nuestras condiciones
+    spyOn(service, "getItemToken").and.returnValue("tramitador")
     localStorage.setItem("user", JSON.stringify(mockUserTramitador));
     component.ngOnInit();
     expect(component.listTitles).toEqual(verifyMenuItemTramitador);
     expect(component.usuarioLogeado).toEqual(mockUserTramitador.username);
-
   });
 
   it("Verificamos onLogout()", () => {
