@@ -28,6 +28,7 @@ _Previamente ejecutar el comando en la terminal para descargar "node_modules" pa
 ```
 npm install
 ```
+_Previamente configurar la ruta del API que consumira nuestro proyecto en el archivo src/environments/environment.ts campo API_URL_
 
 _Para ejecutar un servidor de pruebas local usar el comando donde "PUERTO" sera el puerto donde deseamos ejecutar el proyecto , por default ng serve ejecuta el puerto 4200_
 
@@ -50,70 +51,85 @@ _Adicionalmente existe el apartado Tracking para el seguimiento de los estudiant
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+_Se crearon 2 tipos de pruebas siendo las primeras las pruebas unitarias en Jasmine y Karma que son integradas por Angular_
 
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
+_Las segundo tipo de pruebas son las Automatizadas E2E en Cypress para la verificacion funcional del sistema _
 
 ### Y las pruebas de estilo de codificación ⌨️
 
-_Explica que verifican estas pruebas y por qué_
+_Las pruebas unitarias en Jasmine y Karma verificacion la funcionalidad adecuada y logica del codigo asi como la cobertura del codigo_
+
+_Para ejecutar las pruebas unitarias ejecutar el siguiente comando en la terminal de la raiz del proyecto, el cual levanta el servidor local del test runner Karma_
 
 ```
-Da un ejemplo
+ng test
 ```
+
+_Para obtener la cobertura del codigo de esta pruebas ejecutar el siguiente comando para obtener un reporte detallado de las pruebas_
+
+_La carpeta con la cobertura del codigo se creara en la raiz del proyecto con la siguiente ruta coverage/Isekai_Bot/index.html el cual se puede visualizar_
+
+...
+ng test --code-coverage
+...
+
+
+
+### Analice las pruebas end-to-end 🔩
+
+_Para ejecutar las pruebas E2E en Cypress del sistema ejecutar el siguiente comando en la terminal de la raiz del proyecto_
+
+_El cual ejecuta Cypress en modo headless las pruebas E2E_
+
+
+```
+npm run e2e:ci
+```
+
+_Para obtener un summary del reporte de pruebas ejecutar el siguiente comando _
+
+...
+npm run e2e:coverage
+...
+
+_Para visualizar el reporte grafico de la cobertura de codigo de las pruebas E2E en la raiz del proyecto ubicarse en la ruta coverage-e2e/Icov-report/index.html_
+
+
+
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+_Previamente configurar la ruta del API que consumira nuestro proyecto en el archivo src/environments/environment.prod.ts campo API_URL_
+
+_Para realizar el despligue a produccion del proyecto ejecutar el siguiente comando_
+
+...
+ng build --configuration production
+...
+
+_El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos desplegar en cualquier servidor que ejecute HTML CSS y JS_ 
 
 ## Construido con 🛠️
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Angular](https://angular.io/docs) - El framework web usado
+* [NPM](https://www.npmjs.com/) - Manejador de dependencias
+* [Argon DashBoard](https://demos.creative-tim.com/argon-dashboard-angular/#/documentation/tutorial) - Plantilla Web Utilizada
 
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
 
 ## Versionado 📌
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
+Usamos [GIT](https://git-scm.com/) para el versionado.
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+_Los integrantes del proyecto_
 
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+* **Jaime Burgos Tejada** - *Developer* - [SkyZeroZx](https://github.com/SkyZeroZx)
+* **Omar Ramos More** - *Documentación && Manual Testing* - [Vengenace](https://github.com/Vengenace)
+* **Gianfranco Alfaro Mariño** - *Documentación && Manual Testing* - [Franco](https://github.com/Gianfranco622)
 
 ## Licencia 📄
 
 Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
-* etc.
-
-
-
----
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
