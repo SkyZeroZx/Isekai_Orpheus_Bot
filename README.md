@@ -156,7 +156,7 @@ _El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+_Las herramientas utilizadas son:_
 
 * [Angular](https://angular.io/docs) - El framework web usado
 * [NPM](https://www.npmjs.com/) - Manejador de dependencias
