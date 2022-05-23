@@ -45,44 +45,44 @@ _Dirigirse a la ruta http://localhost:4200/#/login/ se tendra la pantalla de Log
 
 _**Login** :  Apartado de inicio de sesion para ambos tipos de roles_
 
-![Login](/docs/layout/login.PNG)
+![Login](/docs/Layout/login.PNG)
 
 _**Change Password** : Apartado para el cambio de contraseña_
 
-![Change Password](/docs/layout/change_password.PNG)
+![Change Password](/docs/Layout/change_password.PNG)
 
 _**DashBoard** : Apartado con graficos sobre las cantidad de estados con filtros de fechas_
 
-![DashBoard 1](/docs/layout/dashboard_1.PNG)
+![DashBoard 1](/docs/Layout/dashboard_1.PNG)
 
-![DashBoard 2](/docs/layout/dashboard_2.PNG)
+![DashBoard 2](/docs/Layout/dashboard_2.PNG)
 
-![DashBoard 3](/docs/layout/dashboard_3.PNG)
+![DashBoard 3](/docs/Layout/dashboard_3.PNG)
 
 _**Rol Administrador** : Rol que gestiona Usuarios y Documentos , comparte el dashboard con el rol tramitador_ 
 
 _*Usuarios*_
 
-![Admin Users](/docs/layout/admin_users.PNG)
+![Admin Users](/docs/Layout/admin_users.PNG)
 
 _*Documentos*_
 
-![Admin Docs](/docs/layout/admin_docs.PNG)
+![Admin Docs](/docs/Layout/admin_docs.PNG)
 
 _**Rol Tramitador** : Rol que gestiona los tramites de los estudiantes , comparte el dashboard con el rol administrador_
 
 _*Tramites*_
 
-![Tramitador Tramites](/docs/layout/tramitador_1.PNG)
+![Tramitador Tramites](/docs/Layout/tramitador_1.PNG)
 
-![Tramitador Tramites](/docs/layout/tramitador_2.PNG)
+![Tramitador Tramites](/docs/Layout/tramitador_2.PNG)
 
-![Tramitador Tramites](/docs/layout/tramitador_3.PNG)
+![Tramitador Tramites](/docs/Layout/tramitador_3.PNG)
 
 
 _**Tracking** : Apartado para el seguimiento del tramite por parte de los estudiantes_
 
-![Tracking](/docs/layout/tracking.PNG)
+![Tracking](/docs/Layout/tracking.PNG)
 
 
 ## Ejecutando las pruebas ⚙️
