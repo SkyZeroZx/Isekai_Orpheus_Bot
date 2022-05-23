@@ -8,7 +8,6 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
-
 ### Pre-requisitos 📋
 
 _Software requerido_
@@ -40,61 +39,63 @@ _Dirigirse a la ruta http://localhost:4200/#/login/ se tendra la pantalla de Log
 
 _**Login** :  Apartado de inicio de sesion para ambos tipos de roles_
 
-![Login](/docs/login.PNG)
+![Login](/docs/layout/login.PNG)
 
 _**Change Password** : Apartado para el cambio de contraseña_
 
-![Change Password](/docs/change_password.PNG)
+![Change Password](/docs/layout/change_password.PNG)
 
 _**DashBoard** : Apartado con graficos sobre las cantidad de estados con filtros de fechas_
 
-![DashBoard 1](/docs/dashboard_1.PNG)
+![DashBoard 1](/docs/layout/dashboard_1.PNG)
 
-![DashBoard 2](/docs/dashboard_2.PNG)
+![DashBoard 2](/docs/layout/dashboard_2.PNG)
 
-![DashBoard 3](/docs/dashboard_3.PNG)
+![DashBoard 3](/docs/layout/dashboard_3.PNG)
 
 _**Rol Administrador** : Rol que gestiona Usuarios y Documentos , comparte el dashboard con el rol tramitador_ 
 
 _*Usuarios*_
 
-![Admin Users](/docs/admin_users.PNG)
+![Admin Users](/docs/layout/admin_users.PNG)
 
 _*Documentos*_
 
-![Admin Docs](/docs/admin_docs.PNG)
+![Admin Docs](/docs/layout/admin_docs.PNG)
 
 _**Rol Tramitador** : Rol que gestiona los tramites de los estudiantes , comparte el dashboard con el rol administrador_
 
 _*Tramites*_
 
-![Tramitador Tramites](/docs/tramitador_1.PNG)
+![Tramitador Tramites](/docs/layout/tramitador_1.PNG)
 
-![Tramitador Tramites](/docs/tramitador_2.PNG)
+![Tramitador Tramites](/docs/layout/tramitador_2.PNG)
 
-![Tramitador Tramites](/docs/tramitador_3.PNG)
+![Tramitador Tramites](/docs/layout/tramitador_3.PNG)
 
 
 _**Tracking** : Apartado para el seguimiento del tramite por parte de los estudiantes_
 
-![Tracking](/docs/tracking.PNG)
+![Tracking](/docs/layout/tracking.PNG)
 
 
 ## Ejecutando las pruebas ⚙️
 
 _Se crearon 2 tipos de pruebas siendo las primeras las pruebas unitarias en Jasmine y Karma que son integradas por Angular_
 
-_Las segundo tipo de pruebas son las Automatizadas E2E en Cypress para la verificacion funcional del sistema _
+_Las segundo tipo de pruebas son las Automatizadas E2E en Cypress para la verificacion funcional del sistema_
 
-### Y las pruebas de estilo de codificación ⌨️
+### Pruebas Unitarias Jasmine/Karma⌨️
 
-_Las pruebas unitarias en Jasmine y Karma verificacion la funcionalidad adecuada y logica del codigo asi como la cobertura del codigo_
+_Las pruebas unitarias en Jasmine y Karma verifican la funcionalidad adecuada y logica del codigo asi como la cobertura del codigo_
 
 _Para ejecutar las pruebas unitarias ejecutar el siguiente comando en la terminal de la raiz del proyecto, el cual levanta el servidor local del test runner Karma_
 
 ```
 ng test
 ```
+
+![Unit Test](/docs/unit/unit_2.PNG)
 
 _Para obtener la cobertura del codigo de esta pruebas ejecutar el siguiente comando para obtener un reporte detallado de las pruebas_
 
@@ -104,9 +105,9 @@ _La carpeta con la cobertura del codigo se creara en la raiz del proyecto con la
 ng test --code-coverage
 ...
 
+![Unit Coverage](/docs/unit/unit_coverage.PNG)
 
-
-### Analice las pruebas end-to-end 🔩
+### Pruebas End-To-End 🔩
 
 _Para ejecutar las pruebas E2E en Cypress del sistema ejecutar el siguiente comando en la terminal de la raiz del proyecto_
 
@@ -117,15 +118,22 @@ _El cual ejecuta Cypress en modo headless las pruebas E2E_
 npm run e2e:ci
 ```
 
+![E2E Execution 1](/docs/e2e/e2e_1.PNG)
+
+![E2E Execution 2](/docs/e2e/e2e_2.PNG)
+
 _Para obtener un summary del reporte de pruebas ejecutar el siguiente comando _
 
-...
+```
 npm run e2e:coverage
-...
+```
+
+![E2E Coverage](/docs/e2e/e2e_summary.PNG)
+
 
 _Para visualizar el reporte grafico de la cobertura de codigo de las pruebas E2E en la raiz del proyecto ubicarse en la ruta coverage-e2e/Icov-report/index.html_
 
-
+![E2E Coverage](/docs/e2e/e2e_coverage.PNG)
 
 
 ## Despliegue 📦
@@ -146,6 +154,10 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [Angular](https://angular.io/docs) - El framework web usado
 * [NPM](https://www.npmjs.com/) - Manejador de dependencias
+* [Jasmine](https://jasmine.github.io/) - Framework Testing para pruebas unitarias
+* [Karma](https://karma-runner.github.io/latest/index.html) - Test Runner para pruebas unitarias
+* [Cypress](https://www.cypress.io/) - Framework para pruebas E2E
+* [Sonarqube](https://www.sonarqube.org/) - Evaluacion de codigo
 * [Argon DashBoard](https://demos.creative-tim.com/argon-dashboard-angular/#/documentation/tutorial) - Plantilla Web Utilizada
 
 
