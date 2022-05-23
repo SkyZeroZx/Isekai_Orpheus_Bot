@@ -128,7 +128,7 @@ npm run e2e:ci
 
 ![E2E Execution 2](/docs/e2e/e2e_2.PNG)
 
-_Para obtener un summary del reporte de pruebas ejecutar el siguiente comando _
+_Para obtener un summary del reporte de pruebas ejecutar el siguiente comando_
 
 ```
 npm run e2e:coverage
@@ -142,15 +142,37 @@ _Para visualizar el reporte grafico de la cobertura de codigo de las pruebas E2E
 ![E2E Coverage](/docs/e2e/e2e_coverage.PNG)
 
 
+## Analisis de calidad de codigo 
+
+_**Pre requisitos**_
+
+_En la raiz del proyecto se tiene el archivo *sonar-project.properties* el cual tiene las propiedades necesarias para ejecutarlo sobre un SonarQube_
+
+_Configurar los apartados : *sonar.host.url* , *sonar.login* *sonar.password* con los datos de su instancia correspondiente _
+
+```
+Sonaqube >= 9.X
+```
+![SonarQube Properties](/docs/sonar/sonar_properties.PNG)
+
+_Las pruebas fueron realizas sobre *SonarQube 9.4* para ejecutar el analisis de codigo ejecutar el comando:_
+
+```
+npm run sonar
+```
+![SonarQube Coverage 1](/docs/sonar/sonar_cobertura.PNG)
+
+![SonarQube Coverage 2](/docs/sonar/sonar_cobertura_2.PNG)
+
 ## Despliegue 📦
 
 _Previamente configurar la ruta del API que consumira nuestro proyecto en el archivo src/environments/environment.prod.ts campo API_URL_
 
 _Para realizar el despligue a produccion del proyecto ejecutar el siguiente comando_
 
-...
+```
 ng build --configuration production
-...
+```
 
 _El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos desplegar en cualquier servidor que ejecute HTML CSS y JS_ 
 
@@ -158,13 +180,15 @@ _El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos
 
 _Las herramientas utilizadas son:_
 
-* [Angular](https://angular.io/docs) - El framework web usado
+* [Angular](https://angular.io/docs) - El Framework para Desarrollo Web
 * [NPM](https://www.npmjs.com/) - Manejador de dependencias
 * [Jasmine](https://jasmine.github.io/) - Framework Testing para pruebas unitarias
 * [Karma](https://karma-runner.github.io/latest/index.html) - Test Runner para pruebas unitarias
 * [Cypress](https://www.cypress.io/) - Framework para pruebas E2E
-* [Sonarqube](https://www.sonarqube.org/) - Evaluacion de codigo
-* [Visual Studio Code](https://code.visualstudio.com/) - Editor de Codigo
+* [SonarQube](https://www.sonarqube.org/) - Evaluacion de codigo
+* [Visual Studio Code](https://code.visualstudio.com/) - Editor de Codigo 
+* [Prettier](https://prettier.io/) - Formateador de Codigo
+* [TabNine](https://www.tabnine.com/) - Autocompletador de Codigo
 * [Argon DashBoard](https://demos.creative-tim.com/argon-dashboard-angular/#/documentation/tutorial) - Plantilla Web Utilizada
 
 
@@ -182,4 +206,4 @@ _Los integrantes del proyecto_
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia   - mira el archivo [LICENSE.md](LICENSE.md) para detalles
