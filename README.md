@@ -17,6 +17,12 @@ NodeJS >= 14.X
 NPM >= 8.X
 AngularCli >= 13.X
 ```
+
+_Software opcional_
+
+...
+VisualStudioCode (O su editor de codigo de su preferencia)
+...
  
 ### Instalación 🔧
 
@@ -158,6 +164,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Karma](https://karma-runner.github.io/latest/index.html) - Test Runner para pruebas unitarias
 * [Cypress](https://www.cypress.io/) - Framework para pruebas E2E
 * [Sonarqube](https://www.sonarqube.org/) - Evaluacion de codigo
+* [Visual Studio Code](https://code.visualstudio.com/) - Editor de Codigo
 * [Argon DashBoard](https://demos.creative-tim.com/argon-dashboard-angular/#/documentation/tutorial) - Plantilla Web Utilizada
 
 
