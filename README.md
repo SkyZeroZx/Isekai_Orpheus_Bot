@@ -20,9 +20,9 @@ AngularCli >= 13.X
 
 _Software opcional_
 
-...
-VisualStudioCode (O su editor de codigo de su preferencia)
-...
+```
+Visual Studio Code ( O el editor de su preferencia)
+```
  
 ### Instalación 🔧
 
