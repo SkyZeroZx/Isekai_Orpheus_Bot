@@ -1,6 +1,7 @@
 # Isekai Orpheus Bot
 
 _Es el modulo web del sistema de gestion de tramites registrados via ChatBot y seguimiento de tramites_
+_Adicionalmente funciona como PWA(Progresive Web App) que puede integrarse en cualquier dispositivo movil_
 
 ## Comenzando 🚀
 
@@ -33,9 +34,9 @@ _Previamente ejecutar el comando en la terminal para descargar "node_modules" pa
 ```
 npm install
 ```
-_Previamente configurar la ruta del API que consumira nuestro proyecto en el archivo **src/environments/environment.ts** campo **API_URL**_
+_Previamente configurar la ruta del API que consumira nuestro proyecto en el archivo **"src/environments/environment.ts"** campo **API_URL**_
 
-_Para ejecutar un servidor de pruebas local usar el comando donde **"PUERTO"** sera el puerto donde deseamos ejecutar el proyecto , por default ng serve ejecuta el puerto 4200_
+_Para ejecutar un servidor de pruebas local usar el comando donde **"PUERTO"** sera el puerto donde deseamos ejecutar el proyecto , por default **ng serve** ejecuta el puerto 4200_
 
 ```
 ng serve --port [PUERTO]

@@ -22,8 +22,9 @@ export class FilterPipeUser implements PipeTransform {
       ) {
         if (args1[1] === "") {
           resultadoBusqueda.push(usuario);
+        } else if (usuario.estado === args1[1]) {
+          resultadoBusqueda.push(usuario);
         }
-        //  Codigo legado de pruebas   else if (usuario.estado === args1[1]) { resultadoBusqueda.push(usuario);}
       }
     }
     Constant.REPORT = resultadoBusqueda;
