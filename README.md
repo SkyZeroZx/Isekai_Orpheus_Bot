@@ -107,9 +107,9 @@ _Para obtener la cobertura del codigo de esta pruebas ejecutar el siguiente coma
 
 _La carpeta con la cobertura del codigo se creara en la raiz del proyecto con la siguiente ruta coverage/Isekai_Bot/index.html el cual se puede visualizar_
 
-...
+```
 ng test --code-coverage
-...
+```
 
 ![Unit Coverage](/docs/unit/unit_coverage.PNG)
 
