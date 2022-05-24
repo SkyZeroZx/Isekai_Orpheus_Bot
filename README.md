@@ -1,6 +1,7 @@
 # Isekai Orpheus Bot
 
 _Es el modulo web del sistema de gestion de tramites registrados via ChatBot y seguimiento de tramites_
+
 _Adicionalmente funciona como PWA(Progresive Web App) que puede integrarse en cualquier dispositivo movil_
 
 ## Comenzando 🚀

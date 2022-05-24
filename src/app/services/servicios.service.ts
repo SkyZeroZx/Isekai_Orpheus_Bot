@@ -163,7 +163,7 @@ export class ServiciosService {
       .pipe(catchError(this.handlerError));
   }
 
-  insertarTramite(detalle: Detalle) {
+  createTramite(detalle: Detalle) {
     return this.http
       .post<any>(`${environment.API_URL}/tramite/`, detalle)
       .pipe(catchError(this.handlerError));
@@ -185,7 +185,7 @@ export class ServiciosService {
       .pipe(catchError(this.handlerError));
   }
 
-  update(detalle: Detalle): Observable<any> {
+  updateStatusTramite(detalle: Detalle): Observable<any> {
     return this.http
       .patch(`${environment.API_URL}/tramite`, detalle)
       .pipe(catchError(this.handlerError));

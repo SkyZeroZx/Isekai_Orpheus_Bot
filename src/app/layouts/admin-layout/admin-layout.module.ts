@@ -30,6 +30,7 @@ import { NewDocumentComponent } from "src/app/pages/documentos/new-document/new-
 import { EditDocumentComponent } from "src/app/pages/documentos/edit-document/edit-document.component";
 import { DetalleTramiteComponent } from "src/app/pages/tramites/components/detalle-tramite/detalle-tramite.component";
 import { EditTramiteComponent } from "src/app/pages/tramites/components/edit-tramite/edit-tramite.component";
+import { CreateTramiteComponent } from "src/app/pages/tramites/components/create-tramite/create-tramite.component";
 
 defineLocale("es", esLocale);
 @NgModule({
@@ -57,6 +58,7 @@ defineLocale("es", esLocale);
     TramitesComponent,
     DetalleTramiteComponent,
     EditTramiteComponent,
+    CreateTramiteComponent,
     FilterPipe,
     FilterPipeUser,
     FilterDocument,
@@ -65,7 +67,7 @@ defineLocale("es", esLocale);
     EditUserComponent,
     DocumentosComponent,
     NewDocumentComponent,
-    EditDocumentComponent,
+    EditDocumentComponent
   ],
   bootstrap: [DashboardComponent],
 })

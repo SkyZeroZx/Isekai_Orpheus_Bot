@@ -6,15 +6,15 @@
                     <label for="recipient-name" class="col-form-label">Email</label>
                     <input type="text" class="form-control" formControlName="username" maxlength="120">
                     <div *ngIf="crearUserForm.controls.username.invalid && crearUserForm.controls.username.touched">
-                        <small id="requiredNewNombres" class="text-left"
+                        <small id="requiredNewUsername" class="text-left"
                             *ngIf="crearUserForm.controls.username.errors?.required">
                             Se requiere email</small>
-                        <small id="patternNewNombres" class="text-left"
+                        <small id="patternNewUsernames" class="text-left"
                             *ngIf="crearUserForm.controls.username.errors?.email">
                             El email ingresado tiene formato invalido</small>
-                        <small id="minlengthNewNombres" class="text-left"
+                        <small id="minlengthNewUsername" class="text-left"
                             *ngIf="crearUserForm.controls.username.errors?.minlength">
-                            La longitud minima del email es de 6 caracteres</small>
+                            La longitud minima del email es de 2 caracteres</small>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                             El nombre ingresado tiene formato invalido</small>
                         <small id="minlengthNewNombres" class="text-left"
                             *ngIf="crearUserForm.controls.nombre.errors?.minlength">
-                            La longitud minima del nombre es de 4 caracteres</small>
+                            La longitud minima del nombre es de 2 caracteres</small>
                     </div>
                 </div>
             </div>

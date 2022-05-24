@@ -42,68 +42,9 @@
     </div>
   </form>
 
+  <app-create-tramite (respuestaRegistroTramite)="updateCreateTramite($event)" [in_NewTramite]="in_tramite"></app-create-tramite>
 
-
-  <h4>Registrar Nuevo Estado</h4>
-  <form class="row" [formGroup]="registrarForm" (ngSubmit)="registraEstado(registrarForm.value)">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <select class="form-control" formControlName="estado">
-          <option value="">Seleccione un estado</option>
-          <option value="PROCESANDO">PROCESANDO</option>
-          <option value="OBSERVADO">OBSERVADO</option>
-          <option value="FINALIZADO">FINALIZADO</option>
-        </select>
-        <div *ngIf="registrarForm.controls.estado.invalid && registrarForm.controls.estado.touched">
-          <div class="text-left" *ngIf="registrarForm.controls.estado.errors?.required" style="color:red">Se requiere
-            seleccionar estado</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <textarea type="text" class="form-control" rows="3" placeholder="Observacion"
-          formControlName="observaciones"></textarea>
-        <div *ngIf="registrarForm.controls.observaciones.invalid && registrarForm.controls.observaciones.touched">
-          <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.minlength" style="color:red">La
-            longitud minima es 6 caracteres</small>
-          <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.maxlength" style="color:red">La
-            longitud maxima es 105 caracteres</small>
-          <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.required" style="color:red">Se
-            requiere ingresar observacion</small>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="form-group">
-        <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary">
-          Registrar
-        </button>
-      </div>
-    </div>
-  </form>
-
-  <h4>Adjuntar Certificado</h4>
-
-  <form class="input-group mb-3" [formGroup]="uploadForm" (ngSubmit)="upload()">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <button class="btn btn-primary" [disabled]="uploadForm.invalid" type="submit"
-          id="inputGroupFileAddon03">Subir</button>
-      </div>
-      <div class="custom-file">
-        <input type="file" #file class="custom-file-input" id="inputGroupFile03"
-          aria-describedby="inputGroupFileAddon03" accept="application/pdf" (change)="seleccionarArchivo($event)">
-        <label class="custom-file-label" for="inputGroupFile03">{{fileName}}</label>
-      </div>
-    </div>
-    <div *ngIf="uploadForm.controls.subir.invalid && uploadForm.controls.subir.touched">
-      <small class="text-left" *ngIf="uploadForm.controls.subir.errors?.required" style="color:red">Se requiere adjuntar
-        documento</small>
-    </div>
-  </form>
   <br><br>
-
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <tabset class="table">
@@ -138,7 +79,7 @@
         </div>
       </tab>
 
-      <tab heading="Adjuntos" id="tab3">
+      <tab heading="Adjuntos" id="tab2">
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead class="thead-light">
@@ -161,7 +102,7 @@
         </div>
       </tab>
 
-      <tab heading="Certificado" id="tab4">
+      <tab heading="Certificado" id="tab3">
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead class="thead-light">
@@ -192,8 +133,8 @@
     </tabset>
   </ul>
 
-  <!-- Modal Modificar-->
-  <div class="modal fade" bsModal #modalMod="bs-modal" id="formulario-actualizar" tabindex="-1" role="dialog"  (onHidden)="leerDetalles()"
+  <!-- Modal Modificar  (onHidden)="leerDetalles()"-->
+  <div class="modal fade" bsModal #modalMod="bs-modal" id="formulario-actualizar" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -203,7 +144,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <app-edit-tramite [in_updateDetalle]="updateDetalle" ></app-edit-tramite>
+        <app-edit-tramite *ngIf="seleccionEditOk" [in_updateDetalle]="updateDetalle"
+          (respuestaUpdateTramite)="modalMod.hide(); leerDetalles();"></app-edit-tramite>
       </div>
     </div>
   </div>

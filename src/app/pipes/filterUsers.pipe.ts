@@ -20,9 +20,11 @@ export class FilterPipeUser implements PipeTransform {
         usuario.apellidoMaterno.toLowerCase().indexOf(args1[6].toLowerCase()) >
           -1
       ) {
-        if (args1[1] === "") {
+  /*    if (args1[1] === "") {
           resultadoBusqueda.push(usuario);
-        } else if (usuario.estado === args1[1]) {
+        } else */
+       
+        if (usuario.estado === args1[1] || args1[1] === "") {
           resultadoBusqueda.push(usuario);
         }
       }

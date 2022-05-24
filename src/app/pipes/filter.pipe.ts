@@ -16,9 +16,10 @@ export class FilterPipe implements PipeTransform {
         usuario.cod_est.toLowerCase().indexOf(args1[4].toLowerCase()) > -1 &&
         usuario.nombre.toLowerCase().indexOf(args1[5].toLowerCase()) > -1
       ) {
-        if (args1[1] === "") {
+      /*  if (args1[1] === "") {
           resultadoBusqueda.push(usuario);
-        } else if (usuario.estado === args1[1]) {
+        } else */
+        if (usuario.estado === args1[1] || args1[1] === "") {
           resultadoBusqueda.push(usuario);
         }
       }

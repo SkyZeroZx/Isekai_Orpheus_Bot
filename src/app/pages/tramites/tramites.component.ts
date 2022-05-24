@@ -13,9 +13,6 @@ import { ReporteService } from "src/app/services/report.service";
 })
 export class TramitesComponent implements OnInit {
   consultaForm: FormGroup;
-  registrarForm: FormGroup;
-  estadosActualizarForm: FormGroup;
-  uploadForm: FormGroup;
   listaTramiteDoc: TramiteDoc[];
   tramiteSeleccionado: TramiteDoc;
   listaTramiteOk = false;

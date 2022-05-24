@@ -9,7 +9,11 @@ import { BsModalService, ModalModule } from "ngx-bootstrap/modal";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { ToastrModule, ToastrService } from "ngx-toastr";
 import { of, throwError } from "rxjs";
+import { Constant } from "src/app/Constants/Constant";
 import { ServiciosService } from "src/app/services/servicios.service";
+import Swal from "sweetalert2";
+import { CreateTramiteComponent } from "../create-tramite/create-tramite.component";
+import { EditTramiteComponent } from "../edit-tramite/edit-tramite.component";
 import { DetalleTramiteComponent } from "./detalle-tramite.component";
 
 fdescribe("DetalleTramiteComponent", () => {
@@ -29,7 +33,11 @@ fdescribe("DetalleTramiteComponent", () => {
   };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DetalleTramiteComponent],
+      declarations: [
+        DetalleTramiteComponent,
+        CreateTramiteComponent,
+        EditTramiteComponent,
+      ],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
@@ -89,28 +97,19 @@ fdescribe("DetalleTramiteComponent", () => {
       component,
       "detalleTramite"
     ).and.callThrough();
-    component.ngOnChanges();
+    let simpleChanges;
+    component.ngOnChanges(simpleChanges);
     expect(spycrearFormularios).toHaveBeenCalled();
     expect(spyDetalleTramite).toHaveBeenCalled();
   });
-/*
+  
   it("Verificamos seleccionarDetalle(detalleSeleccionado)", () => {
     const spyModal = spyOn(component.modalMod, "show").and.callThrough();
     component.seleccionarDetalle(mockTramiteIn);
+    expect(component.updateDetalle).toEqual(mockTramiteIn);
     expect(spyModal).toHaveBeenCalled();
-    expect(component.estadosActualizarForm.getRawValue().id_est_doc).toEqual(
-      mockTramiteIn.id_est_doc
-    );
-    expect(component.estadosActualizarForm.getRawValue().estado).toEqual(
-      mockTramiteIn.estado
-    );
-    expect(component.estadosActualizarForm.getRawValue().fecha).toEqual(
-      mockTramiteIn.fecha
-    );
-    expect(component.estadosActualizarForm.getRawValue().observaciones).toEqual(
-      mockTramiteIn.observaciones
-    );
-  });*/
+    expect(component.seleccionEditOk).toBeTruthy();
+  });
 
   it("Verificamos eliminarDetalle(values)", () => {
     const spyAlertEliminar = spyOn(
@@ -247,6 +246,23 @@ fdescribe("DetalleTramiteComponent", () => {
     expect(spybuscarAdjuntosError).toHaveBeenCalled();
   });
 
+  it("Verificamos updateCreateTramite()", () => {
+    const spyLeerDetalle = spyOn(component, "leerDetalles").and.callThrough();
+    const syleerCertificados = spyOn(
+      component,
+      "leerCertificados"
+    ).and.callThrough();
+    component.crearFormularios();
+    const mockEstado: any = "FINALIZADO";
+    component.updateCreateTramite(mockEstado);
+    expect(spyLeerDetalle).toHaveBeenCalled();
+    expect(syleerCertificados).toHaveBeenCalled();
+
+    expect(component.detalleForm.getRawValue().detalleEstado).toEqual(
+      mockEstado
+    );
+  });
+
   it("Verificamos leerCertificados()", () => {
     const mockOKResponse: any = [
       {
@@ -279,7 +295,153 @@ fdescribe("DetalleTramiteComponent", () => {
     expect(spyleerCertificadosError).toHaveBeenCalled();
   });
 
+  it("Verificamos callServicedeleteDetalleTramite()", () => {
+    // Verificamos cuando el servicio devuelve una respuesta OK
+    const mockResponseOK: any = {
+      message: Constant.MENSAJE_OK,
+    };
+    const spyDeleteTramiteOK = spyOn(servicio, "deleteTramite").and.returnValue(
+      of(mockResponseOK)
+    );
+    const spyleerDetalles = spyOn(component, "leerDetalles").and.callThrough();
+    const spyToastSucess = spyOn(toastrService, "success").and.callThrough();
+    component.ngOnInit();
+    component.callServicedeleteDetalleTramite();
+    expect(spyDeleteTramiteOK).toHaveBeenCalled();
+    expect(spyleerDetalles).toHaveBeenCalled();
+    expect(spyToastSucess).toHaveBeenCalled();
+    // Validamos para el caso contrario
+    const mockResponseDF: any = {
+      message: "Something",
+    };
+    const spyDeleteTramiteDF = spyOn(servicio, "deleteTramite").and.returnValue(
+      of(mockResponseDF)
+    );
+    const spyToastError = spyOn(toastrService, "error").and.callThrough();
+    component.ngOnInit();
+    component.callServicedeleteDetalleTramite();
+    expect(spyDeleteTramiteDF).toHaveBeenCalled();
+    expect(spyToastError).toHaveBeenCalled();
+    // Verificamos para el caso el servicio  retorna un error
+    const spyToastErr = spyOn(toastrService, "error").and.callThrough();
+    const spyDeleteTramiteError = spyOn(
+      servicio,
+      "deleteTramite"
+    ).and.returnValue(throwError(() => new Error("Error en el servicio")));
+    component.callServicedeleteDetalleTramite();
+    expect(spyToastErr).toHaveBeenCalled();
+    expect(spyDeleteTramiteError).toHaveBeenCalled();
+  });
 
+  it("Verificamos callServiceDeleteCertificado()", () => {
+    // Verificamos cuando el servicio devuelve una respuesta OK
+    const mockResponseOK: any = {
+      message: Constant.MENSAJE_OK,
+    };
+    const spyDeleteCertificadoOK = spyOn(
+      servicio,
+      "deleteCertificado"
+    ).and.returnValue(of(mockResponseOK));
+    const spyleerCertificados = spyOn(
+      component,
+      "leerCertificados"
+    ).and.callThrough();
+    const spyToastSucess = spyOn(toastrService, "success").and.callThrough();
+    component.ngOnInit();
+    component.callServiceDeleteCertificado();
+    expect(spyDeleteCertificadoOK).toHaveBeenCalled();
+    expect(spyleerCertificados).toHaveBeenCalled();
+    expect(spyToastSucess).toHaveBeenCalled();
+    // Validamos para el caso contrario
+    const mockResponseDF: any = {
+      message: "Something",
+    };
+    const spyDeleteCertificadoDF = spyOn(
+      servicio,
+      "deleteCertificado"
+    ).and.returnValue(of(mockResponseDF));
+    const spyToastError = spyOn(toastrService, "error").and.callThrough();
+    component.ngOnInit();
+    component.callServiceDeleteCertificado();
+    expect(spyDeleteCertificadoDF).toHaveBeenCalled();
+    expect(spyToastError).toHaveBeenCalled();
+    // Verificamos para el caso el servicio  retorna un error
+    const spyToastErr = spyOn(toastrService, "error").and.callThrough();
+    const spyDeleteCertificadoError = spyOn(
+      servicio,
+      "deleteCertificado"
+    ).and.returnValue(throwError(() => new Error("Error en el servicio")));
+    component.ngOnInit();
+    component.callServiceDeleteCertificado();
+    expect(spyToastErr).toHaveBeenCalled();
+    expect(spyDeleteCertificadoError).toHaveBeenCalled();
+  });
 
-  
+  it("Verificamos alertEliminar()", async () => {
+    // Validamos para el case 1
+    component.optionDelete = 1;
+    const spyCallServicedeleteDetalleTramite = spyOn(
+      component,
+      "callServicedeleteDetalleTramite"
+    ).and.callThrough();
+
+    // Llamamos nuestro component de sweetalert2 de primerlogin
+    await component.alertEliminar();
+    //Validamos la visibilidad
+    await expect(Swal.isVisible()).toBeTruthy();
+    // validamos el titulo
+    await expect(Swal.getTitle().textContent).toEqual(
+      "¿Estas seguro de eliminar este registro?"
+    );
+    // Realizamos click en confirm
+    await Swal.clickConfirm();
+    expect(spyCallServicedeleteDetalleTramite).toHaveBeenCalled();
+    // Validamos el caso contrario
+    await component.alertEliminar();
+    await Swal.clickDeny();
+    await expect(spyCallServicedeleteDetalleTramite).toHaveBeenCalledTimes(1);
+
+    // Validamos para el case 2
+    component.optionDelete = 2;
+    const spyCallServiceDeleteCertificado = spyOn(
+      component,
+      "callServiceDeleteCertificado"
+    ).and.callThrough();
+    // Llamamos nuestro component de sweetalert2 de primerlogin
+    await component.alertEliminar();
+    //Validamos la visibilidad
+    await expect(Swal.isVisible()).toBeTruthy();
+    // validamos el titulo
+    await expect(Swal.getTitle().textContent).toEqual(
+      "¿Estas seguro de eliminar este registro?"
+    );
+    // Realizamos click en confirm
+    await Swal.clickConfirm();
+    expect(spyCallServiceDeleteCertificado).toHaveBeenCalled();
+    // Validamos el caso contrario
+    await component.alertEliminar();
+    await Swal.clickDeny();
+    await expect(spyCallServiceDeleteCertificado).toHaveBeenCalledTimes(1);
+
+    // Validamos para un case diferente de 1 y 2 de , por ejemplo 3
+    component.optionDelete = 3;
+    const spyToastError = await spyOn(toastrService, "error").and.callThrough();
+    // Llamamos nuestro component de sweetalert2 de primerlogin
+    await component.alertEliminar();
+    //Validamos la visibilidad
+    await expect(Swal.isVisible()).toBeTruthy();
+    // validamos el titulo
+    await expect(Swal.getTitle().textContent).toEqual(
+      "¿Estas seguro de eliminar este registro?"
+    );
+    // Realizamos click en confirm
+    await Swal.clickConfirm();
+    expect(spyCallServiceDeleteCertificado).toHaveBeenCalled();
+    await expect(spyToastError).toHaveBeenCalled();
+    // Validamos el caso contrario
+    await component.alertEliminar();
+    await Swal.clickDeny();
+    await expect(spyCallServiceDeleteCertificado).toHaveBeenCalledTimes(1);
+    await expect(spyCallServicedeleteDetalleTramite).toHaveBeenCalledTimes(1);
+  });
 });

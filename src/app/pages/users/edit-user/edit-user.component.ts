@@ -114,7 +114,7 @@ export class EditUserComponent implements OnInit {
         "",
         Validators.compose([
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(2),
           Validators.maxLength(80),
           Validators.pattern("[A-Za-z ]+"),
         ])

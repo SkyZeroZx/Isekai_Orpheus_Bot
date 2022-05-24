@@ -12,6 +12,8 @@ import { of, throwError } from "rxjs";
 import { Constant } from "src/app/Constants/Constant";
 import { ReporteService } from "src/app/services/report.service";
 import { ServiciosService } from "src/app/services/servicios.service";
+import { CreateTramiteComponent } from "./components/create-tramite/create-tramite.component";
+import { EditTramiteComponent } from "./components/edit-tramite/edit-tramite.component";
 import { TramitesComponent } from "./tramites.component";
 
 fdescribe("TramiteComponent", () => {
@@ -52,7 +54,7 @@ fdescribe("TramiteComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TramitesComponent],
+      declarations: [TramitesComponent,CreateTramiteComponent,EditTramiteComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,

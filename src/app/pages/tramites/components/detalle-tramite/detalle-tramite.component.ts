@@ -1,10 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from "@angular/core";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import {
   Adjunto,
   Certificado,
@@ -15,9 +16,8 @@ import { ServiciosService } from "src/app/services/servicios.service";
 import { BsModalService, ModalDirective } from "ngx-bootstrap/modal";
 import { ToastContainerDirective, ToastrService } from "ngx-toastr";
 import Swal from "sweetalert2";
-import { Observable, ReplaySubject } from "rxjs";
-import { Buffer } from "buffer";
 import { Constant } from "src/app/Constants/Constant";
+
 @Component({
   selector: "app-detalle-tramite",
   templateUrl: "./detalle-tramite.component.html",
@@ -27,16 +27,10 @@ export class DetalleTramiteComponent implements OnInit {
   // Parametro de entrada que viene apartir del componente padre tramitesComponent
   @Input() in_tramite: TramiteDoc;
   // Declaramos nuestro input para pasarle posteriormente al componente hijo edit-tramite para editar el detalle
-  updateDetalle:Detalle;
-  @ViewChild("modalMod", { static: false })
-  public modalMod: ModalDirective;
+  updateDetalle: Detalle;
+  @ViewChild("modalMod", { static: false }) modalMod: ModalDirective;
   // Declaramos nuestros FormGroup
   detalleForm: FormGroup;
-  consultaForm: FormGroup;
-  registrarForm: FormGroup;
-  uploadForm: FormGroup;
-  // Declaramos nuestro arreglo de archivos para la subida de certificados
-  uploadedFiles: Array<File>;
   // Declaramos arreglos de tramites
   listaDetalles: Detalle[];
   listaAdjuntos: Adjunto[] = [];
@@ -49,12 +43,10 @@ export class DetalleTramiteComponent implements OnInit {
   listaTramiteOk: boolean = false;
   adjuntoOk: boolean = false;
   certificadoOk: boolean = false;
+  seleccionEditOk = false;
   // Variable que determina que registro se elimina ( Un detalle Tramite o un Certificado)
   optionDelete: number;
-  // Variable que obtiene la base64
-  base64Output: string;
-  // Nombre inicializado del label de seleccion de archivos para subir certificado
-  fileName: string = "Seleccione un archivo (PDF)";
+
   // Instanciamos nuestro Toast
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
@@ -83,40 +75,20 @@ export class DetalleTramiteComponent implements OnInit {
       detalleEstado: new FormControl(""),
       detalleFecha: new FormControl(""),
     });
-    this.registrarForm = this.fb.group({
-      id_est_doc: new FormControl(),
-      estado: new FormControl("", Validators.compose([Validators.required])),
-      observaciones: new FormControl("", [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(255),
-      ]),
-    });
-
-    this.detalleForm = this.fb.group({
-      detalleTramite: new FormControl(""),
-      detalleCodEstudiante: new FormControl(""),
-      detalleApellidos: new FormControl(""),
-      detalleNombres: new FormControl(""),
-      detalleEstado: new FormControl(""),
-      detalleFecha: new FormControl(""),
-    });
-    this.uploadForm = new FormGroup({
-      subir: new FormControl(null, [Validators.required]),
-    });
   }
 
   // Detecta cambio en la variable Input para cargar nuevo tramite seleccionado
-  ngOnChanges() {
+  ngOnChanges(_changes: SimpleChanges) {
     this.crearFormularios();
     this.detalleTramite();
   }
 
-
   // Metodo que toma el detalle seleccionado y muestra el modar de modificacion para editar
   seleccionarDetalle(detalleSeleccionado) {
-    this.modalMod.show();
+
     this.updateDetalle = detalleSeleccionado;
+    this.seleccionEditOk = true;
+    this.modalMod.show();
   }
 
   // Metodo para eliminar detalle
@@ -161,8 +133,15 @@ export class DetalleTramiteComponent implements OnInit {
     this.leerCertificados();
   }
 
+  updateCreateTramite(estado) {
+    this.leerDetalles();
+    this.leerCertificados();
+    this.detalleForm.controls["detalleEstado"].setValue(estado);
+  }
+
+
   // Metodo que llama el detalle del tramite seleccionado
-  leerDetalles() {
+  public leerDetalles() {
     this.servicios.buscarDetallesD(this.in_tramite.id_est_doc).subscribe({
       next: (res: Detalle[]) => {
         this.listaDetalles = res;
@@ -208,103 +187,6 @@ export class DetalleTramiteComponent implements OnInit {
     });
   }
 
-  // Metodo para registrar nuestro detalle del tramite seleccionado
-  registraEstado(values) {
-    values.id_est_doc = this.in_tramite.id_est_doc;
-    this.servicios.insertarTramite(values).subscribe({
-      next: (res) => {
-        if (res.message == Constant.MENSAJE_OK) {
-          this.toastrService.success(
-            "Se registro exitosamente un nuevo estado para " +
-              this.in_tramite.id_est_doc,
-            "Exito",
-            {
-              timeOut: 2000,
-            }
-          );
-          this.leerDetalles();
-          this.detalleForm.controls["detalleEstado"].setValue(values.estado);
-          this.registrarForm.reset();
-          this.registrarForm.controls["estado"].setValue("", {
-            onlySelf: true,
-          });
-        } else {
-          this.leerDetalles();
-          this.toastrService.error(res.message, "Error", {
-            timeOut: 3000,
-          });
-        }
-      },
-      error: (err) => {
-        console.log("regisraEstado error", err);
-        this.leerDetalles();
-        this.toastrService.error(err, "Error", {
-          timeOut: 5000,
-        });
-      },
-    });
-  }
-  //dgqaihqacwkynpyx
-  // Metodo para seleccionar archivo a subir como certificado
-  seleccionarArchivo(event) {
-    // Validamos que sea diferente de undefined
-    if (typeof event.target.files[0] !== "undefined") {
-      this.convertFile(event.target.files[0]).subscribe((base64) => {
-        this.fileName = event.target.files[0].name;
-        this.uploadForm.controls.subir.setValue(base64);
-      });
-    }
-  }
-
-  // Metodo para convertir a base64 el archivo seleccionado
-  convertFile(file: File): Observable<string> {
-    const result = new ReplaySubject<string>(1);
-    const reader = new FileReader();
-    reader.readAsBinaryString(file);
-    reader.onload = (event) => {
-      result.next(
-        Buffer.from(event.target.result.toString(), "binary").toString("base64")
-      );
-    };
-    return result;
-  }
-
-  // Metodo para enviar la base64 e ID del tramite al servicio y subirlo
-  upload() {
-    const values = {
-      id: this.in_tramite.id_est_doc,
-      base64: this.uploadForm.getRawValue().subir,
-    };
-    this.servicios.uploadFile(values).subscribe({
-      next: (res) => {
-        if (res.message == Constant.MENSAJE_OK) {
-          this.uploadForm.reset();
-          this.fileName = "Seleccione un archivo (PDF)";
-          this.toastrService.success(
-            "Se subio correctamente certificado para el tramite" +
-              this.in_tramite.id_est_doc,
-            "Exito",
-            {
-              timeOut: 3000,
-            }
-          );
-          this.leerCertificados();
-        } else {
-          this.toastrService.error(res.message, "Error", {
-            timeOut: 3000,
-          });
-        }
-      },
-      error: (err) => {
-        console.log("upload error ", err);
-        this.toastrService.error(err, "Error", {
-          timeOut: 5000,
-        });
-      },
-    });
-  }
-
- 
   // Llamada al servicio para eliminar detalleTramite
   callServicedeleteDetalleTramite(): void {
     this.servicios.deleteTramite(this.detalleEliminar).subscribe({
@@ -337,7 +219,7 @@ export class DetalleTramiteComponent implements OnInit {
   callServiceDeleteCertificado(): void {
     this.servicios.deleteCertificado(this.certificadoEliminar).subscribe({
       next: (res) => {
-        if (res.message == "Certicado eliminado") {
+        if (res.message == Constant.MENSAJE_OK) {
           this.toastrService.success(
             "Se elimino correctamente el certificado",
             "Exito",

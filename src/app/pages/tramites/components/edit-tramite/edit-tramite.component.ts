@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -17,6 +17,7 @@ import { ServiciosService } from "src/app/services/servicios.service";
 })
 export class EditTramiteComponent implements OnInit {
   @Input() in_updateDetalle: Detalle;
+  @Output() respuestaUpdateTramite = new EventEmitter();
   estadosActualizarForm: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -63,10 +64,11 @@ export class EditTramiteComponent implements OnInit {
   }
 
   // Metodo utilizado al editar el estado y/o observaciones de un estado del tramite seleccionado
-  modificarEstado() {
-    this.servicios.update(this.estadosActualizarForm.value).subscribe({
+  actualizarEstadoTramite() {
+    this.servicios.updateStatusTramite(this.estadosActualizarForm.value).subscribe({
       next: (res) => {
         if (res.message == Constant.MENSAJE_OK) {
+          this.respuestaUpdateTramite.emit();
           this.toastrService.success(
             "Se actualizo correctamente el estado para " +
               this.in_updateDetalle.id_est_doc,
