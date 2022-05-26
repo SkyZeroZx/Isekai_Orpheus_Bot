@@ -48,6 +48,7 @@ defineLocale("es", esLocale);
     BsDatepickerModule.forRoot(),
     NgxPaginationModule,
     SweetAlert2Module.forRoot(),
+   
   ],
   providers: [DatePipe],
   declarations: [

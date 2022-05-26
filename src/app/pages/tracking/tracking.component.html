@@ -5,14 +5,32 @@
   </div>
 </div>
 <br><br>
+
 <div class="container-fluid mt--7">
+  <div id="hamburgerButton">
+    <div class="btn-group" dropdown [dropup]="true">
+      <i id="button-dropup" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+        class="fa fa-bars fa-2x" aria-controls="dropdown-dropup">
+      </i>
+      <ul id="dropdown-dropup" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-dropup">
+        <li role="menuitem" (click)="suscribeToNotifications()"><a class="dropdown-item"><i
+              class="fas fa-bell fa-2x"></i>Activar notificaciones</a></li>
+        <li role="menuitem" (click)="saveTracking()"><a class="dropdown-item"><i class="fas fa-save fa-2x"></i>Guardar
+            Tramite</a></li>
+        <li role="menuitem" (click)="listHistory()"><a class="dropdown-item"><i class="fas fa-history fa-2x"></i>Ver
+            historial</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
           <h2 class="mb-0 text-center">Seguimiento Tramites</h2>
         </div>
-        <form class="border p-3 form" (ngSubmit)="buscarTramiteTracking()" [formGroup]="trackingForm">
+        <form class="border p-3 form" [formGroup]="trackingForm">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-4 d-flex justify-content-center">
               <input type="text" placeholder="N° Tramite" formControlName="idDocTramite" class="form-control"
@@ -21,20 +39,22 @@
 
             <div class="col-lg-4 d-flex justify-content-center">
               <input type="text" placeholder="DNI Estudiante" formControlName="dni" class="form-control" maxlength="8"
-                minlength="8">
+                oninput="process(this)" minlength="8">
             </div>
 
             <div class="col-lg-4 d-flex justify-content-center">
-              <button type="submit" [disabled]="trackingForm.invalid" class="btn btn-primary"><i
-                  class="fas fa-search"></i> &nbsp;Buscar</button>
+              <button type="submit" [disabled]="trackingForm.invalid" (click)="buscarTramiteTracking()"
+                class="btn btn-primary"><i class="fas fa-search"></i> &nbsp;Buscar</button>
             </div>
           </div>
           <div class="row d-flex justify-content-center">
             <div class="col-lg-4 d-flex justify-content-center">
               <div *ngIf="trackingForm.controls.idDocTramite.invalid && trackingForm.controls.idDocTramite.touched">
-                <small id="minlengthTramite" class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.minlength">
+                <small id="minlengthTramite" class="text-left"
+                  *ngIf="trackingForm.controls.idDocTramite.errors?.minlength">
                   La longitud minima es 14 caracteres</small>
-                <small id="reqlengthTramite" class="text-left" *ngIf="trackingForm.controls.idDocTramite.errors?.required">
+                <small id="reqlengthTramite" class="text-left"
+                  *ngIf="trackingForm.controls.idDocTramite.errors?.required">
                   Se requiere ingresar N° Tramite para seguimiento</small>
               </div>
             </div>
@@ -77,6 +97,7 @@
           </div>
           <br>
         </div>
+        <!-- Tabla Detalles -->
         <ul class="nav nav-tabs" id="myTab" role="tablist" *ngIf="detalleOk">
           <tabset class="table">
             <tab heading="Detalles" id="tab1">
@@ -84,7 +105,7 @@
                 <table class="table table-bordered">
                   <thead class="thead-light">
                     <tr>
-                      <th>N° Tramite</th>
+                      <!--      <th>N° Tramite</th>-->
                       <th>Fecha</th>
                       <th>Estado</th>
                       <th>Observacion</th>
@@ -92,7 +113,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let itemDetalle of listaDetalles">
-                      <td>{{itemDetalle.id_est_doc}}</td>
+                      <!--  <td>{{itemDetalle.id_est_doc}}</td> -->
                       <td>{{itemDetalle.fecha}}</td>
                       <td>{{itemDetalle.estado}}</td>
                       <td>{{itemDetalle.observaciones}}</td>
@@ -101,22 +122,20 @@
                 </table>
               </div>
             </tab>
-
-
-
-            <tab heading="Adjuntos" id="tab3">
+            <!-- Tabla Adjuntos -->
+            <tab heading="Adjuntos" id="tab2">
               <div class="table-responsive">
                 <table class="table table-bordered">
                   <thead class="thead-light">
                     <tr>
-                      <th>N° Tramite</th>
+                      <!--      <th>N° Tramite</th> -->
                       <th>Fecha</th>
                       <th>Descargar</th>
                     </tr>
                   </thead>
                   <tbody *ngIf="adjuntoOk">
                     <tr *ngFor="let itemAdjunto of listaAdjuntos">
-                      <td>{{itemAdjunto.ID_EST_DOC}}</td>
+                      <!--      <td>{{itemAdjunto.ID_EST_DOC}}</td> -->
                       <td>{{itemAdjunto.FECHA}}</td>
                       <td class="text-center"> <a href="{{itemAdjunto.URL}}" target="_blank">
                           <i class="ni ni-cloud-download-95"></i>
@@ -126,20 +145,20 @@
                 </table>
               </div>
             </tab>
-
-            <tab heading="Certificado" id="tab4">
+            <!-- Tabla Certificados -->
+            <tab heading="Certificado" id="tab3">
               <div class="table-responsive">
                 <table class="table table-bordered">
                   <thead class="thead-light">
                     <tr>
-                      <th>N° Tramite</th>
+                      <!--      <th>N° Tramite</th>-->
                       <th>Fecha</th>
                       <th>Descargar</th>
                     </tr>
                   </thead>
                   <tbody *ngIf="certificadoOk">
                     <tr *ngFor="let itemCertificado of listaCertificado">
-                      <td>{{itemCertificado.id_est_doc}}</td>
+                      <!--    <td>{{itemCertificado.id_est_doc}}</td>-->
                       <td>{{itemCertificado.fecha}}</td>
                       <td class="text-center">
                         <a href="{{itemCertificado.url}}" target="_blank">
@@ -153,6 +172,42 @@
             </tab>
           </tabset>
         </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" bsModal #modalHistory="bs-modal" tabindex="-1" role="dialog"
+    aria-labelledby="dialog-static-name">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="dialog-static-name" class="modal-title pull-left">Tramites Guardados</h4>
+          <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalHistory.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+          </button>
+        </div>
+        <div>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>N° Tramite</th>
+                  <th>DNI</th>
+                  <th class="text-center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let itemHistory of listaTramitesGuardados">
+                  <td class="history">{{itemHistory.id_est_doc}}</td>
+                  <td class="history">{{itemHistory.dni}}</td>
+                  <td class="history text-center"> <i (click)="searchHistory(itemHistory)"  class="fas fa-search"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

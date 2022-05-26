@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { FormsModule} from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
@@ -14,13 +14,16 @@ import { InterceptorService } from "./services/interceptor.service";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import { ModalModule } from "ngx-bootstrap/modal";
+ 
+ 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
     ToastrModule.forRoot(),
+    ModalModule.forRoot(),
     HttpClientModule,
     NgxSpinnerModule,
     ComponentsModule,
@@ -31,11 +34,11 @@ import { environment } from '../environments/environment';
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
+      registrationStrategy: 'registerWhenStable:5000'
+    }), 
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [
     { provide: ToastrService, useClass: ToastrService },
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

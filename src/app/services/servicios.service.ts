@@ -210,4 +210,16 @@ export class ServiciosService {
     this.auth.logout();
     return throwError(() => errorMessage)
   }
+
+/************************ Servicios Notificacion Push *************************** */
+
+  saveUserNotification(data): Observable<any> {
+    return this.http
+    .post<any>(`${environment.API_URL}/notificacion/suscripcion`, data)
+    .pipe(catchError(this.handlerError));
+  }
+
+
+
+  
 }

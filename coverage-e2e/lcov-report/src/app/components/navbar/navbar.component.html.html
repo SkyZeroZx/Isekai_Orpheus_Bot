@@ -89,26 +89,46 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">15x</span>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">613x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">619x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">613x</span>
+<span class="cline-any cline-yes">622x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">598x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">655x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -117,22 +137,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main"&gt;
   &lt;div class="container-fluid"&gt;
-    &lt;a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active"  &gt;{{getTitle()}}&lt;/a&gt;
+    &lt;!-- Brand --&gt;
+    &lt;a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active"&gt;{{getTitle()}}&lt;/a&gt;
+    &lt;!-- Form --&gt;
+    &lt;form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"&gt;
+      &lt;div class="form-group mb-0"&gt;
+ 
+      &lt;/div&gt;
+    &lt;/form&gt;
+    &lt;!-- --&gt;
     &lt;ul class="navbar-nav align-items-center d-none d-md-flex"&gt;
       &lt;li class="nav-item" ngbDropdown placement="bottom-right"&gt;
         &lt;a class="nav-link pr-0" role="button" ngbDropdownToggle&gt;
           &lt;div class="media align-items-center"&gt;
+            &lt;span class="avatar avatar-sm rounded-circle"&gt;
+              &lt;img alt="Image placeholder" src="assets/img/theme/user.png"&gt;
+            &lt;/span&gt;<span class="fstat-no" title="function not covered" ></span>
             &lt;div class="media-body ml-2 d-none d-lg-block"&gt;
               &lt;span id="usuarioLogeado" class="mb-0 text-sm  font-weight-bold"&gt;{{usuarioLogeado}}&lt;/span&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/a&gt;
         &lt;div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu&gt;
-          &lt;div   class="dropdown-item" [routerLink]="['/change-password']"&gt;
+          &lt;div class="dropdown-item" [routerLink]="['/change-password']"&gt;
             &lt;i class="ni ni-key-25"&gt;&lt;/i&gt;
             &lt;span&gt;Cambiar contraseña&lt;/span&gt;
-          &lt;/div&gt;         
-          &lt;div   class="dropdown-item" <span class="fstat-no" title="function not covered" >(click)="o</span>nLogout()"&gt;
+          &lt;/div&gt;
+          &lt;div class="dropdown-item" (click)="onLogout()"&gt;
             &lt;i class="ni ni-user-run"&gt;&lt;/i&gt;
             &lt;span&gt;Logout&lt;/span&gt;
           &lt;/div&gt;
@@ -140,15 +171,14 @@
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
-&lt;/nav&gt;
-&nbsp;</pre></td></tr></table></pre>
+&lt;/nav&gt;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun May 22 2022 19:03:29 GMT-0500 (hora estándar de Perú)
+                at Wed May 25 2022 16:20:17 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

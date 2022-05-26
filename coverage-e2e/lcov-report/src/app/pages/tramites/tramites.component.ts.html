@@ -148,10 +148,7 @@
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,7 +161,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">500x</span>
+<span class="cline-any cline-yes">695x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,10 +233,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit, ViewChild } from "@angular/core";
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { TramiteDoc } from "src/app/entities/tramite";
 import { ServiciosService } from "src/app/services/servicios.service";
@@ -254,36 +248,33 @@ import { ReporteService } from "src/app/services/report.service";
 })
 export class <span class="cstat-no" title="statement not covered" >TramitesComponent implements OnInit {</span>
   consultaForm: FormGroup;
-  registrarForm: FormGroup;
-  estadosActualizarForm: FormGroup;
-  uploadForm: FormGroup;
   listaTramiteDoc: TramiteDoc[];
   tramiteSeleccionado: TramiteDoc;
-<span class="cstat-no" title="statement not covered" >  listaTramiteOk = f</span>alse;
-<span class="cstat-no" title="statement not covered" >  modalVisible = f</span>alse;
-<span class="cstat-no" title="statement not covered" >  p = 1</span>;
-&nbsp;
-  @ViewChild(<span class="cstat-no" title="statement not covered" >ModalDirective, { static: false }) modal: ModalDirective;</span>
-<span class="fstat-no" title="function not covered" >  constructor(</span>
-    private <span class="cstat-no" title="statement not covered" >servicios: ServiciosService,</span>
-    private <span class="cstat-no" title="statement not covered" >fb: FormBuilder,</span>
-    //private modalService: BsModalService,
+  listaTramiteOk = false;
+  modalVisible = false;
+  p = 1;
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  @ViewChild(Modal</span>Directive, { static: false }) modal: ModalDirective;
+<span class="cstat-no" title="statement not covered" >  const</span>ructor(
+    private servicios: ServiciosService,
+    private f<span class="cstat-no" title="statement not covered" >b: FormBuilder,</span>
+<span class="fstat-no" title="function not covered" >    //private modalService: BsModalService,</span>
     private <span class="cstat-no" title="statement not covered" >toastrService: ToastrService,</span>
-    private <span class="cstat-no" title="statement not covered" >reporteService: ReporteService<span class="cstat-no" title="statement not covered" ></span></span>
+    private <span class="cstat-no" title="statement not covered" >reporteService: ReporteService</span>
   ) {}
-&nbsp;
-<span class="fstat-no" title="function not covered" >  ngOnInit(</span>) {
+<span class="cstat-no" title="statement not covered" ></span>
+  ngOnInit()<span class="cstat-no" title="statement not covered" > {<span class="cstat-no" title="statement not covered" ></span></span>
     // Al renderizar componente creamos nuestro reactiveForm y cargamos la lista de tramites
-<span class="cstat-no" title="statement not covered" >    this.c</span>rearFormularioConsulta();
-<span class="cstat-no" title="statement not covered" >    this.l</span>istarTramiteDoc();
+    this.crearFormularioConsulta();
+<span class="fstat-no" title="function not covered" >    this.li</span>starTramiteDoc();
   }
-&nbsp;
-  // Metodo para creacion de reactiveForm
-<span class="fstat-no" title="function not covered" >  crearFormularioConsulta(</span>) {
-<span class="cstat-no" title="statement not covered" >    this.c</span>onsultaForm = this.fb.group({
+<span class="cstat-no" title="statement not covered" ></span>
+  //<span class="cstat-no" title="statement not covered" > Metod</span>o para creacion de reactiveForm
+  crearFormularioConsulta() {
+    this.consultaForm = this.fb.group({
       filterTramite: new FormControl(""),
-      filterCodEstudiante: new FormControl(""),
-      filterApellidos: new FormControl(""),
+<span class="fstat-no" title="function not covered" >      filterCodEstudiante:</span> new FormControl(""),
+<span class="cstat-no" title="statement not covered" >      filt</span>erApellidos: new FormControl(""),
       filterNombres: new FormControl(""),
       filterEstado: new FormControl(""),
       filterFecha: new FormControl(""),
@@ -292,49 +283,49 @@ export class <span class="cstat-no" title="statement not covered" >TramitesCompo
   }
 &nbsp;
   // Llamada al servicio listarTramites
-<span class="fstat-no" title="function not covered" >  listarTramiteDoc<span class="cstat-no" title="statement not covered" >(</span>): void {</span>
-<span class="cstat-no" title="statement not covered" >    this.s</span>ervicios.listaTramites().subscribe({
-      next: <span class="fstat-no" title="function not covered" >(r</span>es: TramiteDoc[]) =&gt; {
-        //Recibido nuestra respuesta del servicio
-<span class="cstat-no" title="statement not covered" >        this.</span>listaTramiteDoc = res;
-<span class="cstat-no" title="statement not covered" >        this.</span>listaTramiteOk = true;
+  listarTramiteDoc(): void {
+    this.servicios.listaTramites().subscribe({
+      next: (res: TramiteDoc[]) =&gt; {
+<span class="fstat-no" title="function not covered" >        //Recibido<span class="cstat-no" title="statement not covered" > </span>nuestra respuesta del servicio</span>
+<span class="cstat-no" title="statement not covered" >        th</span>is.listaTramiteDoc = res;
+        this<span class="fstat-no" title="function not covered" >.l</span>istaTramiteOk = true;
       },
-      error: <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
-        // En caso de Error
-<span class="cstat-no" title="statement not covered" >        this.</span>toastrService.error("Error en el servicio " +err, "Error", {
-          timeOut: 3000,
+      er<span class="cstat-no" title="statement not covered" >ror: </span>(err) =&gt; {
+<span class="cstat-no" title="statement not covered" >        // En</span> caso de Error
+        this.toastrService.error("Error en el servicio " +err, "Error", {
+          tim<span class="fstat-no" title="function not covered" >eO</span>ut: 3000,
         });
-      },
+      },<span class="cstat-no" title="statement not covered" ></span>
     });
   }
 &nbsp;
   // Asignacion de tramite seleccionado para el componente hijo detalletramite y llamada al modal donde se encuentra
-<span class="fstat-no" title="function not covered" >  detalleTramite(t</span>ramite: TramiteDoc) {
-<span class="cstat-no" title="statement not covered" >    this.t</span>ramiteSeleccionado = tramite;
-<span class="cstat-no" title="statement not covered" >    this.m</span>odal.show();
-<span class="cstat-no" title="statement not covered" >    this.m</span>odalVisible = true;
+  detalleTramite(tramite: TramiteDoc) {
+    this.tramiteSeleccionado = tramite;
+    this.modal.show();
+<span class="fstat-no" title="function not covered" >    this.modalVisi</span>ble = true;
+  }<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  on<span class="cstat-no" title="statement not covered" >Change</span>Form() {
+    this.p = 1;
   }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  onChangeForm(</span>) {
-<span class="cstat-no" title="statement not covered" >    this.p</span> = 1;
-  }
-<span class="fstat-no" title="function not covered" >  exportarExcel(</span>) {
+<span class="fstat-no" title="function not covered" >  exportarExcel</span>() {
 <span class="cstat-no" title="statement not covered" >    this.r</span>eporteService.exportAsExcelFile("REPORTE TRAMITES");
   }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  exportarPDF(</span>) {
-    const encabezado =<span class="cstat-no" title="statement not covered" >['</span>N° TRAMITE','FECHA','ESTADO ACTUAL','TRAMITE','CODIGO ESTUDIANTE','NOMBRES','APELLIDOS']
-<span class="cstat-no" title="statement not covered" >    this.r</span>eporteService.exportAsPDF("REPORTE TRAMITES", encabezado);
-  }
-}
-&nbsp;</pre></td></tr></table></pre>
+<span class="fstat-no" title="function not covered" ></span>
+  ex<span class="cstat-no" title="statement not covered" >portar</span>PDF() {
+    const encabezado =['N° TRAMITE','FECHA','ESTADO ACTUAL','TRAMITE','CODIGO ESTUDIANTE','NOMBRES','APELLIDOS']
+    this.reporteService.exportAsPDF("REPORTE TRAMITES", encabezado);
+<span class="fstat-no" title="function not covered" >  }</span>
+}<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun May 22 2022 19:17:17 GMT-0500 (hora estándar de Perú)
+                at Wed May 25 2022 16:20:46 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
