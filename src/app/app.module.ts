@@ -30,13 +30,27 @@ import { ModalModule } from "ngx-bootstrap/modal";
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+   /* ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:5000'
+    }), */
+    ServiceWorkerModule.register('custom-service-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:5000'
     }), 
+  
+  
+  
+  
+  
   ],
+
+
+
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [

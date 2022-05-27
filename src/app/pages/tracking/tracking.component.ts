@@ -42,6 +42,7 @@ export class TrackingComponent implements OnInit {
     this.crearFormularioTracking();
     this.suscribirClickPush();
   }
+
   // Metodo de creacion de reactiveForm para el component tracking
   crearFormularioTracking(): void {
     this.trackingForm = this.fb.group({
@@ -57,6 +58,7 @@ export class TrackingComponent implements OnInit {
     });
   }
 
+  // Metodo que formatea la data para ser enviada posteriormente
   formatData(tokenPush: any, id: string) {
     return {
       id_est_doc: id,
@@ -65,15 +67,6 @@ export class TrackingComponent implements OnInit {
   }
 
   suscribirClickPush(): void {
-    this.swPush.notificationClicks.subscribe(({ action, notification }) => {
-      console.log("Recibi un click");
-      console.log("soy la accion", action);
-      console.log("soy la notification", notification);
-      console.log("Antes de abrir URL");
-      window.open(environment.URL_TRACK + notification.data);
-      console.log("POST window.open");
-    });
-
     // suscripcion a queryParams en caso se realiza click en notificacion realizar la busqueda del tramite
     this.route.queryParams.subscribe((params) => {
       if (
@@ -124,13 +117,7 @@ export class TrackingComponent implements OnInit {
       })
       .then((tokens) => {
         // Validamos que el usuario de permisos
-        console.log("tokens " + JSON.parse(JSON.stringify(tokens)));
-        console.log(tokens);
-        console.log(
-          "FormatDataPush ",
-          this.formatData(tokens, "13161522543671642522")
-        );
-
+        console.log('Request Tokens Subscription')
         this.saveNotification(tokens);
       })
       .catch((err) => {
@@ -153,11 +140,6 @@ export class TrackingComponent implements OnInit {
       id_est_doc: this.trackingForm.value.idDocTramite,
       dni: this.trackingForm.value.dni,
     };
-    /*  existingEntries.push(entry);
-    let hash = {};
-    existingEntries = existingEntries.filter((o) => {
-      (hash[o.id_est_doc]) ? false : (hash[o.id_est_doc] = true)
-    });*/
     existingEntries.push(entry);
     let hash = {};
     existingEntries = existingEntries.filter((e) => {
@@ -165,12 +147,13 @@ export class TrackingComponent implements OnInit {
       hash[e.id] = true;
       return exists;
     });
-    console.log("final 5 ", existingEntries);
+ 
     localStorage.setItem("tracking", JSON.stringify(existingEntries));
     this.toastrService.success("Se guardo su tramite", "Exito", {
       timeOut: 5000,
     });
   }
+
   // Funcion que valida localStorage y guarda las notificaciones en caso de haberlas
   saveNotification(tokens) {
     let tracking = JSON.parse(localStorage.getItem("tracking"));
@@ -225,7 +208,6 @@ export class TrackingComponent implements OnInit {
     this.trackingForm.controls.idDocTramite.setValue(value.id_est_doc);
     this.trackingForm.controls.dni.setValue(value.dni);
     this.buscarTramiteTracking();
-    console.log("Search History");
   }
 
   // Metodo que limpia nuestra tabla al realizar una nueva consulta

@@ -87,6 +87,37 @@ _**Tracking** : Apartado para el seguimiento del tramite por parte de los estudi
 ![Tracking](/docs/Layout/tracking.PNG)
 
 
+## Ejecutando como PWA  👨🏻‍💻
+
+_Para ejecutar como PWA(Progessive Web App) , previamente debe tenerse instalado la libreria http-serve_
+
+```
+npm install --global http-server
+```
+
+_Una vez instalada proceder a ejecutar el siguiente comando , que nos permite ejecutar en entorno local nuestra PWA_
+
+```
+npm run start-pwa
+```
+
+_Este comando se encuentra configurado en el archivo *package.json de la raiz del proyecto por default ejecuta el puerto 8080*_
+
+_La PWA se encuentra configurada para ejecutarse en la vista Tracking para consulta de tramites_
+
+![PWA 1](/docs/Layout/pwa/pwa_1.PNG)
+
+![PWA 2](/docs/Layout/pwa/pwa_2.PNG)
+
+![PWA 3](/docs/Layout/pwa/pwa_3.PNG)
+
+_Se cuenta con soporte de notificaciones Push integrado en el modulo de Tracking_
+
+_Se creo el archivo *src/custom-service-worker.js* para la gestion de evento de notificaciones personalizado_
+
+![PWA 4](/docs/Layout/pwa/pwa_4.PNG)
+
+
 ## Ejecutando las pruebas ⚙️
 
 _Se crearon 2 tipos de pruebas siendo las primeras las pruebas unitarias en Jasmine y Karma que son integradas por Angular_
@@ -177,6 +208,8 @@ ng build --configuration production
 ```
 
 _El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos desplegar en cualquier servidor que ejecute HTML CSS y JS_ 
+
+_A su vez en un hosting con certificado HTTPS se podra ejecutar como una PWA que se podra "instalar"_
 
 ## Construido con 🛠️
 

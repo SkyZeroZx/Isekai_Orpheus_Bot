@@ -53,7 +53,6 @@ export class AuthService {
       )
       .pipe(
         map((res) => {
-          console.log("Res->", res);
           return res;
         }),
         catchError((err) => this.handlerError(err))

@@ -24,7 +24,12 @@
             "tsConfig": "src/tsconfig.app.json",
             "allowedCommonJsDependencies": ["chart.js"],
             "aot": true,
-            "assets": ["src/favicon.ico", "src/assets","src/manifest.webmanifest"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/custom-service-worker.js"
+            ],
             "styles": [
               "src/styles.scss",
               "src/assets/scss/argon.scss",
@@ -150,7 +155,12 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": ["src/styles.scss"],
             "scripts": [],
-            "assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"]
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/custom-service-worker.js"
+            ]
           }
         },
         "lint": {
