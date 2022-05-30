@@ -1,0 +1,29 @@
+[
+    {
+        "id_est_doc": "13142522506172514695",
+        "fecha_doc": "2022-05-24 05:58:49.616985",
+        "estado": "FINALIZADO",
+        "nombre": "EGRESADO",
+        "cod_est": "1425225061",
+        "estudiante": "KEVIN",
+        "apellidos": "PACHECO GUTIERREZ"
+    },
+    {
+        "id_est_doc": "13161521506970666555",
+        "fecha_doc": "2022-05-26 07:55:25.600436",
+        "estado": "PROCESANDO",
+        "nombre": "EGRESADO",
+        "cod_est": "1615215069",
+        "estudiante": "OMAR",
+        "apellidos": "RAMOS MORE"
+    },
+    {
+        "id_est_doc": "13161522543671642522",
+        "fecha_doc": "2022-05-24 06:47:57.762114",
+        "estado": "FINALIZADO",
+        "nombre": "EGRESADO",
+        "cod_est": "1615225436",
+        "estudiante": "JAIME",
+        "apellidos": "BURGOS TEJADA"
+    }
+]

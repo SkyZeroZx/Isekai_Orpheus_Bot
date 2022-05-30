@@ -54,7 +54,6 @@ export class CreateTramiteComponent implements OnInit {
       estado: new FormControl("", Validators.compose([Validators.required])),
       observaciones: new FormControl("", [
         Validators.required,
-        Validators.minLength(6),
         Validators.maxLength(255),
       ]),
     });
@@ -92,7 +91,7 @@ export class CreateTramiteComponent implements OnInit {
       error: (err) => {
         console.log("regisraEstado error", err);
         this.respuestaRegistroTramite.emit();
-        this.toastrService.error(err, "Error", {
+        this.toastrService.error("Sucedio un error al registrar el nuevo estado :"+ err, "Error", {
           timeOut: 5000,
         });
       },
@@ -151,7 +150,7 @@ export class CreateTramiteComponent implements OnInit {
       },
       error: (err) => {
         console.log("upload error ", err);
-        this.toastrService.error(err, "Error", {
+        this.toastrService.error("Ocurrio un error al subir el certificado " + err, "Error", {
           timeOut: 5000,
         });
       },

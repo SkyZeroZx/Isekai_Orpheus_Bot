@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -99,11 +99,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">695x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">509x</span>
+<span class="cline-any cline-yes">429x</span>
+<span class="cline-any cline-yes">143x</span>
+<span class="cline-any cline-yes">429x</span>
+<span class="cline-any cline-yes">429x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,16 +111,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">269x</span>
+<span class="cline-any cline-yes">269x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">143x</span>
+<span class="cline-any cline-yes">143x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Pipe, PipeTransform } from "@angular/core";
@@ -129,11 +129,11 @@ import { Constant } from "../Constants/Constant";
 @Pipe({
   name: "filter",
 })
-export class <span class="cstat-no" title="statement not covered" >FilterPipe </span>implements PipeTransform {
-<span class="fstat-no" title="function not covered" >  transform(v</span>alue: any, args1: any<span class="cstat-no" title="statement not covered" >): any {</span>
-    const resultadoBusqueda = <span class="cstat-no" title="statement not covered" >[];</span>
-<span class="cstat-no" title="statement not covered" >    for (const usuario of value) <span class="cstat-no" title="statement not covered" >{</span></span>
-<span class="cstat-no" title="statement not covered" >      if (</span>
+export class FilterPipe implements PipeTransform {
+  transform(value: any, args1: any): any {
+    const resultadoBusqueda = [];
+    for (const usuario of value) {
+      if (
         usuario.apellidos.toLowerCase().indexOf(args1[0].toLowerCase()) &gt; -1 &amp;&amp;
         usuario.estado.toLowerCase().indexOf(args1[1].toLowerCase()) &gt; -1 &amp;&amp;
         usuario.estudiante.toLowerCase().indexOf(args1[2].toLowerCase()) &gt; -1 &amp;&amp;
@@ -141,14 +141,14 @@ export class <span class="cstat-no" title="statement not covered" >FilterPipe </
         usuario.cod_est.toLowerCase().indexOf(args1[4].toLowerCase()) &gt; -1 &amp;&amp;
         usuario.nombre.toLowerCase().indexOf(args1[5].toLowerCase()) &gt; -1
       ) {
-      /*<span class="cstat-no" title="statement not covered" >  if (args1[1] === "") {</span>
-<span class="cstat-no" title="statement not covered" >          resultadoBusqueda.</span>push(usuario);
+      /*  if (args1[1] === "") {
+          resultadoBusqueda.push(usuario);
         } else */
-        if (usuario.estado === args1[1] || args1[1] === "") {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (usuario.estado === args1[1] || args1[1] === "") {
           resultadoBusqueda.push(usuario);
         }
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+      }
+    }
     Constant.REPORT = resultadoBusqueda;
     return resultadoBusqueda;
   }
@@ -160,7 +160,7 @@ export class <span class="cstat-no" title="statement not covered" >FilterPipe </
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed May 25 2022 16:20:46 GMT-0500 (hora estándar de Perú)
+                at Mon May 30 2022 00:28:57 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

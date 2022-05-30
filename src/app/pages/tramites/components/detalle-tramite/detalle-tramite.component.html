@@ -52,7 +52,7 @@
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead class="thead-light">
-              <tr>
+              <tr class="detalles">
                 <th>N° Tramite</th>
                 <th>Fecha</th>
                 <th>Estado</th>
@@ -61,7 +61,7 @@
                 <th>Eliminar</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="detallesTramite">
               <tr *ngFor="let itemDetalle of listaDetalles">
                 <td>{{itemDetalle.id_est_doc}}</td>
                 <td>{{itemDetalle.fecha}}</td>
@@ -83,14 +83,14 @@
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead class="thead-light">
-              <tr>
+              <tr class="adjuntos" >
                 <th>N° Tramite</th>
                 <th>Fecha</th>
                 <th>Descargar</th>
               </tr>
             </thead>
-            <tbody *ngIf="adjuntoOk">
-              <tr *ngFor="let itemAdjunto of listaAdjuntos">
+            <tbody *ngIf="adjuntoOk" >
+              <tr *ngFor="let itemAdjunto of listaAdjuntos" class="detalleAdjuntos">
                 <td>{{itemAdjunto.ID_EST_DOC}}</td>
                 <td>{{itemAdjunto.FECHA}}</td>
                 <td class="text-center"> <a href="{{itemAdjunto.URL}}" target="_blank">
@@ -106,7 +106,7 @@
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead class="thead-light">
-              <tr>
+              <tr class="certificados">
                 <th>N° Tramite</th>
                 <th>Fecha</th>
                 <th>Descargar</th>
@@ -114,7 +114,7 @@
               </tr>
             </thead>
             <tbody *ngIf="certificadoOk">
-              <tr *ngFor="let itemCertificado of listaCertificado">
+              <tr *ngFor="let itemCertificado of listaCertificado" class="detalleCertificados">
                 <td>{{itemCertificado.id_est_doc}}</td>
                 <td>{{itemCertificado.fecha}}</td>
                 <td class="text-center">
@@ -122,7 +122,7 @@
                     <i class="ni ni-paper-diploma"></i>
                   </a>
                 </td>
-                <td class="text-center" (click)="eliminarCertificado(itemCertificado)">
+                <td class="text-center delete" (click)="eliminarCertificado(itemCertificado)">
                   <i class="ni ni-fat-remove"></i>
                 </td>
               </tr>
@@ -140,7 +140,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel" style="color :black;">Modificar Detalle Tramite</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalMod.hide()">
+          <button id="closeEditTramite" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalMod.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

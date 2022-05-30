@@ -65,12 +65,12 @@
               </div>
               <div class="row col-md-4" style="text-align: right;">
                   <div class="col-md-8">
-                      <button type="button" class="btn btn-outline-success" (click)="exportarExcel()">
+                      <button type="button" id="btnExcel" class="btn btn-outline-success" (click)="exportarExcel()">
                           <a> <i class="fa fa-file-excel" aria-hidden="true"> Excel</i></a>
                       </button>
                   </div>
                   <div class="col-md-4">
-                      <button type="button" class="btn btn-outline-danger" (click)="exportarPDF()">
+                      <button type="button" id="btnPDF" class="btn btn-outline-danger" (click)="exportarPDF()">
                           <a> <i class="fa fa-file-pdf" aria-hidden="true"></i> PDF</a>
                       </button>
                   </div>
@@ -146,7 +146,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 id="dialog-static-name" class="modal-title pull-left">DetalleTramite</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modal.hide()">
+        <button type="button" id="closeDetalleTramite" class="btn-close close pull-right" aria-label="Close" (click)="modal.hide()">
           <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
       </div>

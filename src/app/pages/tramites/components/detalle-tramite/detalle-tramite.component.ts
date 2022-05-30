@@ -85,7 +85,6 @@ export class DetalleTramiteComponent implements OnInit {
 
   // Metodo que toma el detalle seleccionado y muestra el modar de modificacion para editar
   seleccionarDetalle(detalleSeleccionado) {
-
     this.updateDetalle = detalleSeleccionado;
     this.seleccionEditOk = true;
     this.modalMod.show();
@@ -138,7 +137,6 @@ export class DetalleTramiteComponent implements OnInit {
     this.leerCertificados();
     this.detalleForm.controls["detalleEstado"].setValue(estado);
   }
-
 
   // Metodo que llama el detalle del tramite seleccionado
   public leerDetalles() {
@@ -199,6 +197,11 @@ export class DetalleTramiteComponent implements OnInit {
               timeOut: 3000,
             }
           );
+          Swal.fire(
+            "Eliminado!",
+            "El registro fue eliminado con exito",
+            "success"
+          );
           this.leerDetalles();
         } else {
           this.toastrService.error(res.message, "Error", {
@@ -227,6 +230,11 @@ export class DetalleTramiteComponent implements OnInit {
               timeOut: 3000,
             }
           );
+          Swal.fire(
+            "Eliminado!",
+            "El registro fue eliminado con exito",
+            "success"
+          );
           this.leerCertificados();
         } else {
           this.toastrService.error(res.message, "Error", {
@@ -236,7 +244,7 @@ export class DetalleTramiteComponent implements OnInit {
       },
       error: (err) => {
         console.log("deleteCertificado error", err);
-        this.toastrService.error(err, "Error", {
+        this.toastrService.error("Sucedio un error al eliminar el certificado " + err, "Error", {
           timeOut: 5000,
         });
       },
@@ -275,7 +283,6 @@ export class DetalleTramiteComponent implements OnInit {
             );
             break;
         }
-        Swal.fire("Elimado!", "El registro fue eliminado con exito", "success");
       }
     });
   }

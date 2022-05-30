@@ -89,7 +89,7 @@ _**Tracking** : Apartado para el seguimiento del tramite por parte de los estudi
 
 ## Ejecutando como PWA  👨🏻‍💻
 
-_Para ejecutar como PWA(Progessive Web App) , previamente debe tenerse instalado la libreria http-serve_
+_Para ejecutar como PWA(Progressive Web App) , previamente debe tenerse instalado la libreria http-serve_
 
 ```
 npm install --global http-server

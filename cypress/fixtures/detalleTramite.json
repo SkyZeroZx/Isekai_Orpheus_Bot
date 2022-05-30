@@ -1,0 +1,26 @@
+[
+  {
+      "id_est_doc": "13142522506172514695",
+      "fecha": "2022-05-24 06:47:57.762114",
+      "estado": "FINALIZADO",
+      "observaciones": "FDSFDSFFDSF"
+  },
+  {
+      "id_est_doc": "13142522506172514695",
+      "fecha": "2022-05-24 06:47:54.147953",
+      "estado": "PROCESANDO",
+      "observaciones": "asdasdasdasdsa"
+  },
+  {
+      "id_est_doc": "13142522506172514695",
+      "fecha": "2022-05-21 03:10:28.660032",
+      "estado": "OBSERVADO",
+      "observaciones": "New Option"
+  },
+  {
+      "id_est_doc": "13142522506172514695",
+      "fecha": "2022-05-12 00:29:48.940383",
+      "estado": "REGISTRADO",
+      "observaciones": "Registrado exitosamente por chatbot"
+  }
+]

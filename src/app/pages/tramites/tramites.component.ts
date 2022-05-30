@@ -57,7 +57,7 @@ export class TramitesComponent implements OnInit {
       },
       error: (err) => {
         // En caso de Error
-        this.toastrService.error("Error en el servicio " +err, "Error", {
+        this.toastrService.error("Sucedio un error al listar tramites " +err, "Error", {
           timeOut: 3000,
         });
       },

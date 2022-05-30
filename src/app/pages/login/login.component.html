@@ -42,8 +42,8 @@
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
                   <input class="form-control" formControlName='password' placeholder="Password" [type]="show_button ? 'text' : 'password'" >
-                  <div class="input-group-prepend pointer" (click)="showPassword()">
-                    <span class="input-group-text"><i      [class]="show_eye ? 'ni fa fa-eye' : 'ni fa fa-eye-slash'"  ></i></span>
+                  <div id="showPassword" class="input-group-prepend pointer" (click)="showPassword()">
+                    <span class="input-group-text"><i   id="eye"   [class]="show_eye ? 'ni fa fa-eye' : 'ni fa fa-eye-slash'"  ></i></span>
                   </div>
                    
             

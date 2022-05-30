@@ -1,12 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { RouterTestingModule } from "@angular/router/testing";
 import { ServiceWorkerModule, SwPush } from "@angular/service-worker";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { BsDropdownConfig } from "ngx-bootstrap/dropdown";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { ToastrModule, ToastrService } from "ngx-toastr";
@@ -92,8 +93,8 @@ fdescribe("TrackingComponent", () => {
     },
   ];
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync ( () => {
+     TestBed.configureTestingModule({
       declarations: [TrackingComponent],
       imports: [
         HttpClientTestingModule,
@@ -110,18 +111,15 @@ fdescribe("TrackingComponent", () => {
       ],
       providers: [
         ServiciosService,
-        //    { provide: ActivatedRoute, useValue: mockRouter },
         SwPush,
-        ToastrService,
-        FormBuilder,
         NgbActiveModal,
         NgbModal,
-
-        { provide: ToastrService, useClass: ToastrService },
+        FormBuilder,
+        { provide: ToastrService, useClass: ToastrService }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TrackingComponent);
@@ -184,7 +182,7 @@ fdescribe("TrackingComponent", () => {
       servicio,
       "buscarTramiteDetalleDniAndId"
     ).and.returnValue(of(mockVacio));
-    const spyToastError = spyOn(toastrService, "error").and.callThrough();
+    const spyToastError = spyOn(toastrService, "error");
     component.buscarTramiteTracking();
     expect(spyMockTrackingVoid).toHaveBeenCalled();
     expect(spyLimpiarTabla).toHaveBeenCalledTimes(3);
@@ -220,7 +218,7 @@ fdescribe("TrackingComponent", () => {
     expect(spyMockAdjuntos).toHaveBeenCalled();
     expect(component.adjuntoOk).toBeTruthy();
     // Validamos para el caso error al llamar el servicio
-    const spyToastError = spyOn(toastrService, "error").and.callThrough();
+    const spyToastError = spyOn(toastrService, "error");
     const spyMockAdjuntosErr = spyOn(
       servicio,
       "buscarAdjuntos"
@@ -247,7 +245,7 @@ fdescribe("TrackingComponent", () => {
     expect(spyMockCer).toHaveBeenCalled();
 
     // Validamos para el caso error al llamar el servicio
-    const spyToastError = spyOn(toastrService, "error").and.callThrough();
+    const spyToastError = spyOn(toastrService, "error");
     const spyMockCerErr = spyOn(servicio, "buscarCertificado").and.returnValue(
       throwError(() => new Error("Error en el servicio"))
     );
@@ -265,14 +263,14 @@ fdescribe("TrackingComponent", () => {
     const spysuscribeToNotifications = spyOn(
       component,
       "suscribeToNotifications"
-    ).and.callThrough();
+    );
     // Validamos la primera condiciones de saveTracking
     component.saveTracking();
     expect(spyaddEntry).toHaveBeenCalled();
     expect(spysuscribeToNotifications).toHaveBeenCalled();
     // Validamos la condicion contraria
     component.trackingForm.reset();
-    const spyToastErr = spyOn(toastrService, "error").and.callThrough();
+    const spyToastErr = spyOn(toastrService, "error");
     component.saveTracking();
     expect(spyToastErr).toHaveBeenCalled();
     // Validamos que nuestros otros espias solo fueran llamados una vez referente a la anterior prueba
@@ -324,7 +322,7 @@ fdescribe("TrackingComponent", () => {
     const mockResponse: any = {
       message: Constant.MENSAJE_OK,
     };
-    const spyToastSucess = spyOn(toastrService, "success").and.callThrough();
+    const spyToastSucess = spyOn(toastrService, "success");
     const spysaveUserNotificationOK = spyOn(
       servicio,
       "saveUserNotification"
@@ -333,7 +331,7 @@ fdescribe("TrackingComponent", () => {
     expect(spyToastSucess).toHaveBeenCalled();
     expect(spysaveUserNotificationOK).toHaveBeenCalled();
     // Validamos el caso que el servicio nos retorne un mensaje diferente de OK
-    const spyToastError = spyOn(toastrService, "error").and.callThrough();
+    const spyToastError = spyOn(toastrService, "error");
     const mockResponseDif: any = {
       message: "Something",
     };
@@ -370,7 +368,7 @@ fdescribe("TrackingComponent", () => {
     await expect(spyswPush).toHaveBeenCalled();
     await expect(spysaveNotification).toHaveBeenCalled();
     // Validamos en caso nuestra promesa nos retorne un error
-    const spyToastError = await spyOn(toastrService, "error").and.callThrough();
+    const spyToastError = await spyOn(toastrService, "error");
     const spyswPushErr = await spyOn(
       swPush,
       "requestSubscription"

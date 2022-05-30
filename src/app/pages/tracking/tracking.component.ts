@@ -143,11 +143,11 @@ export class TrackingComponent implements OnInit {
     existingEntries.push(entry);
     let hash = {};
     existingEntries = existingEntries.filter((e) => {
-      let exists = !hash[e.id];
-      hash[e.id] = true;
+      let exists = !hash[e.id_est_doc];
+      hash[e.id_est_doc] = true;
       return exists;
     });
- 
+    console.log("existen "+existingEntries)
     localStorage.setItem("tracking", JSON.stringify(existingEntries));
     this.toastrService.success("Se guardo su tramite", "Exito", {
       timeOut: 5000,

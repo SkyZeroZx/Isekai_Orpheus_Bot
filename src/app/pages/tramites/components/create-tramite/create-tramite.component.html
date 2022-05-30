@@ -1,7 +1,3 @@
-
-
-
-
 <h4>Registrar Nuevo Estado</h4>
 <form class="row" [formGroup]="registrarForm" (ngSubmit)="registraEstado(registrarForm.value)">
     <div class="col-sm-4">
@@ -13,28 +9,25 @@
                 <option value="FINALIZADO">FINALIZADO</option>
             </select>
             <div *ngIf="registrarForm.controls.estado.invalid && registrarForm.controls.estado.touched">
-                <div class="text-left" *ngIf="registrarForm.controls.estado.errors?.required">Se requiere
-                    seleccionar estado</div>
+                <small id="msgReqEstadoNew" class="text-left" *ngIf="registrarForm.controls.estado.errors?.required">
+                    Se requiere seleccionar estado</small>
             </div>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
-            <textarea type="text" class="form-control" rows="3" placeholder="Observacion"
+            <textarea type="text" class="form-control" rows="3" placeholder="Observacion" maxlength="255"
                 formControlName="observaciones"></textarea>
             <div *ngIf="registrarForm.controls.observaciones.invalid && registrarForm.controls.observaciones.touched">
-                <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.minlength">La
-                    longitud minima es 6 caracteres</small>
-                <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.maxlength">La
-                    longitud maxima es 105 caracteres</small>
-                <small class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.required">Se
-                    requiere ingresar observacion</small>
+                <small id="msgReqObsNew" class="text-left" *ngIf="registrarForm.controls.observaciones.errors?.required">
+                    Se requiere ingresar observacion</small>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
-            <button type="submit" [disabled]="registrarForm.invalid" class="btn btn-primary">
+            <button id="registerNewStatusTramite" type="submit" [disabled]="registrarForm.invalid"
+                class="btn btn-primary">
                 Registrar
             </button>
         </div>
@@ -47,7 +40,7 @@
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <button class="btn btn-primary" [disabled]="uploadForm.invalid" type="submit"
-                id="inputGroupFileAddon03">Subir</button>
+                id="inputGroupFileAddon03" >Subir</button>
         </div>
         <div class="custom-file">
             <input type="file" #file class="custom-file-input" id="inputGroupFile03"

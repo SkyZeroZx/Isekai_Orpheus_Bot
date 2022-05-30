@@ -28,7 +28,7 @@ export class ServiciosService {
   dpies: DatosGrafico[];
   tramiteDoc: TramiteDoc[];
 
-  constructor(private http: HttpClient,private auth: AuthService) {}
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   /* **************************** SERVICIOS GESTION DOCUMENTOS **************************************** */
   getAllDocuments(): Observable<Documento[]> {
@@ -147,19 +147,25 @@ export class ServiciosService {
 
   buscarDetallesD(id_est_doc: string): Observable<Detalle[]> {
     return this.http
-      .get<Detalle[]>(`${environment.API_URL}/tramite/${id_est_doc}`)
+      .post<Detalle[]>(`${environment.API_URL}/tramite/id`, {
+        id: id_est_doc,
+      })
       .pipe(catchError(this.handlerError));
   }
 
   buscarAdjuntos(id_est_doc: string): Observable<Adjunto[]> {
     return this.http
-      .get<Adjunto[]>(`${environment.API_URL}/tramite/adj/${id_est_doc}`)
+      .post<Adjunto[]>(`${environment.API_URL}/tramite/adj`, {
+        id: id_est_doc,
+      })
       .pipe(catchError(this.handlerError));
   }
 
   buscarCertificado(id_est_doc: string): Observable<Certificado[]> {
     return this.http
-      .get<Certificado[]>(`${environment.API_URL}/tramite/cer/${id_est_doc}`)
+      .post<Certificado[]>(`${environment.API_URL}/tramite/cer/`, {
+        id: id_est_doc,
+      })
       .pipe(catchError(this.handlerError));
   }
 
@@ -208,18 +214,14 @@ export class ServiciosService {
     }
     window.alert(errorMessage);
     this.auth.logout();
-    return throwError(() => errorMessage)
+    return throwError(() => errorMessage);
   }
 
-/************************ Servicios Notificacion Push *************************** */
+  /************************ Servicios Notificacion Push *************************** */
 
   saveUserNotification(data): Observable<any> {
     return this.http
-    .post<any>(`${environment.API_URL}/notificacion/suscripcion`, data)
-    .pipe(catchError(this.handlerError));
+      .post<any>(`${environment.API_URL}/notificacion/suscripcion`, data)
+      .pipe(catchError(this.handlerError));
   }
-
-
-
-  
 }

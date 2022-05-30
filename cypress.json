@@ -1,17 +1,46 @@
 {
   "env": {
+    "response":{
+      "ok":{
+        "message":"OK"
+      },
+      "other":{
+        "message":"Other Response"
+      }
+    },
     "url": {
-      "service": "https://whatsapp-bot-isekai.herokuapp.com",
+      "service": "http://localhost:3000",
       "visit": "http://localhost:4200/#/",
       "tracking": "http://localhost:4200/#/tracking"
     },
     "tracking": {
       "numeroTramite": "13161522543671642522",
-      "dni": "71642522"
+      "dni": "71642522",
+      "tipoTramite":"EGRESADO",
+      "codigoEstudiante":"1615225436",
+      "apellidos":"BURGOS TEJADA",
+      "nombres":"JAIME",
+      "estado":"FINALIZADO",
+      "fecha":"2022-05-24"
     },
-    "userExito": {
-      "username": "tramitador2@mail.com",
-      "password": "Admin2"
+    
+    "users":{
+      "userTramitador": {
+        "username": "tramitador2@mail.com",
+        "password": "Admin2"
+      },
+      "userAdministrador": {
+        "username": "administrador@gmail.com",
+        "password": "Admin2"
+      },
+      "userFirstLogin": {
+        "username": "newLogin@gmail.com",
+        "password": "Admin1"
+      },
+      "userBloqueado":{
+        "username": "bloqueado@gmail.com",
+        "password": "Admin1"
+      }
     },
     "tramiteFiltrado": {
       "usuario": "jburgos",
@@ -21,6 +50,7 @@
     }
   },
   "defaultCommandTimeout": 10000,
+  "pageLoadTimeout": 10000,
   "projectId": "",
   "numTestsKeptInMemory": 50,
   "requestTimeout": 10000,

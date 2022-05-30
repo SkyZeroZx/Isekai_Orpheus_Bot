@@ -35,10 +35,7 @@ export class EditTramiteComponent implements OnInit {
       id_est_doc: new FormControl(),
       fecha: new FormControl(),
       estado: new FormControl(),
-      observaciones: new FormControl("", [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
+      observaciones: new FormControl(""),
     });
   }
 
@@ -85,7 +82,7 @@ export class EditTramiteComponent implements OnInit {
       },
       error: (err) => {
         console.log("modificarEstado Error ", err);
-        this.toastrService.error(err, "Error", {
+        this.toastrService.error("Sucedio un error al modificar el estado : "+ err, "Error", {
           timeOut: 5000,
         });
       },

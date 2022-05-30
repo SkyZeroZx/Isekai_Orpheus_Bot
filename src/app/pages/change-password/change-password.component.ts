@@ -87,6 +87,13 @@ export class ChangePasswordComponent implements OnInit {
           if (this.authService.getItemToken("firstLogin")) {
             this.authService.logout();
             this.router.navigate(["/login"]);
+            this.toastrService.success(
+              "Se cambio con exitosa la contraseña",
+              "Exito",
+              {
+                timeOut: 3000,
+              }
+            );
           } else {
             this.router.navigate(["/dashboard"]);
             this.toastrService.success(
@@ -104,7 +111,7 @@ export class ChangePasswordComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.toastrService.error("Error al cambiar contraseña" + err, "Error", {
+        this.toastrService.error("Error al cambiar contraseña " + err, "Error", {
           timeOut: 5000,
         });
       },

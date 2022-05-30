@@ -120,7 +120,7 @@
 
 #dropdown-dropup {
   padding-bottom: 45px;
-  background: transparent !important;
+  background: transparent!important; 
   position: fixed;
   padding-left: 33px;
 }
@@ -134,7 +134,7 @@
 .dropdown-item {
   color: rgb(74, 143, 223) !important;
   font-size: 0.95rem !important;
-  background: transparent!important;
+ background: transparent!important; 
 }
 
 .dropdown-menu {
@@ -143,8 +143,10 @@
 
 li{
   cursor: pointer;
+
 }
 
+ 
 i{
   cursor: pointer;
 }
