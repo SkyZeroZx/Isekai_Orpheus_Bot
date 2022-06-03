@@ -29,7 +29,14 @@ context("Change Password Pruebas Funcionalidad", () => {
     cy.get('button[type="submit"]').click({ force: true });
     //Esperamos la llamada y carga del servicio sigon
     cy.wait("@signon");
-
+    // Interceptamos y mockeamos graficos para evitar la demora al cargar
+    cy.intercept(
+      {
+        method: "POST",
+        url: url.service + "/grafico",
+      },
+      []
+    ).as("grafico");
     cy.get("button.swal2-confirm").click({ force: true });
     //Verificamos que nos encontremos en la pantalla cambio de contraseña
     cy.url().should("include", "/change-password");
@@ -287,7 +294,6 @@ context("Change Password Pruebas Funcionalidad", () => {
     cy.get('input[formControlName="oldPassword"]')
       .click({ force: true })
       .type("FakePasswordTest", { force: true });
-      
 
     cy.get('input[formControlName="newPassword"]')
       .click({ force: true })
@@ -328,5 +334,4 @@ context("Change Password Pruebas Funcionalidad", () => {
     //Verificamos que nos encontremos en la pantalla login despues del cambio de contraseña
     cy.url().should("include", "/change-password");
   });
-
 });

@@ -84,8 +84,8 @@ fdescribe("NewDocumentComponent", () => {
 
     expect(spycreateDocumentOK).toHaveBeenCalled();
     expect(spyToastSucess).toHaveBeenCalled();
-    expect(component.crearDocForm.getRawValue().nombre).toEqual('')
-    expect(component.crearDocForm.getRawValue().requisitos).toEqual('')
+    expect(component.crearDocForm.getRawValue().nombre).toBeNull()
+    expect(component.crearDocForm.getRawValue().requisitos).toBeNull()
     // Validamos para el caso que el servicio nos retorne un mensaje diferente de MENSAJE_OK
     const mockResDif: any = {
       message: "DIFERENTE",

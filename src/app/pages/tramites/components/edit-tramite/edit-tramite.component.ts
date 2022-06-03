@@ -3,7 +3,6 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
 } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { Constant } from "src/app/Constants/Constant";

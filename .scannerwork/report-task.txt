@@ -2,5 +2,5 @@ projectKey=Isekai_Orpheus_Bot
 serverUrl=http://localhost:9000
 serverVersion=9.4.0.54424
 dashboardUrl=http://localhost:9000/dashboard?id=Isekai_Orpheus_Bot
-ceTaskId=AYEDqNVFMvsG8el0Qlv8
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYEDqNVFMvsG8el0Qlv8
+ceTaskId=AYElgEj4NbPeZBGlHTK1
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYElgEj4NbPeZBGlHTK1

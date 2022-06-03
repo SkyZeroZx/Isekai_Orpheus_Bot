@@ -71,8 +71,13 @@ export class ServiciosService {
   }
 
   deleteUser(id): Observable<any> {
+    console.log("id", id);
     return this.http
-      .delete<Detalle>(`${environment.API_URL}/users/${id}`)
+      .delete<any>(`${environment.API_URL}/users`, {
+        body: {
+          id: id,
+        },
+      })
       .pipe(catchError(this.handlerError));
   }
 

@@ -78,12 +78,12 @@
                         </div>
                         <div class="row col-md-6" style="text-align: right;">
                             <div class="col-md-8">
-                                <button type="button" class="btn btn-outline-success" (click)="exportarExcel()">
+                                <button id="excelUsers" type="button" class="btn btn-outline-success" (click)="exportarExcel()">
                                     <a> <i class="fa fa-file-excel" aria-hidden="true"> Excel</i></a>
                                 </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" class="btn btn-outline-danger" (click)="exportarPDF()">
+                                <button id="pdfUsers" type="button" class="btn btn-outline-danger" (click)="exportarPDF()">
                                     <a> <i class="fa fa-file-pdf" aria-hidden="true"></i> PDF</a>
                                 </button>
                             </div>
@@ -98,7 +98,7 @@
                                 <th scope="col">Codigo</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Nombres</th>
-                                <th scope="col">Appelido Paterno</th>
+                                <th scope="col">Apellido Paterno</th>
                                 <th scope="col">Apellido Materno</th>
                                 <th scope="col">Rol</th>
                                 <th scope="col">Estado</th>
@@ -200,7 +200,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 id="dialog-static-name" class="modal-title pull-left">Editar Usuario</h4>
-                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                <button id="modalEditClose" type="button" class="btn-close close pull-right" aria-label="Close"
                     (click)="modalEditUser.hide()">
                     <span aria-hidden="true" class="visually-hidden">&times;</span>
                 </button>

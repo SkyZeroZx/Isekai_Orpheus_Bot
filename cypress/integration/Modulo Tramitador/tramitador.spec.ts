@@ -1,11 +1,15 @@
 /// <reference types="cypress" />
 
+import { filter } from "cypress/types/lodash";
+
 context("Modulo Tramitador Pruebas Funcionalidad", () => {
   // Asiganamos valor a nuestra url segun nuestra variable global en cypress.json
   const url = Cypress.env("url");
   const user = Cypress.env("users");
   const response = Cypress.env("response");
   const tracking = Cypress.env("tracking");
+  // Ruta de la carpeta descargas previamente configurado en cypress.json
+  const downloadsFolder = Cypress.config("downloadsFolder");
   beforeEach(() => {
     //Aumentando el TimeOut en caso de lentitud de la red
     Cypress.config({
@@ -981,6 +985,81 @@ context("Modulo Tramitador Pruebas Funcionalidad", () => {
       });
   });
 
+  it("Registro Nuevo Estado Tramite Estudiante OK", () => {
+    // Interceptamos el servicio que carga la lista de tramites de los alumnos
+    // Al interceptar el servicio que lista tramites los interceptamos y hacemos que responda el archivo tramites.json
+    cy.intercept({
+      method: "GET",
+      url: url.service + "/tramite",
+    }).as("listaTramites");
+    // Realizamos click en la opcion tramites
+    cy.get("a").contains("Tramites").click({ force: true });
+    // Esperamos que se liste
+    cy.wait("@listaTramites");
+
+    // Interceptamos los servicios del detalle tramite del estudiante , adjuntos y certificado
+    // Al interceptar el servicio de detalle del estudiante mockeamos el response con nuestro detalleTramite.json que se encuentra en fixture
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/id",
+    }).as("tramiteDetalle");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/adj",
+    }).as("tramiteAdjunto");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/cer",
+    }).as("tramiteCertificado");
+
+    // Realizamos click en el primer registro
+    cy.get("td > i.ni-bullet-list-67").first().click({ force: true });
+
+    cy.wait(["@tramiteDetalle", "@tramiteAdjunto", "@tramiteCertificado"]);
+    // Esperamos 3 seg cargue el modal
+    cy.wait(3000);
+    cy.get("textarea[formControlName=observaciones]").type(
+      "Esto una prueba escrita en Cypress E2E"
+    );
+    cy.get("select[formControlName=estado]").select("FINALIZADO", {
+      force: true,
+    });
+
+    // Previamente a realizar el click interceptamos nuestro servicio
+    cy.intercept("POST", url.service + "/tramite").as("registerStatusTramite");
+    cy.get("#registerNewStatusTramite").click({ force: true });
+    cy.wait("@registerStatusTramite");
+
+    // Verificamos nuestro toast EXITO
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("Exito")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.equal("Exito");
+      });
+    // Verificamos el contenido de nuestro toast exito
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("exitosamente")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.contains(
+          "Se registro exitosamente un nuevo estado para "
+        );
+      });
+    // Validamos que se limpien los campos de registrar tramite
+    cy.get("textarea[formControlName=observaciones]").should("have.value", "");
+    cy.get("select[formControlName=estado] option:selected").should(
+      "have.value",
+      ""
+    );
+  });
+
   it("Registro Nuevo Estado Tramite Estudiante OK (MOCK)", () => {
     // Interceptamos el servicio que carga la lista de tramites de los alumnos
     // Al interceptar el servicio que lista tramites los interceptamos y hacemos que responda el archivo tramites.json
@@ -1068,6 +1147,78 @@ context("Modulo Tramitador Pruebas Funcionalidad", () => {
       "have.value",
       ""
     );
+  });
+
+  it("Subir Nuevo Certificado Tramite Estudiante OK ", () => {
+    // Interceptamos el servicio que carga la lista de tramites de los alumnos
+    // Al interceptar el servicio que lista tramites los interceptamos y hacemos que responda el archivo tramites.json
+    cy.intercept({
+      method: "GET",
+      url: url.service + "/tramite",
+    }).as("listaTramites");
+    // Realizamos click en la opcion tramites
+    cy.get("a").contains("Tramites").click({ force: true });
+    // Esperamos que se liste
+    cy.wait("@listaTramites");
+
+    // Interceptamos los servicios del detalle tramite del estudiante , adjuntos y certificado
+    // Al interceptar el servicio de detalle del estudiante mockeamos el response con nuestro detalleTramite.json que se encuentra en fixture
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/id",
+    }).as("tramiteDetalle");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/adj",
+    }).as("tramiteAdjunto");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/cer",
+    }).as("tramiteCertificado");
+
+    // Realizamos click en el primer registro
+    cy.get("td > i.ni-bullet-list-67").first().click({ force: true });
+
+    cy.wait(["@tramiteDetalle", "@tramiteAdjunto", "@tramiteCertificado"]);
+    // Esperamos 3 seg cargue el modal
+    cy.wait(3000);
+    // Previamente interceptamos el servicio de subir certitficado , mockeamos un response OK
+    cy.intercept("POST", url.service + "/tramite/updatecertificado").as(
+      "uploadCertificado"
+    );
+    // Validamos que el boton este inhabilitado hasta que se suba un archivo
+    cy.get("#inputGroupFileAddon03").contains("Subir").should("be.disabled");
+    // Subimos nuestro archivo example
+    cy.get("input[type=file]").attachFile("example.pdf");
+    // Cuando se sube el archivo en el selector del input file validar que se active
+    cy.get("#inputGroupFileAddon03").contains("Subir").should("be.enabled");
+    cy.wait(500);
+    cy.get("#inputGroupFileAddon03").contains("Subir").click({ force: true });
+    cy.wait("@uploadCertificado");
+    // Verificamos nuestro toast EXITO
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("Exito")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.equal("Exito");
+      });
+    // Verificamos el contenido de nuestro toast exito
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("correctamente")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.contains(
+          "Se subio correctamente certificado para el tramite"
+        );
+      });
+    // Validamos que el boton este inhabilitado ya que se limpia el input file
+    cy.get("#inputGroupFileAddon03").contains("Subir").should("be.disabled");
   });
 
   it("Subir Nuevo Certificado Tramite Estudiante OK (MOCK)", () => {
@@ -1660,6 +1811,72 @@ context("Modulo Tramitador Pruebas Funcionalidad", () => {
       });
   });
 
+  it("Verificamos Editar Tramite Estudiante OK", () => {
+    // Interceptamos el servicio que carga la lista de tramites de los alumnos
+    // Al interceptar el servicio que lista tramites los interceptamos y hacemos que responda el archivo tramites.json
+    cy.intercept({
+      method: "GET",
+      url: url.service + "/tramite",
+    }).as("listaTramites");
+    // Realizamos click en la opcion tramites
+    cy.get("a").contains("Tramites").click({ force: true });
+    // Esperamos que se liste
+    cy.wait("@listaTramites");
+
+    // Interceptamos los servicios del detalle tramite del estudiante , adjuntos y certificado
+    // Al interceptar el servicio de detalle del estudiante mockeamos el response con nuestro detalleTramite.json que se encuentra en fixture
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/id",
+    }).as("tramiteDetalle");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/adj",
+    }).as("tramiteAdjunto");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/cer",
+    }).as("tramiteCertificado");
+
+    // Realizamos click en el primer registro
+    cy.get("td > i.ni-bullet-list-67").first().click({ force: true });
+
+    cy.wait(["@tramiteDetalle", "@tramiteAdjunto", "@tramiteCertificado"]);
+    // Esperamos 3 seg cargue el modal
+    cy.wait(3000);
+
+    cy.get("td > i.fa-edit").first().click({ force: true });
+
+    cy.intercept("PATCH", url.service + "/tramite").as("editTramite");
+
+    cy.get("#btnEditTramite").click({ force: true });
+
+    cy.wait("@editTramite");
+    // Verificamos nuestro toast EXITO
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("Exito")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.equal("Exito");
+      });
+    // Verificamos el contenido de nuestro toast exito
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("correctamente")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.contains(
+          "Se actualizo correctamente el estado para "
+        );
+      });
+    cy.wait("@tramiteDetalle");
+  });
+
   it("Verificamos Editar Tramite Estudiante OK (MOCK)", () => {
     // Interceptamos el servicio que carga la lista de tramites de los alumnos
     // Al interceptar el servicio que lista tramites los interceptamos y hacemos que responda el archivo tramites.json
@@ -1898,6 +2115,113 @@ context("Modulo Tramitador Pruebas Funcionalidad", () => {
         );
       });
     cy.wait("@tramiteDetalle");
+  });
+
+  it("Verificamos Eliminar Certificado Tramite OK", () => {
+    // Interceptamos el servicio que carga la lista de tramites de los alumnos
+    // Al interceptar el servicio que lista tramites los interceptamos y hacemos que responda el archivo tramites.json
+    cy.intercept({
+      method: "GET",
+      url: url.service + "/tramite",
+    }).as("listaTramites");
+    // Realizamos click en la opcion tramites
+    cy.get("a").contains("Tramites").click({ force: true });
+    // Esperamos que se liste
+    cy.wait("@listaTramites");
+
+    // Interceptamos los servicios del detalle tramite del estudiante , adjuntos y certificado
+    // Al interceptar el servicio de detalle del estudiante mockeamos el response con nuestro detalleTramite.json que se encuentra en fixture
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/id",
+    }).as("tramiteDetalle");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/adj",
+    }).as("tramiteAdjunto");
+
+    cy.intercept({
+      method: "POST",
+      url: url.service + "/tramite/cer",
+    }).as("tramiteCertificado");
+
+    // Realizamos click en el primer registro
+    cy.get("td > i.ni-bullet-list-67").first().click({ force: true });
+
+    cy.wait(["@tramiteDetalle", "@tramiteAdjunto", "@tramiteCertificado"]);
+    // Esperamos 3 seg cargue el modal
+    cy.wait(3000);
+
+    // Validamos click en el tab Certificado
+    cy.get("span").contains("Certificado").click({ force: true });
+
+    cy.get("td.delete > i.ni-fat-remove").first().click({ force: true });
+
+    // Validamos nombres del titulo , mensaje
+    cy.get("#swal2-title")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).equals("¿Estas seguro de eliminar este registro?");
+      });
+
+    cy.get("#swal2-html-container")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).equals("Esta acción no puede revertirse");
+      });
+    // Validamos los nombres de nuestros botones
+    cy.get("button.swal2-confirm")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).equals("Confirmar");
+      });
+
+    cy.get("button.swal2-cancel")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).equals("Cancelar");
+      });
+    // Interceptamos y forzamos a devolver un OK
+    cy.intercept("DELETE", url.service + "/tramite/cer/", response.ok).as(
+      "deleteCertificado"
+    );
+    // Realizamos click en confirmar eliminacion
+    cy.get("button.swal2-confirm").click({ force: true });
+    cy.wait("@deleteCertificado");
+    // Verificamos nuestro toast EXITO
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("Exito")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.equal("Exito");
+      });
+    // Verificamos el contenido de nuestro toast exito
+    cy.get("#toast-container")
+      .find("div")
+      .find("div")
+      .contains("correctamente")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).to.contains(
+          "Se elimino correctamente el certificado"
+        );
+      });
+
+    // Validamos el alert de confirmacion
+    cy.get("#swal2-title")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).equals("Eliminado!");
+      });
+
+    cy.get("#swal2-html-container")
+      .invoke("text")
+      .then((text) => {
+        expect(text.trim()).equals("El registro fue eliminado con exito");
+      });
   });
 
   it("Verificamos Eliminar Certificado Tramite OK (MOCK)", () => {
@@ -2227,4 +2551,98 @@ context("Modulo Tramitador Pruebas Funcionalidad", () => {
         );
       });
   });
+
+  it("Validamos Generacion Reporte Excel Gestion Tramites", () => {
+    // Interceptamos el servicio que carga la lista de tramites de los alumnos
+    cy.intercept({
+      method: "GET",
+      url: url.service + "/tramite",
+    }).as("listaTramites");
+    // Realizamos click en la opcion tramites
+    cy.get("a").contains("Tramites").click({ force: true });
+    // Esperamos que se liste
+    cy.wait("@listaTramites");
+    let rutaXLS;
+    cy.task("filesInDownload", downloadsFolder).then((files1: any) => {
+      cy.get("button[id=btnExcel]").click({ force: true });
+      cy.wait(5000);
+      cy.task("filesInDownload", downloadsFolder).then((files2: any) => {
+        // Validamos la descarga del documento y validamos el nombre
+        let difference = files2.filter((x: any) => !files1.includes(x));
+        expect(difference.length).to.be.gt(0);
+        const newFile = files2.filter((y) => !files1.includes(y))[0];
+        // Validamos el nombre de nuestro archivo incluya un patron previamente declarado en la funcion downloadFileName
+        expect(newFile).to.include(downloadFileName());
+        rutaXLS = (downloadsFolder + "/" + newFile).replace(/\\/g, "/");
+        // Llamamos nuestro task parseXlsx que leera el archivo descargado
+        cy.task("parseXlsx", rutaXLS).then((jsonData) => {
+          //Cabeceras del documento
+          expect(jsonData[0]["data"][0][0]).to.include("id_est_doc");
+          expect(jsonData[0]["data"][0][1]).to.include("fecha_doc");
+          expect(jsonData[0]["data"][0][2]).to.include("estado");
+          expect(jsonData[0]["data"][0][3]).to.include("nombre");
+          expect(jsonData[0]["data"][0][4]).to.include("cod_est");
+          expect(jsonData[0]["data"][0][5]).to.include("estudiante");
+          expect(jsonData[0]["data"][0][6]).to.include("apellidos");
+        });
+      });
+    });
+  });
+
+  it("Validamos Generacion Reporte PDF Gestion Tramites", () => {
+    // Interceptamos el servicio que carga la lista de tramites de los alumnos
+    cy.intercept({
+      method: "GET",
+      url: url.service + "/tramite",
+    }).as("listaTramites");
+    // Realizamos click en la opcion tramites
+    cy.get("a").contains("Tramites").click({ force: true });
+    // Esperamos que se liste
+    cy.wait("@listaTramites");
+    let rutaPDF;
+
+    cy.task("filesInDownload", downloadsFolder).then((files1: any) => {
+      cy.get("button[id=btnPDF]").click({ force: true });
+      cy.wait(5000);
+      cy.task("filesInDownload", downloadsFolder).then((files2: any) => {
+        // Validamos la descarga del documento y validamos el nombre
+        let difference = files2.filter((x) => !files1.includes(x));
+        expect(difference.length).to.be.gt(0);
+        const newFile = files2.filter((y) => !files1.includes(y))[0];
+        expect(newFile).to.include(downloadFileName());
+        rutaPDF = downloadsFolder.replace(/\\/g, "/");
+        console.log("La ruta PDF es : ");
+        console.log(rutaPDF);
+        cy.task("parsePdf", { patch: rutaPDF, fileName: newFile }).then(
+          (jsonData) => {
+            console.log("Reporte PDF es : ");
+            console.log(jsonData);
+            //Titulo del documento
+            expect(jsonData["text"]).to.include("REPORTE TRAMITES");
+            // CABECERAS
+            expect(jsonData["text"]).to.include("N° TRAMITE");
+            expect(jsonData["text"]).to.include("ESTADO ACTUAL");
+            expect(jsonData["text"]).to.include("CODIGO ESTUDIANTE");
+            expect(jsonData["text"]).to.include("NOMBRES");
+            expect(jsonData["text"]).to.include("APELLIDOS");
+          }
+        );
+      });
+    });
+  });
+
+  // Funcion que genera el nombre del archivo de REPORTE TRAMITES
+  function downloadFileName() {
+    /*  let fecha = new Date();
+    let mes = "" + (fecha.getMonth() + 1);
+    let dia = "" + fecha.getDate();
+    let fechaReporte =
+      fecha.getFullYear() +
+      "" +
+      mes.padStart(2, "0") +
+      "" +
+      dia.padStart(2, "0");*/
+    const fileName = "REPORTE TRAMITES";
+    return fileName;
+  }
 });

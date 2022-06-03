@@ -66,7 +66,7 @@ export class EditDocumentComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.toastrService.error("Hubo un error " + err, "Error", {
+        this.toastrService.error("Hubo un error al actualizar documento " + err, "Error", {
           timeOut: 3000,
         });
       },

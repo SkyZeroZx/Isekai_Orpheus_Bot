@@ -131,13 +131,13 @@ export class DocumentosComponent implements OnInit {
             }
           );
         } else {
-          this.toastrService.error(res.message, "Error", {
+          this.toastrService.error("Sucedio un error al eliminar el documento "+ res.message, "Error", {
             timeOut: 3000,
           });
         }
       },
       error: (err) => {
-        this.toastrService.error("Hubo un error : " + err, "Error", {
+        this.toastrService.error("Sucedio un error al eliminar el documento "+  + err, "Error", {
           timeOut: 3000,
         });
       },

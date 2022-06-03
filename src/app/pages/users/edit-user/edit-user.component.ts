@@ -97,7 +97,7 @@ export class EditUserComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.toastrService.error("Hubo un error " +err, "Error", {
+        this.toastrService.error("Error al editar usuario : " + err, "Error", {
           timeOut: 3000,
         });
       },

@@ -14,11 +14,12 @@
       </i>
       <ul id="dropdown-dropup" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-dropup">
         <li role="menuitem" id="activarNotificaciones" (click)="suscribeToNotifications()"><a class="dropdown-item"><i
-              class="fas fa-bell fa-2x"></i>Activar notificaciones</a></li>
-        <li role="menuitem" id="guardar"(click)="saveTracking()"><a class="dropdown-item"><i class="fas fa-save fa-2x"></i>Guardar
-            Tramite</a></li>
-        <li role="menuitem" id="historial"(click)="listHistory()"><a class="dropdown-item"><i class="fas fa-history fa-2x"></i>Ver
-            historial</a>
+              class="fas fa-bell fa-2x"></i><span>Activar notificaciones</span> </a></li>
+        <li role="menuitem" id="guardar" (click)="saveTracking()"><a class="dropdown-item"><i
+              class="fas fa-save fa-2x"></i><span>Guardar Tramite</span></a></li>
+        <li role="menuitem" id="historial" (click)="listHistory()"><a class="dropdown-item"><i
+              class="fas fa-history fa-2x"></i>
+            <span>Ver historial</span></a>
         </li>
       </ul>
     </div>
@@ -202,7 +203,8 @@
                 <tr *ngFor="let itemHistory of listaTramitesGuardados">
                   <td class="history">{{itemHistory.id_est_doc}}</td>
                   <td class="history">{{itemHistory.dni}}</td>
-                  <td class="history text-center"> <i (click)="searchHistory(itemHistory)" role="search" class="fas fa-search"></i></td>
+                  <td class="history text-center"> <i (click)="searchHistory(itemHistory)" role="search"
+                      class="fas fa-search"></i></td>
                 </tr>
               </tbody>
             </table>

@@ -74,7 +74,7 @@ export class CrearUserComponent implements OnInit {
       },
       error: (err) => {
         console.log("Error crearUsuario ", err);
-        this.toastrService.error("Hubo un error", "Error", {
+        this.toastrService.error("Hubo un error al crear el usuario", "Error", {
           timeOut: 3000,
         });
       },

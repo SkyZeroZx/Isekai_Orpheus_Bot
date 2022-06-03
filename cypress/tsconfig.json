@@ -1,6 +1,6 @@
 {
     "extends": "../tsconfig.json",
-    "include": ["**/*.ts"],
+    "include": ["**/*.ts", "integration/Modulo Tramitador/tramitador.spec.js"],
     "compilerOptions": {
       "sourceMap": false,
       "types": ["cypress", "node" , "cypress-file-upload"]

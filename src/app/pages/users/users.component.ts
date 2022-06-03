@@ -153,7 +153,7 @@ export class UsersComponent implements OnInit {
           );
         } else {
           this.toastrService.error(
-            "Sucedio un error al eliminar al usuario e: " + res.message,
+            "Sucedio un error al eliminar al usuario : " + res.message,
             "Error",
             {
               timeOut: 3000,

@@ -53,6 +53,7 @@ export class NewDocumentComponent implements OnInit {
     this.servicios.createDocument(this.crearDocForm.value).subscribe({
       next: (res) => {
         if (res.message == Constant.MENSAJE_OK) {
+          this.crearDocForm.reset();
           this.toastrService.success(
             "Se creo exitosamente el documento",
             "Exito",
@@ -61,13 +62,13 @@ export class NewDocumentComponent implements OnInit {
             }
           );
         } else {
-          this.toastrService.error(res.message, "Error", {
+          this.toastrService.error("Sucedio un error al crear el documento "+ res.message, "Error", {
             timeOut: 3000,
           });
         }
       },
       error: (err) => {
-        this.toastrService.error("Sucedio un error" + err, "Error", {
+        this.toastrService.error("Sucedio un error al crear el documento " + err, "Error", {
           timeOut: 3000,
         });
       },

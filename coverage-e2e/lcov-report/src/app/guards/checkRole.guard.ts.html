@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/20</span>
+                <span class='fraction'>17/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.84% </span>
+                <span class="strong">84.61% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/13</span>
+                <span class='fraction'>11/13</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.94% </span>
+                <span class="strong">82.35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/17</span>
+                <span class='fraction'>14/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -107,36 +107,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">94x</span>
+<span class="cline-any cline-yes">413x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">470x</span>
-<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">2065x</span>
+<span class="cline-any cline-yes">328x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">98x</span>
-<span class="cline-any cline-yes">98x</span>
-<span class="cline-any cline-yes">98x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">636x</span>
+<span class="cline-any cline-yes">636x</span>
+<span class="cline-any cline-yes">636x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">98x</span>
+<span class="cline-any cline-yes">624x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">98x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">368x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">98x</span>
+<span class="cline-any cline-yes">368x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">256x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">248x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -157,24 +157,24 @@ export class CheckRole implements CanActivate {
   canActivate() {
     console.log("Check Role");
     console.log(window.location.href);
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (JSON.parse(localStorage.getItem("user")) == null) {
-<span class="cstat-no" title="statement not covered" >      return f</span>alse;
+    if (JSON.parse(localStorage.getItem("user")) == null) {
+      return false;
     }
     switch (this.authService.getItemToken("role")) {
-<span class="branch-0 cbranch-no" title="branch not covered" >      case "admin":</span>
-<span class="cstat-no" title="statement not covered" >        if (window.location.href.includes("tramites")) {</span>
+      case "admin":
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (window.location.href.includes("tramites")) {
 <span class="cstat-no" title="statement not covered" >          this.r</span>outer.navigate(["/dashboard"]);
 <span class="cstat-no" title="statement not covered" >          return f</span>alse;
         } else {
-<span class="cstat-no" title="statement not covered" >          return t</span>rue;
+          return true;
         }
       case "tramitador":
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (
+        if (
           window.location.href.includes("documentos") ||
           window.location.href.includes("users")
         ) {
-<span class="cstat-no" title="statement not covered" >          this.r</span>outer.navigate(["/dashboard"]);
-<span class="cstat-no" title="statement not covered" >          return f</span>alse;
+          this.router.navigate(["/dashboard"]);
+          return false;
         } else {
           return true;
         }
@@ -190,7 +190,7 @@ export class CheckRole implements CanActivate {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon May 30 2022 00:28:57 GMT-0500 (hora estándar de Perú)
+                at Thu Jun 02 2022 20:06:34 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

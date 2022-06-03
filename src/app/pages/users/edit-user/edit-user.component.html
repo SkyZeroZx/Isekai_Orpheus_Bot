@@ -66,13 +66,13 @@
           <input type="text" class="form-control" formControlName="apellidoMaterno" oninput="alpha(this)" maxlength="120">
           <div
             *ngIf="editarUserForm.controls.apellidoMaterno.invalid && editarUserForm.controls.apellidoMaterno.touched">
-            <small id="requiredPaterno" class="text-left"
+            <small id="requiredMaterno" class="text-left"
               *ngIf="editarUserForm.controls.apellidoMaterno.errors?.required">
               Se requiere ingresar apellido materno</small>
-            <small id="patternPaterno" class="text-left"
+            <small id="patternMaterno" class="text-left"
               *ngIf="editarUserForm.controls.apellidoMaterno.errors?.pattern">
               El apellido materno ingresado tiene formato invalido</small>
-            <small id="minlengthPaterno" class="text-left"
+            <small id="minlengthMaterno" class="text-left"
               *ngIf="editarUserForm.controls.apellidoMaterno.errors?.minlength">
               La longitud minima del apellido materno es de 2 caracteres</small>
           </div>
@@ -105,6 +105,6 @@
 
   </div>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" [disabled]="editarUserForm.invalid">Actualizar</button>
+    <button id="updateUser" type="submit" class="btn btn-primary" [disabled]="editarUserForm.invalid">Actualizar</button>
   </div>
 </form>

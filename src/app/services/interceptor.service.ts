@@ -22,9 +22,10 @@ export class InterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     this.spinnerService.llamarSpinner();
-    console.log("Llamo spinner");
     if (
-      (req.url.includes("auth") || req.url.includes("users")|| req.url.includes("documento")) &&
+      (req.url.includes("auth") ||
+        req.url.includes("users") ||
+        req.url.includes("documento")) &&
       !req.url.includes("auth/login")
     ) {
       const userValue = this.auth.userValue;

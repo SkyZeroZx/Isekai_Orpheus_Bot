@@ -18,8 +18,8 @@ export class ReporteService {
     console.log("Excel Reporte Doc", Constant.REPORT);
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(Constant.REPORT);
     const workbook: XLSX.WorkBook = {
-      Sheets: { homologacion: worksheet },
-      SheetNames: ["homologacion"],
+      Sheets: { reporte: worksheet },
+      SheetNames: ["reporte"],
     };
     const excelBuffer: any = XLSX.write(workbook, {
       bookType: "xlsx",
@@ -59,6 +59,6 @@ export class ReporteService {
       },
     });
     //  Metodo para abrir en otra pestaña pdf.output("dataurlnewwindow");
-    pdf.save(nombre + ".pdf");
+    pdf.save(nombre + "_export_" + +new Date().getTime() + ".pdf");
   }
 }

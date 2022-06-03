@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.9% </span>
+                <span class="strong">76.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/21</span>
+                <span class='fraction'>16/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/7</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.25% </span>
+                <span class="strong">68.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/16</span>
+                <span class='fraction'>11/16</span>
             </div>
         
             
@@ -154,7 +154,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">94x</span>
+<span class="cline-any cline-yes">413x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,7 +169,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">94x</span>
+<span class="cline-any cline-yes">413x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,24 +195,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">470x</span>
+<span class="cline-any cline-yes">2065x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">340x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">340x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">340x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">594x</span>
+<span class="cline-any cline-yes">198x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">284x</span>
+<span class="cline-any cline-yes">142x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">114x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">340x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,9 +284,9 @@ export class SidebarComponent implements OnInit {
 &nbsp;
   ngOnInit() {
     switch (this.auth.getItemToken("role")) {
-<span class="branch-0 cbranch-no" title="branch not covered" >      case "admin":</span>
-<span class="cstat-no" title="statement not covered" >        this.m</span>enuItems = ROUTES_ADMINISTRADOR.filter(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(m</span></span>enuItem) =&gt; menuItem);
-<span class="cstat-no" title="statement not covered" >        break;</span>
+      case "admin":
+        this.menuItems = ROUTES_ADMINISTRADOR.filter((menuItem) =&gt; menuItem);
+        break;
       case "tramitador":
         this.menuItems = ROUTES_TRAMITADOR.filter((menuItem) =&gt; menuItem);
         break;
@@ -313,7 +313,7 @@ export class SidebarComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon May 30 2022 00:28:57 GMT-0500 (hora estándar de Perú)
+                at Thu Jun 02 2022 20:06:34 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
