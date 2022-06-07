@@ -8,6 +8,22 @@ _Adicionalmente funciona como PWA(Progresive Web App) que puede integrarse en cu
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
+_Puede visualizar una Demo del Proyecto en el siguiente enlace : https://isekai-orpheus-bot.vercel.app/#/login_
+
+_**Administrador**_
+
+```
+adminDemo@gmail.com
+Admin2
+```
+
+_**Tramitador**_
+
+```
+tramitadorDemo@gmail.com
+Admin2
+```
+
 Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
@@ -25,7 +41,7 @@ _Software opcional_
 ```
 Visual Studio Code ( O el editor de su preferencia)
 ```
- 
+
 ### Instalación 🔧
 
 _Para ejecutar un entorno de desarrollo_
@@ -35,6 +51,7 @@ _Previamente ejecutar el comando en la terminal para descargar "node_modules" pa
 ```
 npm install
 ```
+
 _Previamente configurar la ruta del API que consumira nuestro proyecto en el archivo **"src/environments/environment.ts"** campo **API_URL**_
 
 _Para ejecutar un servidor de pruebas local usar el comando donde **"PUERTO"** sera el puerto donde deseamos ejecutar el proyecto , por default **ng serve** ejecuta el puerto 4200_
@@ -45,7 +62,7 @@ ng serve --port [PUERTO]
 
 _Dirigirse a la ruta http://localhost:4200/#/login/ se tendra la pantalla de Login del sistema existiendo 2 roles_
 
-_**Login** :  Apartado de inicio de sesion para ambos tipos de roles_
+_**Login** : Apartado de inicio de sesion para ambos tipos de roles_
 
 ![Login](/docs/Layout/login.PNG)
 
@@ -61,7 +78,7 @@ _**DashBoard** : Apartado con graficos sobre las cantidad de estados con filtros
 
 ![DashBoard 3](/docs/Layout/dashboard_3.PNG)
 
-_**Rol Administrador** : Rol que gestiona Usuarios y Documentos , comparte el dashboard con el rol tramitador_ 
+_**Rol Administrador** : Rol que gestiona Usuarios y Documentos , comparte el dashboard con el rol tramitador_
 
 _*Usuarios*_
 
@@ -81,13 +98,11 @@ _*Tramites*_
 
 ![Tramitador Tramites](/docs/Layout/tramitador_3.PNG)
 
-
 _**Tracking** : Apartado para el seguimiento del tramite por parte de los estudiantes_
 
 ![Tracking](/docs/Layout/tracking.PNG)
 
-
-## Ejecutando como PWA  👨🏻‍💻
+## Ejecutando como PWA 👨🏻‍💻
 
 _Para ejecutar como PWA(Progressive Web App) , previamente debe tenerse instalado la libreria http-serve_
 
@@ -116,7 +131,6 @@ _Se cuenta con soporte de notificaciones Push integrado en el modulo de Tracking
 _Se creo el archivo *src/custom-service-worker.js* para la gestion de evento de notificaciones personalizado_
 
 ![PWA 4](/docs/Layout/pwa/pwa_4.PNG)
-
 
 ## Ejecutando las pruebas ⚙️
 
@@ -152,7 +166,6 @@ _Para ejecutar las pruebas E2E en Cypress del sistema ejecutar el siguiente coma
 
 _El cual ejecuta Cypress en modo headless las pruebas E2E_
 
-
 ```
 npm run e2e:ci
 ```
@@ -169,13 +182,11 @@ npm run e2e:coverage
 
 ![E2E Coverage](/docs/e2e/e2e_summary.PNG)
 
-
 _Para visualizar el reporte grafico de la cobertura de codigo de las pruebas E2E en la raiz del proyecto ubicarse en la ruta coverage-e2e/Icov-report/index.html_
 
 ![E2E Coverage](/docs/e2e/e2e_coverage.PNG)
 
-
-## Analisis de calidad de codigo 
+## Analisis de calidad de codigo
 
 _**Pre requisitos**_
 
@@ -186,6 +197,7 @@ _Configurar los apartados : *sonar.host.url* , *sonar.login* *sonar.password* co
 ```
 Sonaqube >= 9.X
 ```
+
 ![SonarQube Properties](/docs/sonar/sonar_properties.PNG)
 
 _Las pruebas fueron realizas sobre *SonarQube 9.4* para ejecutar el analisis de codigo ejecutar el comando:_
@@ -193,6 +205,7 @@ _Las pruebas fueron realizas sobre *SonarQube 9.4* para ejecutar el analisis de 
 ```
 npm run sonar
 ```
+
 ![SonarQube Coverage 1](/docs/sonar/sonar_cobertura.PNG)
 
 ![SonarQube Coverage 2](/docs/sonar/sonar_cobertura_2.PNG)
@@ -207,7 +220,7 @@ _Para realizar el despligue a produccion del proyecto ejecutar el siguiente coma
 ng build --configuration production
 ```
 
-_El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos desplegar en cualquier servidor que ejecute HTML CSS y JS_ 
+_El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos desplegar en cualquier servidor que ejecute HTML CSS y JS_
 
 _A su vez en un hosting con certificado HTTPS se podra ejecutar como una PWA que se podra "instalar"_
 
@@ -215,17 +228,16 @@ _A su vez en un hosting con certificado HTTPS se podra ejecutar como una PWA que
 
 _Las herramientas utilizadas son:_
 
-* [Angular](https://angular.io/docs) - El Framework para Desarrollo Web
-* [NPM](https://www.npmjs.com/) - Manejador de dependencias
-* [Jasmine](https://jasmine.github.io/) - Framework Testing para pruebas unitarias
-* [Karma](https://karma-runner.github.io/latest/index.html) - Test Runner para pruebas unitarias
-* [Cypress](https://www.cypress.io/) - Framework para pruebas E2E
-* [SonarQube](https://www.sonarqube.org/) - Evaluacion de codigo
-* [Visual Studio Code](https://code.visualstudio.com/) - Editor de Codigo 
-* [Prettier](https://prettier.io/) - Formateador de Codigo
-* [TabNine](https://www.tabnine.com/) - Autocompletador de Codigo
-* [Argon DashBoard](https://demos.creative-tim.com/argon-dashboard-angular/#/documentation/tutorial) - Plantilla Web Utilizada
-
+- [Angular](https://angular.io/docs) - El Framework para Desarrollo Web
+- [NPM](https://www.npmjs.com/) - Manejador de dependencias
+- [Jasmine](https://jasmine.github.io/) - Framework Testing para pruebas unitarias
+- [Karma](https://karma-runner.github.io/latest/index.html) - Test Runner para pruebas unitarias
+- [Cypress](https://www.cypress.io/) - Framework para pruebas E2E
+- [SonarQube](https://www.sonarqube.org/) - Evaluacion de codigo
+- [Visual Studio Code](https://code.visualstudio.com/) - Editor de Codigo
+- [Prettier](https://prettier.io/) - Formateador de Codigo
+- [TabNine](https://www.tabnine.com/) - Autocompletador de Codigo
+- [Argon DashBoard](https://demos.creative-tim.com/argon-dashboard-angular/#/documentation/tutorial) - Plantilla Web Utilizada
 
 ## Versionado 📌
 
@@ -235,10 +247,10 @@ Usamos [GIT](https://git-scm.com/) para el versionado.
 
 _Los integrantes del proyecto_
 
-* **Jaime Burgos Tejada** - *Developer* - [SkyZeroZx](https://github.com/SkyZeroZx)
-* **Omar Ramos More** - *Documentación && Manual Testing* - [Vengenace](https://github.com/Vengenace)
-* **Gianfranco Alfaro Mariño** - *Documentación && Manual Testing* - [Franco](https://github.com/Gianfranco622)
+- **Jaime Burgos Tejada** - _Developer_ - [SkyZeroZx](https://github.com/SkyZeroZx)
+- **Omar Ramos More** - _Documentación && Manual Testing_ - [Vengenace](https://github.com/Vengenace)
+- **Gianfranco Alfaro Mariño** - _Documentación && Manual Testing_ - [Franco](https://github.com/Gianfranco622)
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia   - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia - mira el archivo [LICENSE.md](LICENSE.md) para detalles
