@@ -247,7 +247,7 @@ Usamos [GIT](https://git-scm.com/) para el versionado.
 
 _Los integrantes del proyecto_
 
-- **Jaime Burgos Tejada** - _Developer_ - [SkyZeroZx](https://github.com/SkyZeroZx)
+- **Jaime Burgos Tejada** - _Developer_ - [SkyZeroZx](https://github.com/SkyZeroZx) - email : jaimeburgostejada@gmail.com
 - **Omar Ramos More** - _Documentación && Manual Testing_ - [Vengenace](https://github.com/Vengenace)
 - **Gianfranco Alfaro Mariño** - _Documentación && Manual Testing_ - [Franco](https://github.com/Gianfranco622)
 
