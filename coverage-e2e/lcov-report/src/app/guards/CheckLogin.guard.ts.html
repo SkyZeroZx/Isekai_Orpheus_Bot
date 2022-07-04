@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/15</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/12</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,29 +101,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">413x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2065x</span>
-<span class="cline-any cline-yes">385x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">397x</span>
-<span class="cline-any cline-yes">397x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">397x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">393x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,11 +143,11 @@ export class CheckLogin implements CanActivate {
   canActivate(): Observable&lt;boolean&gt; {
     console.log("Auth Guard Check Login");
     if (localStorage.getItem("user") !== null) {
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (helper.decodeToken((JSON.parse(localStorage.getItem("user")).token).firstLogin)) {
-<span class="cstat-no" title="statement not covered" >        localStorage.</span>clear();
-<span class="cstat-no" title="statement not covered" >        return t</span>his.authService.user$.pipe(
+      if (helper.decodeToken((JSON.parse(localStorage.getItem("user")).token).firstLogin)) {
+        localStorage.clear();
+        return this.authService.user$.pipe(
           take(1),
-          map(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(u</span></span>ser: UserResponse) =&gt; (!user ? false : true))
+          map((user: UserResponse) =&gt; (!user ? false : true))
         );
       }
       this.router.navigate(["/dashboard"]);
@@ -155,7 +155,7 @@ export class CheckLogin implements CanActivate {
 &nbsp;
     return this.authService.user$.pipe(
       take(1),
-      map((user: UserResponse) =&gt; (!user ? true : <span class="branch-1 cbranch-no" title="branch not covered" >false))</span>
+      map((user: UserResponse) =&gt; (!user ? true : false))
     );
   }
 }
@@ -166,7 +166,7 @@ export class CheckLogin implements CanActivate {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Jun 02 2022 20:06:34 GMT-0500 (hora estándar de Perú)
+                at Fri Jun 17 2022 12:04:42 GMT-0500 (hora estándar de Perú)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

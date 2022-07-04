@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1654218395094" clover="3.2.0">
-  <project timestamp="1654218395094" name="All files">
-    <metrics statements="1818" coveredstatements="1666" conditionals="412" coveredconditionals="319" methods="443" coveredmethods="350" elements="2673" coveredelements="2335" complexity="0" loc="1818" ncloc="1818" packages="33" files="81" classes="81"/>
+<coverage generated="1655485482979" clover="3.2.0">
+  <project timestamp="1655485482979" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="33" files="58" classes="58"/>
     <package name="coverage-e2e.lcov-report">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="block-navigation.js" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/coverage-e2e/lcov-report/block-navigation.js">
@@ -15,174 +15,54 @@
       </file>
     </package>
     <package name="src">
-      <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="0"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="custom-service-worker.js" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/custom-service-worker.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="main.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\main.ts">
-        <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="0"/>
-        <line num="24" count="413" type="cond" truecount="1" falsecount="1"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="28" count="413" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+      <file name="polyfills.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/polyfills.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app">
-      <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7"/>
-      <file name="app.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\app.component.html">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="413" type="stmt"/>
-        <line num="3" count="130930" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="app.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/app.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="app.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\app.component.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="8" count="1652" type="cond" truecount="2" falsecount="0"/>
+      <file name="app.module.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/app.module.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="app.module.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\app.module.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="62" count="1652" type="cond" truecount="2" falsecount="0"/>
-      </file>
-      <file name="app.routing.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\app.routing.ts">
-        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-        <line num="10" count="413" type="stmt"/>
-        <line num="21" count="413" type="stmt"/>
-        <line num="30" count="413" type="stmt"/>
-        <line num="51" count="1652" type="cond" truecount="2" falsecount="0"/>
+      <file name="app.routing.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/app.routing.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.Constants">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="Constant.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\Constants\Constant.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="1239" type="stmt"/>
-        <line num="4" count="413" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Constant.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/Constants/Constant.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.components">
-      <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="components.module.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\components\components.module.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="26" count="1652" type="cond" truecount="2" falsecount="0"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="components.module.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/components/components.module.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.components.footer">
-      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-      <file name="footer.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\components\footer\footer.component.html">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="340" type="stmt"/>
-        <line num="5" count="66594" type="stmt"/>
-      </file>
-      <file name="footer.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\components\footer\footer.component.ts">
-        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="8" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="340" type="stmt"/>
-        <line num="11" count="340" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="footer.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/components/footer/footer.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.components.navbar">
-      <metrics statements="41" coveredstatements="35" conditionals="9" coveredconditionals="7" methods="9" coveredmethods="6"/>
-      <file name="navbar.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\components\navbar\navbar.component.html">
-        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="340" type="stmt"/>
-        <line num="4" count="66594" type="stmt"/>
-        <line num="6" count="340" type="stmt"/>
-        <line num="7" count="340" type="stmt"/>
-        <line num="10" count="340" type="stmt"/>
-        <line num="12" count="340" type="stmt"/>
-        <line num="17" count="340" type="stmt"/>
-        <line num="18" count="340" type="stmt"/>
-        <line num="19" count="340" type="stmt"/>
-        <line num="20" count="66594" type="stmt"/>
-        <line num="24" count="340" type="stmt"/>
-        <line num="25" count="66254" type="stmt"/>
-        <line num="26" count="340" type="stmt"/>
-        <line num="27" count="340" type="stmt"/>
-        <line num="29" count="340" type="stmt"/>
-        <line num="30" count="340" type="stmt"/>
-        <line num="31" count="340" type="stmt"/>
-      </file>
-      <file name="navbar.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\components\navbar\navbar.component.ts">
-        <metrics statements="24" coveredstatements="18" conditionals="9" coveredconditionals="7" methods="8" coveredmethods="6"/>
-        <line num="15" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="22" count="340" type="stmt"/>
-        <line num="23" count="340" type="stmt"/>
-        <line num="24" count="340" type="stmt"/>
-        <line num="26" count="340" type="stmt"/>
-        <line num="30" count="340" type="cond" truecount="2" falsecount="1"/>
-        <line num="32" count="594" type="stmt"/>
-        <line num="33" count="198" type="stmt"/>
-        <line num="35" count="284" type="stmt"/>
-        <line num="36" count="142" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="41" count="340" type="stmt"/>
-        <line num="44" count="99381" type="stmt"/>
-        <line num="45" count="33127" type="stmt"/>
-        <line num="46" count="33127" type="cond" truecount="1" falsecount="1"/>
-        <line num="47" count="33127" type="stmt"/>
-        <line num="49" count="60913" type="stmt"/>
-        <line num="50" count="60913" type="cond" truecount="2" falsecount="0"/>
-        <line num="51" count="33061" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="navbar.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/components/navbar/navbar.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.components.sidebar">
-      <metrics statements="47" coveredstatements="42" conditionals="5" coveredconditionals="4" methods="10" coveredmethods="5"/>
-      <file name="sidebar.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\components\sidebar\sidebar.component.html">
-        <metrics statements="31" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="340" type="stmt"/>
-        <line num="4" count="340" type="stmt"/>
-        <line num="6" count="340" type="stmt"/>
-        <line num="7" count="340" type="stmt"/>
-        <line num="9" count="66254" type="stmt"/>
-        <line num="10" count="340" type="stmt"/>
-        <line num="11" count="340" type="stmt"/>
-        <line num="13" count="340" type="stmt"/>
-        <line num="17" count="66594" type="stmt"/>
-        <line num="20" count="340" type="stmt"/>
-        <line num="21" count="66254" type="stmt"/>
-        <line num="22" count="340" type="stmt"/>
-        <line num="23" count="340" type="stmt"/>
-        <line num="25" count="340" type="stmt"/>
-        <line num="26" count="340" type="stmt"/>
-        <line num="27" count="340" type="stmt"/>
-        <line num="33" count="66254" type="stmt"/>
-        <line num="38" count="66254" type="stmt"/>
-        <line num="39" count="340" type="stmt"/>
-        <line num="40" count="340" type="stmt"/>
-        <line num="42" count="340" type="stmt"/>
-        <line num="43" count="340" type="stmt"/>
-        <line num="44" count="340" type="stmt"/>
-        <line num="46" count="340" type="stmt"/>
-        <line num="51" count="340" type="stmt"/>
-        <line num="52" count="85293" type="stmt"/>
-        <line num="53" count="170586" type="stmt"/>
-        <line num="54" count="170586" type="stmt"/>
-        <line num="55" count="171464" type="stmt"/>
-        <line num="56" count="878" type="stmt"/>
-        <line num="58" count="340" type="stmt"/>
-      </file>
-      <file name="sidebar.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\components\sidebar\sidebar.component.ts">
-        <metrics statements="16" coveredstatements="11" conditionals="5" coveredconditionals="4" methods="7" coveredmethods="5"/>
-        <line num="11" count="413" type="stmt"/>
-        <line num="26" count="413" type="stmt"/>
-        <line num="52" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="54" count="340" type="stmt"/>
-        <line num="56" count="340" type="stmt"/>
-        <line num="59" count="340" type="cond" truecount="2" falsecount="1"/>
-        <line num="61" count="594" type="stmt"/>
-        <line num="62" count="198" type="stmt"/>
-        <line num="64" count="284" type="stmt"/>
-        <line num="65" count="142" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="69" count="340" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="sidebar.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/components/sidebar/sidebar.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.entities">
@@ -195,1940 +75,174 @@
       </file>
     </package>
     <package name="src.app.guards">
-      <metrics statements="42" coveredstatements="36" conditionals="33" coveredconditionals="27" methods="15" coveredmethods="14"/>
-      <file name="CheckLogin.guard.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\guards\CheckLogin.guard.ts">
-        <metrics statements="12" coveredstatements="9" conditionals="10" coveredconditionals="6" methods="5" coveredmethods="4"/>
-        <line num="7" count="413" type="stmt"/>
-        <line num="11" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="12" count="385" type="stmt"/>
-        <line num="15" count="397" type="stmt"/>
-        <line num="16" count="397" type="cond" truecount="2" falsecount="0"/>
-        <line num="17" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="4" type="stmt"/>
-        <line num="27" count="397" type="stmt"/>
-        <line num="29" count="393" type="cond" truecount="1" falsecount="1"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="CheckLogin.guard.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/guards/CheckLogin.guard.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="FirstLogin.guard.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\guards\FirstLogin.guard.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
-        <line num="8" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="330" type="stmt"/>
-        <line num="12" count="644" type="stmt"/>
-        <line num="13" count="644" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="12" type="stmt"/>
-        <line num="16" count="632" type="cond" truecount="2" falsecount="0"/>
-        <line num="17" count="8" type="stmt"/>
-        <line num="19" count="624" type="stmt"/>
+      <file name="FirstLogin.guard.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/guards/FirstLogin.guard.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="IsLogged.guard.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\guards\IsLogged.guard.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
-        <line num="10" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="13" count="358" type="stmt"/>
-        <line num="16" count="682" type="stmt"/>
-        <line num="18" count="682" type="stmt"/>
-        <line num="20" count="682" type="cond" truecount="2" falsecount="0"/>
+      <file name="IsLogged.guard.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/guards/IsLogged.guard.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="checkRole.guard.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\guards\checkRole.guard.ts">
-        <metrics statements="17" coveredstatements="14" conditionals="13" coveredconditionals="11" methods="3" coveredmethods="3"/>
-        <line num="5" count="413" type="stmt"/>
-        <line num="9" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="328" type="stmt"/>
-        <line num="13" count="636" type="stmt"/>
-        <line num="14" count="636" type="stmt"/>
-        <line num="15" count="636" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="12" type="stmt"/>
-        <line num="18" count="624" type="cond" truecount="2" falsecount="1"/>
-        <line num="20" count="368" type="cond" truecount="1" falsecount="1"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="368" type="stmt"/>
-        <line num="27" count="256" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="8" type="stmt"/>
-        <line num="32" count="8" type="stmt"/>
-        <line num="34" count="248" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+      <file name="checkRole.guard.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/guards/checkRole.guard.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.layouts.admin-layout">
-      <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
-      <file name="admin-layout.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\admin-layout\admin-layout.component.html">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="340" type="stmt"/>
-        <line num="3" count="340" type="stmt"/>
-        <line num="5" count="340" type="stmt"/>
-        <line num="8" count="340" type="stmt"/>
-        <line num="9" count="340" type="stmt"/>
-        <line num="10" count="340" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="admin-layout.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/layouts/admin-layout/admin-layout.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="admin-layout.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\admin-layout\admin-layout.component.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="8" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="340" type="stmt"/>
+      <file name="admin-layout.module.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/layouts/admin-layout/admin-layout.module.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="admin-layout.module.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\admin-layout\admin-layout.module.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="35" count="413" type="stmt"/>
-        <line num="75" count="1652" type="cond" truecount="2" falsecount="0"/>
-      </file>
-      <file name="admin-layout.routing.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\admin-layout\admin-layout.routing.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="11" count="413" type="stmt"/>
+      <file name="admin-layout.routing.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/layouts/admin-layout/admin-layout.routing.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.layouts.auth-layout">
-      <metrics statements="24" coveredstatements="24" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
-      <file name="auth-layout.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\auth-layout\auth-layout.component.html">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="445" type="stmt"/>
-        <line num="5" count="445" type="stmt"/>
-        <line num="6" count="445" type="stmt"/>
-        <line num="32" count="445" type="stmt"/>
-        <line num="33" count="445" type="stmt"/>
-        <line num="34" count="445" type="stmt"/>
-        <line num="39" count="60165" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="auth-layout.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/layouts/auth-layout/auth-layout.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="auth-layout.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\auth-layout\auth-layout.component.ts">
-        <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-        <line num="9" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="445" type="stmt"/>
-        <line num="11" count="445" type="stmt"/>
-        <line num="13" count="445" type="stmt"/>
-        <line num="15" count="445" type="stmt"/>
-        <line num="16" count="445" type="stmt"/>
-        <line num="17" count="445" type="stmt"/>
-        <line num="18" count="445" type="stmt"/>
-        <line num="19" count="445" type="stmt"/>
-        <line num="20" count="445" type="stmt"/>
-        <line num="21" count="13352" type="stmt"/>
-        <line num="26" count="340" type="stmt"/>
-        <line num="27" count="340" type="stmt"/>
-        <line num="28" count="340" type="stmt"/>
-        <line num="29" count="340" type="stmt"/>
+      <file name="auth-layout.module.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/layouts/auth-layout/auth-layout.module.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="auth-layout.module.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\auth-layout\auth-layout.module.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="40" count="1652" type="cond" truecount="2" falsecount="0"/>
-      </file>
-      <file name="auth-layout.routing.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\layouts\auth-layout\auth-layout.routing.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="8" count="413" type="stmt"/>
+      <file name="auth-layout.routing.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/layouts/auth-layout/auth-layout.routing.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.change-password">
-      <metrics statements="94" coveredstatements="94" conditionals="43" coveredconditionals="37" methods="14" coveredmethods="14"/>
-      <file name="change-password.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\change-password\change-password.component.html">
-        <metrics statements="54" coveredstatements="54" conditionals="30" coveredconditionals="24" methods="5" coveredmethods="5"/>
-        <line num="1" count="62" type="stmt"/>
-        <line num="7" count="62" type="stmt"/>
-        <line num="13" count="62" type="stmt"/>
-        <line num="14" count="124" type="stmt"/>
-        <line num="15" count="62" type="stmt"/>
-        <line num="16" count="62" type="stmt"/>
-        <line num="20" count="124" type="stmt"/>
-        <line num="25" count="7196" type="stmt"/>
-        <line num="27" count="62" type="stmt"/>
-        <line num="30" count="62" type="stmt"/>
-        <line num="32" count="62" type="stmt"/>
-        <line num="33" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="34" count="70" type="stmt"/>
-        <line num="35" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="38" count="66" type="stmt"/>
-        <line num="39" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="40" count="264" type="cond" truecount="1" falsecount="1"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="42" count="264" type="cond" truecount="1" falsecount="1"/>
-        <line num="43" count="4" type="stmt"/>
-        <line num="44" count="4" type="stmt"/>
-        <line num="45" count="62" type="stmt"/>
-        <line num="47" count="62" type="stmt"/>
-        <line num="50" count="62" type="stmt"/>
-        <line num="52" count="62" type="stmt"/>
-        <line num="53" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="54" count="70" type="stmt"/>
-        <line num="55" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="58" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="59" count="600" type="cond" truecount="1" falsecount="1"/>
-        <line num="60" count="12" type="stmt"/>
-        <line num="61" count="600" type="cond" truecount="1" falsecount="1"/>
-        <line num="62" count="12" type="stmt"/>
-        <line num="63" count="12" type="stmt"/>
-        <line num="64" count="62" type="stmt"/>
-        <line num="66" count="62" type="stmt"/>
-        <line num="69" count="62" type="stmt"/>
-        <line num="71" count="62" type="stmt"/>
-        <line num="72" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="73" count="70" type="stmt"/>
-        <line num="74" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="77" count="7196" type="cond" truecount="2" falsecount="0"/>
-        <line num="78" count="504" type="cond" truecount="1" falsecount="1"/>
-        <line num="79" count="4" type="stmt"/>
-        <line num="80" count="504" type="cond" truecount="1" falsecount="1"/>
-        <line num="81" count="4" type="stmt"/>
-        <line num="82" count="4" type="stmt"/>
-        <line num="83" count="62" type="stmt"/>
-        <line num="85" count="7196" type="stmt"/>
-        <line num="86" count="4" type="stmt"/>
-        <line num="87" count="62" type="stmt"/>
-        <line num="88" count="74" type="stmt"/>
-        <line num="89" count="7196" type="stmt"/>
-        <line num="90" count="62" type="stmt"/>
-      </file>
-      <file name="change-password.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\change-password\change-password.component.ts">
-        <metrics statements="40" coveredstatements="40" conditionals="13" coveredconditionals="13" methods="9" coveredmethods="9"/>
-        <line num="13" count="413" type="stmt"/>
-        <line num="19" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="22" count="62" type="stmt"/>
-        <line num="24" count="62" type="stmt"/>
-        <line num="25" count="62" type="stmt"/>
-        <line num="27" count="62" type="stmt"/>
-        <line num="28" count="62" type="stmt"/>
-        <line num="29" count="62" type="stmt"/>
-        <line num="30" count="62" type="stmt"/>
-        <line num="35" count="62" type="stmt"/>
-        <line num="41" count="62" type="stmt"/>
-        <line num="58" count="24" type="cond" truecount="3" falsecount="0"/>
-        <line num="60" count="8" type="stmt"/>
-        <line num="61" count="8" type="stmt"/>
-        <line num="62" count="8" type="stmt"/>
-        <line num="64" count="8" type="stmt"/>
-        <line num="65" count="8" type="stmt"/>
-        <line num="66" count="8" type="stmt"/>
-        <line num="68" count="8" type="stmt"/>
-        <line num="69" count="8" type="stmt"/>
-        <line num="70" count="8" type="stmt"/>
-        <line num="74" count="38" type="stmt"/>
-        <line num="75" count="38" type="stmt"/>
-        <line num="76" count="38" type="cond" truecount="2" falsecount="0"/>
-        <line num="80" count="4" type="stmt"/>
-        <line num="81" count="4" type="stmt"/>
-        <line num="84" count="34" type="stmt"/>
-        <line num="86" count="24" type="cond" truecount="2" falsecount="0"/>
-        <line num="87" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="88" count="4" type="stmt"/>
-        <line num="89" count="4" type="stmt"/>
-        <line num="90" count="4" type="stmt"/>
-        <line num="98" count="8" type="stmt"/>
-        <line num="99" count="8" type="stmt"/>
-        <line num="108" count="12" type="stmt"/>
-        <line num="114" count="10" type="stmt"/>
-        <line num="122" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="123" count="4" type="stmt"/>
-        <line num="124" count="4" type="stmt"/>
-        <line num="126" count="8" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="change-password.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/change-password/change-password.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.dashboard">
-      <metrics statements="75" coveredstatements="56" conditionals="11" coveredconditionals="4" methods="22" coveredmethods="6"/>
-      <file name="dashboard.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\dashboard.component.html">
-        <metrics statements="33" coveredstatements="33" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="0"/>
-        <line num="1" count="340" type="stmt"/>
-        <line num="3" count="340" type="stmt"/>
-        <line num="5" count="340" type="stmt"/>
-        <line num="8" count="18434" type="stmt"/>
-        <line num="18" count="340" type="stmt"/>
-        <line num="19" count="340" type="stmt"/>
-        <line num="21" count="680" type="stmt"/>
-        <line num="22" count="18434" type="cond" truecount="1" falsecount="1"/>
-        <line num="25" count="340" type="stmt"/>
-        <line num="29" count="340" type="stmt"/>
-        <line num="33" count="340" type="stmt"/>
-        <line num="34" count="340" type="stmt"/>
-        <line num="36" count="680" type="stmt"/>
-        <line num="37" count="18434" type="cond" truecount="1" falsecount="1"/>
-        <line num="40" count="340" type="stmt"/>
-        <line num="44" count="340" type="stmt"/>
-        <line num="45" count="340" type="stmt"/>
-        <line num="46" count="340" type="stmt"/>
-        <line num="47" count="18434" type="stmt"/>
-        <line num="48" count="340" type="stmt"/>
-        <line num="52" count="340" type="stmt"/>
-        <line num="53" count="18434" type="stmt"/>
-        <line num="57" count="340" type="stmt"/>
-        <line num="62" count="340" type="stmt"/>
-        <line num="66" count="18434" type="stmt"/>
-        <line num="69" count="340" type="stmt"/>
-        <line num="70" count="340" type="stmt"/>
-        <line num="73" count="340" type="stmt"/>
-        <line num="75" count="18434" type="stmt"/>
-        <line num="78" count="340" type="stmt"/>
-        <line num="83" count="340" type="stmt"/>
-        <line num="86" count="18434" type="stmt"/>
-        <line num="88" count="340" type="stmt"/>
-      </file>
-      <file name="dashboard.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\dashboard.component.ts">
-        <metrics statements="42" coveredstatements="23" conditionals="7" coveredconditionals="2" methods="19" coveredmethods="6"/>
-        <line num="16" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="18" count="340" type="stmt"/>
-        <line num="19" count="340" type="stmt"/>
-        <line num="20" count="340" type="stmt"/>
-        <line num="21" count="340" type="stmt"/>
-        <line num="23" count="340" type="stmt"/>
-        <line num="28" count="340" type="stmt"/>
-        <line num="29" count="340" type="stmt"/>
-        <line num="30" count="340" type="stmt"/>
-        <line num="31" count="340" type="stmt"/>
-        <line num="36" count="340" type="stmt"/>
-        <line num="38" count="340" type="stmt"/>
-        <line num="39" count="340" type="stmt"/>
-        <line num="40" count="340" type="stmt"/>
-        <line num="42" count="340" type="stmt"/>
-        <line num="44" count="340" type="stmt"/>
-        <line num="49" count="340" type="stmt"/>
-        <line num="56" count="340" type="stmt"/>
-        <line num="63" count="340" type="stmt"/>
-        <line num="67" count="340" type="stmt"/>
-        <line num="86" count="340" type="stmt"/>
-        <line num="88" count="340" type="stmt"/>
-        <line num="89" count="332" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="96" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="102" count="0" type="stmt"/>
-        <line num="104" count="0" type="stmt"/>
-        <line num="111" count="0" type="stmt"/>
-        <line num="118" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="132" count="0" type="stmt"/>
-        <line num="140" count="0" type="stmt"/>
-        <line num="141" count="0" type="stmt"/>
-        <line num="146" count="0" type="stmt"/>
-        <line num="148" count="0" type="stmt"/>
-        <line num="149" count="0" type="stmt"/>
-        <line num="150" count="0" type="stmt"/>
-        <line num="151" count="0" type="stmt"/>
-        <line num="152" count="0" type="stmt"/>
-        <line num="153" count="0" type="stmt"/>
-        <line num="159" count="0" type="stmt"/>
-        <line num="165" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="dashboard.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/dashboard/dashboard.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.dashboard.graficos.bar">
-      <metrics statements="41" coveredstatements="23" conditionals="7" coveredconditionals="4" methods="19" coveredmethods="5"/>
-      <file name="bar.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\graficos\bar\bar.component.html">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="340" type="stmt"/>
-        <line num="5" count="340" type="stmt"/>
-        <line num="6" count="340" type="stmt"/>
-        <line num="8" count="18774" type="stmt"/>
-        <line num="9" count="18434" type="stmt"/>
-        <line num="10" count="18434" type="stmt"/>
-        <line num="11" count="340" type="stmt"/>
-        <line num="14" count="340" type="stmt"/>
-        <line num="15" count="18434" type="stmt"/>
-        <line num="18" count="340" type="stmt"/>
-      </file>
-      <file name="bar.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\graficos\bar\bar.component.ts">
-        <metrics statements="31" coveredstatements="13" conditionals="7" coveredconditionals="4" methods="17" coveredmethods="5"/>
-        <line num="13" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="340" type="stmt"/>
-        <line num="20" count="340" type="stmt"/>
-        <line num="21" count="340" type="stmt"/>
-        <line num="22" count="340" type="stmt"/>
-        <line num="23" count="340" type="stmt"/>
-        <line num="25" count="340" type="stmt"/>
-        <line num="32" count="340" type="stmt"/>
-        <line num="39" count="340" type="stmt"/>
-        <line num="54" count="340" type="stmt"/>
-        <line num="60" count="672" type="stmt"/>
-        <line num="61" count="672" type="cond" truecount="2" falsecount="3"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="84" count="672" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="bar.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/dashboard/graficos/bar/bar.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.dashboard.graficos.donut">
-      <metrics statements="46" coveredstatements="30" conditionals="8" coveredconditionals="4" methods="12" coveredmethods="5"/>
-      <file name="donut.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\graficos\donut\donut.component.html">
-        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="1" count="340" type="stmt"/>
-        <line num="9" count="340" type="stmt"/>
-        <line num="10" count="340" type="stmt"/>
-        <line num="12" count="18774" type="stmt"/>
-        <line num="13" count="18434" type="stmt"/>
-        <line num="14" count="18434" type="stmt"/>
-        <line num="15" count="340" type="stmt"/>
-        <line num="18" count="340" type="stmt"/>
-        <line num="22" count="340" type="stmt"/>
-        <line num="23" count="340" type="stmt"/>
-        <line num="25" count="18774" type="stmt"/>
-        <line num="26" count="18434" type="stmt"/>
-        <line num="27" count="18434" type="stmt"/>
-        <line num="28" count="340" type="stmt"/>
-        <line num="33" count="340" type="stmt"/>
-        <line num="34" count="340" type="stmt"/>
-        <line num="35" count="18434" type="stmt"/>
-        <line num="40" count="340" type="stmt"/>
-      </file>
-      <file name="donut.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\graficos\donut\donut.component.ts">
-        <metrics statements="28" coveredstatements="12" conditionals="8" coveredconditionals="4" methods="8" coveredmethods="5"/>
-        <line num="11" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="17" count="340" type="stmt"/>
-        <line num="23" count="340" type="stmt"/>
-        <line num="24" count="340" type="stmt"/>
-        <line num="25" count="340" type="stmt"/>
-        <line num="26" count="340" type="stmt"/>
-        <line num="45" count="340" type="stmt"/>
-        <line num="46" count="340" type="stmt"/>
-        <line num="48" count="340" type="stmt"/>
-        <line num="55" count="672" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="66" count="672" type="stmt"/>
-        <line num="67" count="672" type="cond" truecount="2" falsecount="4"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="donut.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/dashboard/graficos/donut/donut.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.dashboard.graficos.pie">
-      <metrics statements="29" coveredstatements="21" conditionals="7" coveredconditionals="4" methods="9" coveredmethods="5"/>
-      <file name="pie.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\graficos\pie\pie.component.html">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="340" type="stmt"/>
-        <line num="5" count="340" type="stmt"/>
-        <line num="6" count="340" type="stmt"/>
-        <line num="8" count="18774" type="stmt"/>
-        <line num="9" count="18434" type="stmt"/>
-        <line num="10" count="18434" type="stmt"/>
-        <line num="11" count="340" type="stmt"/>
-        <line num="15" count="18434" type="stmt"/>
-      </file>
-      <file name="pie.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\dashboard\graficos\pie\pie.component.ts">
-        <metrics statements="21" coveredstatements="13" conditionals="7" coveredconditionals="4" methods="7" coveredmethods="5"/>
-        <line num="12" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="340" type="stmt"/>
-        <line num="21" count="340" type="stmt"/>
-        <line num="26" count="340" type="stmt"/>
-        <line num="30" count="340" type="stmt"/>
-        <line num="36" count="340" type="stmt"/>
-        <line num="37" count="340" type="stmt"/>
-        <line num="38" count="340" type="stmt"/>
-        <line num="39" count="340" type="stmt"/>
-        <line num="40" count="340" type="stmt"/>
-        <line num="52" count="672" type="stmt"/>
-        <line num="56" count="672" type="stmt"/>
-        <line num="57" count="672" type="cond" truecount="2" falsecount="3"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="pie.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/dashboard/graficos/pie/pie.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.documentos">
-      <metrics statements="106" coveredstatements="106" conditionals="6" coveredconditionals="6" methods="30" coveredmethods="24"/>
-      <file name="documentos.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\documentos\documentos.component.html">
-        <metrics statements="64" coveredstatements="64" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="7"/>
-        <line num="1" count="74" type="stmt"/>
-        <line num="3" count="74" type="stmt"/>
-        <line num="5" count="74" type="stmt"/>
-        <line num="8" count="74" type="stmt"/>
-        <line num="13" count="74" type="stmt"/>
-        <line num="15" count="7620" type="stmt"/>
-        <line num="16" count="74" type="stmt"/>
-        <line num="17" count="74" type="stmt"/>
-        <line num="18" count="74" type="stmt"/>
-        <line num="20" count="226" type="stmt"/>
-        <line num="24" count="74" type="stmt"/>
-        <line num="26" count="74" type="stmt"/>
-        <line num="30" count="74" type="stmt"/>
-        <line num="31" count="74" type="stmt"/>
-        <line num="34" count="74" type="stmt"/>
-        <line num="38" count="94" type="stmt"/>
-        <line num="39" count="74" type="stmt"/>
-        <line num="40" count="74" type="stmt"/>
-        <line num="44" count="74" type="stmt"/>
-        <line num="46" count="78" type="stmt"/>
-        <line num="47" count="74" type="stmt"/>
-        <line num="50" count="74" type="stmt"/>
-        <line num="51" count="76" type="stmt"/>
-        <line num="52" count="74" type="stmt"/>
-        <line num="59" count="7620" type="stmt"/>
-        <line num="63" count="70" type="stmt"/>
-        <line num="64" count="70" type="stmt"/>
-        <line num="65" count="70" type="stmt"/>
-        <line num="66" count="70" type="stmt"/>
-        <line num="67" count="70" type="stmt"/>
-        <line num="70" count="5288" type="stmt"/>
-        <line num="77" count="11966" type="stmt"/>
-        <line num="78" count="590" type="stmt"/>
-        <line num="79" count="590" type="stmt"/>
-        <line num="80" count="11966" type="stmt"/>
-        <line num="81" count="590" type="stmt"/>
-        <line num="82" count="590" type="stmt"/>
-        <line num="83" count="11966" type="stmt"/>
-        <line num="84" count="590" type="stmt"/>
-        <line num="85" count="590" type="stmt"/>
-        <line num="86" count="670" type="stmt"/>
-        <line num="88" count="654" type="stmt"/>
-        <line num="89" count="590" type="stmt"/>
-        <line num="90" count="590" type="stmt"/>
-        <line num="93" count="70" type="stmt"/>
-        <line num="95" count="74" type="stmt"/>
-        <line num="96" count="74" type="stmt"/>
-        <line num="98" count="74" type="stmt"/>
-        <line num="108" count="7620" type="stmt"/>
-        <line num="110" count="74" type="stmt"/>
-        <line num="113" count="74" type="stmt"/>
-        <line num="114" count="74" type="stmt"/>
-        <line num="115" count="74" type="stmt"/>
-        <line num="116" count="74" type="stmt"/>
-        <line num="119" count="7620" type="stmt"/>
-        <line num="120" count="74" type="stmt"/>
-        <line num="126" count="7620" type="stmt"/>
-        <line num="128" count="74" type="stmt"/>
-        <line num="131" count="74" type="stmt"/>
-        <line num="132" count="74" type="stmt"/>
-        <line num="133" count="74" type="stmt"/>
-        <line num="134" count="74" type="stmt"/>
-        <line num="137" count="7620" type="stmt"/>
-        <line num="138" count="74" type="stmt"/>
-      </file>
-      <file name="documentos.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\documentos\documentos.component.ts">
-        <metrics statements="42" coveredstatements="42" conditionals="6" coveredconditionals="6" methods="17" coveredmethods="17"/>
-        <line num="16" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="74" type="stmt"/>
-        <line num="20" count="74" type="stmt"/>
-        <line num="21" count="74" type="stmt"/>
-        <line num="24" count="74" type="stmt"/>
-        <line num="30" count="74" type="stmt"/>
-        <line num="31" count="74" type="stmt"/>
-        <line num="32" count="74" type="stmt"/>
-        <line num="33" count="74" type="stmt"/>
-        <line num="34" count="74" type="stmt"/>
-        <line num="39" count="74" type="stmt"/>
-        <line num="40" count="74" type="stmt"/>
-        <line num="45" count="74" type="stmt"/>
-        <line num="53" count="204" type="stmt"/>
-        <line num="57" count="4" type="stmt"/>
-        <line num="60" count="2" type="stmt"/>
-        <line num="61" count="2" type="stmt"/>
-        <line num="66" count="20" type="stmt"/>
-        <line num="67" count="20" type="stmt"/>
-        <line num="72" count="20" type="stmt"/>
-        <line num="73" count="20" type="stmt"/>
-        <line num="74" count="20" type="stmt"/>
-        <line num="77" count="78" type="stmt"/>
-        <line num="79" count="78" type="stmt"/>
-        <line num="81" count="70" type="stmt"/>
-        <line num="82" count="70" type="stmt"/>
-        <line num="83" count="70" type="stmt"/>
-        <line num="86" count="4" type="stmt"/>
-        <line num="94" count="16" type="stmt"/>
-        <line num="95" count="16" type="stmt"/>
-        <line num="106" count="16" type="cond" truecount="2" falsecount="0"/>
-        <line num="107" count="12" type="stmt"/>
-        <line num="109" count="12" type="stmt"/>
-        <line num="115" count="12" type="stmt"/>
-        <line num="117" count="12" type="stmt"/>
-        <line num="121" count="12" type="stmt"/>
-        <line num="123" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="124" count="4" type="stmt"/>
-        <line num="125" count="4" type="stmt"/>
-        <line num="126" count="4" type="stmt"/>
-        <line num="134" count="4" type="stmt"/>
-        <line num="140" count="4" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="documentos.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/documentos/documentos.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.documentos.edit-document">
-      <metrics statements="47" coveredstatements="47" conditionals="14" coveredconditionals="11" methods="10" coveredmethods="10"/>
-      <file name="edit-document.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\documentos\edit-document\edit-document.component.html">
-        <metrics statements="28" coveredstatements="28" conditionals="10" coveredconditionals="7" methods="1" coveredmethods="1"/>
-        <line num="1" count="324" type="stmt"/>
-        <line num="2" count="20" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="20" type="stmt"/>
-        <line num="10" count="20" type="stmt"/>
-        <line num="12" count="20" type="stmt"/>
-        <line num="13" count="20" type="stmt"/>
-        <line num="14" count="648" type="cond" truecount="2" falsecount="0"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="16" count="120" type="cond" truecount="1" falsecount="1"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="18" count="8" type="stmt"/>
-        <line num="19" count="120" type="cond" truecount="1" falsecount="1"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="20" type="stmt"/>
-        <line num="24" count="20" type="stmt"/>
-        <line num="26" count="20" type="stmt"/>
-        <line num="27" count="20" type="stmt"/>
-        <line num="28" count="648" type="cond" truecount="2" falsecount="0"/>
-        <line num="29" count="8" type="stmt"/>
-        <line num="30" count="80" type="cond" truecount="1" falsecount="1"/>
-        <line num="31" count="4" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="33" count="20" type="stmt"/>
-        <line num="37" count="20" type="stmt"/>
-        <line num="38" count="648" type="stmt"/>
-      </file>
-      <file name="edit-document.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\documentos\edit-document\edit-document.component.ts">
-        <metrics statements="19" coveredstatements="19" conditionals="4" coveredconditionals="4" methods="9" coveredmethods="9"/>
-        <line num="19" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="24" count="20" type="stmt"/>
-        <line num="25" count="20" type="stmt"/>
-        <line num="26" count="20" type="stmt"/>
-        <line num="30" count="20" type="stmt"/>
-        <line num="31" count="20" type="stmt"/>
-        <line num="36" count="20" type="stmt"/>
-        <line num="37" count="20" type="stmt"/>
-        <line num="42" count="40" type="stmt"/>
-        <line num="43" count="40" type="stmt"/>
-        <line num="44" count="40" type="stmt"/>
-        <line num="47" count="16" type="stmt"/>
-        <line num="48" count="16" type="stmt"/>
-        <line num="50" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="51" count="8" type="stmt"/>
-        <line num="59" count="4" type="stmt"/>
-        <line num="69" count="4" type="stmt"/>
-        <line num="77" count="40" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="edit-document.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/documentos/edit-document/edit-document.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.documentos.new-document">
-      <metrics statements="38" coveredstatements="38" conditionals="14" coveredconditionals="11" methods="8" coveredmethods="8"/>
-      <file name="new-document.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\documentos\new-document\new-document.component.html">
-        <metrics statements="24" coveredstatements="24" conditionals="10" coveredconditionals="7" methods="1" coveredmethods="1"/>
-        <line num="1" count="1224" type="stmt"/>
-        <line num="2" count="20" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="9" count="2448" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="8" type="stmt"/>
-        <line num="11" count="104" type="cond" truecount="1" falsecount="1"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="8" type="stmt"/>
-        <line num="14" count="104" type="cond" truecount="1" falsecount="1"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
-        <line num="17" count="20" type="stmt"/>
-        <line num="19" count="20" type="stmt"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="22" count="20" type="stmt"/>
-        <line num="23" count="2448" type="cond" truecount="2" falsecount="0"/>
-        <line num="24" count="8" type="stmt"/>
-        <line num="25" count="80" type="cond" truecount="1" falsecount="1"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="28" count="20" type="stmt"/>
-        <line num="36" count="20" type="stmt"/>
-        <line num="37" count="2448" type="stmt"/>
-      </file>
-      <file name="new-document.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\documentos\new-document\new-document.component.ts">
-        <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
-        <line num="18" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="22" count="20" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="24" count="20" type="stmt"/>
-        <line num="29" count="20" type="stmt"/>
-        <line num="34" count="20" type="stmt"/>
-        <line num="51" count="16" type="stmt"/>
-        <line num="53" count="16" type="stmt"/>
-        <line num="55" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="56" count="8" type="stmt"/>
-        <line num="57" count="8" type="stmt"/>
-        <line num="65" count="4" type="stmt"/>
-        <line num="71" count="4" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="new-document.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/documentos/new-document/new-document.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.login">
-      <metrics statements="56" coveredstatements="56" conditionals="24" coveredconditionals="20" methods="12" coveredmethods="12"/>
-      <file name="login.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\login\login.component.html">
-        <metrics statements="30" coveredstatements="30" conditionals="16" coveredconditionals="12" methods="2" coveredmethods="2"/>
-        <line num="1" count="393" type="stmt"/>
-        <line num="6" count="393" type="stmt"/>
-        <line num="13" count="393" type="stmt"/>
-        <line num="21" count="393" type="stmt"/>
-        <line num="23" count="50194" type="stmt"/>
-        <line num="24" count="393" type="stmt"/>
-        <line num="27" count="393" type="stmt"/>
-        <line num="29" count="393" type="stmt"/>
-        <line num="31" count="393" type="stmt"/>
-        <line num="32" count="50194" type="cond" truecount="2" falsecount="0"/>
-        <line num="33" count="952" type="cond" truecount="1" falsecount="1"/>
-        <line num="34" count="8" type="stmt"/>
-        <line num="35" count="952" type="cond" truecount="1" falsecount="1"/>
-        <line num="36" count="4" type="stmt"/>
-        <line num="37" count="4" type="stmt"/>
-        <line num="38" count="393" type="stmt"/>
-        <line num="39" count="393" type="stmt"/>
-        <line num="42" count="393" type="stmt"/>
-        <line num="44" count="50194" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="401" type="stmt"/>
-        <line num="46" count="50194" type="cond" truecount="2" falsecount="0"/>
-        <line num="51" count="50194" type="cond" truecount="2" falsecount="0"/>
-        <line num="52" count="864" type="cond" truecount="1" falsecount="1"/>
-        <line num="53" count="4" type="stmt"/>
-        <line num="54" count="864" type="cond" truecount="1" falsecount="1"/>
-        <line num="55" count="4" type="stmt"/>
-        <line num="56" count="4" type="stmt"/>
-        <line num="57" count="393" type="stmt"/>
-        <line num="58" count="393" type="stmt"/>
-        <line num="59" count="50194" type="stmt"/>
-      </file>
-      <file name="login.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\login\login.component.ts">
-        <metrics statements="26" coveredstatements="26" conditionals="8" coveredconditionals="8" methods="10" coveredmethods="10"/>
-        <line num="19" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="22" count="393" type="stmt"/>
-        <line num="23" count="393" type="stmt"/>
-        <line num="25" count="393" type="stmt"/>
-        <line num="26" count="393" type="stmt"/>
-        <line num="27" count="393" type="stmt"/>
-        <line num="28" count="393" type="stmt"/>
-        <line num="33" count="393" type="stmt"/>
-        <line num="34" count="393" type="stmt"/>
-        <line num="39" count="8" type="stmt"/>
-        <line num="40" count="8" type="stmt"/>
-        <line num="46" count="393" type="stmt"/>
-        <line num="61" count="371" type="stmt"/>
-        <line num="62" count="371" type="stmt"/>
-        <line num="63" count="371" type="stmt"/>
-        <line num="66" count="366" type="cond" truecount="2" falsecount="0"/>
-        <line num="67" count="358" type="cond" truecount="2" falsecount="0"/>
-        <line num="69" count="34" type="stmt"/>
-        <line num="71" count="324" type="stmt"/>
-        <line num="74" count="8" type="stmt"/>
-        <line num="82" count="5" type="stmt"/>
-        <line num="90" count="34" type="stmt"/>
-        <line num="91" count="34" type="stmt"/>
-        <line num="101" count="34" type="cond" truecount="2" falsecount="0"/>
-        <line num="103" count="30" type="stmt"/>
-        <line num="106" count="4" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="login.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/login/login.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.tracking">
-      <metrics statements="201" coveredstatements="166" conditionals="31" coveredconditionals="19" methods="34" coveredmethods="24"/>
-      <file name="tracking.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tracking\tracking.component.html">
-        <metrics statements="116" coveredstatements="102" conditionals="12" coveredconditionals="8" methods="6" coveredmethods="4"/>
-        <line num="1" count="28" type="stmt"/>
-        <line num="3" count="28" type="stmt"/>
-        <line num="5" count="28" type="stmt"/>
-        <line num="7" count="28" type="stmt"/>
-        <line num="9" count="28" type="stmt"/>
-        <line num="11" count="2346" type="stmt"/>
-        <line num="12" count="28" type="stmt"/>
-        <line num="15" count="38" type="stmt"/>
-        <line num="16" count="10" type="stmt"/>
-        <line num="17" count="10" type="stmt"/>
-        <line num="18" count="16" type="stmt"/>
-        <line num="19" count="10" type="stmt"/>
-        <line num="20" count="28" type="stmt"/>
-        <line num="22" count="10" type="stmt"/>
-        <line num="25" count="28" type="stmt"/>
-        <line num="28" count="28" type="stmt"/>
-        <line num="32" count="28" type="stmt"/>
-        <line num="34" count="2346" type="stmt"/>
-        <line num="37" count="28" type="stmt"/>
-        <line num="39" count="28" type="stmt"/>
-        <line num="41" count="28" type="stmt"/>
-        <line num="42" count="28" type="stmt"/>
-        <line num="44" count="28" type="stmt"/>
-        <line num="46" count="28" type="stmt"/>
-        <line num="47" count="2346" type="stmt"/>
-        <line num="48" count="28" type="stmt"/>
-        <line num="51" count="28" type="stmt"/>
-        <line num="53" count="2346" type="cond" truecount="2" falsecount="0"/>
-        <line num="54" count="4" type="stmt"/>
-        <line num="55" count="172" type="cond" truecount="1" falsecount="1"/>
-        <line num="56" count="2" type="stmt"/>
-        <line num="57" count="4" type="stmt"/>
-        <line num="58" count="172" type="cond" truecount="1" falsecount="1"/>
-        <line num="59" count="2" type="stmt"/>
-        <line num="60" count="2" type="stmt"/>
-        <line num="61" count="28" type="stmt"/>
-        <line num="63" count="28" type="stmt"/>
-        <line num="64" count="2346" type="cond" truecount="2" falsecount="0"/>
-        <line num="65" count="168" type="cond" truecount="1" falsecount="1"/>
-        <line num="66" count="2" type="stmt"/>
-        <line num="67" count="168" type="cond" truecount="1" falsecount="1"/>
-        <line num="68" count="2" type="stmt"/>
-        <line num="69" count="2" type="stmt"/>
-        <line num="70" count="28" type="stmt"/>
-        <line num="72" count="28" type="stmt"/>
-        <line num="74" count="28" type="stmt"/>
-        <line num="76" count="28" type="stmt"/>
-        <line num="77" count="2346" type="stmt"/>
-        <line num="78" count="6" type="stmt"/>
-        <line num="80" count="6" type="stmt"/>
-        <line num="83" count="152" type="stmt"/>
-        <line num="84" count="6" type="stmt"/>
-        <line num="85" count="6" type="stmt"/>
-        <line num="86" count="6" type="stmt"/>
-        <line num="87" count="152" type="stmt"/>
-        <line num="88" count="6" type="stmt"/>
-        <line num="89" count="152" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="93" count="6" type="stmt"/>
-        <line num="94" count="152" type="stmt"/>
-        <line num="95" count="6" type="stmt"/>
-        <line num="96" count="6" type="stmt"/>
-        <line num="99" count="6" type="stmt"/>
-        <line num="100" count="6" type="stmt"/>
-        <line num="102" count="2346" type="stmt"/>
-        <line num="110" count="6" type="stmt"/>
-        <line num="111" count="6" type="stmt"/>
-        <line num="112" count="6" type="stmt"/>
-        <line num="115" count="6" type="stmt"/>
-        <line num="116" count="214" type="stmt"/>
-        <line num="118" count="4160" type="stmt"/>
-        <line num="119" count="4160" type="stmt"/>
-        <line num="120" count="4160" type="stmt"/>
-        <line num="122" count="6" type="stmt"/>
-        <line num="127" count="6" type="stmt"/>
-        <line num="133" count="6" type="stmt"/>
-        <line num="134" count="6" type="stmt"/>
-        <line num="137" count="152" type="stmt"/>
-        <line num="138" count="8" type="stmt"/>
-        <line num="140" count="0" type="stmt"/>
-        <line num="141" count="0" type="stmt"/>
-        <line num="142" count="0" type="stmt"/>
-        <line num="143" count="0" type="stmt"/>
-        <line num="145" count="2" type="stmt"/>
-        <line num="146" count="6" type="stmt"/>
-        <line num="150" count="6" type="stmt"/>
-        <line num="156" count="6" type="stmt"/>
-        <line num="157" count="6" type="stmt"/>
-        <line num="160" count="152" type="stmt"/>
-        <line num="161" count="0" type="stmt"/>
-        <line num="163" count="0" type="stmt"/>
-        <line num="164" count="0" type="stmt"/>
-        <line num="165" count="0" type="stmt"/>
-        <line num="166" count="0" type="stmt"/>
-        <line num="167" count="0" type="stmt"/>
-        <line num="170" count="0" type="stmt"/>
-        <line num="171" count="6" type="stmt"/>
-        <line num="176" count="28" type="stmt"/>
-        <line num="182" count="28" type="stmt"/>
-        <line num="187" count="28" type="stmt"/>
-        <line num="188" count="28" type="stmt"/>
-        <line num="189" count="28" type="stmt"/>
-        <line num="192" count="28" type="stmt"/>
-        <line num="197" count="28" type="stmt"/>
-        <line num="198" count="28" type="stmt"/>
-        <line num="199" count="28" type="stmt"/>
-        <line num="200" count="28" type="stmt"/>
-        <line num="202" count="28" type="stmt"/>
-        <line num="203" count="2346" type="stmt"/>
-        <line num="204" count="308" type="stmt"/>
-        <line num="205" count="308" type="stmt"/>
-        <line num="206" count="30" type="stmt"/>
-        <line num="207" count="6" type="stmt"/>
-        <line num="209" count="28" type="stmt"/>
-      </file>
-      <file name="tracking.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tracking\tracking.component.ts">
-        <metrics statements="85" coveredstatements="64" conditionals="19" coveredconditionals="11" methods="28" coveredmethods="20"/>
-        <line num="22" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="24" count="28" type="stmt"/>
-        <line num="26" count="28" type="stmt"/>
-        <line num="27" count="28" type="stmt"/>
-        <line num="28" count="28" type="stmt"/>
-        <line num="29" count="28" type="stmt"/>
-        <line num="30" count="28" type="stmt"/>
-        <line num="31" count="28" type="stmt"/>
-        <line num="33" count="28" type="stmt"/>
-        <line num="34" count="28" type="stmt"/>
-        <line num="35" count="28" type="stmt"/>
-        <line num="36" count="28" type="stmt"/>
-        <line num="37" count="28" type="stmt"/>
-        <line num="42" count="28" type="stmt"/>
-        <line num="43" count="28" type="stmt"/>
-        <line num="48" count="28" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="69" count="28" type="stmt"/>
-        <line num="71" count="28" type="stmt"/>
-        <line num="72" count="28" type="cond" truecount="1" falsecount="1"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="86" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="87" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="88" count="2" type="stmt"/>
-        <line num="89" count="2" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="100" count="0" type="stmt"/>
-        <line num="111" count="2" type="stmt"/>
-        <line num="112" count="2" type="stmt"/>
-        <line num="114" count="2" type="stmt"/>
-        <line num="120" count="0" type="stmt"/>
-        <line num="121" count="0" type="stmt"/>
-        <line num="125" count="2" type="stmt"/>
-        <line num="137" count="2" type="stmt"/>
-        <line num="138" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="139" count="2" type="stmt"/>
-        <line num="143" count="2" type="stmt"/>
-        <line num="144" count="2" type="stmt"/>
-        <line num="145" count="2" type="stmt"/>
-        <line num="146" count="4" type="stmt"/>
-        <line num="147" count="4" type="stmt"/>
-        <line num="148" count="4" type="stmt"/>
-        <line num="150" count="2" type="stmt"/>
-        <line num="151" count="2" type="stmt"/>
-        <line num="152" count="2" type="stmt"/>
-        <line num="158" count="0" type="stmt"/>
-        <line num="159" count="0" type="stmt"/>
-        <line num="160" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="161" count="0" type="stmt"/>
-        <line num="162" count="0" type="stmt"/>
-        <line num="167" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="168" count="0" type="stmt"/>
-        <line num="176" count="0" type="stmt"/>
-        <line num="187" count="0" type="stmt"/>
-        <line num="202" count="6" type="stmt"/>
-        <line num="203" count="6" type="stmt"/>
-        <line num="208" count="6" type="stmt"/>
-        <line num="209" count="6" type="stmt"/>
-        <line num="210" count="6" type="stmt"/>
-        <line num="215" count="28" type="stmt"/>
-        <line num="216" count="28" type="stmt"/>
-        <line num="217" count="28" type="stmt"/>
-        <line num="221" count="20" type="stmt"/>
-        <line num="222" count="20" type="stmt"/>
-        <line num="223" count="20" type="stmt"/>
-        <line num="227" count="16" type="cond" truecount="2" falsecount="0"/>
-        <line num="228" count="8" type="stmt"/>
-        <line num="229" count="8" type="stmt"/>
-        <line num="230" count="8" type="stmt"/>
-        <line num="231" count="8" type="stmt"/>
-        <line num="233" count="8" type="stmt"/>
-        <line num="234" count="8" type="stmt"/>
-        <line num="244" count="4" type="stmt"/>
-        <line num="256" count="8" type="stmt"/>
-        <line num="257" count="8" type="stmt"/>
-        <line num="261" count="2" type="stmt"/>
-        <line num="262" count="2" type="stmt"/>
-        <line num="265" count="0" type="stmt"/>
-        <line num="273" count="8" type="stmt"/>
-        <line num="274" count="8" type="stmt"/>
-        <line num="278" count="0" type="stmt"/>
-        <line num="279" count="0" type="stmt"/>
-        <line num="282" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="tracking.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/tracking/tracking.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.tramites">
-      <metrics statements="107" coveredstatements="106" conditionals="2" coveredconditionals="2" methods="18" coveredmethods="15"/>
-      <file name="tramites.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\tramites.component.html">
-        <metrics statements="83" coveredstatements="83" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="5"/>
-        <line num="1" count="106" type="stmt"/>
-        <line num="3" count="106" type="stmt"/>
-        <line num="5" count="106" type="stmt"/>
-        <line num="8" count="106" type="stmt"/>
-        <line num="13" count="106" type="stmt"/>
-        <line num="15" count="20026" type="stmt"/>
-        <line num="16" count="106" type="stmt"/>
-        <line num="19" count="106" type="stmt"/>
-        <line num="20" count="106" type="stmt"/>
-        <line num="22" count="106" type="stmt"/>
-        <line num="24" count="106" type="stmt"/>
-        <line num="26" count="106" type="stmt"/>
-        <line num="28" count="106" type="stmt"/>
-        <line num="30" count="106" type="stmt"/>
-        <line num="31" count="106" type="stmt"/>
-        <line num="35" count="106" type="stmt"/>
-        <line num="39" count="106" type="stmt"/>
-        <line num="40" count="20026" type="stmt"/>
-        <line num="41" count="20026" type="stmt"/>
-        <line num="42" count="20026" type="stmt"/>
-        <line num="43" count="20026" type="stmt"/>
-        <line num="47" count="106" type="stmt"/>
-        <line num="49" count="106" type="stmt"/>
-        <line num="50" count="106" type="stmt"/>
-        <line num="52" count="106" type="stmt"/>
-        <line num="54" count="106" type="stmt"/>
-        <line num="55" count="106" type="stmt"/>
-        <line num="60" count="106" type="stmt"/>
-        <line num="63" count="106" type="stmt"/>
-        <line num="65" count="106" type="stmt"/>
-        <line num="66" count="106" type="stmt"/>
-        <line num="68" count="110" type="stmt"/>
-        <line num="69" count="106" type="stmt"/>
-        <line num="72" count="106" type="stmt"/>
-        <line num="73" count="108" type="stmt"/>
-        <line num="74" count="106" type="stmt"/>
-        <line num="82" count="106" type="stmt"/>
-        <line num="86" count="106" type="stmt"/>
-        <line num="87" count="106" type="stmt"/>
-        <line num="88" count="106" type="stmt"/>
-        <line num="89" count="106" type="stmt"/>
-        <line num="90" count="106" type="stmt"/>
-        <line num="91" count="106" type="stmt"/>
-        <line num="92" count="106" type="stmt"/>
-        <line num="93" count="106" type="stmt"/>
-        <line num="94" count="106" type="stmt"/>
-        <line num="96" count="20026" type="stmt"/>
-        <line num="97" count="17594" type="stmt"/>
-        <line num="108" count="58580" type="stmt"/>
-        <line num="109" count="394" type="stmt"/>
-        <line num="110" count="394" type="stmt"/>
-        <line num="111" count="58580" type="stmt"/>
-        <line num="112" count="394" type="stmt"/>
-        <line num="113" count="394" type="stmt"/>
-        <line num="114" count="58580" type="stmt"/>
-        <line num="115" count="394" type="stmt"/>
-        <line num="116" count="394" type="stmt"/>
-        <line num="117" count="58580" type="stmt"/>
-        <line num="118" count="394" type="stmt"/>
-        <line num="119" count="394" type="stmt"/>
-        <line num="120" count="58580" type="stmt"/>
-        <line num="121" count="394" type="stmt"/>
-        <line num="122" count="394" type="stmt"/>
-        <line num="123" count="58580" type="stmt"/>
-        <line num="124" count="394" type="stmt"/>
-        <line num="125" count="394" type="stmt"/>
-        <line num="126" count="58580" type="stmt"/>
-        <line num="127" count="394" type="stmt"/>
-        <line num="128" count="746" type="stmt"/>
-        <line num="130" count="102" type="stmt"/>
-        <line num="131" count="106" type="stmt"/>
-        <line num="133" count="106" type="stmt"/>
-        <line num="134" count="208" type="stmt"/>
-        <line num="135" count="20026" type="stmt"/>
-        <line num="136" count="102" type="stmt"/>
-        <line num="137" count="106" type="stmt"/>
-        <line num="143" count="20026" type="stmt"/>
-        <line num="145" count="106" type="stmt"/>
-        <line num="148" count="106" type="stmt"/>
-        <line num="149" count="118" type="stmt"/>
-        <line num="150" count="106" type="stmt"/>
-        <line num="153" count="20026" type="stmt"/>
-        <line num="154" count="106" type="stmt"/>
-      </file>
-      <file name="tramites.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\tramites.component.ts">
-        <metrics statements="24" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="11" coveredmethods="10"/>
-        <line num="14" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="18" count="106" type="stmt"/>
-        <line num="19" count="106" type="stmt"/>
-        <line num="20" count="106" type="stmt"/>
-        <line num="22" count="106" type="stmt"/>
-        <line num="24" count="106" type="stmt"/>
-        <line num="25" count="106" type="stmt"/>
-        <line num="27" count="106" type="stmt"/>
-        <line num="28" count="106" type="stmt"/>
-        <line num="33" count="106" type="stmt"/>
-        <line num="34" count="106" type="stmt"/>
-        <line num="39" count="106" type="stmt"/>
-        <line num="51" count="110" type="stmt"/>
-        <line num="52" count="110" type="stmt"/>
-        <line num="55" count="106" type="stmt"/>
-        <line num="56" count="106" type="stmt"/>
-        <line num="60" count="4" type="stmt"/>
-        <line num="69" count="88" type="stmt"/>
-        <line num="70" count="88" type="stmt"/>
-        <line num="71" count="88" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="78" count="4" type="stmt"/>
-        <line num="82" count="2" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="tramites.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/tramites/tramites.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.tramites.components.create-tramite">
-      <metrics statements="81" coveredstatements="78" conditionals="20" coveredconditionals="15" methods="17" coveredmethods="17"/>
-      <file name="create-tramite.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\components\create-tramite\create-tramite.component.html">
-        <metrics statements="37" coveredstatements="34" conditionals="12" coveredconditionals="8" methods="3" coveredmethods="3"/>
-        <line num="1" count="88" type="stmt"/>
-        <line num="2" count="15830" type="stmt"/>
-        <line num="3" count="88" type="stmt"/>
-        <line num="6" count="88" type="stmt"/>
-        <line num="7" count="88" type="stmt"/>
-        <line num="8" count="88" type="stmt"/>
-        <line num="9" count="88" type="stmt"/>
-        <line num="11" count="15830" type="cond" truecount="2" falsecount="0"/>
-        <line num="12" count="16" type="cond" truecount="1" falsecount="1"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="88" type="stmt"/>
-        <line num="17" count="88" type="stmt"/>
-        <line num="19" count="88" type="stmt"/>
-        <line num="21" count="15830" type="cond" truecount="2" falsecount="0"/>
-        <line num="22" count="56" type="cond" truecount="1" falsecount="1"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="24" count="4" type="stmt"/>
-        <line num="25" count="88" type="stmt"/>
-        <line num="27" count="88" type="stmt"/>
-        <line num="29" count="15830" type="stmt"/>
-        <line num="31" count="88" type="stmt"/>
-        <line num="32" count="88" type="stmt"/>
-        <line num="37" count="88" type="stmt"/>
-        <line num="39" count="15830" type="stmt"/>
-        <line num="40" count="88" type="stmt"/>
-        <line num="42" count="15830" type="stmt"/>
-        <line num="43" count="88" type="stmt"/>
-        <line num="45" count="88" type="stmt"/>
-        <line num="46" count="88" type="stmt"/>
-        <line num="47" count="104" type="stmt"/>
-        <line num="48" count="15918" type="stmt"/>
-        <line num="51" count="15830" type="cond" truecount="2" falsecount="0"/>
-        <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="88" type="stmt"/>
-      </file>
-      <file name="create-tramite.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\components\create-tramite\create-tramite.component.ts">
-        <metrics statements="44" coveredstatements="44" conditionals="8" coveredconditionals="7" methods="14" coveredmethods="14"/>
-        <line num="25" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="88" type="stmt"/>
-        <line num="40" count="88" type="stmt"/>
-        <line num="42" count="88" type="stmt"/>
-        <line num="43" count="88" type="stmt"/>
-        <line num="44" count="88" type="stmt"/>
-        <line num="48" count="88" type="stmt"/>
-        <line num="52" count="88" type="stmt"/>
-        <line num="60" count="88" type="stmt"/>
-        <line num="66" count="16" type="stmt"/>
-        <line num="67" count="16" type="stmt"/>
-        <line num="68" count="16" type="stmt"/>
-        <line num="70" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="71" count="8" type="stmt"/>
-        <line num="79" count="8" type="stmt"/>
-        <line num="80" count="8" type="stmt"/>
-        <line num="83" count="8" type="stmt"/>
-        <line num="85" count="4" type="stmt"/>
-        <line num="86" count="4" type="stmt"/>
-        <line num="92" count="4" type="stmt"/>
-        <line num="93" count="4" type="stmt"/>
-        <line num="94" count="4" type="stmt"/>
-        <line num="102" count="16" type="stmt"/>
-        <line num="104" count="16" type="cond" truecount="1" falsecount="1"/>
-        <line num="105" count="16" type="stmt"/>
-        <line num="106" count="16" type="stmt"/>
-        <line num="107" count="16" type="stmt"/>
-        <line num="114" count="16" type="stmt"/>
-        <line num="115" count="16" type="stmt"/>
-        <line num="116" count="16" type="stmt"/>
-        <line num="117" count="16" type="stmt"/>
-        <line num="118" count="16" type="stmt"/>
-        <line num="122" count="16" type="stmt"/>
-        <line num="126" count="16" type="stmt"/>
-        <line num="127" count="16" type="stmt"/>
-        <line num="131" count="16" type="stmt"/>
-        <line num="133" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="134" count="8" type="stmt"/>
-        <line num="135" count="8" type="stmt"/>
-        <line num="136" count="8" type="stmt"/>
-        <line num="144" count="8" type="stmt"/>
-        <line num="146" count="4" type="stmt"/>
-        <line num="152" count="4" type="stmt"/>
-        <line num="153" count="4" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="create-tramite.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/tramites/components/create-tramite/create-tramite.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.tramites.components.detalle-tramite">
-      <metrics statements="171" coveredstatements="161" conditionals="11" coveredconditionals="10" methods="34" coveredmethods="29"/>
-      <file name="detalle-tramite.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\components\detalle-tramite\detalle-tramite.component.html">
-        <metrics statements="85" coveredstatements="85" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
-        <line num="1" count="88" type="stmt"/>
-        <line num="2" count="15830" type="stmt"/>
-        <line num="6" count="88" type="stmt"/>
-        <line num="7" count="88" type="stmt"/>
-        <line num="8" count="88" type="stmt"/>
-        <line num="10" count="88" type="stmt"/>
-        <line num="12" count="88" type="stmt"/>
-        <line num="13" count="88" type="stmt"/>
-        <line num="14" count="88" type="stmt"/>
-        <line num="16" count="88" type="stmt"/>
-        <line num="18" count="88" type="stmt"/>
-        <line num="19" count="88" type="stmt"/>
-        <line num="20" count="88" type="stmt"/>
-        <line num="23" count="88" type="stmt"/>
-        <line num="26" count="88" type="stmt"/>
-        <line num="27" count="88" type="stmt"/>
-        <line num="28" count="88" type="stmt"/>
-        <line num="30" count="88" type="stmt"/>
-        <line num="32" count="88" type="stmt"/>
-        <line num="33" count="88" type="stmt"/>
-        <line num="34" count="88" type="stmt"/>
-        <line num="36" count="88" type="stmt"/>
-        <line num="38" count="88" type="stmt"/>
-        <line num="39" count="88" type="stmt"/>
-        <line num="40" count="88" type="stmt"/>
-        <line num="45" count="15830" type="stmt"/>
-        <line num="47" count="88" type="stmt"/>
-        <line num="49" count="88" type="stmt"/>
-        <line num="56" count="88" type="stmt"/>
-        <line num="57" count="88" type="stmt"/>
-        <line num="58" count="88" type="stmt"/>
-        <line num="59" count="88" type="stmt"/>
-        <line num="60" count="88" type="stmt"/>
-        <line num="61" count="88" type="stmt"/>
-        <line num="64" count="88" type="stmt"/>
-        <line num="65" count="15830" type="stmt"/>
-        <line num="66" count="94123" type="stmt"/>
-        <line num="67" count="94123" type="stmt"/>
-        <line num="68" count="94123" type="stmt"/>
-        <line num="69" count="94123" type="stmt"/>
-        <line num="70" count="1439" type="stmt"/>
-        <line num="71" count="1359" type="stmt"/>
-        <line num="72" count="1359" type="stmt"/>
-        <line num="73" count="1407" type="stmt"/>
-        <line num="74" count="1359" type="stmt"/>
-        <line num="75" count="1359" type="stmt"/>
-        <line num="77" count="88" type="stmt"/>
-        <line num="82" count="88" type="stmt"/>
-        <line num="87" count="88" type="stmt"/>
-        <line num="88" count="88" type="stmt"/>
-        <line num="89" count="88" type="stmt"/>
-        <line num="92" count="15830" type="stmt"/>
-        <line num="93" count="12538" type="stmt"/>
-        <line num="94" count="71400" type="stmt"/>
-        <line num="95" count="71400" type="stmt"/>
-        <line num="96" count="70392" type="stmt"/>
-        <line num="97" count="1008" type="stmt"/>
-        <line num="98" count="1008" type="stmt"/>
-        <line num="100" count="88" type="stmt"/>
-        <line num="101" count="88" type="stmt"/>
-        <line num="105" count="88" type="stmt"/>
-        <line num="110" count="88" type="stmt"/>
-        <line num="111" count="88" type="stmt"/>
-        <line num="112" count="88" type="stmt"/>
-        <line num="113" count="88" type="stmt"/>
-        <line num="116" count="15830" type="stmt"/>
-        <line num="117" count="11314" type="stmt"/>
-        <line num="118" count="49105" type="stmt"/>
-        <line num="119" count="49105" type="stmt"/>
-        <line num="120" count="865" type="stmt"/>
-        <line num="121" count="48240" type="stmt"/>
-        <line num="122" count="865" type="stmt"/>
-        <line num="123" count="865" type="stmt"/>
-        <line num="125" count="929" type="stmt"/>
-        <line num="126" count="865" type="stmt"/>
-        <line num="127" count="865" type="stmt"/>
-        <line num="129" count="88" type="stmt"/>
-        <line num="130" count="88" type="stmt"/>
-        <line num="137" count="88" type="stmt"/>
-        <line num="142" count="88" type="stmt"/>
-        <line num="143" count="88" type="stmt"/>
-        <line num="144" count="88" type="stmt"/>
-        <line num="147" count="15830" type="stmt"/>
-        <line num="148" count="44" type="stmt"/>
-        <line num="149" count="88" type="stmt"/>
-      </file>
-      <file name="detalle-tramite.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\components\detalle-tramite\detalle-tramite.component.ts">
-        <metrics statements="86" coveredstatements="76" conditionals="11" coveredconditionals="10" methods="28" coveredmethods="24"/>
-        <line num="26" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="88" type="stmt"/>
-        <line num="37" count="88" type="stmt"/>
-        <line num="43" count="88" type="stmt"/>
-        <line num="44" count="88" type="stmt"/>
-        <line num="45" count="88" type="stmt"/>
-        <line num="46" count="88" type="stmt"/>
-        <line num="51" count="88" type="stmt"/>
-        <line num="55" count="88" type="stmt"/>
-        <line num="56" count="88" type="stmt"/>
-        <line num="57" count="88" type="stmt"/>
-        <line num="58" count="88" type="stmt"/>
-        <line num="63" count="88" type="stmt"/>
-        <line num="64" count="88" type="stmt"/>
-        <line num="65" count="88" type="stmt"/>
-        <line num="70" count="176" type="stmt"/>
-        <line num="82" count="88" type="stmt"/>
-        <line num="83" count="88" type="stmt"/>
-        <line num="88" count="20" type="stmt"/>
-        <line num="89" count="20" type="stmt"/>
-        <line num="90" count="20" type="stmt"/>
-        <line num="95" count="12" type="stmt"/>
-        <line num="96" count="12" type="stmt"/>
-        <line num="97" count="12" type="stmt"/>
-        <line num="102" count="16" type="stmt"/>
-        <line num="103" count="16" type="stmt"/>
-        <line num="104" count="16" type="stmt"/>
-        <line num="105" count="16" type="stmt"/>
-        <line num="110" count="176" type="stmt"/>
-        <line num="113" count="176" type="stmt"/>
-        <line num="116" count="176" type="stmt"/>
-        <line num="119" count="176" type="stmt"/>
-        <line num="122" count="176" type="stmt"/>
-        <line num="123" count="176" type="stmt"/>
-        <line num="126" count="176" type="stmt"/>
-        <line num="130" count="176" type="stmt"/>
-        <line num="131" count="176" type="stmt"/>
-        <line num="132" count="176" type="stmt"/>
-        <line num="136" count="24" type="stmt"/>
-        <line num="137" count="24" type="stmt"/>
-        <line num="138" count="24" type="stmt"/>
-        <line num="142" count="212" type="stmt"/>
-        <line num="143" count="212" type="stmt"/>
-        <line num="145" count="204" type="stmt"/>
-        <line num="148" count="0" type="stmt"/>
-        <line num="149" count="0" type="stmt"/>
-        <line num="157" count="176" type="stmt"/>
-        <line num="158" count="176" type="stmt"/>
-        <line num="160" count="176" type="stmt"/>
-        <line num="161" count="176" type="stmt"/>
-        <line num="164" count="0" type="stmt"/>
-        <line num="165" count="0" type="stmt"/>
-        <line num="173" count="208" type="stmt"/>
-        <line num="174" count="208" type="stmt"/>
-        <line num="176" count="198" type="stmt"/>
-        <line num="177" count="198" type="stmt"/>
-        <line num="180" count="0" type="stmt"/>
-        <line num="181" count="0" type="stmt"/>
-        <line num="189" count="8" type="stmt"/>
-        <line num="190" count="8" type="stmt"/>
-        <line num="192" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="193" count="4" type="stmt"/>
-        <line num="200" count="4" type="stmt"/>
-        <line num="205" count="4" type="stmt"/>
-        <line num="207" count="4" type="stmt"/>
-        <line num="213" count="0" type="stmt"/>
-        <line num="214" count="0" type="stmt"/>
-        <line num="222" count="16" type="stmt"/>
-        <line num="223" count="16" type="stmt"/>
-        <line num="225" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="226" count="8" type="stmt"/>
-        <line num="233" count="8" type="stmt"/>
-        <line num="238" count="8" type="stmt"/>
-        <line num="240" count="4" type="stmt"/>
-        <line num="246" count="4" type="stmt"/>
-        <line num="247" count="4" type="stmt"/>
-        <line num="255" count="28" type="stmt"/>
-        <line num="256" count="28" type="stmt"/>
-        <line num="266" count="28" type="cond" truecount="2" falsecount="0"/>
-        <line num="269" count="24" type="cond" truecount="2" falsecount="1"/>
-        <line num="271" count="8" type="stmt"/>
-        <line num="272" count="8" type="stmt"/>
-        <line num="274" count="16" type="stmt"/>
-        <line num="275" count="16" type="stmt"/>
-        <line num="277" count="0" type="stmt"/>
-        <line num="284" count="0" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="detalle-tramite.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/tramites/components/detalle-tramite/detalle-tramite.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.tramites.components.edit-tramite">
-      <metrics statements="43" coveredstatements="43" conditionals="4" coveredconditionals="4" methods="10" coveredmethods="10"/>
-      <file name="edit-tramite.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\components\edit-tramite\edit-tramite.component.html">
-        <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="316" type="stmt"/>
-        <line num="2" count="20" type="stmt"/>
-        <line num="4" count="20" type="stmt"/>
-        <line num="5" count="20" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="20" type="stmt"/>
-        <line num="9" count="20" type="stmt"/>
-        <line num="10" count="20" type="stmt"/>
-        <line num="11" count="20" type="stmt"/>
-        <line num="12" count="20" type="stmt"/>
-        <line num="13" count="20" type="stmt"/>
-        <line num="14" count="632" type="stmt"/>
-        <line num="15" count="632" type="stmt"/>
-        <line num="16" count="632" type="stmt"/>
-        <line num="19" count="20" type="stmt"/>
-        <line num="20" count="20" type="stmt"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="26" count="20" type="stmt"/>
-        <line num="27" count="632" type="stmt"/>
-      </file>
-      <file name="edit-tramite.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\tramites\components\edit-tramite\edit-tramite.component.ts">
-        <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="9" coveredmethods="9"/>
-        <line num="17" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="20" type="stmt"/>
-        <line num="22" count="20" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="24" count="20" type="stmt"/>
-        <line num="28" count="20" type="stmt"/>
-        <line num="29" count="20" type="stmt"/>
-        <line num="33" count="40" type="stmt"/>
-        <line num="42" count="40" type="stmt"/>
-        <line num="45" count="40" type="stmt"/>
-        <line num="48" count="40" type="stmt"/>
-        <line num="51" count="40" type="stmt"/>
-        <line num="58" count="20" type="stmt"/>
-        <line num="59" count="20" type="stmt"/>
-        <line num="63" count="16" type="stmt"/>
-        <line num="64" count="16" type="stmt"/>
-        <line num="66" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="67" count="8" type="stmt"/>
-        <line num="68" count="8" type="stmt"/>
-        <line num="77" count="4" type="stmt"/>
-        <line num="83" count="4" type="stmt"/>
-        <line num="84" count="4" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="edit-tramite.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/tramites/components/edit-tramite/edit-tramite.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.users">
-      <metrics statements="156" coveredstatements="156" conditionals="14" coveredconditionals="14" methods="42" coveredmethods="39"/>
-      <file name="users.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\users\users.component.html">
-        <metrics statements="103" coveredstatements="103" conditionals="0" coveredconditionals="0" methods="18" coveredmethods="15"/>
-        <line num="1" count="96" type="stmt"/>
-        <line num="3" count="96" type="stmt"/>
-        <line num="5" count="96" type="stmt"/>
-        <line num="8" count="96" type="stmt"/>
-        <line num="13" count="96" type="stmt"/>
-        <line num="15" count="20174" type="stmt"/>
-        <line num="16" count="96" type="stmt"/>
-        <line num="19" count="240" type="stmt"/>
-        <line num="23" count="96" type="stmt"/>
-        <line num="25" count="248" type="stmt"/>
-        <line num="29" count="96" type="stmt"/>
-        <line num="31" count="248" type="stmt"/>
-        <line num="36" count="96" type="stmt"/>
-        <line num="39" count="124" type="stmt"/>
-        <line num="43" count="96" type="stmt"/>
-        <line num="45" count="1128" type="stmt"/>
-        <line num="49" count="96" type="stmt"/>
-        <line num="51" count="140" type="stmt"/>
-        <line num="55" count="96" type="stmt"/>
-        <line num="58" count="96" type="stmt"/>
-        <line num="59" count="20174" type="stmt"/>
-        <line num="60" count="20174" type="stmt"/>
-        <line num="61" count="20174" type="stmt"/>
-        <line num="62" count="20174" type="stmt"/>
-        <line num="69" count="96" type="stmt"/>
-        <line num="73" count="116" type="stmt"/>
-        <line num="74" count="96" type="stmt"/>
-        <line num="75" count="96" type="stmt"/>
-        <line num="79" count="96" type="stmt"/>
-        <line num="81" count="100" type="stmt"/>
-        <line num="82" count="96" type="stmt"/>
-        <line num="85" count="96" type="stmt"/>
-        <line num="86" count="100" type="stmt"/>
-        <line num="87" count="96" type="stmt"/>
-        <line num="94" count="20174" type="stmt"/>
-        <line num="98" count="92" type="stmt"/>
-        <line num="99" count="92" type="stmt"/>
-        <line num="100" count="92" type="stmt"/>
-        <line num="101" count="92" type="stmt"/>
-        <line num="102" count="92" type="stmt"/>
-        <line num="103" count="92" type="stmt"/>
-        <line num="104" count="92" type="stmt"/>
-        <line num="105" count="92" type="stmt"/>
-        <line num="106" count="92" type="stmt"/>
-        <line num="107" count="92" type="stmt"/>
-        <line num="108" count="92" type="stmt"/>
-        <line num="109" count="92" type="stmt"/>
-        <line num="112" count="17062" type="stmt"/>
-        <line num="125" count="48606" type="stmt"/>
-        <line num="126" count="816" type="stmt"/>
-        <line num="127" count="816" type="stmt"/>
-        <line num="128" count="48606" type="stmt"/>
-        <line num="129" count="816" type="stmt"/>
-        <line num="130" count="816" type="stmt"/>
-        <line num="131" count="48606" type="stmt"/>
-        <line num="132" count="816" type="stmt"/>
-        <line num="133" count="816" type="stmt"/>
-        <line num="134" count="48606" type="stmt"/>
-        <line num="135" count="816" type="stmt"/>
-        <line num="136" count="816" type="stmt"/>
-        <line num="137" count="48606" type="stmt"/>
-        <line num="138" count="816" type="stmt"/>
-        <line num="139" count="816" type="stmt"/>
-        <line num="140" count="48606" type="stmt"/>
-        <line num="141" count="816" type="stmt"/>
-        <line num="142" count="816" type="stmt"/>
-        <line num="143" count="48606" type="stmt"/>
-        <line num="144" count="816" type="stmt"/>
-        <line num="145" count="816" type="stmt"/>
-        <line num="146" count="48606" type="stmt"/>
-        <line num="147" count="816" type="stmt"/>
-        <line num="148" count="816" type="stmt"/>
-        <line num="149" count="48606" type="stmt"/>
-        <line num="150" count="816" type="stmt"/>
-        <line num="151" count="896" type="stmt"/>
-        <line num="152" count="816" type="stmt"/>
-        <line num="153" count="816" type="stmt"/>
-        <line num="155" count="816" type="stmt"/>
-        <line num="157" count="816" type="stmt"/>
-        <line num="158" count="880" type="stmt"/>
-        <line num="160" count="880" type="stmt"/>
-        <line num="161" count="816" type="stmt"/>
-        <line num="162" count="816" type="stmt"/>
-        <line num="165" count="92" type="stmt"/>
-        <line num="167" count="96" type="stmt"/>
-        <line num="168" count="96" type="stmt"/>
-        <line num="170" count="96" type="stmt"/>
-        <line num="178" count="20174" type="stmt"/>
-        <line num="180" count="96" type="stmt"/>
-        <line num="183" count="96" type="stmt"/>
-        <line num="184" count="96" type="stmt"/>
-        <line num="185" count="96" type="stmt"/>
-        <line num="186" count="96" type="stmt"/>
-        <line num="189" count="20174" type="stmt"/>
-        <line num="190" count="96" type="stmt"/>
-        <line num="197" count="20174" type="stmt"/>
-        <line num="199" count="96" type="stmt"/>
-        <line num="202" count="96" type="stmt"/>
-        <line num="203" count="96" type="stmt"/>
-        <line num="204" count="108" type="stmt"/>
-        <line num="205" count="96" type="stmt"/>
-        <line num="208" count="20174" type="stmt"/>
-        <line num="209" count="96" type="stmt"/>
-      </file>
-      <file name="users.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\users\users.component.ts">
-        <metrics statements="53" coveredstatements="53" conditionals="14" coveredconditionals="14" methods="24" coveredmethods="24"/>
-        <line num="16" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="96" type="stmt"/>
-        <line num="22" count="96" type="stmt"/>
-        <line num="23" count="96" type="stmt"/>
-        <line num="24" count="96" type="stmt"/>
-        <line num="31" count="96" type="stmt"/>
-        <line num="32" count="96" type="stmt"/>
-        <line num="33" count="96" type="stmt"/>
-        <line num="34" count="96" type="stmt"/>
-        <line num="35" count="96" type="stmt"/>
-        <line num="39" count="96" type="stmt"/>
-        <line num="40" count="96" type="stmt"/>
-        <line num="45" count="96" type="stmt"/>
-        <line num="58" count="240" type="cond" truecount="2" falsecount="0"/>
-        <line num="59" count="4" type="stmt"/>
-        <line num="64" count="240" type="cond" truecount="2" falsecount="0"/>
-        <line num="65" count="4" type="stmt"/>
-        <line num="76" count="4" type="stmt"/>
-        <line num="81" count="16" type="stmt"/>
-        <line num="82" count="16" type="stmt"/>
-        <line num="83" count="16" type="stmt"/>
-        <line num="87" count="1608" type="stmt"/>
-        <line num="91" count="112" type="stmt"/>
-        <line num="92" count="112" type="stmt"/>
-        <line num="94" count="100" type="stmt"/>
-        <line num="95" count="100" type="stmt"/>
-        <line num="98" count="4" type="stmt"/>
-        <line num="106" count="16" type="stmt"/>
-        <line num="107" count="16" type="stmt"/>
-        <line num="109" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="110" count="8" type="stmt"/>
-        <line num="111" count="8" type="stmt"/>
-        <line num="119" count="4" type="stmt"/>
-        <line num="129" count="4" type="stmt"/>
-        <line num="141" count="12" type="stmt"/>
-        <line num="142" count="12" type="stmt"/>
-        <line num="144" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="145" count="4" type="stmt"/>
-        <line num="146" count="4" type="stmt"/>
-        <line num="147" count="4" type="stmt"/>
-        <line num="155" count="4" type="stmt"/>
-        <line num="165" count="4" type="stmt"/>
-        <line num="178" count="20" type="stmt"/>
-        <line num="179" count="20" type="stmt"/>
-        <line num="183" count="20" type="stmt"/>
-        <line num="184" count="20" type="stmt"/>
-        <line num="197" count="20" type="cond" truecount="2" falsecount="0"/>
-        <line num="199" count="16" type="stmt"/>
-        <line num="202" count="16" type="stmt"/>
-        <line num="208" count="16" type="stmt"/>
-        <line num="209" count="16" type="stmt"/>
-        <line num="219" count="16" type="cond" truecount="2" falsecount="0"/>
-        <line num="221" count="12" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="users.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/users/users.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.users.crear-user">
-      <metrics statements="93" coveredstatements="90" conditionals="34" coveredconditionals="23" methods="9" coveredmethods="9"/>
-      <file name="crear-user.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\users\crear-user\crear-user.component.html">
-        <metrics statements="71" coveredstatements="68" conditionals="30" coveredconditionals="19" methods="1" coveredmethods="1"/>
-        <line num="1" count="2260" type="stmt"/>
-        <line num="2" count="20" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="9" count="4520" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="8" type="stmt"/>
-        <line num="11" count="264" type="cond" truecount="1" falsecount="1"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="8" type="stmt"/>
-        <line num="14" count="264" type="cond" truecount="1" falsecount="1"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
-        <line num="17" count="20" type="stmt"/>
-        <line num="19" count="20" type="stmt"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="22" count="20" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="25" count="20" type="stmt"/>
-        <line num="27" count="20" type="stmt"/>
-        <line num="28" count="20" type="stmt"/>
-        <line num="29" count="4520" type="stmt"/>
-        <line num="30" count="4520" type="stmt"/>
-        <line num="35" count="20" type="stmt"/>
-        <line num="38" count="20" type="stmt"/>
-        <line num="39" count="20" type="stmt"/>
-        <line num="41" count="4520" type="cond" truecount="2" falsecount="0"/>
-        <line num="42" count="8" type="stmt"/>
-        <line num="43" count="240" type="cond" truecount="1" falsecount="1"/>
-        <line num="44" count="4" type="stmt"/>
-        <line num="45" count="4" type="stmt"/>
-        <line num="46" count="240" type="cond" truecount="1" falsecount="1"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="8" type="stmt"/>
-        <line num="49" count="240" type="cond" truecount="1" falsecount="1"/>
-        <line num="50" count="4" type="stmt"/>
-        <line num="51" count="4" type="stmt"/>
-        <line num="52" count="20" type="stmt"/>
-        <line num="54" count="20" type="stmt"/>
-        <line num="56" count="20" type="stmt"/>
-        <line num="57" count="20" type="stmt"/>
-        <line num="59" count="24" type="stmt"/>
-        <line num="60" count="4520" type="cond" truecount="2" falsecount="0"/>
-        <line num="61" count="8" type="stmt"/>
-        <line num="62" count="216" type="cond" truecount="1" falsecount="1"/>
-        <line num="63" count="4" type="stmt"/>
-        <line num="64" count="4" type="stmt"/>
-        <line num="65" count="216" type="cond" truecount="1" falsecount="1"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="8" type="stmt"/>
-        <line num="68" count="216" type="cond" truecount="1" falsecount="1"/>
-        <line num="69" count="4" type="stmt"/>
-        <line num="70" count="4" type="stmt"/>
-        <line num="71" count="20" type="stmt"/>
-        <line num="73" count="20" type="stmt"/>
-        <line num="75" count="20" type="stmt"/>
-        <line num="76" count="20" type="stmt"/>
-        <line num="78" count="24" type="stmt"/>
-        <line num="79" count="4520" type="cond" truecount="2" falsecount="0"/>
-        <line num="80" count="8" type="stmt"/>
-        <line num="81" count="192" type="cond" truecount="1" falsecount="1"/>
-        <line num="82" count="4" type="stmt"/>
-        <line num="83" count="4" type="stmt"/>
-        <line num="84" count="192" type="cond" truecount="1" falsecount="1"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="8" type="stmt"/>
-        <line num="87" count="192" type="cond" truecount="1" falsecount="1"/>
-        <line num="88" count="4" type="stmt"/>
-        <line num="89" count="4" type="stmt"/>
-        <line num="90" count="20" type="stmt"/>
-        <line num="97" count="20" type="stmt"/>
-        <line num="98" count="4520" type="stmt"/>
-      </file>
-      <file name="crear-user.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\users\crear-user\crear-user.component.ts">
-        <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
-        <line num="18" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="24" count="20" type="stmt"/>
-        <line num="25" count="20" type="stmt"/>
-        <line num="26" count="20" type="stmt"/>
-        <line num="30" count="20" type="stmt"/>
-        <line num="35" count="16" type="stmt"/>
-        <line num="38" count="16" type="stmt"/>
-        <line num="41" count="16" type="stmt"/>
-        <line num="44" count="16" type="stmt"/>
-        <line num="50" count="16" type="stmt"/>
-        <line num="51" count="16" type="stmt"/>
-        <line num="52" count="16" type="stmt"/>
-        <line num="53" count="16" type="stmt"/>
-        <line num="55" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="56" count="8" type="stmt"/>
-        <line num="63" count="8" type="stmt"/>
-        <line num="64" count="8" type="stmt"/>
-        <line num="66" count="4" type="stmt"/>
-        <line num="76" count="4" type="stmt"/>
-        <line num="77" count="4" type="stmt"/>
-        <line num="86" count="20" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="crear-user.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/users/crear-user/crear-user.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pages.users.edit-user">
-      <metrics statements="105" coveredstatements="102" conditionals="28" coveredconditionals="19" methods="11" coveredmethods="11"/>
-      <file name="edit-user.component.html" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\users\edit-user\edit-user.component.html">
-        <metrics statements="75" coveredstatements="72" conditionals="24" coveredconditionals="15" methods="1" coveredmethods="1"/>
-        <line num="1" count="406" type="stmt"/>
-        <line num="2" count="16" type="stmt"/>
-        <line num="6" count="16" type="stmt"/>
-        <line num="7" count="16" type="stmt"/>
-        <line num="8" count="16" type="stmt"/>
-        <line num="10" count="16" type="stmt"/>
-        <line num="12" count="16" type="stmt"/>
-        <line num="13" count="16" type="stmt"/>
-        <line num="14" count="16" type="stmt"/>
-        <line num="16" count="16" type="stmt"/>
-        <line num="18" count="16" type="stmt"/>
-        <line num="19" count="16" type="stmt"/>
-        <line num="20" count="16" type="stmt"/>
-        <line num="22" count="16" type="stmt"/>
-        <line num="24" count="16" type="stmt"/>
-        <line num="25" count="16" type="stmt"/>
-        <line num="26" count="16" type="stmt"/>
-        <line num="30" count="16" type="stmt"/>
-        <line num="33" count="16" type="stmt"/>
-        <line num="34" count="16" type="stmt"/>
-        <line num="35" count="812" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="168" type="cond" truecount="1" falsecount="1"/>
-        <line num="37" count="4" type="stmt"/>
-        <line num="38" count="168" type="cond" truecount="1" falsecount="1"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="168" type="cond" truecount="1" falsecount="1"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="42" count="4" type="stmt"/>
-        <line num="43" count="16" type="stmt"/>
-        <line num="45" count="16" type="stmt"/>
-        <line num="47" count="16" type="stmt"/>
-        <line num="48" count="16" type="stmt"/>
-        <line num="49" count="20" type="stmt"/>
-        <line num="50" count="812" type="cond" truecount="2" falsecount="0"/>
-        <line num="51" count="8" type="stmt"/>
-        <line num="52" count="264" type="cond" truecount="1" falsecount="1"/>
-        <line num="53" count="4" type="stmt"/>
-        <line num="54" count="4" type="stmt"/>
-        <line num="55" count="264" type="cond" truecount="1" falsecount="1"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="57" count="8" type="stmt"/>
-        <line num="58" count="264" type="cond" truecount="1" falsecount="1"/>
-        <line num="59" count="4" type="stmt"/>
-        <line num="60" count="4" type="stmt"/>
-        <line num="61" count="16" type="stmt"/>
-        <line num="63" count="16" type="stmt"/>
-        <line num="65" count="16" type="stmt"/>
-        <line num="66" count="16" type="stmt"/>
-        <line num="67" count="20" type="stmt"/>
-        <line num="68" count="812" type="cond" truecount="2" falsecount="0"/>
-        <line num="69" count="8" type="stmt"/>
-        <line num="70" count="216" type="cond" truecount="1" falsecount="1"/>
-        <line num="71" count="4" type="stmt"/>
-        <line num="72" count="4" type="stmt"/>
-        <line num="73" count="216" type="cond" truecount="1" falsecount="1"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="8" type="stmt"/>
-        <line num="76" count="216" type="cond" truecount="1" falsecount="1"/>
-        <line num="77" count="4" type="stmt"/>
-        <line num="78" count="4" type="stmt"/>
-        <line num="79" count="16" type="stmt"/>
-        <line num="83" count="16" type="stmt"/>
-        <line num="86" count="16" type="stmt"/>
-        <line num="87" count="16" type="stmt"/>
-        <line num="88" count="812" type="stmt"/>
-        <line num="89" count="812" type="stmt"/>
-        <line num="90" count="812" type="stmt"/>
-        <line num="91" count="812" type="stmt"/>
-        <line num="95" count="16" type="stmt"/>
-        <line num="97" count="16" type="stmt"/>
-        <line num="98" count="16" type="stmt"/>
-        <line num="99" count="812" type="stmt"/>
-        <line num="100" count="812" type="stmt"/>
-        <line num="107" count="16" type="stmt"/>
-        <line num="108" count="812" type="stmt"/>
-      </file>
-      <file name="edit-user.component.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pages\users\edit-user\edit-user.component.ts">
-        <metrics statements="30" coveredstatements="30" conditionals="4" coveredconditionals="4" methods="10" coveredmethods="10"/>
-        <line num="18" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="16" type="stmt"/>
-        <line num="26" count="16" type="stmt"/>
-        <line num="27" count="16" type="stmt"/>
-        <line num="28" count="16" type="stmt"/>
-        <line num="32" count="16" type="stmt"/>
-        <line num="33" count="16" type="stmt"/>
-        <line num="38" count="16" type="stmt"/>
-        <line num="39" count="16" type="stmt"/>
-        <line num="44" count="32" type="stmt"/>
-        <line num="45" count="32" type="stmt"/>
-        <line num="46" count="32" type="stmt"/>
-        <line num="47" count="32" type="stmt"/>
-        <line num="50" count="32" type="stmt"/>
-        <line num="53" count="32" type="stmt"/>
-        <line num="54" count="32" type="stmt"/>
-        <line num="55" count="32" type="stmt"/>
-        <line num="56" count="32" type="stmt"/>
-        <line num="62" count="12" type="stmt"/>
-        <line num="65" count="12" type="stmt"/>
-        <line num="68" count="12" type="stmt"/>
-        <line num="71" count="12" type="stmt"/>
-        <line num="77" count="12" type="stmt"/>
-        <line num="78" count="12" type="stmt"/>
-        <line num="79" count="12" type="stmt"/>
-        <line num="81" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="82" count="4" type="stmt"/>
-        <line num="90" count="4" type="stmt"/>
-        <line num="100" count="4" type="stmt"/>
-        <line num="109" count="32" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="edit-user.component.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pages/users/edit-user/edit-user.component.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.pipes">
-      <metrics statements="26" coveredstatements="26" conditionals="35" coveredconditionals="33" methods="6" coveredmethods="6"/>
-      <file name="filter.pipe.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pipes\filter.pipe.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="14" coveredconditionals="13" methods="2" coveredmethods="2"/>
-        <line num="7" count="2167" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="930" type="stmt"/>
-        <line num="9" count="310" type="stmt"/>
-        <line num="10" count="1008" type="stmt"/>
-        <line num="11" count="1008" type="cond" truecount="2" falsecount="0"/>
-        <line num="22" count="688" type="cond" truecount="3" falsecount="1"/>
-        <line num="23" count="688" type="stmt"/>
-        <line num="27" count="310" type="stmt"/>
-        <line num="28" count="310" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="filter.pipe.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pipes/filter.pipe.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="filterDocument.pipe.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pipes\filterDocument.pipe.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
-        <line num="7" count="2135" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="666" type="stmt"/>
-        <line num="9" count="222" type="stmt"/>
-        <line num="10" count="6602" type="stmt"/>
-        <line num="11" count="6602" type="cond" truecount="2" falsecount="0"/>
-        <line num="18" count="2872" type="stmt"/>
-        <line num="21" count="222" type="stmt"/>
-        <line num="22" count="222" type="stmt"/>
+      <file name="filterDocument.pipe.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pipes/filterDocument.pipe.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="filterUsers.pipe.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\pipes\filterUsers.pipe.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="15" coveredconditionals="14" methods="2" coveredmethods="2"/>
-        <line num="7" count="2157" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="4968" type="stmt"/>
-        <line num="9" count="1656" type="stmt"/>
-        <line num="10" count="88396" type="stmt"/>
-        <line num="11" count="88396" type="cond" truecount="2" falsecount="0"/>
-        <line num="27" count="14654" type="cond" truecount="3" falsecount="1"/>
-        <line num="28" count="14654" type="stmt"/>
-        <line num="32" count="1656" type="stmt"/>
-        <line num="33" count="1656" type="stmt"/>
+      <file name="filterUsers.pipe.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/pipes/filterUsers.pipe.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.app.services">
-      <metrics statements="117" coveredstatements="100" conditionals="32" coveredconditionals="22" methods="69" coveredmethods="54"/>
-      <file name="auth.service.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\services\auth.service.ts">
-        <metrics statements="36" coveredstatements="32" conditionals="10" coveredconditionals="6" methods="15" coveredmethods="15"/>
-        <line num="14" count="413" type="stmt"/>
-        <line num="19" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="413" type="stmt"/>
-        <line num="22" count="413" type="stmt"/>
-        <line num="24" count="413" type="stmt"/>
-        <line num="25" count="413" type="stmt"/>
-        <line num="29" count="1079" type="stmt"/>
-        <line num="33" count="324" type="stmt"/>
-        <line num="36" count="371" type="stmt"/>
-        <line num="37" count="371" type="stmt"/>
-        <line num="41" count="366" type="stmt"/>
-        <line num="42" count="366" type="stmt"/>
-        <line num="43" count="366" type="stmt"/>
-        <line num="48" count="34" type="stmt"/>
-        <line num="49" count="34" type="stmt"/>
-        <line num="56" count="24" type="stmt"/>
-        <line num="58" count="10" type="stmt"/>
-        <line num="63" count="18" type="stmt"/>
-        <line num="64" count="18" type="stmt"/>
-        <line num="65" count="18" type="stmt"/>
-        <line num="66" count="18" type="stmt"/>
-        <line num="70" count="1960" type="stmt"/>
-        <line num="75" count="413" type="cond" truecount="2" falsecount="0"/>
-        <line num="77" count="413" type="cond" truecount="1" falsecount="1"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="88" count="366" type="stmt"/>
-        <line num="89" count="366" type="stmt"/>
-        <line num="94" count="10" type="stmt"/>
-        <line num="95" count="10" type="cond" truecount="1" falsecount="1"/>
-        <line num="96" count="10" type="stmt"/>
-        <line num="98" count="10" type="stmt"/>
-        <line num="99" count="10" type="stmt"/>
-        <line num="100" count="10" type="stmt"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="auth.service.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/services/auth.service.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="interceptor.service.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\services\interceptor.service.ts">
-        <metrics statements="13" coveredstatements="13" conditionals="10" coveredconditionals="9" methods="5" coveredmethods="5"/>
-        <line num="14" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="389" type="stmt"/>
-        <line num="17" count="389" type="stmt"/>
-        <line num="22" count="1849" type="stmt"/>
-        <line num="24" count="1849" type="stmt"/>
-        <line num="25" count="1849" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="324" type="stmt"/>
-        <line num="32" count="324" type="cond" truecount="1" falsecount="1"/>
-        <line num="33" count="324" type="stmt"/>
-        <line num="38" count="324" type="stmt"/>
-        <line num="40" count="312" type="stmt"/>
-        <line num="43" count="1525" type="stmt"/>
-        <line num="45" count="1485" type="stmt"/>
+      <file name="interceptor.service.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/services/interceptor.service.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="report.service.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\services\report.service.ts">
-        <metrics statements="21" coveredstatements="21" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
-        <line num="8" count="413" type="stmt"/>
-        <line num="9" count="413" type="stmt"/>
-        <line num="13" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="276" type="stmt"/>
-        <line num="18" count="12" type="stmt"/>
-        <line num="19" count="12" type="stmt"/>
-        <line num="20" count="12" type="stmt"/>
-        <line num="24" count="12" type="stmt"/>
-        <line num="28" count="12" type="stmt"/>
-        <line num="32" count="12" type="stmt"/>
-        <line num="33" count="12" type="stmt"/>
-        <line num="41" count="8" type="stmt"/>
-        <line num="42" count="8" type="stmt"/>
-        <line num="44" count="314" type="stmt"/>
-        <line num="45" count="8" type="stmt"/>
-        <line num="48" count="8" type="stmt"/>
-        <line num="49" count="8" type="stmt"/>
-        <line num="50" count="8" type="stmt"/>
-        <line num="51" count="8" type="stmt"/>
-        <line num="52" count="8" type="stmt"/>
-        <line num="62" count="8" type="stmt"/>
+      <file name="report.service.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/services/report.service.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="servicios.service.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\services\servicios.service.ts">
-        <metrics statements="43" coveredstatements="30" conditionals="8" coveredconditionals="3" methods="38" coveredmethods="23"/>
-        <line num="22" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="352" type="stmt"/>
-        <line num="35" count="78" type="stmt"/>
-        <line num="41" count="12" type="stmt"/>
-        <line num="49" count="16" type="stmt"/>
-        <line num="55" count="16" type="stmt"/>
-        <line num="62" count="16" type="stmt"/>
-        <line num="68" count="12" type="stmt"/>
-        <line num="74" count="12" type="stmt"/>
-        <line num="75" count="12" type="stmt"/>
-        <line num="85" count="16" type="stmt"/>
-        <line num="91" count="112" type="stmt"/>
-        <line num="97" count="340" type="stmt"/>
-        <line num="103" count="0" type="stmt"/>
-        <line num="107" count="0" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
-        <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="115" count="0" type="stmt"/>
-        <line num="119" count="0" type="stmt"/>
-        <line num="123" count="0" type="stmt"/>
-        <line num="124" count="0" type="stmt"/>
-        <line num="125" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="131" count="0" type="stmt"/>
-        <line num="135" count="0" type="stmt"/>
-        <line num="142" count="110" type="stmt"/>
-        <line num="148" count="20" type="stmt"/>
-        <line num="154" count="212" type="stmt"/>
-        <line num="162" count="184" type="stmt"/>
-        <line num="170" count="216" type="stmt"/>
-        <line num="178" count="16" type="stmt"/>
-        <line num="184" count="8" type="stmt"/>
-        <line num="192" count="16" type="stmt"/>
-        <line num="200" count="16" type="stmt"/>
-        <line num="206" count="16" type="stmt"/>
-        <line num="207" count="16" type="stmt"/>
-        <line num="208" count="16" type="stmt"/>
-        <line num="216" count="56" type="stmt"/>
-        <line num="217" count="56" type="cond" truecount="1" falsecount="1"/>
-        <line num="218" count="56" type="stmt"/>
-        <line num="220" count="56" type="stmt"/>
-        <line num="221" count="56" type="stmt"/>
-        <line num="222" count="0" type="stmt"/>
-        <line num="228" count="0" type="stmt"/>
+      <file name="servicios.service.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/services/servicios.service.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="spinner.service.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\app\services\spinner.service.ts">
-        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
-        <line num="7" count="2065" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="389" type="stmt"/>
-        <line num="12" count="1849" type="stmt"/>
-        <line num="16" count="1797" type="stmt"/>
+      <file name="spinner.service.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/app/services/spinner.service.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.assets.vendor.@fortawesome.fontawesome-free.js">
@@ -2153,13 +267,12 @@
       </file>
     </package>
     <package name="src.environments">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="environment.prod.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/environments/environment.prod.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="environment.ts" path="C:\Users\User\Desktop\Isekai_Orpheus_Bot\Isekai_Orpheus_Bot\src\environments\environment.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="5" count="413" type="stmt"/>
+      <file name="environment.ts" path="C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/src/environments/environment.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
   </project>

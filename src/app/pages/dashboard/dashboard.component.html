@@ -19,9 +19,8 @@
                   </div>
                 </div>
                 <input type="text" name="dateInt" placeholder="Fecha Inicio" class="form-control" readonly="readonly"
-                  bsDatepicker [bsConfig]="{ isAnimated: true }" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
-                  [minDate]="minDate"
-                  [maxDate]="this.dashboardForm.getRawValue().dateEnd ? this.dashboardForm.getRawValue().dateEnd :maxDate"
+                  bsDatepicker  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+
                   formControlName="dateInit" (onHidden)="loadData()" autocomplete="off" />
               </div>
             </div>
@@ -34,10 +33,10 @@
                   </div>
                 </div>
                 <input type="text" name="dateEnd" placeholder="Fecha Fin" class="form-control" bsDatepicker
-                  readonly="readonly" [bsConfig]="{ isAnimated: true }" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                  readonly="readonly" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
                   formControlName="dateEnd"
-                  [minDate]="this.dashboardForm.getRawValue().dateInit ? this.dashboardForm.getRawValue().dateInit : minDate"
-                  [maxDate]="maxDate" (onHidden)="loadData()" autocomplete="off" />
+                
+             (onHidden)="loadData()" autocomplete="off" />
               </div>
             </div>
             <!-- TRAMITES -->

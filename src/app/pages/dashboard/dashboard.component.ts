@@ -21,8 +21,7 @@ export class DashboardComponent implements OnInit {
   public lineChartLabels: Label[] = [];
 
   listaTramites: string[] = [];
-  minDate: Date;
-  maxDate: Date;
+
   dashboardForm: FormGroup;
   constructor(
     private graficosService: ServiciosService,
@@ -35,9 +34,6 @@ export class DashboardComponent implements OnInit {
     // Inicializamos el tipo de fecha y la restricciones de fecha para el datePicker
     this.localeService.use("es");
     // Restricciones para fecha maxima y minima de seleccion en el DatePicker
-    this.minDate = new Date("2020-1-22");
-    this.maxDate = new Date();
-    this.maxDate.setDate(this.maxDate.getDate() + 15);
     //Obtenemos los tramites para el selector de tramites
     this.getTramites();
     //Creamos nuestro formulario al renderizar el componente
