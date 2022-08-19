@@ -2,7 +2,7 @@ import { defineConfig } from 'cypress'
 
 export default defineConfig({
   downloadsFolder:
-    'C:/Users/User/Desktop/Isekai_Orpheus_Bot/Isekai_Orpheus_Bot/cypress/downloads',
+    'cypress/downloads',
   env: {
     response: {
       ok: {

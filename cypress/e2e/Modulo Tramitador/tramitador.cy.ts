@@ -2589,7 +2589,7 @@ context("Modulo Tramitador Pruebas Funcionalidad", () => {
     });
   });
 
-  it("Validamos Generacion Reporte PDF Gestion Tramites", () => {
+  it.only("Validamos Generacion Reporte PDF Gestion Tramites", () => {
     // Interceptamos el servicio que carga la lista de tramites de los alumnos
     cy.intercept({
       method: "GET",
