@@ -13,7 +13,7 @@ export default defineConfig({
       },
     },
     url: {
-      service: 'https://whatsapp-bot-isekai.herokuapp.com',
+      service: 'https://isekai-orpheus-bot-backend-exp.herokuapp.com',
       visit: 'http://localhost:4200/#/login',
       tracking: 'http://localhost:4200/#/tracking',
     },
@@ -81,14 +81,14 @@ export default defineConfig({
     },
     documento: {
       filterDocument: {
-        codigo: '524',
-        nombre: '0f4stg7qbyc',
-        requisitos: '0.ujx6jgvksqd',
+        codigo: '124',
+        nombre: 'ASC3333',
+        requisitos: 'ASD33333',
       },
       editDocument: {
         codigo: '14',
         nombre: 'TITULACION',
-        requisitos: '',
+        requisitos: 'REQ TITULACION	',
       },
     },
   },
