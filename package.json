@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/",
     "sonar": "sonar-scanner",
-    "unit-test" :"ng test --code-coverage",
+    "unit-test" :"ng test --code-coverage --watch=false",
     "e2e:ci": "ng run isekai-angular:e2e-ci",
     "e2e:coverage": "npx nyc report --reporter=lcov --reporter=text-summary"
   },
