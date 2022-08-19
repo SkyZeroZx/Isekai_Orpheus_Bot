@@ -42,7 +42,7 @@ export class ReporteService {
     header[0] = encabezado;
     // Obtenemos los encabezados Object.keys(Constant.REPORT[0]);
     let arrReport = Constant.REPORT.map((obj) => Object.values(obj));
-    var pdf = new jsPDF({
+    let pdf = new jsPDF({
       orientation: "landscape",
     });
     pdf.setFont("helvetica");
