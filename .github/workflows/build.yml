@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
+  build:
     name: FrontEnd Angular CI
     runs-on: ubuntu-latest
     steps:
@@ -18,10 +18,16 @@ jobs:
           node-version: 16
       - name: Run Install Dependences
         run: npm i --legacy-peer-deps
-      - name: Run Unit Test Jasmine #Run all  unit test
+   unit-test :
+      needs: build
+      - name: Run Unit Test Jasmine  
         run:  npm run unit-test
-      - name: Run E2E Test Cypress #Run all test E2E
-        run: npm run e2e:ci
+    e2e-testing : 
+        needs: build
+        name : Cypress E2E Test
+            run: npm run e2e:ci
+   sonarcloud:
+      needs : [build ,unit-test]
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
