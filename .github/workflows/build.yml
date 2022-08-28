@@ -20,16 +20,19 @@ jobs:
         run: npm i --legacy-peer-deps
   unit-test:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Run All Unit Tests
         run:  npm run unit-test  
   e2e-testing: 
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name : Cypress E2E Test
         run: npm run e2e:ci
   sonarcloud: 
     needs: [build , unit-test]
+    runs-on: ubuntu-latest
     steps:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
