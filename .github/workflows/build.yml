@@ -89,11 +89,11 @@ jobs:
           path: ./*
           key: ${{ github.sha }}
       - uses: actions/download-artifact@v3
-         with:
+        with:
           name: reports
           path: |
             reports/
-            coverage/ 
+            coverage/
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
