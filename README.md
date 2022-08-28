@@ -234,7 +234,9 @@ _Se realizo un CI con SonarCloud para metricas de calidad de codigo (https://son
 
 _Se creo la carpeta `.github/workflows` con el archivo `build.yml` que contiene los pasos para desplegar mediante GitHub Actions nuestro CI_
 
-![CI](/docs/ci/ci.png)
+![CI 1](/docs/ci/ci-1.png)
+
+![CI 1](/docs/ci/ci-2.png)
 
 ## Despliegue 📦
 
