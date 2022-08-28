@@ -24,7 +24,7 @@ jobs:
           path: ./*
           key: ${{ github.sha }}  
   unit-test:
-    name: Unit Testing Jasmine/Karma && SonarCloud
+    name: SonarCloud
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -41,11 +41,11 @@ jobs:
           key: ${{ github.sha }}
       - name: Run All Unit Tests
         run:  npm run unit-test  
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
+      - uses: actions/cache@v2
+        id: build-unit-test
+        with:
+          path: ./*
+          key: ${{ github.sha }}
   e2e-testing: 
     name: E2E Testing Cypress
     needs: build
@@ -62,5 +62,29 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
+      - name: Install Cypress Dependences
+        run: npm i --legacy-peer-deps
       - name : Cypress E2E Test
         run: npm run e2e:ci
+  sonarcloud: 
+    name: SonarCloud
+    needs: [build , unit-test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - uses: actions/cache@v2
+        id: build-unit-test
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+
