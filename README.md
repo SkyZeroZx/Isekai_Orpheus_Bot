@@ -9,14 +9,14 @@ _Adicionalmente funciona como PWA(Progresive Web App) que puede integrarse en cu
 - [Pre-Requisitos](#pre-requisitos-)
 - [Instalación](#instalación-)
 - [PWA](#ejecutando-como-PWA-)
-- [Desarrollo](#desarrollo-)
-  - [Unit-Test](#pruebas-unitarias-jasminekarma-)
+- [Desarrollo](#desarollo-%EF%B8%8F)
+  - [Unit-Test](#pruebas-unitarias-jasminekarma%EF%B8%8F)
   - [E2E-Test](#Pruebas-End-To-End-)
 - [Analisis de calidad de codigo](#analisis-de-calidad-de-codigo)
 - [Despliegue](#despliegue-)
   - [Build](#build)
   - [Docker](#docker)
-- [Construido](#construido-con-)
+- [Construido](#construido-con-%EF%B8%8F)
 - [Autores](#autores-)
 
 ## Comenzando 🚀

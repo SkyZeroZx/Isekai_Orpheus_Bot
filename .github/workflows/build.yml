@@ -20,8 +20,8 @@ jobs:
         run: npm i --legacy-peer-deps
       - name: Run Unit Test Jasmine
         run:  npm run unit-test
-      #- name: Run E2E Test Cypress
-      #  run: npm run e2e:ci
+      - name: Run E2E Test Cypress
+        run: npm run e2e:ci
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
