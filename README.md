@@ -1,5 +1,24 @@
 # Isekai Orpheus Bot
 
+<p align="center">
+<a href="https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot" target="_blank">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=SkyZeroZx_Isekai_Orpheus_Bot&metric=alert_status" alt="Quality Gate" /></a>
+<a href="https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot" target="_blank">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=SkyZeroZx_Isekai_Orpheus_Bot&metric=coverage" alt="Coverage" /></a>
+<a href="https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot" target="_blank">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=SkyZeroZx_Isekai_Orpheus_Bot&metric=vulnerabilities" alt="Vulnerabilities" /></a>
+<a href="https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot" target="_blank">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=SkyZeroZx_Isekai_Orpheus_Bot&metric=bugs" alt="Bugs" /></a>
+<a href="https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot" target="_blank">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=SkyZeroZx_Isekai_Orpheus_Bot&metric=security_rating" alt="Security Rating" /></a>
+<a href="https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot" target="_blank">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=SkyZeroZx_Isekai_Orpheus_Bot&metric=code_smells" alt="Code Smells"/></a>
+<a href="https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot" target="_blank">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=SkyZeroZx_Isekai_Orpheus_Bot&metric=sqale_rating" alt="Maintainability Rating"/></a>
+<img src="https://badgen.net/badge/Built%20With/TypeScript/bl" alt="Build With TypeScript" />
+<img src="https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg" alt="Build With TypeScript" />
+</p>
+
 _Es el modulo web del sistema de gestion de tramites registrados via ChatBot y seguimiento de tramites_
 
 _Adicionalmente funciona como PWA(Progresive Web App) que puede integrarse en cualquier dispositivo movil_
