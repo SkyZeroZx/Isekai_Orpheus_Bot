@@ -18,17 +18,19 @@ jobs:
           node-version: 16
       - name: Run Install Dependences
         run: npm i --legacy-peer-deps
+      - name: Upload Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-angular
   unit-test:
     name: Unit Testing Jasmine/Karma
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Download Build
+        uses: actions/download-artifact@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16
+          name: build-angular 
       - name: Run All Unit Tests
         run:  npm run unit-test  
   e2e-testing: 
@@ -36,12 +38,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Download Build
+        uses: actions/download-artifact@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis    
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16
+          name: build-angular
       - name : Cypress E2E Test
         run: npm run e2e:ci
   sonarcloud: 
