@@ -1,172 +1,172 @@
 <testExecutions version="1">
   <file path="src/app/app.component.spec.ts">
-    <testCase name="AppComponent AppComponent creada correctamente" duration="54"/>
+    <testCase name="AppComponent AppComponent creada correctamente" duration="45"/>
   </file>
   <file path="src/app/components/components.module.spec.ts">
     <testCase name="ComponentsModule ComponentsModule creado correctamente" duration="1"/>
   </file>
   <file path="src/app/components/footer/footer.component.spec.ts">
-    <testCase name="FooterComponent FooterComponent creado correctamente" duration="5"/>
+    <testCase name="FooterComponent FooterComponent creado correctamente" duration="4"/>
   </file>
   <file path="src/app/components/navbar/navbar.component.spec.ts">
-    <testCase name="NavbarComponent Verificamos onLogout()" duration="13"/>
-    <testCase name="NavbarComponent Verificamos changePassword()" duration="7"/>
-    <testCase name="NavbarComponent Verificamos ngOnInit" duration="7"/>
-    <testCase name="NavbarComponent NavbarComponent creado correctamente" duration="5"/>
+    <testCase name="NavbarComponent Verificamos onLogout()" duration="12"/>
+    <testCase name="NavbarComponent Verificamos changePassword()" duration="5"/>
+    <testCase name="NavbarComponent Verificamos ngOnInit" duration="5"/>
+    <testCase name="NavbarComponent NavbarComponent creado correctamente" duration="4"/>
   </file>
   <file path="src/app/components/sidebar/sidebar.component.spec.ts">
-    <testCase name="SidebarComponent Verificamos changePassword()" duration="9"/>
-    <testCase name="SidebarComponent SidebarComponent creado correctamente" duration="6"/>
-    <testCase name="SidebarComponent Verificamos ngOnInit" duration="66"/>
-    <testCase name="SidebarComponent Verificamos onLogout()" duration="6"/>
+    <testCase name="SidebarComponent SidebarComponent creado correctamente" duration="7"/>
+    <testCase name="SidebarComponent Verificamos changePassword()" duration="6"/>
+    <testCase name="SidebarComponent Verificamos ngOnInit" duration="5"/>
+    <testCase name="SidebarComponent Verificamos onLogout()" duration="4"/>
   </file>
   <file path="src/app/layouts/admin-layout/admin-layout.component.spec.ts">
-    <testCase name="AdminLayoutComponent AdminLayoutComponent creado correctamente" duration="4"/>
+    <testCase name="AdminLayoutComponent AdminLayoutComponent creado correctamente" duration="3"/>
   </file>
   <file path="src/app/layouts/auth-layout/auth-layout.component.spec.ts">
-    <testCase name="AuthLayoutComponent AuthLayoutComponent creado correctamente" duration="8"/>
+    <testCase name="AuthLayoutComponent AuthLayoutComponent creado correctamente" duration="5"/>
   </file>
   <file path="src/app/pages/change-password/change-password.component.spec.ts">
-    <testCase name="ChangePasswordComponent Verificamos ngOnInit()" duration="27"/>
-    <testCase name="ChangePasswordComponent Verificamos showPassword(i)" duration="6"/>
-    <testCase name="ChangePasswordComponent Verificamos onChangePassword()" duration="11"/>
-    <testCase name="ChangePasswordComponent Verificamos retrocederFirstLogin()" duration="6"/>
-    <testCase name="ChangePasswordComponent ChangePasswordComponent creado correctamente" duration="6"/>
+    <testCase name="ChangePasswordComponent Verificamos showPassword(i)" duration="18"/>
+    <testCase name="ChangePasswordComponent ChangePasswordComponent creado correctamente" duration="4"/>
+    <testCase name="ChangePasswordComponent Verificamos ngOnInit()" duration="5"/>
+    <testCase name="ChangePasswordComponent Verificamos retrocederFirstLogin()" duration="4"/>
+    <testCase name="ChangePasswordComponent Verificamos onChangePassword()" duration="8"/>
   </file>
   <file path="src/app/pages/dashboard/dashboard.component.spec.ts">
-    <testCase name="DashboardComponent Verificamos loadData():void" duration="53"/>
-    <testCase name="DashboardComponent Verificamos formattedDates" duration="14"/>
-    <testCase name="DashboardComponent Verificamos getTramites()" duration="13"/>
-    <testCase name="DashboardComponent DashboardComponent creado correctamente" duration="12"/>
-    <testCase name="DashboardComponent Verificamos ngOnInit()" duration="13"/>
+    <testCase name="DashboardComponent Verificamos loadData():void" duration="47"/>
+    <testCase name="DashboardComponent Verificamos formattedDates" duration="12"/>
+    <testCase name="DashboardComponent Verificamos getTramites()" duration="12"/>
+    <testCase name="DashboardComponent Verificamos ngOnInit()" duration="12"/>
+    <testCase name="DashboardComponent DashboardComponent creado correctamente" duration="11"/>
   </file>
   <file path="src/app/pages/dashboard/graficos/bar/bar.component.spec.ts">
-    <testCase name="BarComponent BarComponent creado correctamente" duration="14"/>
-    <testCase name="BarComponent Validamos loadData()" duration="8"/>
-    <testCase name="BarComponent Validamos clear()" duration="8"/>
+    <testCase name="BarComponent BarComponent creado correctamente" duration="11"/>
+    <testCase name="BarComponent Validamos clear()" duration="7"/>
+    <testCase name="BarComponent Validamos loadData()" duration="7"/>
     <testCase name="BarComponent Validamos ngOnChanges(changes:SimpleChanges)" duration="7"/>
   </file>
   <file path="src/app/pages/dashboard/graficos/donut/donut.component.spec.ts">
-    <testCase name="DonutComponent Verificamos clear()" duration="13"/>
-    <testCase name="DonutComponent Verificamos ngOnChanges" duration="7"/>
-    <testCase name="DonutComponent Donutcomponent creado correctamente" duration="6"/>
-    <testCase name="DonutComponent Validamos nuestra funcion loadData()" duration="7"/>
+    <testCase name="DonutComponent Verificamos ngOnChanges" duration="9"/>
+    <testCase name="DonutComponent Validamos nuestra funcion loadData()" duration="6"/>
+    <testCase name="DonutComponent Verificamos clear()" duration="6"/>
+    <testCase name="DonutComponent Donutcomponent creado correctamente" duration="5"/>
   </file>
   <file path="src/app/pages/dashboard/graficos/pie/pie.component.spec.ts">
-    <testCase name="PieComponent Validamos loadData()" duration="11"/>
-    <testCase name="PieComponent Piecomponent creado correctamente" duration="6"/>
-    <testCase name="PieComponent Validamos clear()" duration="6"/>
+    <testCase name="PieComponent Piecomponent creado correctamente" duration="7"/>
     <testCase name="PieComponent Validamos ngOnChanges(changes:SimpleChanges)" duration="6"/>
+    <testCase name="PieComponent Validamos loadData()" duration="5"/>
+    <testCase name="PieComponent Validamos clear()" duration="4"/>
   </file>
   <file path="src/app/pages/documentos/documentos.component.spec.ts">
-    <testCase name="DocumentosComponent Verificamos exportarExcel()" duration="30"/>
-    <testCase name="DocumentosComponent Verificamos exportarPDF()" duration="16"/>
-    <testCase name="DocumentosComponent Verificamos alertDeleteDoc(documento)" duration="27"/>
-    <testCase name="DocumentosComponent Validamos eliminarDocumento(cod_doc)" duration="9"/>
-    <testCase name="DocumentosComponent Verificamos ngOnInit()" duration="7"/>
-    <testCase name="DocumentosComponent Verificamos ngOnChanges()" duration="7"/>
-    <testCase name="DocumentosComponent Verificamos crearDocumento()" duration="8"/>
-    <testCase name="DocumentosComponent Verificamos editarDocumento()" duration="9"/>
-    <testCase name="DocumentosComponent Verificamos listarDocumentos" duration="9"/>
-    <testCase name="DocumentosComponent DocumentosComponent creado correctamente" duration="7"/>
+    <testCase name="DocumentosComponent Verificamos exportarPDF()" duration="25"/>
+    <testCase name="DocumentosComponent Verificamos exportarExcel()" duration="13"/>
+    <testCase name="DocumentosComponent Verificamos ngOnInit()" duration="5"/>
+    <testCase name="DocumentosComponent Validamos eliminarDocumento(cod_doc)" duration="5"/>
+    <testCase name="DocumentosComponent Verificamos ngOnChanges()" duration="4"/>
+    <testCase name="DocumentosComponent Verificamos editarDocumento()" duration="10"/>
+    <testCase name="DocumentosComponent Verificamos alertDeleteDoc(documento)" duration="22"/>
+    <testCase name="DocumentosComponent DocumentosComponent creado correctamente" duration="5"/>
+    <testCase name="DocumentosComponent Verificamos crearDocumento()" duration="4"/>
+    <testCase name="DocumentosComponent Verificamos listarDocumentos" duration="4"/>
   </file>
   <file path="src/app/pages/documentos/edit-document/edit-document.component.spec.ts">
-    <testCase name="EditDocumentComponent Verificamos detalleDocumento()" duration="10"/>
-    <testCase name="EditDocumentComponent Verificamos actualizarDocumento()" duration="8"/>
-    <testCase name="EditDocumentComponent Verificamos ngOnInit()" duration="4"/>
-    <testCase name="EditDocumentComponent Verificamos ngOnChanges()" duration="5"/>
-    <testCase name="EditDocumentComponent EditDocumentComponent creado correctamente" duration="5"/>
+    <testCase name="EditDocumentComponent Verificamos actualizarDocumento()" duration="7"/>
+    <testCase name="EditDocumentComponent Verificamos detalleDocumento()" duration="3"/>
+    <testCase name="EditDocumentComponent Verificamos ngOnChanges()" duration="3"/>
+    <testCase name="EditDocumentComponent Verificamos ngOnInit()" duration="3"/>
+    <testCase name="EditDocumentComponent EditDocumentComponent creado correctamente" duration="3"/>
   </file>
   <file path="src/app/pages/documentos/new-document/new-document.component.spec.ts">
-    <testCase name="NewDocumentComponent Verificamos crearDocumento()" duration="12"/>
-    <testCase name="NewDocumentComponent NewDocumentComponent creado correctamente" duration="8"/>
-    <testCase name="NewDocumentComponent Verificamos ngOnInit()" duration="5"/>
+    <testCase name="NewDocumentComponent Verificamos crearDocumento()" duration="7"/>
+    <testCase name="NewDocumentComponent NewDocumentComponent creado correctamente" duration="2"/>
+    <testCase name="NewDocumentComponent Verificamos ngOnInit()" duration="3"/>
   </file>
   <file path="src/app/pages/login/login.component.spec.ts">
-    <testCase name="LoginComponent LoginComponent creado correctamente" duration="18"/>
+    <testCase name="LoginComponent Verificamos alertFirstLogin" duration="20"/>
+    <testCase name="LoginComponent Validamos onLogin()" duration="4"/>
+    <testCase name="LoginComponent Verificamos ngOnInit" duration="3"/>
     <testCase name="LoginComponent Verificamos showPassword" duration="4"/>
-    <testCase name="LoginComponent Verificamos ngOnInit" duration="5"/>
-    <testCase name="LoginComponent Validamos onLogin()" duration="6"/>
-    <testCase name="LoginComponent Verificamos alertFirstLogin" duration="16"/>
+    <testCase name="LoginComponent LoginComponent creado correctamente" duration="3"/>
   </file>
   <file path="src/app/pages/tracking/tracking.component.spec.ts">
-    <testCase name="TrackingComponent Verificamos leerCertificados()" duration="34"/>
-    <testCase name="TrackingComponent Verificamos leerAdjuntos()" duration="7"/>
-    <testCase name="TrackingComponent Validamos buscarTramiteTracking()" duration="8"/>
-    <testCase name="TrackingComponent Validamos limpiarTabla()" duration="6"/>
+    <testCase name="TrackingComponent TrackingComponent creado correctamente" duration="16"/>
     <testCase name="TrackingComponent Validamos ngOnInit()" duration="6"/>
-    <testCase name="TrackingComponent TrackingComponent creado correctamente" duration="5"/>
-    <testCase name="TrackingComponent Verificamos suscribeToNotifications()" duration="7"/>
-    <testCase name="TrackingComponent Verificamos saveNotification()" duration="6"/>
-    <testCase name="TrackingComponent Verificamos listHistory()" duration="12"/>
-    <testCase name="TrackingComponent Verificamos saveTracking" duration="7"/>
-    <testCase name="TrackingComponent Verificamos searchHistory()" duration="6"/>
+    <testCase name="TrackingComponent Validamos buscarTramiteTracking()" duration="5"/>
+    <testCase name="TrackingComponent Validamos limpiarTabla()" duration="4"/>
+    <testCase name="TrackingComponent Verificamos leerCertificados()" duration="4"/>
+    <testCase name="TrackingComponent Verificamos leerAdjuntos()" duration="4"/>
+    <testCase name="TrackingComponent Verificamos listHistory()" duration="9"/>
+    <testCase name="TrackingComponent Verificamos saveNotification()" duration="4"/>
+    <testCase name="TrackingComponent Verificamos saveTracking" duration="5"/>
+    <testCase name="TrackingComponent Verificamos searchHistory()" duration="5"/>
+    <testCase name="TrackingComponent Verificamos suscribeToNotifications()" duration="5"/>
   </file>
   <file path="src/app/pages/tramites/components/create-tramite/create-tramite.component.spec.ts">
-    <testCase name="CreateTramiteComponent Verificamos upload()" duration="446"/>
-    <testCase name="CreateTramiteComponent Verificamos seleccionarArchivo(event)" duration="7"/>
-    <testCase name="CreateTramiteComponent Verificamos registraEstado()" duration="8"/>
-    <testCase name="CreateTramiteComponent Verificamos ngOnInit()" duration="7"/>
-    <testCase name="CreateTramiteComponent CreateTramiteComponent creado correctamente" duration="8"/>
+    <testCase name="CreateTramiteComponent Verificamos registraEstado()" duration="455"/>
+    <testCase name="CreateTramiteComponent Verificamos ngOnInit()" duration="5"/>
+    <testCase name="CreateTramiteComponent Verificamos upload()" duration="4"/>
+    <testCase name="CreateTramiteComponent CreateTramiteComponent creado correctamente" duration="4"/>
+    <testCase name="CreateTramiteComponent Verificamos seleccionarArchivo(event)" duration="4"/>
   </file>
   <file path="src/app/pages/tramites/components/detalle-tramite/detalle-tramite.component.spec.ts">
-    <testCase name="DetalleTramiteComponent DetalleTramiteComponent creado correctamente" duration="45"/>
-    <testCase name="DetalleTramiteComponent Verificamos llenarListas" duration="17"/>
-    <testCase name="DetalleTramiteComponent Verificamos detalleTramtie()" duration="12"/>
-    <testCase name="DetalleTramiteComponent Verificamos leerAdjuntos()" duration="18"/>
-    <testCase name="DetalleTramiteComponent Verificamos leerDetalles()" duration="14"/>
-    <testCase name="DetalleTramiteComponent Verificamos leerCertificados()" duration="12"/>
-    <testCase name="DetalleTramiteComponent Verificamos callServiceDeleteCertificado()" duration="31"/>
-    <testCase name="DetalleTramiteComponent Verificamos callServicedeleteDetalleTramite()" duration="25"/>
-    <testCase name="DetalleTramiteComponent Verificamos updateCreateTramite()" duration="11"/>
-    <testCase name="DetalleTramiteComponent Verificamos eliminarCertificado(values)" duration="16"/>
-    <testCase name="DetalleTramiteComponent Verificamos alertEliminar()" duration="47"/>
-    <testCase name="DetalleTramiteComponent Verificamos eliminarDetalle(values)" duration="19"/>
-    <testCase name="DetalleTramiteComponent Verificamos seleccionarDetalle(detalleSeleccionado)" duration="13"/>
-    <testCase name="DetalleTramiteComponent Verificamos ngOnChanges()" duration="11"/>
-    <testCase name="DetalleTramiteComponent Verificamos la funcion ngOnInit()" duration="11"/>
+    <testCase name="DetalleTramiteComponent Verificamos ngOnChanges()" duration="30"/>
+    <testCase name="DetalleTramiteComponent Verificamos callServicedeleteDetalleTramite()" duration="30"/>
+    <testCase name="DetalleTramiteComponent Verificamos callServiceDeleteCertificado()" duration="24"/>
+    <testCase name="DetalleTramiteComponent Verificamos eliminarCertificado(values)" duration="66"/>
+    <testCase name="DetalleTramiteComponent Verificamos eliminarDetalle(values)" duration="16"/>
+    <testCase name="DetalleTramiteComponent Verificamos updateCreateTramite()" duration="9"/>
+    <testCase name="DetalleTramiteComponent Verificamos leerCertificados()" duration="9"/>
+    <testCase name="DetalleTramiteComponent Verificamos leerDetalles()" duration="10"/>
+    <testCase name="DetalleTramiteComponent Verificamos detalleTramtie()" duration="11"/>
+    <testCase name="DetalleTramiteComponent Verificamos leerAdjuntos()" duration="11"/>
+    <testCase name="DetalleTramiteComponent Verificamos llenarListas" duration="13"/>
+    <testCase name="DetalleTramiteComponent Verificamos la funcion ngOnInit()" duration="13"/>
+    <testCase name="DetalleTramiteComponent DetalleTramiteComponent creado correctamente" duration="10"/>
+    <testCase name="DetalleTramiteComponent Verificamos seleccionarDetalle(detalleSeleccionado)" duration="15"/>
+    <testCase name="DetalleTramiteComponent Verificamos alertEliminar()" duration="52"/>
   </file>
   <file path="src/app/pages/tramites/components/edit-tramite/edit-tramite.component.spec.ts">
-    <testCase name="EditTramiteComponent Verificamos ngOnChanges" duration="6"/>
     <testCase name="EditTramiteComponent Verificamos detalleUpdateTramite()" duration="4"/>
-    <testCase name="EditTramiteComponent Verificamos actualizarEstadoTramite()" duration="7"/>
-    <testCase name="EditTramiteComponent Verificamos ngOnInit()" duration="5"/>
-    <testCase name="EditTramiteComponent EditTramiteComponent creado correctamente" duration="4"/>
+    <testCase name="EditTramiteComponent EditTramiteComponent creado correctamente" duration="3"/>
+    <testCase name="EditTramiteComponent Verificamos ngOnInit()" duration="3"/>
+    <testCase name="EditTramiteComponent Verificamos actualizarEstadoTramite()" duration="5"/>
+    <testCase name="EditTramiteComponent Verificamos ngOnChanges" duration="4"/>
   </file>
   <file path="src/app/pages/tramites/tramites.component.spec.ts">
-    <testCase name="TramiteComponent Verificamos exportarExcel()" duration="24"/>
-    <testCase name="TramiteComponent Verificamos ExportarPDF" duration="13"/>
-    <testCase name="TramiteComponent Verificamos detalleTramite" duration="10"/>
-    <testCase name="TramiteComponent Verificamos onChangeForm" duration="7"/>
-    <testCase name="TramiteComponent Verificamos listarTramiteDoc" duration="8"/>
+    <testCase name="TramiteComponent Verificamos detalleTramite" duration="25"/>
     <testCase name="TramiteComponent TramiteComponent creado correctamente" duration="7"/>
-    <testCase name="TramiteComponent Verificamos ngOnInit" duration="7"/>
+    <testCase name="TramiteComponent Verificamos onChangeForm" duration="5"/>
+    <testCase name="TramiteComponent Verificamos ngOnInit" duration="4"/>
+    <testCase name="TramiteComponent Verificamos exportarExcel()" duration="9"/>
+    <testCase name="TramiteComponent Verificamos listarTramiteDoc" duration="5"/>
+    <testCase name="TramiteComponent Verificamos ExportarPDF" duration="12"/>
   </file>
   <file path="src/app/pages/users/crear-user/crear-user.component.spec.ts">
-    <testCase name="CrearUserComponent Verificamos trimCrearUserForm()" duration="18"/>
-    <testCase name="CrearUserComponent Verificamos crearUsuario()" duration="9"/>
-    <testCase name="CrearUserComponent Verificamos ngOnInit" duration="6"/>
+    <testCase name="CrearUserComponent Verificamos ngOnInit" duration="15"/>
     <testCase name="CrearUserComponent CrearUserComponent correctamente" duration="6"/>
+    <testCase name="CrearUserComponent Verificamos trimCrearUserForm()" duration="5"/>
+    <testCase name="CrearUserComponent Verificamos crearUsuario()" duration="6"/>
   </file>
   <file path="src/app/pages/users/edit-user/edit-user.component.spec.ts">
-    <testCase name="EditUserComponent Verificamos trimEditarUserForm()" duration="18"/>
-    <testCase name="EditUserComponent Verificamos actualizarUsuario()" duration="9"/>
-    <testCase name="EditUserComponent Verificamos ngOnChanges()" duration="6"/>
-    <testCase name="EditUserComponent EditUserComponent creado correctamente" duration="6"/>
-    <testCase name="EditUserComponent Verificamos ngOnInit()" duration="6"/>
+    <testCase name="EditUserComponent Verificamos trimEditarUserForm()" duration="12"/>
+    <testCase name="EditUserComponent Verificamos actualizarUsuario()" duration="5"/>
+    <testCase name="EditUserComponent EditUserComponent creado correctamente" duration="4"/>
+    <testCase name="EditUserComponent Verificamos ngOnChanges()" duration="4"/>
+    <testCase name="EditUserComponent Verificamos ngOnInit()" duration="4"/>
   </file>
   <file path="src/app/pages/users/users.component.spec.ts">
-    <testCase name="UsersComponent Verificamos editarUsuario()" duration="27"/>
-    <testCase name="UsersComponent UsersComponent creado correctamente" duration="8"/>
-    <testCase name="UsersComponent Verificamos eliminarUsuario()" duration="8"/>
-    <testCase name="UsersComponent Verificamos onChangeForm()" duration="8"/>
-    <testCase name="UsersComponent Verificamos exportarPDF()" duration="11"/>
+    <testCase name="UsersComponent Verificamos exportarPDF()" duration="19"/>
+    <testCase name="UsersComponent Verificamos exportarExcel()" duration="7"/>
+    <testCase name="UsersComponent Verificamos onChangeForm()" duration="5"/>
+    <testCase name="UsersComponent Verificamos listarUsuarios()" duration="6"/>
+    <testCase name="UsersComponent Verificamos resetearUsuario()" duration="8"/>
+    <testCase name="UsersComponent Verificamos editarUsuario()" duration="12"/>
+    <testCase name="UsersComponent Verificamos crearUsuario()" duration="7"/>
     <testCase name="UsersComponent Verificamos alertResetUser(user)" duration="17"/>
-    <testCase name="UsersComponent Validamos ngOnInit()" duration="8"/>
-    <testCase name="UsersComponent Verificamos alertDeleteUser(user)" duration="19"/>
-    <testCase name="UsersComponent Verificamos crearUsuario()" duration="10"/>
-    <testCase name="UsersComponent Verificamos listarUsuarios()" duration="8"/>
-    <testCase name="UsersComponent Verificamos exportarExcel()" duration="11"/>
-    <testCase name="UsersComponent Verificamos resetearUsuario()" duration="10"/>
+    <testCase name="UsersComponent Verificamos eliminarUsuario()" duration="6"/>
+    <testCase name="UsersComponent Verificamos alertDeleteUser(user)" duration="18"/>
+    <testCase name="UsersComponent Validamos ngOnInit()" duration="5"/>
+    <testCase name="UsersComponent UsersComponent creado correctamente" duration="5"/>
   </file>
 </testExecutions>

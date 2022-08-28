@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ChartsModule } from 'ng2-charts';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { ClipboardModule } from 'ngx-clipboard';
 import { NgxPaginationModule } from 'ngx-pagination';
  
 

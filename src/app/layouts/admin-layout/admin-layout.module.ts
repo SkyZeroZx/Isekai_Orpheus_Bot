@@ -3,7 +3,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { CommonModule, DatePipe } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ClipboardModule } from "ngx-clipboard";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { TramitesComponent } from "../../pages/tramites/tramites.component";
@@ -42,7 +41,6 @@ defineLocale("es", esLocale);
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule,
     ChartsModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),

@@ -38,8 +38,7 @@
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
-              "node_modules/chart.js/dist/Chart.min.js",
-              "node_modules/clipboard/dist/clipboard.min.js"
+              "node_modules/chart.js/dist/Chart.min.js"
             ],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"

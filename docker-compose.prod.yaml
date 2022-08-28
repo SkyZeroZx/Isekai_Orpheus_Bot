@@ -1,0 +1,11 @@
+version: '2.5'
+services:
+  isekai_orpheus_bot:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: isekai_orpheus_bot_angular
+    container_name: isekai_orpheus_bot_angular
+    restart: always # reiniciar el contenedor si se detiene
+    ports:
+      - "7676:80"

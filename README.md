@@ -4,6 +4,21 @@ _Es el modulo web del sistema de gestion de tramites registrados via ChatBot y s
 
 _Adicionalmente funciona como PWA(Progresive Web App) que puede integrarse en cualquier dispositivo movil_
 
+## :ledger: Index
+
+- [Pre-Requisitos](#pre-requisitos-)
+- [Instalación](#instalación-)
+- [PWA](#ejecutando-como-PWA-)
+- [Desarrollo](#desarrollo-)
+  - [Unit-Test](#pruebas-unitarias-jasminekarma-)
+  - [E2E-Test](#Pruebas-End-To-End-)
+- [Analisis de calidad de codigo](#analisis-de-calidad-de-codigo)
+- [Despliegue](#despliegue-)
+  - [Build](#build)
+  - [Docker](#docker)
+- [Construido](#construido-con-)
+- [Autores](#autores-)
+
 ## Comenzando 🚀
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
@@ -132,7 +147,7 @@ _Se creo el archivo *src/custom-service-worker.js* para la gestion de evento de 
 
 ![PWA 4](/docs/Layout/pwa/pwa_4.PNG)
 
-## Ejecutando las pruebas ⚙️
+## Desarollo ⚙️
 
 _Se crearon 2 tipos de pruebas siendo las primeras las pruebas unitarias en Jasmine y Karma que son integradas por Angular_
 
@@ -210,7 +225,13 @@ npm run sonar
 
 ![SonarQube Coverage 2](/docs/sonar/sonar_cobertura_2.PNG)
 
+_Se realizo un CI con SonarCloud para metricas de calidad de codigo (https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot)_
+
+![SonarQube Coverage 3](/docs/sonar/sonar_cobertura_3.PNG)
+
 ## Despliegue 📦
+
+### Build
 
 _Previamente configurar la ruta del API que consumira nuestro proyecto en el archivo src/environments/environment.prod.ts campo API_URL_
 
@@ -224,6 +245,28 @@ _El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos
 
 _A su vez en un hosting con certificado HTTPS se podra ejecutar como una PWA que se podra "instalar"_
 
+### Docker
+
+_Para desplegar el proyecto mediante Docker se tiene los archivos `Dockerfile` y `docker-compose.prod.yaml`, los cuales tienen preconfigurado la imagen y dependencias necesarias para levantar el proyecto_
+
+_Para construir la imagen y ejecutarla tenemos el siguiente comando_
+
+_Ejecutar el siguiente comando en la raiz del proyecto_
+
+```
+ docker-compose -f docker-compose.prod.yaml up --build
+```
+
+![Docker 1](/docs/docker/docker-1.png)
+
+![Docker 2](/docs/docker/docker-2.png)
+
+_En caso de requerir volver a ejecutar el contenedor del proyecto previamente creado ejecutar el comando:_
+
+```
+ docker-compose -f docker-compose.prod.yaml up
+```
+
 ## Construido con 🛠️
 
 _Las herramientas utilizadas son:_
@@ -233,6 +276,7 @@ _Las herramientas utilizadas son:_
 - [Jasmine](https://jasmine.github.io/) - Framework Testing para pruebas unitarias
 - [Karma](https://karma-runner.github.io/latest/index.html) - Test Runner para pruebas unitarias
 - [Cypress](https://www.cypress.io/) - Framework para pruebas E2E
+- [Docker](https://www.docker.com/) - Para el despliegue de aplicaciones basado en contenedores
 - [SonarQube](https://www.sonarqube.org/) - Evaluacion de codigo
 - [Visual Studio Code](https://code.visualstudio.com/) - Editor de Codigo
 - [Prettier](https://prettier.io/) - Formateador de Codigo
