@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    name: Build Front End Angular
+    name: Build Ubuntu
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,26 +18,26 @@ jobs:
           node-version: 16
       - name: Run Install Dependences
         run: npm i --legacy-peer-deps
-      - name: Upload Build
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-angular
-          path : /build
   unit-test:
-    name: Unit Testing Jasmine/Karma
+    name: Unit Testing Jasmine/Karma && SonarCloud
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - name: Download Build
-        uses: actions/download-artifact@v3
+          fetch-depth: 0  
+      - uses: actions/setup-node@v1
         with:
-          name: build-angular 
-          path : /build
+          node-version: 16
+      - name: Run Install Dependences
+        run: npm i --legacy-peer-deps
       - name: Run All Unit Tests
         run:  npm run unit-test  
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
   e2e-testing: 
     name: E2E Testing Cypress
     needs: build
@@ -45,21 +45,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - name: Download Build
-        uses: actions/download-artifact@v3
+          fetch-depth: 0  
+      - uses: actions/setup-node@v1
         with:
-          name: build-angular 
-          path : /build
+          node-version: 16
+      - name: Run Install Dependences
+        run: npm i --legacy-peer-deps
       - name : Cypress E2E Test
         run: npm run e2e:ci
-  sonarcloud: 
-    name: SonarCloud Scanner
-    needs: [build , unit-test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
