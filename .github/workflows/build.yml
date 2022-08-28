@@ -1,4 +1,4 @@
-name: Build
+name: IsekaiOrpheusBot
 on:
   push:
     branches:
@@ -24,7 +24,7 @@ jobs:
         run:  npm run unit-test
     e2e-testing : 
         needs: build
-        name : Cypress E2E Test
+       - name : Cypress E2E Test
             run: npm run e2e:ci
    sonarcloud:
       needs : [build ,unit-test]
