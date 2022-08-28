@@ -5,6 +5,10 @@
 /tmp
 /out-tsc
 .angular
+.nyc_output
+/coverage-e2e
+/coverage
+/cypress/videos/
 # dependencies
 /node_modules
 

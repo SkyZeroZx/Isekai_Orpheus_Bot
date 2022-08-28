@@ -13,6 +13,7 @@ _Adicionalmente funciona como PWA(Progresive Web App) que puede integrarse en cu
   - [Unit-Test](#pruebas-unitarias-jasminekarma%EF%B8%8F)
   - [E2E-Test](#Pruebas-End-To-End-)
 - [Analisis de calidad de codigo](#analisis-de-calidad-de-codigo)
+- [Integración Continua](#integración-continua)
 - [Despliegue](#despliegue-)
   - [Build](#build)
   - [Docker](#docker)
@@ -225,9 +226,15 @@ npm run sonar
 
 ![SonarQube Coverage 2](/docs/sonar/sonar_cobertura_2.PNG)
 
+## Integración Continua
+
 _Se realizo un CI con SonarCloud para metricas de calidad de codigo (https://sonarcloud.io/project/overview?id=SkyZeroZx_Isekai_Orpheus_Bot)_
 
 ![SonarQube Coverage 3](/docs/sonar/sonar_cobertura_3.PNG)
+
+_Se creo la carpeta `.github/workflows` con el archivo `build.yml` que contiene los pasos para desplegar mediante GitHub Actions nuestro CI_
+
+![CI](/docs/ci/ci.png)
 
 ## Despliegue 📦
 

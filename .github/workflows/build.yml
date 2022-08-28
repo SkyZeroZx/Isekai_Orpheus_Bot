@@ -18,9 +18,9 @@ jobs:
           node-version: 16
       - name: Run Install Dependences
         run: npm i --legacy-peer-deps
-      - name: Run Unit Test Jasmine
+      - name: Run Unit Test Jasmine #Run all  unit test
         run:  npm run unit-test
-      - name: Run E2E Test Cypress
+      - name: Run E2E Test Cypress #Run all test E2E
         run: npm run e2e:ci
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
