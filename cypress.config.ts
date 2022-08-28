@@ -96,8 +96,8 @@ export default defineConfig({
   pageLoadTimeout: 20000,
   projectId: '',
   numTestsKeptInMemory: 50,
-  requestTimeout: 10000,
-  responseTimeout: 10000,
+  requestTimeout: 20000,
+  responseTimeout: 20000,
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.

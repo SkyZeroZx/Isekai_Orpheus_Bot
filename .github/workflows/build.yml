@@ -48,7 +48,7 @@ jobs:
           key: ${{ github.sha }}
       - uses: actions/upload-artifact@v3
         with:
-          name: reports
+          name: reports-unit-test
           path: coverage/*
   e2e-testing: 
     name: E2E Testing Cypress
@@ -70,6 +70,10 @@ jobs:
         run: ./node_modules/.bin/cypress install --force
       - name : Cypress E2E Test
         run: npm run e2e:ci
+      - uses: actions/upload-artifact@v3
+        with:
+          name: reports-e2e-test
+          path: coverage-e2e/*
   sonarcloud: 
     name: SonarCloud
     needs: [build , unit-test]
@@ -88,7 +92,7 @@ jobs:
           key: ${{ github.sha }}
       - uses: actions/download-artifact@v3
         with:
-          name: reports
+          name: reports-unit-test
           path: coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
