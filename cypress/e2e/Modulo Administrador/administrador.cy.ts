@@ -2930,8 +2930,8 @@ context("Modulo Administrador Pruebas Funcionalidad", () => {
       cy.wait(5000);
       cy.task("filesInDownload", downloadsFolder).then((files2: any) => {
         // Validamos la descarga del documento y validamos el nombre
-        let difference = files2.filter((x) => !files1.includes(x));
-        expect(difference.length).to.be.gt(0);
+        // let difference = files2.filter((x) => !files1.includes(x));
+        // expect(difference.length).to.be.gt(0);
         const newFile = files2.filter((y) => !files1.includes(y))[0];
         expect(newFile).to.include(downloadFileNameUser());
         rutaPDF = downloadsFolder.replace(/\\/g, "/");
@@ -3013,8 +3013,8 @@ context("Modulo Administrador Pruebas Funcionalidad", () => {
       cy.wait(5000);
       cy.task("filesInDownload", downloadsFolder).then((files2: any) => {
         // Validamos la descarga del documento y validamos el nombre
-        let difference = files2.filter((x) => !files1.includes(x));
-        expect(difference.length).to.be.gt(0);
+        // let difference = files2.filter((x) => !files1.includes(x));
+       //  expect(difference.length).to.be.gt(0);
         const newFile = files2.filter((y) => !files1.includes(y))[0];
         expect(newFile).to.include(downloadFileNameDocument());
         rutaPDF = downloadsFolder.replace(/\\/g, "/");
