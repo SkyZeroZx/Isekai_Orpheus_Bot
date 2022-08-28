@@ -18,6 +18,11 @@ jobs:
           node-version: 16
       - name: Run Install Dependences
         run: npm i --legacy-peer-deps
+      - uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}  
   unit-test:
     name: Unit Testing Jasmine/Karma && SonarCloud
     needs: build
@@ -29,8 +34,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: Run Install Dependences
-        run: npm i --legacy-peer-deps
+      - uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
       - name: Run All Unit Tests
         run:  npm run unit-test  
       - name: SonarCloud Scan
@@ -41,7 +49,7 @@ jobs:
   e2e-testing: 
     name: E2E Testing Cypress
     needs: build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -49,7 +57,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: Run Install Dependences
-        run: npm i --legacy-peer-deps
+      - uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
       - name : Cypress E2E Test
         run: npm run e2e:ci
