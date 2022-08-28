@@ -24,7 +24,7 @@ jobs:
           path: ./*
           key: ${{ github.sha }}  
   unit-test:
-    name: SonarCloud
+    name: Unit Test Jasmine/Karma
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +46,12 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
+      - uses: actions/upload-artifact@v3
+         with:
+         name: reports
+         path: |
+          reports/
+          coverage/ 
   e2e-testing: 
     name: E2E Testing Cypress
     needs: build
@@ -63,7 +69,7 @@ jobs:
           path: ./*
           key: ${{ github.sha }}
       - name: Install Cypress Dependences
-        run: npm i --legacy-peer-deps
+        run: ./node_modules/.bin/cypress install --force
       - name : Cypress E2E Test
         run: npm run e2e:ci
   sonarcloud: 
@@ -82,6 +88,12 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
+      - uses: actions/download-artifact@v3
+         with:
+         name: reports
+         path: |
+          reports/
+          coverage/ 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
