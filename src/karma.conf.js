@@ -26,7 +26,7 @@ module.exports = function (config) {
     },
     sonarQubeUnitReporter: {
       sonarQubeVersion: 'LATEST',
-      outputFile: '../reports/sonar_report.xml',
+      outputFile: '../coverage/report/sonar_report.xml',
       overrideTestDescription: true,
       testPaths: ['./src'],
       testFilePattern: '.spec.ts',
