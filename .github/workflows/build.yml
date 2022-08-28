@@ -29,7 +29,7 @@ jobs:
     - name : Cypress E2E Test
       run: npm run e2e:ci
   sonarcloud:
-    needs : [build ,unit-test]
+    needs: [build , unit-test]
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
