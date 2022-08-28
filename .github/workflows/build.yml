@@ -47,11 +47,11 @@ jobs:
           path: ./*
           key: ${{ github.sha }}
       - uses: actions/upload-artifact@v3
-         with:
-         name: reports
-         path: |
-          reports/
-          coverage/ 
+        with:
+          name: reports
+          path: |
+            reports/
+            coverage/
   e2e-testing: 
     name: E2E Testing Cypress
     needs: build
@@ -90,10 +90,10 @@ jobs:
           key: ${{ github.sha }}
       - uses: actions/download-artifact@v3
          with:
-         name: reports
-         path: |
-          reports/
-          coverage/ 
+          name: reports
+          path: |
+            reports/
+            coverage/ 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
