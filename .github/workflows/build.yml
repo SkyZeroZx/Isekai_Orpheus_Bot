@@ -26,12 +26,13 @@ jobs:
   e2e-testing: 
     needs: build
     steps:
-    - name : Cypress E2E Test
-      run: npm run e2e:ci
-  sonarcloud:
+      - name : Cypress E2E Test
+        run: npm run e2e:ci
+  sonarcloud: 
     needs: [build , unit-test]
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    steps:
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
