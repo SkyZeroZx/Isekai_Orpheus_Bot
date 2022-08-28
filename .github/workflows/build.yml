@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    name: FrontEnd Angular CI
+    name: Build Front End Angular
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,12 +18,14 @@ jobs:
           node-version: 16
       - name: Run Install Dependences
         run: npm i --legacy-peer-deps
-  unit-test :
+  unit-test:
     needs: build
-    - name: Run Unit Test Jasmine  
-      run:  npm run unit-test
-  e2e-testing : 
+    steps:
+      - name: Run All Unit Tests
+        run:  npm run unit-test  
+  e2e-testing: 
     needs: build
+    steps:
     - name : Cypress E2E Test
       run: npm run e2e:ci
   sonarcloud:
