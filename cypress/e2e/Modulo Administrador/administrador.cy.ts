@@ -2927,7 +2927,7 @@ context("Modulo Administrador Pruebas Funcionalidad", () => {
 
     cy.task("filesInDownload", downloadsFolder).then((files1: any) => {
       cy.get("button[id=pdfUsers]").click({ force: true });
-      cy.wait(5000);
+      cy.wait(15000);
       cy.task("filesInDownload", downloadsFolder).then((files2: any) => {
         // Validamos la descarga del documento y validamos el nombre
         // let difference = files2.filter((x) => !files1.includes(x));
@@ -3010,7 +3010,7 @@ context("Modulo Administrador Pruebas Funcionalidad", () => {
 
     cy.task("filesInDownload", downloadsFolder).then((files1: any) => {
       cy.get("button[id=pdfDocument]").click({ force: true });
-      cy.wait(5000);
+      cy.wait(15000);
       cy.task("filesInDownload", downloadsFolder).then((files2: any) => {
         // Validamos la descarga del documento y validamos el nombre
         // let difference = files2.filter((x) => !files1.includes(x));
