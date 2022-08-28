@@ -19,18 +19,27 @@ jobs:
       - name: Run Install Dependences
         run: npm i --legacy-peer-deps
   unit-test:
+    name: Unit Testing Jasmine/Karma
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Run All Unit Tests
         run:  npm run unit-test  
   e2e-testing: 
+    name: E2E Testing Cypress
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis    
       - name : Cypress E2E Test
         run: npm run e2e:ci
   sonarcloud: 
+    name: SonarCloud Scanner
     needs: [build , unit-test]
     runs-on: ubuntu-latest
     steps:
